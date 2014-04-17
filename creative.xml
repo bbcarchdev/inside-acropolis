@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014 BBC
+
+  Licensed under the terms of the Creative Commons Attribution International
+  4.0 license. You may obtain a copy of the license at:
+
+	http://creativecommons.org/licenses/by/4.0/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="creative">
+	<title>Describing creative works</title>
+</chapter>

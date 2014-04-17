@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta charset="utf-8" />
+			<!--[if lt IE 9]><script>document.createElement('header');document.createElement('nav');document.createElement('section');document.createElement('article');document.createElement('aside');document.createElement('footer');</script><![endif]-->
+		<title>Inside Acropolis</title><link rel="stylesheet" type="text/css" href="http://bbcarchdev.github.io/painting-by-numbers/style.css"/><link rel="stylesheet" type="text/css" href="http://bbcarchdev.github.io/painting-by-numbers/print.css" media="print"/><link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6699852/732262/css/fonts.css"/><link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,500,300italic,500italic|Inconsolata|Arapey"/><link rel="stylesheet" type="text/css" href="local.css"/><!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="http://bbcarchdev.github.io/painting-by-numbers/ie78.css" /><![endif]-->
+	</head>
+<body class="book"><header><nav class="global"><div class="inner"><ul>
+		<li class="logo"><a href="#"><abbr title="Research &amp; Education Space">RES</abbr></a></li>
+	</ul></div></nav>
+		<div class="masthead"></div>
+		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">April 2014 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
+	<p>
+		Copyright © 2014 BBC.
+	</p>
+	<p>
+		The text of this book is licensed under the terms of the <cite><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence, v2.0</a></cite>.
+	</p>
+	<p>
+		Accompanying code and samples are licensed under the terms of the <cite><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></cite>.
+	</p>
+</section><section id="preface" class="preface"><h1>Preface</h1>
+	
+	<aside class="info">
+		<p>
+			This book is <em>deliberately</em> incomplete. It’s an evolving document, licensed under the terms of the <cite><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence, v2.0</a></cite>, and to which we are welcoming contributions. You can <a href="https://github.com/bbcarchdev/inside-acropolis">fork the repository on GitHub</a>, or <a href="mailto:mo.mcroberts@bbc.co.uk">e-mail the editor directly</a> if you would like to contribute or have suggestions for changes.</p>
+	</aside>
+	<p>
+		The <i class="firstterm">Research &amp; Education Space</i> (RES) is a project being jointly delivered by <a href="http://jisc.ac.uk">Jisc</a>, the <a href="http://bufvc.ac.uk">British Universities Film &amp; Video Council</a> (BUFVC), and the <a href="http://www.bbc.co.uk/">BBC</a>. Its aim is to bring as much as possible of the UK’s publicly-held archives, and more besides, to learners and teachers across the UK.
+	</p>
+	<p>
+		At the heart of RES is <i class="firstterm">Acropolis</i>, a technical platform which will collect, index and organise rich structured data about those archive collections published as <i class="firstterm">Linked Open Data</i> (LOD) on the Web. The collected data is organised around the people, places, events, concepts and things related to the items in the archive collections—and, if the archive assets themselves are available in digital form, that data includes the information on how to access them, all in a consistent machine-readable form.
+	</p>
+	<p>
+		Building on the Acropolis platform, applications can make use of this index, along with the source data itself, in order to make those collections accessible and meaningful.
+	</p>
+	<p>
+		This book describes how a collection-holder can publish their data in a form which can be collected and indexed by Acropolis and used by applications, and how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion. 
+	</p>
+	<p class="screen-only">
+		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
+	</p>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Acropolis platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li><li><a href="#lod-further-reading">Further reading</a></li></ol></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Technical requirements for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li></ol></li><li><a href="#consumers">Requirements for consumers</a></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#licenses">Well-known licences</a></li><li><a href="#odrl">ODRL-based descriptions</a></li></ol></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#images">Images</a></li><li><a href="#video">Video</a></li><li><a href="#audio">Audio</a></li></ol></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#tools">Tools and resources</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary Index</a></li></ol></nav><article>
+	
+	
+	
+	
+	<section id="intro" class="chapter"><h1>An introduction to the Acropolis platform</h1>
+	
+	<p>
+		The Acropolis platform is made of up three main components: a specialised web crawler, <i class="firstterm">Anansi</i>, an <i class="firstterm">aggregator</i>, <i class="firstterm">Spindle</i>, and a public API layer, <i class="firstterm">Quilt</i>.
+	</p>
+	<p>
+		Anansi’s role is to crawl the web, retrieving <a href="#licenses">permissively-licensed</a> <a href="#lod">Linked Open Data</a>, and passing it to the aggregator for processing. 
+	</p>
+	<p>
+		Spindle examines the data, looking for instances where the same digital, physical or conceptual entity is described in more than one place, primarily where the data <a href="#sameas">explicitly states the equivalence</a>, and aggregates and stores that information in an index.
+	</p>
+	<p>
+		This <i class="firstterm">subject-oriented</i> index is the very heart of RES: by re-arranging published data so that it's organised around the entities described by it, instead of by publisher or data-set, applications are able to rapidly locate all of the information known about a particular entity because it’s collected together in one place.
+	</p>
+	<p>
+		Quilt is responsible for making the index available to applications, also by publishing it as Linked Open Data. Because RES maintains an <em>index</em>, rather than a complete copy of all data that it finds, applications must consume data both from the RES index and from the original data sources—and consequentially Quilt itself also conforms to the publishing recommendations in this book.
+	</p>
+	<p>
+		The RES project will not be directly developing end-user applications, although sample code and demonstrations will be published to assist software developers in doing so. RES only indexes and publishes data released under terms which permit re-use in both commercial and non-commercial settings.
+	</p>
+	<p>
+		For RES to be most useful, holders of publicly-funded archive collections across the UK need to publish Linked Open Data describing their collections (including digital assets, where they exist). Although many collections are already doing so or plan to, the RES project partners will be providing tools and advice to collection-holders in order to assist them throughout the lifetime of the project.
+	</p>
+</section>
+	<section id="lod" class="chapter"><h1>Linked Open Data: What is it, and how does it work?</h1>
+	
+	
+	<p>
+		Linked Open Data is a mechanism for publishing structured data on the Web about virtually anything, in a form which can be consistently retrieved and processed by software. The result is a world wide web of data which works in parallel to the web of documents our browsers usually access, transparently using the same protocols and infrastructure.
+	</p>
+	<p>
+		Where the ordinary web of documents is a means of publishing a page about something intended for a human being to understand, this web of data is a means of publishing data about those things.
+	</p>
+		
+	<section id="uris" class="section"><h1>Web addresses, URLs and URIs</h1>
+		
+		<p>
+			<i class="firstterm">Uniform Resource Locators</i> (URLs), often known as <i class="firstterm">Web addresses</i>, are a way of unambiguously identifying something which is published electronically. Although there are a variety of kinds of URL, most that you day-to-day see begin with <code class="literal">http</code> or <code class="literal">https</code>: this is known as the <i class="firstterm">scheme</i>, and defines how the rest of the URL is structured—although most kinds of URL follow a common structure.
+		</p>
+		<p>
+			The scheme also indicates the communications protocol which should be used to access the resource identified by the URL: if it's <code class="literal">http</code>, then the resource is accessible using HTTP—the protocol used by web servers and browsers; if it's <code class="literal">https</code>, then it’s accessible using secure HTTP (i.e., HTTP with added encryption).
+		</p>
+		<aside class="tip">
+			<p>
+				The act of accessing the resource identified by a URL is known as <i class="firstterm">resolving</i> it.
+			</p>
+		</aside>
+		<p>
+			Following the scheme in a URL is the <i class="firstterm">authority</i>—the domain name of the web site: it’s called the authority because it identifies the entity responsible for defining the meaning and structure of the remainder of the URL. If the URL begins with <code class="uri">http://www.bbc.co.uk/</code>, you know that it's defined and managed by the BBC; if it begins with <code class="uri">http://www.bfi.org.uk/</code>, you know that it's managed by the BFI, and so on.
+		</p>
+		<p>
+			After the authority is an optional <i class="firstterm">path</i> (i.e., the location of the document within the context of the particular domain name or authority), and optional <i class="firstterm">query parameters</i> (beginning with a question-mark), and <i class="firstterm">fragment</i> (beginning with a hash-mark).
+		</p>
+		<p>
+			URLs serve a dual purpose: not only do they provide a name for something, but they also provide anything which understands them with the information they need to retrieve it. Provided your application is able to speak the HTTP protocol, it should in principle be able to retrieve anything using a <code class="literal">http</code> URL.
+		</p>
+		<p>
+			<i class="firstterm">Universal Resource Indicators</i> (URIs) are a superset of URLs, and are in effect a kind of <i class="firstterm">universal identifier</i>: their purpose is to name something, without <em>necessarily</em> indicating how to retrieve it. In fact, it may be that the thing named using a URI cannot possibly be retrieved using a piece of software and an Internet connection because it refers to an abstract concept or a physical object.
+		</p>
+		<aside class="tip">
+			<p>In other words, while URLs are used specifically to identify digital resources which can be retrieved from a Web server, URIs can be used to identify anything: the URLs we use in our browsers are all URIs, but not all URIs are URLs.</p>
+		</aside>
+		<p>
+			URIs follow the same structure as URLs, in that there is a scheme defining how the remainder is structured, and usually some kind of authority, but there are many different schemes, and many of them do not have any particular mechanism defined for how you might retrieve something named using that scheme.
+		</p>
+		<p>
+			For example, the <code class="literal"><a href="http://tools.ietf.org/html/rfc4151">tag:</a></code> URI scheme provides a means for anybody to define a name for something in the form of a URI, using a domain name that they control as an authority, but without indicating any particular semantics about the thing being named.
+		</p>
+		<p>
+			Meanwhile, URIs which begin with <code class="literal">urn:</code> are actually part of one of a number of <em>sub-schemes</em>, many of which exist as a means of writing down some existing identifier about something in the form of a URI. For example, an <abbr title="International Standard Book Number">ISBN</abbr> can be written as a URI by prefixing it with <code class="literal">urn:isbn:</code> (for example, <code class="uri">urn:isbn:9781899066100</code>).
+		</p>
+		<p>
+			You might be forgiven for wondering why somebody might want to write an ISBN in the form of a URI, but in fact there are a few reasons. In most systems, ISBNs are effectively opaque alphanumeric strings: although there is usually some validation of the check digit upon data entry, once stored in a database, they are rarely interrogated for any particular meaning. Given this, ISBNs work perfectly well for identifying books for which ISBNs have been issued—but what if you want to store data about other kinds of things, too? Recognising that this was a particular need for retailers, a few years ago ISBNs were made into a subset of <i class="firstterm">Global Trade Information Numbers</i> (GTINs), the system used for barcoding products sold in shops.
+		</p>
+		<p>
+			By unifying ISBNs and GTINs, retailers were able to use the same field in their database systems for any type of product being sold, whether it was a book with an ISBN, or some other kind of product with a GTIN. All the while, the identifier remained essentially opaque: provided the string of digits and letters scanned by the bar-code reader could be matched to a row in a database, it doesn't matter precisely what those letters and numbers actually are.
+		</p>
+		<p>
+			Representing identifiers in the form of URIs can be thought of as another level of generalisation: it allows the development of systems where the underlying database doesn’t need to know nor care about the <em>kind</em> of identifier being stored, and so can store information about absolutely anything which can be identified by a URI. In many cases, this doesn’t represent a huge technological shift—those database systems already pay little attention to the structure of the identifier itself.
+		</p>
+		<p>
+			Hand-in-hand with this generalisation effect is the ability to disambiguate and harmonise without needing to coordinate a variety of different standards bodies across the world. Whereas the integration of ISBNs and GTINs took a particular concerted effort in order to achieve, the integration of ISBNs and URNs was only a matter of defining the URN scheme, because URIs are already designed to be open-ended and extensible.
+		</p>
+		<p>
+			<i class="firstterm">Linked Open Data URIs</i> are a subset of URIs which, again, begin with <code class="literal">http:</code> or <code class="literal">https:</code>, but do not necessarily name something which can be retrieved from a web server. Instead, they are URIs where performing resolution results in machine-readable data <em>about</em> the entity being identified.
+		</p>
+		<p>
+			In summary:
+		</p>
+		<div class="table"><table><thead><tr><th scope="col">Term</th><th scope="col">Used for…</th></tr></thead><tbody><tr><td>URLs</td><td>Identifying digital resources and specifying where they can be retrieved from</td></tr><tr><td>URIs</td><td>Identifying <em>anything</em>, regardless of whether it can be retrieved electronically or not</td></tr><tr><td>Linked Open Data URIs</td><td>Identifying anything, but in a way which means that <i class="firstterm">descriptive metadata</i> can be retrieved when the URI is resolved</td></tr></tbody></table></div>
+	</section>
+	
+	<section id="triples" class="section"><h1>Describing things with triples</h1>
+		
+		<p>
+			Linked Open Data uses the <i class="firstterm">Resource Description Framework</i> (RDF) to convey information about things. RDF is an open-ended system for modelling information about things, which it does by breaking it down into statements (or <i class="firstterm">assertions</i>), each of which consists of a <i class="firstterm">subject</i>, a <i class="firstterm">predicate</i> and an <i class="firstterm">object</i>.
+		</p>
+		<p>
+			The subject is the thing being described; the predicate is the aspect or attribute of the subject being described; and the object is the description of that particular attribute.
+		</p>
+		<aside class="tip">
+			<p>
+				If you are familiar with object-oriented programming, you may find it useful to think of a subject as being an <em>instance</em>, a predicate as a <em>property</em>, and an object as a <em>value</em>. In fact, the terms are often used interchangeably.
+			</p>
+		</aside>
+	
+		<p>
+			For example, you might want to state that the book with the ISBN 978-1899066100 has the title <cite>Acronyms and Synonyms in Medical Imaging</cite>. You can break this assertion down into its subject, predicate, and object:
+		</p>
+	
+		<div class="table"><table><thead><tr><th scope="col">Subject</th><th scope="col">Predicate</th><th scope="col">Object</th></tr></thead><tbody><tr><td>ISBN 978-1899066100</td><td>Has the title</td><td><cite>Acronyms and Synonyms in Medical Imaging</cite></td></tr></tbody></table></div>
+	
+		<p>
+			Together, this statement made up of a subject, predicate and object is called a <i class="firstterm">triple</i> (because there are three components to it), while a collection of statements is called a <i class="firstterm">graph</i>.
+		</p>
+	
+		<p>
+			In RDF, the subject and the predicate are expressed as URIs this helps to remove ambiguity and the risk of clashes so that the data can be published and consumed in the same way regardless of where it comes from or who’s processing it. Objects <em>can</em> be expressed as URIs where you want to assert some kind of reference to something else, but can also be <i class="firstterm">literals</i> (such as text, numeric values, dates, and so on).
+		</p>
+	</section>
+	
+	<section id="predicates-vocabs" class="section"><h1>Predicates and vocabularies</h1>
+		
+		<p>
+			RDF doesn’t specify the meaning of most predicates itself: in other words, RDF doesn’t tell you what URI you should use to indicate “has the title”. Instead, because anybody can create a URI, it’s entirely up to you whether you invent your own vocabulary when you publish your data, or adopt somebody else’s. Generally, of course, if you want other people to be able to understand your data, it’s probably a good idea to adopt existing vocabularies where they exist.
+		</p>
+		<p>
+			In essence, RDF provides the grammar, while community consensus provides the dictionary.
+		</p>
+		<p>
+			One of the most commonly-used general-purpose vocabularies is the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</a>, managed by the Dublin Core Metadata Initiative (DCMI), and which includes a suitable title predicate:
+		</p>
+		<div class="table"><table><thead><tr><th scope="col">Subject</th><th scope="col">Predicate</th><th scope="col">Object</th></tr></thead><tbody><tr><td>ISBN 978-1899066100</td><td><code class="uri"><a href="http://purl.org/dc/terms/title ">http://purl.org/dc/terms/title</a></code></td><td><cite>Acronyms and Synonyms in Medical Imaging</cite></td></tr></tbody></table></div>
+		<p>
+			With this triple, a consuming application that understands the DCMI Metadata Terms vocabulary can process that data and understand the predicate to indicate that the item has the title <cite>Acronyms and Synonyms in Medical Imaging</cite>.
+		</p>
+		<aside class="info">
+			<p>
+				The Dublin Core Metadata Initiative and the core of the DCMI Metadata Terms vocabulary pre-date RDF and Linked Open Data by some years: older vocabularies and classification schemes have been routinely adapted and re-purposed for RDF as it’s become more widely used as an approach to representing structured data.
+			</p>
+		</aside>
+		
+		<p>
+			Because <code class="uri"><a href="http://purl.org/dc/terms/title ">http://purl.org/dc/terms/title</a></code> is quite long-winded, it’s common to write predicate URIs in a compressed form, consisting of a namespace prefix and local name—similar to the <code class="literal">xmlns</code> mechanism used in XML documents.
+		</p>
+		
+		<p>
+			Because people will often use the same prefix to refer to the same namespace URI, it is not unusual to see this short form of URIs used in books and web pages. Some common prefixes and namespace URIs are shown below:
+		</p>
+		
+		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Often abbreviated as</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF Syntax</a></td><td><code class="uri"><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></code></td><td><code class="literal">rdf:</code></td></tr><tr><td><a href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF Schema</a></td><td><code class="uri"><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#
+</a></code></td><td><code class="literal">rdfs:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</a></td><td><code class="uri"><a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri"><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></code></td><td><code class="literal">foaf:</code></td></tr><tr><td><a href="http://vocab.deri.ie/void">Vocabulary of Interlinked Datasets (VoID)</a></td><td><code class="uri"><a href="http://rdfs.org/ns/void#">http://rdfs.org/ns/void#</a></code></td><td><code class="literal">void:</code></td></tr></tbody></table></div>
+		
+		<p>
+			For example, defining the namespace prefix <code class="literal">dct</code> with a namespace URI of <code class="uri"><a href="http://purl.org/dc/terms/    ">http://purl.org/dc/terms/</a></code>, we can write our predicate as <code class="literal">dct:title</code> instead of <code class="uri"><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></code>.
+			RDF systems re-compose the complete URI by concatenating the prefix URI and the local name.
+		</p>
+		
+		<aside class="tip">
+			<p>
+				An index of all of the vocabularies referenced in this book is provided <a href="#vocab-index">at the end of the book</a>.
+			</p>
+		</aside>
+	</section>
+	
+	<section id="subject-uris" class="section"><h1>Subject URIs</h1>
+		
+		<p>
+			In RDF, subjects are also URIs. While in RDF itself there are no particular restrictions upon the kind of URIs you can use (and there are a great many different kinds — those beginning <code class="literal">http:</code> and <code class="literal">https:</code> that you see on the Web are just two of hundreds), Linked Open Data places some restrictions on subject URIs in order to function. These are:
+		</p>
+		<ol>
+			<li>Subject URIs must begin with <code class="literal">http:</code> or <code class="literal">https:</code>.</li>
+			<li>They must be unique: although you can have multiple URIs for the same thing, one URI can’t refer to multiple distinct things at once.</li>
+			<li>If a Linked Open Data consumer makes an HTTP request for the subject URI, the server should send back RDF data describing that subject.</li>
+			<li>As with URLs, subject URIs need to be persistent: that is, they should change as little as possible, and where they do change, you need to be able to make arrangements for requests for the old URI to be forwarded to the new one.
+				</li>
+		</ol>
+		<p>
+			In practice, this means that when you decide upon a subject URI, it needs to be within a domain name that you control and can operate a web server for; you need to have a scheme for your subject URIs which distinguishes between things which are represented digitally (and so have ordinary URLs) and things which cannot; you also need to arrange for your web server to actually serve RDF when it’s requested; and finally you need to decide a form for your subject URIs which minimises changes.
+		</p>
+		<p>
+			This may sound daunting, but it can be quite straightforward—and shares much in common with deciding upon a URL structure for a website that is intended only for ordinary browsers.
+		</p>
+		<p>
+			For example, if you are the <i class="firstterm">Intergalactic Alliance Library &amp; Museum</i>, whose domain name is <code class="literal">ialm.int</code>, you might decide that all of your books’ URIs will begin with <code class="uri">http://ialm.int/books/</code>, and use the full 13-digit ISBN, without dashes, as the key. You could pick something other than the ISBN, such as an identifier meaningful only to your own internal systems, but it makes developers’ lives easier if you incorporate well-known identifiers where it’s not problematic to do so.
+		</p>
+		<p>
+			Because this web of data co-exists with the web of documents, begin by defining the URL to the <em>document</em> about this book:
+		</p>
+
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100</code></p>
+		<footer><cite/></footer></blockquote>
+
+		<p>
+			Anybody visiting that URL in their browser will be provided with information about the book in your collection. Because the URL incorporates a well-known identifier, the ISBN, if any other pieces of information about the book change or are corrected, that URL remains stable. As a bonus, incorporating the ISBN means that the URL to the document is predictable.
+		</p>
+		
+		<aside class="info">
+			<p>
+				Of course, the ISBN may have been entered incorrectly (or may be cancelled by the registration authority), and it would be worth planning for that eventuality—but assuming that your collection website’s data is based upon information that is used operationally day-to-day, the risk of that needing to occur is kept to a minimum.
+			</p>
+		</aside>
+		
+		<p>
+			Having defined the URL for book pages, it’s now time to define the rest of the structure. The Intergalactic Alliance Library &amp; Museum web server will be configured to serve web pages to web browsers, and RDF data to RDF consumers: that is, there are multiple representations of the same data. It’s useful, from time to time, to be able to refer to each of these representations with a distinct URL. Let’s say, then, that we’ll use the general form:
+		</p>
+		
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100.EXT</code></p>
+		<footer><cite/></footer></blockquote>
+			
+		<p>
+			In this case, <code class="literal">EXT</code> refers to the well-known <i class="firstterm">filename extension</i> for the particular type of representation we’re referring to.
+		</p>
+		
+		<aside class="tip">
+			<p>
+				Media types (sometimes also called MIME types or content types) are registered with the Internet Assigned Numbers Authority (IANA). The registration document includes the preferred or commonly-used filename extensions for that type. For example, the registration document for HTML can be found <a href="http://www.iana.org/assignments/media-types/text/html">on the IANA website</a>.
+			</p>
+		</aside>
+		
+		<p>
+			Therefore, the HTML web page for our book will have the <i class="firstterm">representation-specific</i> URL of:
+		</p>
+		
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100.html</code></p>
+		<footer><cite/></footer></blockquote>
+
+		<p>
+			If you also published CSV data for your book, it could be given the representation-specific URL of:
+		</p>
+
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100.csv</code></p>
+		<footer><cite/></footer></blockquote>
+		
+		<p>
+			RDF can be expressed in a number of different forms, or serialisations. The most commonly-used serialisation is called <i class="firstterm">Turtle</i>, and typically has the filename extension of <code class="literal">ttl</code>. Therefore our Turtle serialisation would have the representation-specific URL of:
+		</p>
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100.ttl</code></p>
+		<footer><cite/></footer></blockquote>
+		
+		<p>
+			Now that we have defined the structure of our URLs, we can define the pattern used for the subject URIs themselves. Remember that the URI needs to be <i class="firstterm">dereferenceable</i>—that is, when a consuming application makes a request for it, the server can respond with the appropriate representation.
+		</p>
+		<p>
+			In order to do this, there are two options: we can use a special kind of redirect, or we can use fragments.  The fragment approach works best where you have a document for each individual item, as we do here, and takes advantage of the fact that in the HTTP protocol, any part of a URL following the “#” symbol is never sent to the server.
+		</p>
+		<p>
+			Thus, let’s say that we’ll distinguish our URLs from our subject URIs by suffixing the subject URIs with <code class="literal">#id</code>. The URI for our book therefore becomes:
+		</p>
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100#id</code></p>
+		<footer><cite/></footer></blockquote>
+		
+		<p>
+			When an application requests the information about this book, by the time it arrives at our web server, it’s been turned into a request for the very first URL we defined—the generic “document about this book” URL:
+		</p>
+		
+		<blockquote>
+			<p><code class="uri">http://ialm.int/books/9781899066100</code></p>
+		<footer><cite/></footer></blockquote>
+		
+		<aside class="tip">
+			<p>
+				The reason the “fragment” portion of the URI is stripped off the request by the time it arrives at the web server is because the HTTP protocol states that fragments are never sent <i class="firstterm">over the wire</i>—that is, they are not included in the protocol exchange between the client and the server. Their original use was to identify a section within a web page and allow a browser to skip straight to it even though it requested and was served the whole page. Fragments in <em>URLs</em> are regularly used for this purpose today.
+			</p>
+		</aside>
+		
+		<p>
+			When an application understands RDF and tells the server as much as part of the request, the server can send back the Turtle representation instead of an HTML web page—a part of the HTTP protocol known as <i class="firstterm">content negotiation</i>. Content negotiation allows a server to pick the most appropriate representation for something (where it has multiple representations), based upon the client’s preferences.
+		</p>
+		<p>
+			With our subject URI pattern defined, we can revisit our original assertion:
+		</p>
+		<div class="table"><table><thead><tr><th scope="col">Subject</th><th scope="col">Predicate</th><th scope="col">Object</th></tr></thead><tbody><tr><td><code class="uri">http://ialm.int/books/9781899066100#id</code></td><td><code class="literal">dct:title</code></td><td><cite>Acronyms and Synonyms in Medical Imaging</cite></td></tr></tbody></table></div>
+		
+	</section>
+	
+	<section id="classes" class="section"><h1>Defining what something is: classes</h1>
+		
+		<p>
+			One of the few parts of the common vocabulary which is defined by RDF itself is the predicate <code class="literal">rdf:type</code>, which specifies the class (or classes) of a subject. Like predicates, classes are defined by vocabularies, and are also expressed as URIs. The classes of a subject are intended to convey what that subject <em>is</em>.
+		</p>
+		<p>
+			For example, the Bibliographic Ontology, whose namespace URI is <code class="uri"><a href="http://purl.org/ontology/bibo/">http://purl.org/ontology/bibo/</a></code> (commonly prefixed as <code class="literal">bibo:</code>) defines a class named <code class="literal">bibo:Book</code> (whose full URI we can deduce as being <code class="uri"><a href="http://purl.org/ontology/bibo/Book">http://purl.org/ontology/bibo/Book</a></code>).
+		</p>
+		<p>
+			If we write a triple which asserts that our book is a <code class="literal">bibo:Book</code>, any consumers which understand the Bibliographic Ontology can interpret our data as referring to a book:
+		</p>
+		<div class="table"><table><thead><tr><th scope="col">Subject</th><th scope="col">Predicate</th><th scope="col">Object</th></tr></thead><tbody><tr><td><code class="uri">http://ialm.int/books/9781899066100#id</code></td><td><code class="literal">rdf:type</code></td><td><code class="literal">bibo:Book</code></td></tr><tr><td><code class="uri">http://ialm.int/books/9781899066100#id</code></td><td><code class="literal">dct:title</code></td><td><cite>Acronyms and Synonyms in Medical Imaging</cite></td></tr></tbody></table></div>
+		
+	</section>
+	
+	<section id="describing" class="section"><h1>Describing things defined by other people</h1>
+		
+		
+		<p>
+			There is no technical reason why your subject URIs must <em>only</em> be URIs that you control directly. In Linked Open Data, the matter of <em>trust</em> is a matter for the data consumer: one application might have a white-list of trusted sources, another might have a black-list of sources known to be problematic, another might have more complex heuristics, while another might use your social network such that assertions from your friends are considered more likely to be trustworthy than those from other people.
+		</p>
+		<p>
+			Describing subjects defined by other people has a practical purpose. Predicates work in a particular direction, and although sometimes vocabularies will define pairs of predicates so that you can make a statement either way around, interpreting this begins to get complicated, and so most vocabularies define predicates only in one direction.
+		</p>
+		<p>
+			As an example, you might wish to state that a book held in a library is about a subject that you’re describing. On a web page, you’d simply write this down and link to it—perhaps as part of a “Useful resources” section. In Linked Open Data, you can make the assertion that one of the subjects of the other library’s book is the one you’re describing. This works exactly the same way as if you were describing something that you’d defined yourself—you simply write the statement, but somebody else’s URI as the subject.
+		</p>
+		<p>
+			This can also be used to make life easier for developers and reduce network overhead of applications. In your “Useful resources” section, you probably wouldn’t only list the URL to the page about the book: instead, you’d list the title and perhaps the author <em>as well</em> as linking to the page about the book. You can do that in Linked Open Data, too. Let’s say that we’re expressing the data about a subject—Roman Gaul—which we’ve assigned a URI of <code class="uri">http://ialm.int/things/2068003#id</code>:
+		</p>
+		<div class="table"><table><thead><tr><th scope="col">Subject</th><th scope="col">Predicate</th><th scope="col">Object</th></tr></thead><tbody><tr><td><code class="uri">http://ialm.int/things/2068003#id</code></td><td><code class="literal">dct:title</code></td><td><cite>Roman Gaul</cite></td></tr><tr><td><code class="uri">http://bnb.data.bl.uk/id/resource/006889069</code></td><td><code class="literal">rdf:type</code></td><td><code class="literal">bibo:Book</code></td></tr><tr><td><code class="uri">http://bnb.data.bl.uk/id/resource/006889069</code></td><td><code class="literal">dct:title</code></td><td><cite>Asterix the Gaul</cite></td></tr><tr><td><code class="uri">http://bnb.data.bl.uk/id/resource/006889069</code></td><td><code class="literal">dct:subject</code></td><td><code class="uri">http://ialm.int/things/2068003#id</code></td></tr></tbody></table></div>
+		<p>
+			In this example we’ve defined a subject, called <cite>Roman Gaul</cite>, of which we’ve provided very little detail, except to say that it’s a subject of the book <cite>Asterix the Gaul</cite>, whose identifier is defined by the British Library.
+		</p>
+		<p>
+			Note that we haven‘t described the book <cite>Asterix the Gaul</cite> in full: RDF operates on an <i class="firstterm">open world principle</i>, which means that sets of assertions are generally interpreted as being incomplete—or rather, only as complete as they need to be. The fact that we haven’t specified an author or publisher of the book doesn’t mean there isn’t one, just that the data isn’t present here; where in RDF you need to state explicitly that something doesn’t exist, there is usually a particular way to do that.
+		</p>
+	</section>
+	
+	<section id="turtle" class="section"><h1>Turtle: the terse triple language</h1>
+		
+		<p>
+			<i class="firstterm">Turtle</i> is one of the most common languages for writing RDF in use today—although there are many others. Turtle is intended to be interpreted and generated by machines first and foremost, but also be readable and writeable by human beings (albeit usually software developers).
+		</p>
+		<p>
+			In its simplest form, we can just write out our statements, one by one, each separated by a full stop. URIs are written between angle-brackets (<code class="literal">&lt;</code> and <code class="literal">&gt;</code>), while <i class="firstterm">string literals</i> (such as the names of things) are written between double-quotation marks (<code class="literal">"</code>).
+		</p>
+		<pre class="code turtle"><code>&lt;http://ialm.int/books/9781899066100#id&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.org/ontology/bibo/Book&gt; .
+	
+&lt;http://ialm.int/books/9781899066100#id&gt; &lt;http://purl.org/dc/terms/title&gt; "Acronyms and Synonyms in Medical Imaging" .</code></pre>
+		<p>
+			This is quite long-winded, but fortunately Turtle allows us to define and use prefixes just as we have in this book. When we write the short form of a URI, it’s <em>not</em> written between angle-brackets:
+		</p>
+		<pre class="code turtle"><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix bibo: &lt;http://purl.org/ontology/bibo/&gt; .
+
+&lt;http://ialm.int/books/9781899066100#id&gt; rdf:type bibo:Book .
+
+&lt;http://ialm.int/books/9781899066100#id&gt; dct:title "Acronyms and Synonyms in Medical Imaging" .</code></pre>
+		<p>
+			Because Turtle is designed for RDF, and <code class="literal">rdf:type</code> is defined by RDF itself, Turtle
+			provides a nice shorthand for the predicate: <code class="literal">a</code>. We can simply say that our book is <code class="literal">a bibo:Book</code>:
+		</p>
+		<pre class="code turtle"><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix bibo: &lt;http://purl.org/ontology/bibo/&gt; .
+
+&lt;http://ialm.int/books/9781899066100#id&gt; a bibo:Book .
+
+&lt;http://ialm.int/books/9781899066100#id&gt; dct:title "Acronyms and Synonyms in Medical Imaging" .</code></pre>
+		<p>
+			Writing the triples out this way quickly gets repetitive: you don’t want to be writing the subject URI every time, especially not if writing Turtle by hand. If you end a statement with a semi-colon instead of a full-stop, it indicates that what follows is another predicate and object about the same subject:
+		</p>
+		<pre class="code turtle"><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix bibo: &lt;http://purl.org/ontology/bibo/&gt; .
+
+&lt;http://ialm.int/books/9781899066100#id&gt;
+	a bibo:Book ;
+	dct:title "Acronyms and Synonyms in Medical Imaging" .</code></pre>
+		<aside class="tip">
+			<p>
+				If you end a statement with a comma instead of a semi-colon or full-stop, it means that what follows is another object with the same subject and predicate—in other words, it’s a quick way of writing multiple values.
+			</p>
+		</aside>
+		<p>
+			Turtle includes a number of capabilities which we haven’t yet discussed here, but are important for
+			fully understanding real-world RDF in general and Turtle documents in particular. These include:
+		</p>
+		<dl>
+				<dt>Typed literals</dt>
+				<dd>
+					<p>
+						<i class="firstterm">Typed literals</i>: literals which aren’t simply strings of text, but can be of any one of the <a href="http://www.w3.org/TR/xmlschema-2/">XML Schema data types</a>.
+					</p>
+					<p>
+						 Literal types are indicated by writing the literal value, followed by two carets, and then the datatype URI: for example, <code class="literal">"2013-01-26"^^xsd:date</code>.					
+					</p>
+				</dd>
+			
+				<dt>Blank nodes</dt>
+				<dd>
+					<p>
+						Blank nodes are entities for which some information is provided, but where the subject
+						URI is not known. There are two different ways of using blank nodes in Turtle: a blank node <em>value</em> is one where in place of a URI or a literal value, an entity is partially described.
+					</p>
+					<p>
+						Another way of using blank nodes is to assign it a private, transient identifier (a blank node identifier), and then use that identifier where you’d normally use a URI as a subject or object. The transient identifier has no meaning outside of the context of the document: it’s simply a way of referring to the same (essentially anonymous) entity in multiple places within the document.
+					</p>
+					<p>
+						A blank node value is expressed by writing an opening square bracket, followed by the sets of predicates and values for the blank node, followed by a closing square bracket. For example, we can state that an author of the book is a nondescript entity who we know is a person named <code class="literal">Nicola Strickland</code>, but for whom we don’t have an identifier:
+					</p>
+					<pre class="code turtle"><code>&lt;http://ialm.int/books/9781899066100#id&gt; dct:creator [
+	a foaf:Person ;
+	foaf:name "Nicola Strickland" 
+] .</code></pre>
+					<p>
+						Blank node identifiers are written similarly to the compressed form of URIs, except that an underscore is used as the prefix. For example, <code class="literal">_:johnsmith</code>. You don’t have to do anything special to create a blank node identifier (simply use it), and the actual name you assign has no meaning outside of the context of the document—if you replace all instances of <code class="literal">_:johnsmith</code> with <code class="literal">_:zebra</code>, the actual meaning of the document is unchanged—although it may be slightly more confusing to read and write as a human.
+					</p>
+				</dd>
+			
+				<dt>Multi-lingual string literals</dt>
+				<dd>
+					<p>
+						String literals in the examples given so far are written in no particular language (which may be appropriate in some cases, particularly when expressing people’s names).
+					</p>
+					<p>
+						The language used for a string literal is indicated by writing the literal value, followed by an at-sign, and then the <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 language code</a>, or an ISO 639-1 language code, followed by a hyphen, and a <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</a>.
+					</p>
+					<p>
+						For example: <code class="literal">"Intergalatic Alliance Library &amp; Museum Homepage"@en</code>, or <code class="literal">"grey"@en-gb</code>.
+					</p>
+				</dd>
+			
+				<dt>Base URIs</dt>
+				<dd>
+					<p>
+						By default, the base URI for the terms in a Turtle document is the URI it’s being served from. Occasionally, it can be useful to specify an alternative base URI. To do this, an <code class="literal">@base</code> statement can be included (in a similar fashion to <code class="literal">@prefix</code>).
+					</p>
+					<p>For example, if a document specifies <code class="literal">@base &lt;http://www.example.com/things/&gt; .</code>, then the URI <code class="literal">&lt;12447652#id&gt;</code> within that document can be expanded to <code class="literal">&lt;http://www.example.com/things/12447652#id&gt;</code>, while the URI <code class="literal">&lt;/artefacts/47fb01&gt;</code> would be expanded to <code class="literal">&lt;http://www.example.com/artefacts/47fb01&gt;</code>.</p>
+				</dd>
+			</dl>
+		
+		<aside class="tip">
+			<p>
+				For further information on RDF’s capabilities and Turtle, be sure to read through the <a href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF Primer</a> and the <a href="http://www.w3.org/TR/2014/REC-turtle-20140225/">Turtle specification</a>.
+			</p>
+		</aside>
+		
+		<p>
+			An example of a Turtle document making use of some of these capabilities is shown below:
+		</p>
+		<pre class="code turtle"><code>@base &lt;http://ialm.int/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix bibo: &lt;http://purl.org/ontology/bibo/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+&lt;/books/9781899066100#id&gt;
+	a bibo:Book ;
+	dct:title "Acronyms and Synonyms in Medical Imaging"@en ;
+	dct:issued "1997"^^xsd:gYear ;
+	dct:creator _:allison, _:strickland ;
+	dct:publisher [
+		a foaf:Organization ;
+		foaf:name "CRC Press"
+	] .
+
+_:strickland
+	a foaf:Person ;
+	foaf:name "Nicola Strickland" .
+
+_:allison
+	a foaf:Person ;
+	foaf:name "David J. Allison" .</code></pre>
+		<p>
+			In this example, we are still describing our book, but we specify that the title is in English (though don’t indicate any particular national variant of English); we state that it was issued (published) in the year 1997, and that it’s publisher—for whom we don’t have an identifier—is an organisation whose name is <cite>CRC Press</cite>.
+		</p>
+	</section>
+	
+	<section id="quads" class="section"><h1>From three to four: relaying provenance with quads</h1>
+		
+		<p>
+			While triples are a perfectly servicable mechanism for describing something, they don’t have the ability
+			to tell you where data is <em>from</em> (unless you impose a restriction that you only deal
+			with data where the domain of the subject URI matches that of the server you’re retrieving from). In some
+			systems, including Acropolis, this limitation is overcome by introducing another element: a graph URI, identifying the <em>source</em> of a triple. Thus, instead of triples, RES actually stores <i class="firstterm">quads</i>.			
+		</p>
+		<p>
+			When we assign an explicit URI to a graph in this way, it becomes known as a <i class="firstterm">named graph</i>—that is, a graph with an explicit identifier (name) assigned to it.
+		</p>
+		<p>
+			Turtle itself doesn’t have a concept of named graphs, but there is an extension to Turtle, named
+			<a href="http://www.w3.org/TR/2014/REC-trig-20140225/">TriG</a>, which includes the
+			capability to specify the URI of a named graph containing a particular set of triples.
+		</p>
+		<aside class="tip">
+			<p>
+				While Quilt will serve RDF/XML and Turtle when requested, it will also serve TriG: this allows
+				applications to determine the provenance of statements stored in the RES index, allowing
+				them to white– or black-list data sources if needed.
+			</p>
+		</aside>		
+	</section>
+
+	<section id="why-rdf" class="section"><h1>Why does RES use RDF?</h1>
+		
+		<p>
+			RDF isn’t necessarily the simplest way of expressing some data about something, and that means it’s often not the first choice for publishers and consumers. Often, an application consuming some data is designed specifically for one particular dataset, and so its interactions are essentially bespoke and comparatively easy to define.  
+		</p>
+		<p>
+			RES, by nature, brings together a large number of different structured datasets, describing lots of different kinds of things, with a need for a wide range of applications to be able to work with those sets in a consistent fashion.
+		</p>
+		<p>
+			At the time of writing (ten years after its introduction), RDF’s use of URIs as identifiers, common vocabularies and data types, inherent flexibility and well-defined structure means that is the only option for achieving this.
+		</p>
+		<p>
+			Whether you’re describing an audio clip or the year 1987, a printed book or the concept of a documentary film, RDF provides the ability to express the data you hold in intricate detail, without being beholden to a single central authority to validate the modelling work undertaken by experts in your field.
+		</p>
+		<p>
+			For application developers, the separation of grammar and vocabularies means that applications can interpret data in as much or as little detail as is useful for the end-users. For instance, you might develop an application which understands a small set of general-purpose metadata terms but which can be used with virtually everything surfaced through RES.
+		</p>
+		<p>
+			Alternatively, you might develop a specialist application which interprets rich descriptions in a particular domain in order to target specific use-cases. In either case, you don’t need to know who the data comes from, only sufficient understanding of the vocabularies in use to satisfy your needs.
+		</p>
+		<p>
+			However, because we recognise that publishing and consuming Linked Open Data as an individual publisher or application developer may be unfamiliar territory, and so throughout the lifetime of the project we are committed to publishing documentation, developing tools and operating workshops in order to help developers and publishers work with RDF in general and RES in particular more easily.
+		</p>
+			
+	</section>
+	
+	<section id="lod-further-reading" class="section"><h1>Further reading</h1>
+		
+		<ul>
+			<li><cite><a href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF 1.1 primer</a></cite></li>		
+			<li><cite><a href="http://www.w3.org/TR/2014/REC-turtle-20140225/">RDF 1.1 Turtle</a></cite> (language specification)</li>
+			<li><cite><a href="http://www.w3.org/TR/2014/REC-trig-20140225/">RDF 1.1 TriG</a></cite> (language specification)</li>
+			<li><cite><a href="http://patterns.dataincubator.org/book/">Linked Data Patterns</a></cite></li>
+			<li><cite><a href="http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf">Linked Data - The Story so Far</a></cite> (PDF)</li>
+		</ul>
+	</section>
+</section>
+	<section id="architecture" class="chapter"><h1>Under the hood: the architecture of Acropolis</h1>
+	
+	
+	<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
+	
+</section>
+	<section id="publishers" class="chapter"><h1>Requirements for publishers</h1>
+	
+	
+	<p>
+		Publishers wishing to make their data visible in the Acropolis index and useable by RES applications must conform to a small set of basic requirements. These are:
+	</p>
+
+	<ul>
+		<li>The data must be expressed as RDF and published as Linked Open Data;</li>
+		<li>the data must be licensed under permissive terms (in particular, it must allow re-use in both	commercial and non-commercial applications);</li>
+		<li>the licensing terms must be included in the data itself so that consumers can perform automated due diligence before using it;</li>
+		<li>the data should use the vocabularies described in this book for best results (although you are free to use other vocabularies too).</li>
+	</ul>
+
+	<p>
+		Although RES requires that you publish Linked Open Data, that doesn’t mean you can’t also publish your data in other ways. While human-facing HTML pages are the obvious example, there’s nothing about publishing Linked Open Data which means you can’t also publish JSON with a bespoke schema, CSV, OpenOffice.org spreadsheets, or operate complex query APIs requiring registration to use.
+	</p>
+	<p>
+		In fact, best practice generally is that you publish in as many formats as you’re generally able to, and do so in a consistent fashion. And, while your “data views” (that is, the structured machine-readable representations of your data about things) are going to be very dull and uninteresting to most human beings, that doesn’t mean that you can’t serve nicely-designed web pages about them as the serialisation for ordinary web browsers.
+	</p>
+	<section id="publishing-detail" class="section"><h1>Technical requirements for data publication</h1>
+		
+		
+		<section id="support-common-serialisations" class="section"><h1>Support the most common RDF serialisations</h1>
+			
+			<p>
+				RDF can be serialised in a number of different ways, but there are two serialisations which RES publishers <strong class="strong">must</strong> provide because these are the two serialisations guaranteed to be supported by RES applications:
+			</p>
+			<div class="table"><table><thead><tr><th scope="col">Name</th><th scope="col">Media type</th><th scope="col">Further information</th></tr></thead><tbody><tr><td>Turtle</td><td><code class="literal">text/turtle</code></td><td><code class="uri"><a href="http://www.w3.org/TR/2014/REC-turtle-20140225/ ">http://www.w3.org/TR/2014/REC-turtle-20140225/</a></code></td></tr><tr><td>RDF/XML</td><td><code class="literal">application/rdf+xml</code></td><td><code class="uri"><a href="http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/">http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/</a></code></td></tr></tbody></table></div>
+			<p>
+				Turtle is increasingly the most common RDF serialisation in circulation and is very widely-supported by processing tools and libraries.
+			</p>
+			<p>
+				RDF/XML is an older serialisation which is slightly more well-supported than Turtle. RDF/XML is often more verbose than the equivalent Turtle expression of a graph, but as an XML-based format can be generated automatically from other kinds of XML using XSLT.
+			</p>
+			<p>
+				If you are considering publishing your data as JSON, you may consider publishing it as <a href="http://json-ld.org">JSON-LD</a>, a serialisation of RDF which is intended to be useful to consumers which don’t understand RDF specifically. JSON-LD isn’t currently supported by RES, but may be in the future.
+			</p>
+			<aside class="info">
+				<p>The RES crawler will request Turtle by preference.</p>
+			</aside>
+		</section>
+		
+		<section id="self-describing-documents" class="section"><h1>Describe the document and serialisations as well as the item</h1>
+			
+			<p>				
+				A minimal RDF serialisation intended for use by RES must include data about three distinct subjects:
+			</p>
+			<div class="table"><table><thead><tr><th scope="col">Subject</th><th scope="col">Example</th></tr></thead><tbody><tr><td>Document URL</td><td><code class="literal">http://ialm.int/books/9781899066100</code></td></tr><tr><td>Representation URL</td><td><code class="literal">http://ialm.int/books/9781899066100.ttl</code></td></tr><tr><td>Item URI</td><td><code class="literal">http://ialm.int/books/9781899066100#id</code></td></tr></tbody></table></div>
+			<p>
+				It is recommended that publishers describe any other serialisations which they are making available as well, but it is not currently a requirement to do so.
+			</p>
+			
+			<p>
+				A description of the metadata which should be served about the document and representations is included in the <a href="#document-metadata">Metadata about documents</a> section.
+			</p>
+		</section>
+		
+		<section id="explicit-licensing" class="section"><h1>Include licensing information in the data</h1>
+			
+			<p>
+				The data about the document or representation <strong class="strong">must</strong> include a rights information predicate referring to the well-known URI of a supported license. See the <a href="#rights">Metadata describing rights and licensing</a> section for further details.
+			</p>
+			<aside class="warning">
+				<p>
+					The RES crawler will discard data which does not include licensing data, because without it, the data cannot be used by RES applications.
+				</p>
+			</aside>
+		</section>
+		
+		<section id="link-alternate" class="section"><h1>Link to the RDF representations from the HTML variant</h1>
+					
+			<p>
+				In your HTML representations, use the <code>&lt;link&gt;</code> element (within the <code>&lt;head&gt;</code> element) with a <code class="literal">rel</code> attribute of <code class="literal">"alternate"</code> in order to link to the other representations of the same document:
+			</p>
+			<pre class="code html"><code>&lt;link rel="alternate" type="application/rdf+xml" href="/books/9781899066100.rdf"&gt;
+&lt;link rel="alternate" type="text/turtle" href="/books/9781899066100.ttl"&gt;</code></pre>
+			<p>
+				While it’s less efficient than content negotiation (see below) for both consuming applications and for your server to access your alternative serialisations this way, linking to them from your HTML provides a useful fall-back capability in the event that content negotiation fails or has to be disabled—for example, if you need to switch your website to be served from a content delivery network which doesn’t support negotiation.
+			</p>
+			<p>
+				It’s not the preferred option because consumers must first obtain the HTML, parse it, and then request the RDF. Often, generating the HTML page will also be more expensive than generating the equivalent RDF serialisations.
+			</p>
+		</section>
+		
+		<section id="perform-conneg" class="section"><h1>Perform content negotiation when requests are received for item URIs</h1>
+			
+			<p>
+				If you use fragment-based URIs, this means that your web server must be configured to perform content negotiation on requests received for the portion of the URI before the hash (<code class="literal">#</code>) sign.
+			</p>
+			<p>
+				For example, if your subject URIs are in the form:
+			</p>
+			<blockquote><p><code class="literal">http://ialm.int/books/9781899066100#id</code></p><footer><cite/></footer></blockquote>
+			<p>
+				Then when your server receives requests for the document:
+			</p>
+			<blockquote><p><code class="literal">/books/9781899066100</code></p><footer><cite/></footer></blockquote>
+			<p>
+				It should perform content negotiation and return an appropriate media type, including the supported RDF serialisations if requested.
+			</p>
+			<p>
+				When sending a response, the server <strong class="strong">must</strong> send an appropriate <code class="literal">Vary</code> header, and should send a <code class="literal">Content-Location</code> header referring to the representation being served. For example:
+			</p>
+			<pre class="code"><code>HTTP/1.0 OK
+Server: Apache/2.2 (Unix)
+Vary: Accept
+Content-Type: text/turtle; charset=utf-8
+Content-Location: /books/9781899066100.ttl
+Content-Length: 272
+…</code></pre>
+			<aside class="tip">
+				<p>The Apache web server automatically sends the correct headers when configured to perform Content Negotiation on a set of static files. See the Apache <a href="http://httpd.apache.org/docs/current/mod/mod_negotiation.html">mod_negotiation</a> module documentation for further details on its configuration.</p>
+			</aside>
+		</section>
+	</section>
+	
+</section>
+	<section id="consumers" class="chapter"><h1>Requirements for consumers</h1>
+	
+	
+	<p>
+		Applications built for RES must be able to understand the index assembled by Acropolis, as well as the source data it refers to. Practically, it means that they must be able to:
+	</p>
+	<ul>	
+		<li>retrieve and process RDF from remote web servers;</li>
+		<li>interpret at least the “common metadata” vocabularies described in this book.</li>
+	</ul>
+
+	<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
+	
+</section>
+	<section id="common" class="chapter"><h1>Common metadata</h1>
+	
+	
+	<p>
+		Vocabularies used in this section:
+	</p>
+	
+	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</a></td><td><code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td><td><code class="literal">rdf:</code></td></tr><tr><td><a href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</a></td><td><code class="uri">http://www.w3.org/2000/01/rdf-schema#</code></td><td><code class="literal">rdfs:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td></tr></tbody></table></div>
+	
+	<p>
+		Dublin Core Metadata Initiative (DCMI) Terms is an extremely widely-used general-purpose metadata vocabulary which can be used in the first instance to describe both web and abstract resources.
+	</p>
+	<p>
+		In particular, the following predicates are recognised by Acropolis itself and may be relayed in the RES index:
+	</p>
+	
+	<div class="table"><table><thead><tr><th scope="col">Predicate</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code class="literal">dct:title</code></td><td>Specifies the formal title of an item</td></tr><tr><td><code class="literal">dct:rights</code></td><td>Specifies a URI for rights information (see <a href="#rights">Metadata describing rights and licensing</a>)</td></tr><tr><td><code class="literal">dct:license</code></td><td>Alternative predicate for specifying rights information</td></tr><tr><td><code class="literal">dct:subject</code></td><td>Specifies the subject of something</td></tr></tbody></table></div>
+	
+	<p>
+		The FOAF vocabulary also includes some general-purpose predicates:
+	</p>
+	
+	<div class="table"><table><thead><tr><th scope="col">Predicate</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code class="literal">foaf:primaryTopic</code></td><td>Specifies the primary topic of a document</td></tr><tr><td><code class="literal">foaf:homepage</code></td><td>Specifies the canonical homepage for something</td></tr><tr><td><code class="literal">foaf:topic</code></td><td>Specifies a topic of a page (may be used instead of <code class="literal">dct:subject</code>)</td></tr><tr><td><code class="literal">foaf:depiction</code></td><td>Specifies the URL of a still image which depicts the subject</td></tr></tbody></table></div>
+
+	
+	<section id="sameas" class="section"><h1>Referencing alternative identifiers: expressing equivalence</h1>
+		
+		
+		<p>
+			Vocabularies used in this section:
+		</p>
+	
+		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/owl2-syntax/">OWL</a></td><td><code class="uri">http://www.w3.org/2002/07/owl#</code></td><td><code class="literal">owl:</code></td></tr></tbody></table></div>
+		
+		<p>
+			Linked Open Data in general, and RES in particular, is at its most useful when the data describing things links to other data describing the same thing.
+		</p>
+
+		<p>
+			In RDF, this is achieved using the <code class="literal">owl:sameAs</code> predicate. This predicate implies a direct equivalence relationship—in effect, it creates a synonym.
+		</p>
+
+		<p>
+			You can use <code class="literal">owl:sameAs</code> whether or not the alternative identifiers use <code class="literal">http:</code> or <code class="literal">https:</code>, although the usefulness of URIs which aren't resolveable is limited.
+		</p>
+
+		<p>
+			For example, one might wish to specify that our book has an ISBN using the <code class="literal">urn:isbn:</code> URN scheme [<cite><a href="http://tools.ietf.org/html/rfc3187">RFC3187</a></cite>]:
+		</p>
+	
+		<pre class="code turtle"><code>&lt;/books/9781899066100#id&gt; owl:sameAs &lt;urn:isbn:9781899066100&gt; .</code></pre>
+	
+		<p>
+			We can also indicate that the book described by our data refers to the same book at the British Library:
+		</p>
+	
+		<pre class="code turtle"><code>&lt;/books/9781899066100#id&gt; owl:sameAs &lt;<a href="http://bnb.data.bl.uk/id/resource/011012558">http://bnb.data.bl.uk/id/resource/011012558</a>&gt; .</code></pre>
+				
+		<aside class="info">
+			<p>
+				Take care when using <code class="literal">owl:sameAs</code> to ensure that the subject and the object really are directly equivalent. In particular, make sure that you don’t accidentally state that somebody’s description of something (be it an HTML page or some other serialisation) is the same as the thing being described.
+			</p>
+		</aside>
+		
+	</section>
+	
+	<section id="rights" class="section"><h1>Metadata describing rights and licensing</h1>
+		
+		
+		<p>
+			Vocabularies used in this section:
+		</p>
+	
+		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://www.w3.org/community/odrl/">ODRL 2.0</a></td><td><code class="uri">http://www.w3.org/ns/odrl/2/</code></td><td><code class="literal">odrl:</code></td></tr></tbody></table></div>
+		
+		<p>
+			The data describing digital assets (including RDF representations themselves) must include explicit licensing data in order for it to be indexed by Acropolis and used by RES applications. Additionally, the RDF data must be licensed according to the terms of a supported permissive licence.
+		</p>
+		<p>
+			In order to express this, you can use the <code class="literal">dct:rights</code> or <code class="literal">dct:licence</code> predicates (at your option). Where the subject is an RDF representation, the object of the statement must be the well-known URI of a supported licence (see below). For other kinds of digital asset, the object of the statement can either be a well-known URI of a supported licence, or a reference to a set of terms described in RDF using the <a href="http://www.w3.org/ns/odrl/2/">ODRL 2.0 vocabulary</a>.
+		</p>
+		
+		<section id="licenses" class="section"><h1>Well-known licences</h1>
+			
+			<p>
+				The Acropolis crawler discards RDF data which is not explicitly licensed using one of the well-known licenses listed below. Note that the URI listed here is the URI which must be used as the object in the licensing statement.
+			</p>
+			
+			<div class="table"><table><thead><tr><th scope="col">Licence</th><th scope="col">URI</th></tr></thead><tbody><tr><td>Creative Commons Public Domain (CC0)</td><td><code class="uri"><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></code></td></tr><tr><td>Library of Congress Public Domain</td><td><code class="uri"><a href="http://id.loc.gov/about/">http://id.loc.gov/about/</a></code></td></tr><tr><td>Creative Commons Attribution 4.0 International (CC BY 4.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></code></td></tr><tr><td>Open Government Licence</td><td><code class="uri"><a href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</a></code></td></tr><tr><td>Digital Public Space Licence, version 1.0</td><td><code class="uri"><a href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</a></code></td></tr><tr><td>Creative Commons 1.0 Generic (CC BY 1.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</a></code></td></tr><tr><td>Creative Commons 2.5 Generic (CC BY 2.5)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</a></code></td></tr><tr><td>Creative Commons 3.0 Unported (CC BY 3.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</a></code></td></tr><tr><td>Creative Commons 3.0 US (CC BY 3.0 US)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</a></code></td></tr></tbody></table></div>
+			
+			<p>
+				The following example specifies that the Turtle representation of the data about our book is licensed according to the terms of the <cite>Creative Commons Attribution 4.0 International licence</cite>.
+			</p>
+			
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:rights &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
+			
+			<p>
+				See the <a href="#document-metadata">Metadata describing documents</a> section for further details on describing representations.
+			</p>
+			
+		</section>
+		
+		<section id="odrl" class="section"><h1>ODRL-based descriptions</h1>
+			
+			<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
+		</section>
+		
+	</section>
+</section>
+	<section id="assets" class="chapter"><h1>Describing digital assets</h1>
+	
+	
+	<section id="document-metadata" class="section"><h1>Metadata describing documents</h1>
+		
+		
+		<p>
+			Vocabularies used in this section:
+		</p>
+	
+		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</a></td><td><code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td><td><code class="literal">rdf:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI types</a></td><td><code class="uri">http://purl.org/dc/dcmitype/</code></td><td><code class="literal">dmcit:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td></tr><tr><td><a href="http://www.w3.org/ns/formats/">W3C formats registry</a></td><td><code class="uri">http://www.w3.org/ns/formats/</code></td><td><code class="literal">formats:</code></td></tr></tbody></table></div>
+		
+		<section id="describe-doc" class="section"><h1>Describing your document</h1>
+			
+			
+			<aside class="info">
+				<p>If the document is actually a data-set, see also the <a href="#collections">Collections and data-sets</a> section.</p>
+			</aside>
+			
+			<p>
+				Give the document a class of <code class="literal">foaf:Document</code>:
+			</p>
+
+			<pre class="code turtle"><code>&lt;/books/9781899066100&gt; a foaf:Document .</code></pre>
+
+			<p>
+				Give the document a title:
+			</p>
+
+			<pre class="code turtle"><code>&lt;/books/9781899066100&gt; dct:title "'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library &amp; Museum"@en .</code></pre>
+
+			<p>
+				If the document is not a data-set, specify the primary topic (that is, the URI of the thing described by the document):
+			</p>
+
+			<pre class="code turtle"><code>&lt;/books/9781899066100&gt; foaf:primaryTopic &lt;/books/12345#id&gt; .</code></pre>
+
+			<p>
+				Link to each of the serialisations:
+			</p>
+			
+			<pre class="code turtle"><code>&lt;/data/9781899066100&gt; dct:hasFormat &lt;/data/9781899066100.ttl&gt; .
+&lt;/data/9781899066100&gt; dct:hasFormat &lt;/data/9781899066100.html&gt; .</code></pre>
+		</section>
+
+		<section id="doc-metadata-serialisations" class="section"><h1>Describe each of your serialisations</h1>
+			
+			<p>
+				Use a member of the DCMI type vocabulary as a class:
+			</p>
+			
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; a dmcit:Text .</code></pre>
+			
+			<p>
+				Where available, use a member of the W3C formats vocabulary as a class:
+			</p>
+
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; a formats:Turtle .</code></pre>
+			
+			<p>
+				Use the <code class="literal">dct:format</code> predicate, along with the MIME type beneath the <code class="uri">http://purl.org/NET/mediatypes/</code> tree:
+			</p>
+			
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; .</code></pre>			
+			
+			<p>
+				Give the serialisation a specific title:
+			</p>
+			
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as Turtle (RDF)"@en .</code></pre>			
+			
+			<p>
+				Specify the licensing terms for the serialisation, if applicable:
+			</p>
+			
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:rights &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
+			
+			<p>
+				See the <a href="#rights">Metadata describing rights and licensing</a> section for details on the licensing statements required by RES, as well as information about supported licences.
+			</p>
+		</section>
+
+		<section id="doc-metadata-example" class="section"><h1>Example</h1>
+			
+
+<pre class="code turtle"><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dmcit: &lt;http://purl.org/dc/dcmitype/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix formats: &lt;http://www.w3.org/ns/formats/&gt; .
+
+&lt;/data/9781899066100&gt;
+	a foaf:Document ;
+	dct:title "'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library &amp; Museum"@en .
+	foaf:primaryTopic &lt;/books/12345#id&gt; ;
+	dct:hasFormat
+		&lt;/data/9781899066100.ttl&gt; ,
+		&lt;/data/9781899066100.html&gt; .
+
+&lt;/data/9781899066100.ttl&gt;
+	a dcmit:Text, formats:Turtle ;
+	dct:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; ;
+	dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as Turtle (RDF)"@en ;
+	dct:rights &lt;http://creativecommons.org/licenses/by/4.0/&gt; .
+
+&lt;/data/9781899066100.html&gt;
+	a dcmit:Text ;
+	dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
+	dct:title "Description 'Acronyms and Synonyms in Medical Imaging' as a web page"@en .
+</code></pre>
+		</section>
+	</section>
+	
+	<section id="collections" class="section"><h1>Collections and data-sets</h1>
+		
+		
+		<p>
+			Vocabularies used in this section:
+		</p>
+	
+		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://vocab.deri.ie/void">VoID</a></td><td><code class="uri">http://rdfs.org/ns/void#</code></td><td><code class="literal">void:</code></td></tr></tbody></table></div>
+		
+		<section id="autodiscovery" class="section"><h1>Data-set auto-discovery</h1>
+			
+		</section>
+	</section>
+	
+	<section id="images" class="section"><h1>Images</h1>
+		
+	</section>
+	
+	<section id="video" class="section"><h1>Video</h1>
+		
+	</section>
+	
+	<section id="audio" class="section"><h1>Audio</h1>
+		
+	</section>
+</section>
+	<section id="people" class="chapter"><h1>Describing people, projects and organisations</h1>
+	
+</section>
+	<section id="places" class="chapter"><h1>Describing places</h1>
+	
+</section>
+	<section id="events" class="chapter"><h1>Describing events</h1>
+	
+</section>
+	<section id="concepts" class="chapter"><h1>Describing concepts and taxonomies</h1>
+	
+	
+	<p>
+		Vocabularies used in this section:
+	</p>
+	
+	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</a></td><td><code class="uri">http://www.w3.org/2008/05/skos#</code></td><td><code class="literal">skos:</code></td></tr></tbody></table></div>
+	
+</section>
+	<section id="creative" class="chapter"><h1>Describing creative works</h1>
+	
+</section>
+	<section id="tools" class="chapter"><h1>Tools and resources</h1>
+	
+</section>
+	
+</article><section id="vocab-index" class="index"><h1>Vocabulary Index</h1>
+	
+
+	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th><th scope="col">Section</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</a></td><td><code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td><td><code class="literal">rdf:</code></td><td><a href="#common">Common metadata</a></td></tr><tr><td><a href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</a></td><td><code class="uri">http://www.w3.org/2000/01/rdf-schema#</code></td><td><code class="literal">rdfs:</code></td><td><a href="#common">Common metadata</a></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td><td><a href="#common">Common metadata</a>, <a href="#rights">Metadata describing rights and licensing</a>, <a href="#collections">Collections and data-sets</a></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI Types</a></td><td><code class="uri">http://purl.org/dc/dcmitype/</code></td><td><code class="literal">dmcit:</code></td><td><a href="#document-metadata">Metadata describing documents</a></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td><td><a href="#common">Common metadata</a></td></tr><tr><td><a href="http://www.w3.org/community/odrl/">ODRL 2.0</a></td><td><code class="uri">http://www.w3.org/ns/odrl/2/</code></td><td><code class="literal">odrl:</code></td><td><a href="#rights">Metadata describing rights and licensing</a></td></tr><tr><td><a href="http://www.w3.org/TR/owl2-syntax/">OWL</a></td><td><code class="uri">http://www.w3.org/2002/07/owl#</code></td><td><code class="literal">owl:</code></td><td><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></td></tr><tr><td><a href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</a></td><td><code class="uri">http://www.w3.org/2008/05/skos#</code></td><td><code class="literal">skos:</code></td><td><a href="#concepts">Describing concepts and taxonomies
+</a></td></tr><tr><td><a href="http://vocab.deri.ie/void">VoID</a></td><td><code class="uri">http://rdfs.org/ns/void#</code></td><td><code class="literal">void:</code></td><td><a href="#collections">Collections and data-sets</a></td></tr><tr><td><a href="http://www.w3.org/ns/formats/">W3C formats registry</a></td><td><code class="uri">http://www.w3.org/ns/formats/</code></td><td><code class="literal">formats:</code></td><td><a href="#document-metadata">Metadata describing documents</a></td></tr></tbody></table></div>
+
+</section></body>
+</html>

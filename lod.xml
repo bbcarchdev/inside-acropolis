@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014 BBC
+
+  Licensed under the terms of the Creative Commons Attribution International
+  4.0 license. You may obtain a copy of the license at:
+
+	http://creativecommons.org/licenses/by/4.0/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="lod">
+	<title>Linked Open Data: What is it, and how does it work?</title>
+	
+	<para>
+		Linked Open Data is a mechanism for publishing structured data on the Web about virtually anything, in a form which can be consistently retrieved and processed by software. The result is a world wide web of data which works in parallel to the web of documents our browsers usually access, transparently using the same protocols and infrastructure.
+	</para>
+	<para>
+		Where the ordinary web of documents is a means of publishing a page about something intended for a human being to understand, this web of data is a means of publishing data about those things.
+	</para>
+		
+	<section xml:id="uris">
+		<title>Web addresses, URLs and URIs</title>
+		<para>
+			<firstterm>Uniform Resource Locators</firstterm> (URLs), often known as <firstterm>Web addresses</firstterm>, are a way of unambiguously identifying something which is published electronically. Although there are a variety of kinds of URL, most that you day-to-day see begin with <literal>http</literal> or <literal>https</literal>: this is known as the <firstterm>scheme</firstterm>, and defines how the rest of the URL is structured—although most kinds of URL follow a common structure.
+		</para>
+		<para>
+			The scheme also indicates the communications protocol which should be used to access the resource identified by the URL: if it's <literal>http</literal>, then the resource is accessible using HTTP—the protocol used by web servers and browsers; if it's <literal>https</literal>, then it’s accessible using secure HTTP (i.e., HTTP with added encryption).
+		</para>
+		<tip>
+			<para>
+				The act of accessing the resource identified by a URL is known as <firstterm>resolving</firstterm> it.
+			</para>
+		</tip>
+		<para>
+			Following the scheme in a URL is the <firstterm>authority</firstterm>—the domain name of the web site: it’s called the authority because it identifies the entity responsible for defining the meaning and structure of the remainder of the URL. If the URL begins with <uri>http://www.bbc.co.uk/</uri>, you know that it's defined and managed by the BBC; if it begins with <uri>http://www.bfi.org.uk/</uri>, you know that it's managed by the BFI, and so on.
+		</para>
+		<para>
+			After the authority is an optional <firstterm>path</firstterm> (i.e., the location of the document within the context of the particular domain name or authority), and optional <firstterm>query parameters</firstterm> (beginning with a question-mark), and <firstterm>fragment</firstterm> (beginning with a hash-mark).
+		</para>
+		<para>
+			URLs serve a dual purpose: not only do they provide a name for something, but they also provide anything which understands them with the information they need to retrieve it. Provided your application is able to speak the HTTP protocol, it should in principle be able to retrieve anything using a <literal>http</literal> URL.
+		</para>
+		<para>
+			<firstterm>Universal Resource Indicators</firstterm> (URIs) are a superset of URLs, and are in effect a kind of <firstterm>universal identifier</firstterm>: their purpose is to name something, without <emphasis>necessarily</emphasis> indicating how to retrieve it. In fact, it may be that the thing named using a URI cannot possibly be retrieved using a piece of software and an Internet connection because it refers to an abstract concept or a physical object.
+		</para>
+		<tip>
+			<para>In other words, while URLs are used specifically to identify digital resources which can be retrieved from a Web server, URIs can be used to identify anything: the URLs we use in our browsers are all URIs, but not all URIs are URLs.</para>
+		</tip>
+		<para>
+			URIs follow the same structure as URLs, in that there is a scheme defining how the remainder is structured, and usually some kind of authority, but there are many different schemes, and many of them do not have any particular mechanism defined for how you might retrieve something named using that scheme.
+		</para>
+		<para>
+			For example, the <literal><link xlink:href="http://tools.ietf.org/html/rfc4151">tag:</link></literal> URI scheme provides a means for anybody to define a name for something in the form of a URI, using a domain name that they control as an authority, but without indicating any particular semantics about the thing being named.
+		</para>
+		<para>
+			Meanwhile, URIs which begin with <literal>urn:</literal> are actually part of one of a number of <emphasis>sub-schemes</emphasis>, many of which exist as a means of writing down some existing identifier about something in the form of a URI. For example, an <abbrev>ISBN<alt>International Standard Book Number</alt></abbrev> can be written as a URI by prefixing it with <literal>urn:isbn:</literal> (for example, <uri>urn:isbn:9781899066100</uri>).
+		</para>
+		<para>
+			You might be forgiven for wondering why somebody might want to write an ISBN in the form of a URI, but in fact there are a few reasons. In most systems, ISBNs are effectively opaque alphanumeric strings: although there is usually some validation of the check digit upon data entry, once stored in a database, they are rarely interrogated for any particular meaning. Given this, ISBNs work perfectly well for identifying books for which ISBNs have been issued—but what if you want to store data about other kinds of things, too? Recognising that this was a particular need for retailers, a few years ago ISBNs were made into a subset of <firstterm>Global Trade Information Numbers</firstterm> (GTINs), the system used for barcoding products sold in shops.
+		</para>
+		<para>
+			By unifying ISBNs and GTINs, retailers were able to use the same field in their database systems for any type of product being sold, whether it was a book with an ISBN, or some other kind of product with a GTIN. All the while, the identifier remained essentially opaque: provided the string of digits and letters scanned by the bar-code reader could be matched to a row in a database, it doesn't matter precisely what those letters and numbers actually are.
+		</para>
+		<para>
+			Representing identifiers in the form of URIs can be thought of as another level of generalisation: it allows the development of systems where the underlying database doesn’t need to know nor care about the <emphasis>kind</emphasis> of identifier being stored, and so can store information about absolutely anything which can be identified by a URI. In many cases, this doesn’t represent a huge technological shift—those database systems already pay little attention to the structure of the identifier itself.
+		</para>
+		<para>
+			Hand-in-hand with this generalisation effect is the ability to disambiguate and harmonise without needing to coordinate a variety of different standards bodies across the world. Whereas the integration of ISBNs and GTINs took a particular concerted effort in order to achieve, the integration of ISBNs and URNs was only a matter of defining the URN scheme, because URIs are already designed to be open-ended and extensible.
+		</para>
+		<para>
+			<firstterm>Linked Open Data URIs</firstterm> are a subset of URIs which, again, begin with <literal>http:</literal> or <literal>https:</literal>, but do not necessarily name something which can be retrieved from a web server. Instead, they are URIs where performing resolution results in machine-readable data <emphasis>about</emphasis> the entity being identified.
+		</para>
+		<para>
+			In summary:
+		</para>
+		<segmentedlist>
+			<segtitle>Term</segtitle>
+			<segtitle>Used for…</segtitle>
+			<seglistitem>
+				<seg>URLs</seg>
+				<seg>Identifying digital resources and specifying where they can be retrieved from</seg>
+			</seglistitem>
+			<seglistitem>
+				<seg>URIs</seg>
+				<seg>Identifying <emphasis>anything</emphasis>, regardless of whether it can be retrieved electronically or not</seg>
+			</seglistitem>
+			<seglistitem>
+				<seg>Linked Open Data URIs</seg>
+				<seg>Identifying anything, but in a way which means that <firstterm>descriptive metadata</firstterm> can be retrieved when the URI is resolved</seg>
+			</seglistitem>
+		</segmentedlist>
+	</section>
+	
+	<section xml:id="triples">
+		<title>Describing things with triples</title>
+		<para>
+			Linked Open Data uses the <firstterm>Resource Description Framework</firstterm> (RDF) to convey information about things. RDF is an open-ended system for modelling information about things, which it does by breaking it down into statements (or <firstterm>assertions</firstterm>), each of which consists of a <firstterm>subject</firstterm>, a <firstterm>predicate</firstterm> and an <firstterm>object</firstterm>.
+		</para>
+		<para>
+			The subject is the thing being described; the predicate is the aspect or attribute of the subject being described; and the object is the description of that particular attribute.
+		</para>
+		<tip>
+			<para>
+				If you are familiar with object-oriented programming, you may find it useful to think of a subject as being an <emphasis>instance</emphasis>, a predicate as a <emphasis>property</emphasis>, and an object as a <emphasis>value</emphasis>. In fact, the terms are often used interchangeably.
+			</para>
+		</tip>
+	
+		<para>
+			For example, you might want to state that the book with the ISBN 978-1899066100 has the title <citetitle>Acronyms and Synonyms in Medical Imaging</citetitle>. You can break this assertion down into its subject, predicate, and object:
+		</para>
+	
+		<segmentedlist>
+			<segtitle>Subject</segtitle>
+			<segtitle>Predicate</segtitle>
+			<segtitle>Object</segtitle>
+			<seglistitem>
+				<seg>ISBN 978-1899066100</seg>
+				<seg>Has the title</seg>
+				<seg><citetitle>Acronyms and Synonyms in Medical Imaging</citetitle></seg>
+			</seglistitem>
+		</segmentedlist>
+	
+		<para>
+			Together, this statement made up of a subject, predicate and object is called a <firstterm>triple</firstterm> (because there are three components to it), while a collection of statements is called a <firstterm>graph</firstterm>.
+		</para>
+	
+		<para>
+			In RDF, the subject and the predicate are expressed as URIs this helps to remove ambiguity and the risk of clashes so that the data can be published and consumed in the same way regardless of where it comes from or who’s processing it. Objects <emphasis>can</emphasis> be expressed as URIs where you want to assert some kind of reference to something else, but can also be <firstterm>literals</firstterm> (such as text, numeric values, dates, and so on).
+		</para>
+	</section>
+	
+	<section xml:id="predicates-vocabs">
+		<title>Predicates and vocabularies</title>
+		<para>
+			RDF doesn’t specify the meaning of most predicates itself: in other words, RDF doesn’t tell you what URI you should use to indicate “has the title”. Instead, because anybody can create a URI, it’s entirely up to you whether you invent your own vocabulary when you publish your data, or adopt somebody else’s. Generally, of course, if you want other people to be able to understand your data, it’s probably a good idea to adopt existing vocabularies where they exist.
+		</para>
+		<para>
+			In essence, RDF provides the grammar, while community consensus provides the dictionary.
+		</para>
+		<para>
+			One of the most commonly-used general-purpose vocabularies is the <link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</link>, managed by the Dublin Core Metadata Initiative (DCMI), and which includes a suitable title predicate:
+		</para>
+		<segmentedlist>
+			<segtitle>Subject</segtitle>
+			<segtitle>Predicate</segtitle>
+			<segtitle>Object</segtitle>
+			<seglistitem>
+				<seg>ISBN 978-1899066100</seg>
+				<seg><uri><link xlink:href="http://purl.org/dc/terms/title
+">http://purl.org/dc/terms/title</link></uri></seg>
+				<seg><citetitle>Acronyms and Synonyms in Medical Imaging</citetitle></seg>
+			</seglistitem>
+		</segmentedlist>
+		<para>
+			With this triple, a consuming application that understands the DCMI Metadata Terms vocabulary can process that data and understand the predicate to indicate that the item has the title <citetitle>Acronyms and Synonyms in Medical Imaging</citetitle>.
+		</para>
+		<note>
+			<para>
+				The Dublin Core Metadata Initiative and the core of the DCMI Metadata Terms vocabulary pre-date RDF and Linked Open Data by some years: older vocabularies and classification schemes have been routinely adapted and re-purposed for RDF as it’s become more widely used as an approach to representing structured data.
+			</para>
+		</note>
+		
+		<para>
+			Because <uri><link xlink:href="http://purl.org/dc/terms/title
+">http://purl.org/dc/terms/title</link></uri> is quite long-winded, it’s common to write predicate URIs in a compressed form, consisting of a namespace prefix and local name—similar to the <literal>xmlns</literal> mechanism used in XML documents.
+		</para>
+		
+		<para>
+			Because people will often use the same prefix to refer to the same namespace URI, it is not unusual to see this short form of URIs used in books and web pages. Some common prefixes and namespace URIs are shown below:
+		</para>
+		
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Often abbreviated as</segtitle>
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF Syntax</link></seg>
+				<seg><uri><link xlink:href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</link></uri></seg>
+				<seg><literal>rdf:</literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF Schema</link></seg>
+				<seg><uri><link xlink:href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#
+</link></uri></seg>
+				<seg><literal>rdfs:</literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</link></seg>
+				<seg><uri><link xlink:href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</link></uri></seg>
+				<seg><literal>dct:</literal></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
+				<seg><uri><link xlink:href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</link></uri></seg>
+				<seg><literal>foaf:</literal></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><link xlink:href="http://vocab.deri.ie/void">Vocabulary of Interlinked Datasets (VoID)</link></seg>
+				<seg><uri><link xlink:href="http://rdfs.org/ns/void#">http://rdfs.org/ns/void#</link></uri></seg>
+				<seg><literal>void:</literal></seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
+		<para>
+			For example, defining the namespace prefix <literal>dct</literal> with a namespace URI of <uri><link xlink:href="http://purl.org/dc/terms/
+			">http://purl.org/dc/terms/</link></uri>, we can write our predicate as <literal>dct:title</literal> instead of <uri><link xlink:href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</link></uri>.
+			RDF systems re-compose the complete URI by concatenating the prefix URI and the local name.
+		</para>
+		
+		<tip>
+			<para>
+				An index of all of the vocabularies referenced in this book is provided <link xlink:href="#vocab-index">at the end of the book</link>.
+			</para>
+		</tip>
+	</section>
+	
+	<section xml:id="subject-uris">
+		<title>Subject URIs</title>
+		<para>
+			In RDF, subjects are also URIs. While in RDF itself there are no particular restrictions upon the kind of URIs you can use (and there are a great many different kinds — those beginning <literal>http:</literal> and <literal>https:</literal> that you see on the Web are just two of hundreds), Linked Open Data places some restrictions on subject URIs in order to function. These are:
+		</para>
+		<orderedlist>
+			<listitem>
+				<para>Subject URIs must begin with <literal>http:</literal> or <literal>https:</literal>.</para>
+			</listitem>
+			<listitem>
+				<para>They must be unique: although you can have multiple URIs for the same thing, one URI can’t refer to multiple distinct things at once.</para>
+			</listitem>
+			<listitem>
+				<para>If a Linked Open Data consumer makes an HTTP request for the subject URI, the server should send back RDF data describing that subject.</para>
+			</listitem>
+			<listitem>
+				<para>As with URLs, subject URIs need to be persistent: that is, they should change as little as possible, and where they do change, you need to be able to make arrangements for requests for the old URI to be forwarded to the new one.
+				</para>
+			</listitem>
+		</orderedlist>
+		<para>
+			In practice, this means that when you decide upon a subject URI, it needs to be within a domain name that you control and can operate a web server for; you need to have a scheme for your subject URIs which distinguishes between things which are represented digitally (and so have ordinary URLs) and things which cannot; you also need to arrange for your web server to actually serve RDF when it’s requested; and finally you need to decide a form for your subject URIs which minimises changes.
+		</para>
+		<para>
+			This may sound daunting, but it can be quite straightforward—and shares much in common with deciding upon a URL structure for a website that is intended only for ordinary browsers.
+		</para>
+		<para>
+			For example, if you are the <firstterm>Intergalactic Alliance Library &amp; Museum</firstterm>, whose domain name is <literal>ialm.int</literal>, you might decide that all of your books’ URIs will begin with <uri>http://ialm.int/books/</uri>, and use the full 13-digit ISBN, without dashes, as the key. You could pick something other than the ISBN, such as an identifier meaningful only to your own internal systems, but it makes developers’ lives easier if you incorporate well-known identifiers where it’s not problematic to do so.
+		</para>
+		<para>
+			Because this web of data co-exists with the web of documents, begin by defining the URL to the <emphasis>document</emphasis> about this book:
+		</para>
+
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100</uri></para>
+		</blockquote>
+
+		<para>
+			Anybody visiting that URL in their browser will be provided with information about the book in your collection. Because the URL incorporates a well-known identifier, the ISBN, if any other pieces of information about the book change or are corrected, that URL remains stable. As a bonus, incorporating the ISBN means that the URL to the document is predictable.
+		</para>
+		
+		<note>
+			<para>
+				Of course, the ISBN may have been entered incorrectly (or may be cancelled by the registration authority), and it would be worth planning for that eventuality—but assuming that your collection website’s data is based upon information that is used operationally day-to-day, the risk of that needing to occur is kept to a minimum.
+			</para>
+		</note>
+		
+		<para>
+			Having defined the URL for book pages, it’s now time to define the rest of the structure. The Intergalactic Alliance Library &amp; Museum web server will be configured to serve web pages to web browsers, and RDF data to RDF consumers: that is, there are multiple representations of the same data. It’s useful, from time to time, to be able to refer to each of these representations with a distinct URL. Let’s say, then, that we’ll use the general form:
+		</para>
+		
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100.EXT</uri></para>
+		</blockquote>
+			
+		<para>
+			In this case, <literal>EXT</literal> refers to the well-known <firstterm>filename extension</firstterm> for the particular type of representation we’re referring to.
+		</para>
+		
+		<tip>
+			<para>
+				Media types (sometimes also called MIME types or content types) are registered with the Internet Assigned Numbers Authority (IANA). The registration document includes the preferred or commonly-used filename extensions for that type. For example, the registration document for HTML can be found <link xlink:href="http://www.iana.org/assignments/media-types/text/html">on the IANA website</link>.
+			</para>
+		</tip>
+		
+		<para>
+			Therefore, the HTML web page for our book will have the <firstterm>representation-specific</firstterm> URL of:
+		</para>
+		
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100.html</uri></para>
+		</blockquote>
+
+		<para>
+			If you also published CSV data for your book, it could be given the representation-specific URL of:
+		</para>
+
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100.csv</uri></para>
+		</blockquote>
+		
+		<para>
+			RDF can be expressed in a number of different forms, or serialisations. The most commonly-used serialisation is called <firstterm>Turtle</firstterm>, and typically has the filename extension of <literal>ttl</literal>. Therefore our Turtle serialisation would have the representation-specific URL of:
+		</para>
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100.ttl</uri></para>
+		</blockquote>
+		
+		<para>
+			Now that we have defined the structure of our URLs, we can define the pattern used for the subject URIs themselves. Remember that the URI needs to be <firstterm>dereferenceable</firstterm>—that is, when a consuming application makes a request for it, the server can respond with the appropriate representation.
+		</para>
+		<para>
+			In order to do this, there are two options: we can use a special kind of redirect, or we can use fragments.  The fragment approach works best where you have a document for each individual item, as we do here, and takes advantage of the fact that in the HTTP protocol, any part of a URL following the “#” symbol is never sent to the server.
+		</para>
+		<para>
+			Thus, let’s say that we’ll distinguish our URLs from our subject URIs by suffixing the subject URIs with <literal>#id</literal>. The URI for our book therefore becomes:
+		</para>
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100#id</uri></para>
+		</blockquote>
+		
+		<para>
+			When an application requests the information about this book, by the time it arrives at our web server, it’s been turned into a request for the very first URL we defined—the generic “document about this book” URL:
+		</para>
+		
+		<blockquote>
+			<para><uri>http://ialm.int/books/9781899066100</uri></para>
+		</blockquote>
+		
+		<tip>
+			<para>
+				The reason the “fragment” portion of the URI is stripped off the request by the time it arrives at the web server is because the HTTP protocol states that fragments are never sent <firstterm>over the wire</firstterm>—that is, they are not included in the protocol exchange between the client and the server. Their original use was to identify a section within a web page and allow a browser to skip straight to it even though it requested and was served the whole page. Fragments in <emphasis>URLs</emphasis> are regularly used for this purpose today.
+			</para>
+		</tip>
+		
+		<para>
+			When an application understands RDF and tells the server as much as part of the request, the server can send back the Turtle representation instead of an HTML web page—a part of the HTTP protocol known as <firstterm>content negotiation</firstterm>. Content negotiation allows a server to pick the most appropriate representation for something (where it has multiple representations), based upon the client’s preferences.
+		</para>
+		<para>
+			With our subject URI pattern defined, we can revisit our original assertion:
+		</para>
+		<segmentedlist>
+			<segtitle>Subject</segtitle>
+			<segtitle>Predicate</segtitle>
+			<segtitle>Object</segtitle>
+			<seglistitem>
+				<seg><uri>http://ialm.int/books/9781899066100#id</uri></seg>
+				<seg><literal>dct:title</literal></seg>
+				<seg><citetitle>Acronyms and Synonyms in Medical Imaging</citetitle></seg>
+			</seglistitem>
+		</segmentedlist>
+		
+	</section>
+	
+	<section xml:id="classes">
+		<title>Defining what something is: classes</title>
+		<para>
+			One of the few parts of the common vocabulary which is defined by RDF itself is the predicate <literal>rdf:type</literal>, which specifies the class (or classes) of a subject. Like predicates, classes are defined by vocabularies, and are also expressed as URIs. The classes of a subject are intended to convey what that subject <emphasis>is</emphasis>.
+		</para>
+		<para>
+			For example, the Bibliographic Ontology, whose namespace URI is <uri><link xlink:href="http://purl.org/ontology/bibo/">http://purl.org/ontology/bibo/</link></uri> (commonly prefixed as <literal>bibo:</literal>) defines a class named <literal>bibo:Book</literal> (whose full URI we can deduce as being <uri><link xlink:href="http://purl.org/ontology/bibo/Book">http://purl.org/ontology/bibo/Book</link></uri>).
+		</para>
+		<para>
+			If we write a triple which asserts that our book is a <literal>bibo:Book</literal>, any consumers which understand the Bibliographic Ontology can interpret our data as referring to a book:
+		</para>
+		<segmentedlist>
+			<segtitle>Subject</segtitle>
+			<segtitle>Predicate</segtitle>
+			<segtitle>Object</segtitle>
+			<seglistitem>
+				<seg><uri>http://ialm.int/books/9781899066100#id</uri></seg>
+				<seg><literal>rdf:type</literal></seg>
+				<seg><literal>bibo:Book</literal></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://ialm.int/books/9781899066100#id</uri></seg>
+				<seg><literal>dct:title</literal></seg>
+				<seg><citetitle>Acronyms and Synonyms in Medical Imaging</citetitle></seg>
+			</seglistitem>
+		</segmentedlist>
+		
+	</section>
+	
+	<section xml:id="describing">
+		<title>Describing things defined by other people</title>
+		
+		<para>
+			There is no technical reason why your subject URIs must <emphasis>only</emphasis> be URIs that you control directly. In Linked Open Data, the matter of <emphasis>trust</emphasis> is a matter for the data consumer: one application might have a white-list of trusted sources, another might have a black-list of sources known to be problematic, another might have more complex heuristics, while another might use your social network such that assertions from your friends are considered more likely to be trustworthy than those from other people.
+		</para>
+		<para>
+			Describing subjects defined by other people has a practical purpose. Predicates work in a particular direction, and although sometimes vocabularies will define pairs of predicates so that you can make a statement either way around, interpreting this begins to get complicated, and so most vocabularies define predicates only in one direction.
+		</para>
+		<para>
+			As an example, you might wish to state that a book held in a library is about a subject that you’re describing. On a web page, you’d simply write this down and link to it—perhaps as part of a “Useful resources” section. In Linked Open Data, you can make the assertion that one of the subjects of the other library’s book is the one you’re describing. This works exactly the same way as if you were describing something that you’d defined yourself—you simply write the statement, but somebody else’s URI as the subject.
+		</para>
+		<para>
+			This can also be used to make life easier for developers and reduce network overhead of applications. In your “Useful resources” section, you probably wouldn’t only list the URL to the page about the book: instead, you’d list the title and perhaps the author <emphasis>as well</emphasis> as linking to the page about the book. You can do that in Linked Open Data, too. Let’s say that we’re expressing the data about a subject—Roman Gaul—which we’ve assigned a URI of <uri>http://ialm.int/things/2068003#id</uri>:
+		</para>
+		<segmentedlist>
+			<segtitle>Subject</segtitle>
+			<segtitle>Predicate</segtitle>
+			<segtitle>Object</segtitle>
+			<seglistitem>
+				<seg><uri>http://ialm.int/things/2068003#id</uri></seg>
+				<seg><literal>dct:title</literal></seg>
+				<seg><citetitle>Roman Gaul</citetitle></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><uri>http://bnb.data.bl.uk/id/resource/006889069</uri></seg>
+				<seg><literal>rdf:type</literal></seg>
+				<seg><literal>bibo:Book</literal></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://bnb.data.bl.uk/id/resource/006889069</uri></seg>
+				<seg><literal>dct:title</literal></seg>
+				<seg><citetitle>Asterix the Gaul</citetitle></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://bnb.data.bl.uk/id/resource/006889069</uri></seg>
+				<seg><literal>dct:subject</literal></seg>
+				<seg><uri>http://ialm.int/things/2068003#id</uri></seg>
+			</seglistitem>
+		</segmentedlist>
+		<para>
+			In this example we’ve defined a subject, called <citetitle>Roman Gaul</citetitle>, of which we’ve provided very little detail, except to say that it’s a subject of the book <citetitle>Asterix the Gaul</citetitle>, whose identifier is defined by the British Library.
+		</para>
+		<para>
+			Note that we haven‘t described the book <citetitle>Asterix the Gaul</citetitle> in full: RDF operates on an <firstterm>open world principle</firstterm>, which means that sets of assertions are generally interpreted as being incomplete—or rather, only as complete as they need to be. The fact that we haven’t specified an author or publisher of the book doesn’t mean there isn’t one, just that the data isn’t present here; where in RDF you need to state explicitly that something doesn’t exist, there is usually a particular way to do that.
+		</para>
+	</section>
+	
+	<section xml:id="turtle">
+		<title>Turtle: the terse triple language</title>
+		<para>
+			<firstterm>Turtle</firstterm> is one of the most common languages for writing RDF in use today—although there are many others. Turtle is intended to be interpreted and generated by machines first and foremost, but also be readable and writeable by human beings (albeit usually software developers).
+		</para>
+		<para>
+			In its simplest form, we can just write out our statements, one by one, each separated by a full stop. URIs are written between angle-brackets (<literal>&lt;</literal> and <literal>&gt;</literal>), while <firstterm>string literals</firstterm> (such as the names of things) are written between double-quotation marks (<literal>"</literal>).
+		</para>
+		<programlisting language="turtle"><![CDATA[<http://ialm.int/books/9781899066100#id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/ontology/bibo/Book> .
+	
+<http://ialm.int/books/9781899066100#id> <http://purl.org/dc/terms/title> "Acronyms and Synonyms in Medical Imaging" .]]></programlisting>
+		<para>
+			This is quite long-winded, but fortunately Turtle allows us to define and use prefixes just as we have in this book. When we write the short form of a URI, it’s <emphasis>not</emphasis> written between angle-brackets:
+		</para>
+		<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+
+<http://ialm.int/books/9781899066100#id> rdf:type bibo:Book .
+
+<http://ialm.int/books/9781899066100#id> dct:title "Acronyms and Synonyms in Medical Imaging" .]]></programlisting>
+		<para>
+			Because Turtle is designed for RDF, and <literal>rdf:type</literal> is defined by RDF itself, Turtle
+			provides a nice shorthand for the predicate: <literal>a</literal>. We can simply say that our book is <literal>a bibo:Book</literal>:
+		</para>
+		<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+
+<http://ialm.int/books/9781899066100#id> a bibo:Book .
+
+<http://ialm.int/books/9781899066100#id> dct:title "Acronyms and Synonyms in Medical Imaging" .]]></programlisting>
+		<para>
+			Writing the triples out this way quickly gets repetitive: you don’t want to be writing the subject URI every time, especially not if writing Turtle by hand. If you end a statement with a semi-colon instead of a full-stop, it indicates that what follows is another predicate and object about the same subject:
+		</para>
+		<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+
+<http://ialm.int/books/9781899066100#id>
+	a bibo:Book ;
+	dct:title "Acronyms and Synonyms in Medical Imaging" .]]></programlisting>
+		<tip>
+			<para>
+				If you end a statement with a comma instead of a semi-colon or full-stop, it means that what follows is another object with the same subject and predicate—in other words, it’s a quick way of writing multiple values.
+			</para>
+		</tip>
+		<para>
+			Turtle includes a number of capabilities which we haven’t yet discussed here, but are important for
+			fully understanding real-world RDF in general and Turtle documents in particular. These include:
+		</para>
+		<variablelist>
+			<varlistentry>
+				<term>Typed literals</term>
+				<listitem>
+					<para>
+						<firstterm>Typed literals</firstterm>: literals which aren’t simply strings of text, but can be of any one of the <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema data types</link>.
+					</para>
+					<para>
+						 Literal types are indicated by writing the literal value, followed by two carets, and then the datatype URI: for example, <literal>"2013-01-26"^^xsd:date</literal>.					
+					</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>Blank nodes</term>
+				<listitem>
+					<para>
+						Blank nodes are entities for which some information is provided, but where the subject
+						URI is not known. There are two different ways of using blank nodes in Turtle: a blank node <emphasis>value</emphasis> is one where in place of a URI or a literal value, an entity is partially described.
+					</para>
+					<para>
+						Another way of using blank nodes is to assign it a private, transient identifier (a blank node identifier), and then use that identifier where you’d normally use a URI as a subject or object. The transient identifier has no meaning outside of the context of the document: it’s simply a way of referring to the same (essentially anonymous) entity in multiple places within the document.
+					</para>
+					<para>
+						A blank node value is expressed by writing an opening square bracket, followed by the sets of predicates and values for the blank node, followed by a closing square bracket. For example, we can state that an author of the book is a nondescript entity who we know is a person named <literal>Nicola Strickland</literal>, but for whom we don’t have an identifier:
+					</para>
+					<programlisting language="turtle"><![CDATA[<http://ialm.int/books/9781899066100#id> dct:creator [
+	a foaf:Person ;
+	foaf:name "Nicola Strickland" 
+] .]]></programlisting>
+					<para>
+						Blank node identifiers are written similarly to the compressed form of URIs, except that an underscore is used as the prefix. For example, <literal>_:johnsmith</literal>. You don’t have to do anything special to create a blank node identifier (simply use it), and the actual name you assign has no meaning outside of the context of the document—if you replace all instances of <literal>_:johnsmith</literal> with <literal>_:zebra</literal>, the actual meaning of the document is unchanged—although it may be slightly more confusing to read and write as a human.
+					</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>Multi-lingual string literals</term>
+				<listitem>
+					<para>
+						String literals in the examples given so far are written in no particular language (which may be appropriate in some cases, particularly when expressing people’s names).
+					</para>
+					<para>
+						The language used for a string literal is indicated by writing the literal value, followed by an at-sign, and then the <link xlink:href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 language code</link>, or an ISO 639-1 language code, followed by a hyphen, and a <link xlink:href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</link>.
+					</para>
+					<para>
+						For example: <literal>"Intergalatic Alliance Library &amp; Museum Homepage"@en</literal>, or <literal>"grey"@en-gb</literal>.
+					</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>Base URIs</term>
+				<listitem>
+					<para>
+						By default, the base URI for the terms in a Turtle document is the URI it’s being served from. Occasionally, it can be useful to specify an alternative base URI. To do this, an <literal>@base</literal> statement can be included (in a similar fashion to <literal>@prefix</literal>).
+					</para>
+					<para>For example, if a document specifies <literal>@base &lt;http://www.example.com/things/&gt; .</literal>, then the URI <literal>&lt;12447652#id&gt;</literal> within that document can be expanded to <literal>&lt;http://www.example.com/things/12447652#id&gt;</literal>, while the URI <literal>&lt;/artefacts/47fb01&gt;</literal> would be expanded to <literal>&lt;http://www.example.com/artefacts/47fb01&gt;</literal>.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+		
+		<tip>
+			<para>
+				For further information on RDF’s capabilities and Turtle, be sure to read through the <link xlink:href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF Primer</link> and the <link xlink:href="http://www.w3.org/TR/2014/REC-turtle-20140225/">Turtle specification</link>.
+			</para>
+		</tip>
+		
+		<para>
+			An example of a Turtle document making use of some of these capabilities is shown below:
+		</para>
+		<programlisting language="turtle"><![CDATA[@base <http://ialm.int/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+</books/9781899066100#id>
+	a bibo:Book ;
+	dct:title "Acronyms and Synonyms in Medical Imaging"@en ;
+	dct:issued "1997"^^xsd:gYear ;
+	dct:creator _:allison, _:strickland ;
+	dct:publisher [
+		a foaf:Organization ;
+		foaf:name "CRC Press"
+	] .
+
+_:strickland
+	a foaf:Person ;
+	foaf:name "Nicola Strickland" .
+
+_:allison
+	a foaf:Person ;
+	foaf:name "David J. Allison" .]]></programlisting>
+		<para>
+			In this example, we are still describing our book, but we specify that the title is in English (though don’t indicate any particular national variant of English); we state that it was issued (published) in the year 1997, and that it’s publisher—for whom we don’t have an identifier—is an organisation whose name is <citetitle>CRC Press</citetitle>.
+		</para>
+	</section>
+	
+	<section xml:id="quads">
+		<title>From three to four: relaying provenance with quads</title>
+		<para>
+			While triples are a perfectly servicable mechanism for describing something, they don’t have the ability
+			to tell you where data is <emphasis>from</emphasis> (unless you impose a restriction that you only deal
+			with data where the domain of the subject URI matches that of the server you’re retrieving from). In some
+			systems, including Acropolis, this limitation is overcome by introducing another element: a graph URI, identifying the <emphasis>source</emphasis> of a triple. Thus, instead of triples, RES actually stores <firstterm>quads</firstterm>.			
+		</para>
+		<para>
+			When we assign an explicit URI to a graph in this way, it becomes known as a <firstterm>named graph</firstterm>—that is, a graph with an explicit identifier (name) assigned to it.
+		</para>
+		<para>
+			Turtle itself doesn’t have a concept of named graphs, but there is an extension to Turtle, named
+			<link xlink:href="http://www.w3.org/TR/2014/REC-trig-20140225/">TriG</link>, which includes the
+			capability to specify the URI of a named graph containing a particular set of triples.
+		</para>
+		<tip>
+			<para>
+				While Quilt will serve RDF/XML and Turtle when requested, it will also serve TriG: this allows
+				applications to determine the provenance of statements stored in the RES index, allowing
+				them to white– or black-list data sources if needed.
+			</para>
+		</tip>		
+	</section>
+
+	<section xml:id="why-rdf">
+		<title>Why does RES use RDF?</title>
+		<para>
+			RDF isn’t necessarily the simplest way of expressing some data about something, and that means it’s often not the first choice for publishers and consumers. Often, an application consuming some data is designed specifically for one particular dataset, and so its interactions are essentially bespoke and comparatively easy to define.  
+		</para>
+		<para>
+			RES, by nature, brings together a large number of different structured datasets, describing lots of different kinds of things, with a need for a wide range of applications to be able to work with those sets in a consistent fashion.
+		</para>
+		<para>
+			At the time of writing (ten years after its introduction), RDF’s use of URIs as identifiers, common vocabularies and data types, inherent flexibility and well-defined structure means that is the only option for achieving this.
+		</para>
+		<para>
+			Whether you’re describing an audio clip or the year 1987, a printed book or the concept of a documentary film, RDF provides the ability to express the data you hold in intricate detail, without being beholden to a single central authority to validate the modelling work undertaken by experts in your field.
+		</para>
+		<para>
+			For application developers, the separation of grammar and vocabularies means that applications can interpret data in as much or as little detail as is useful for the end-users. For instance, you might develop an application which understands a small set of general-purpose metadata terms but which can be used with virtually everything surfaced through RES.
+		</para>
+		<para>
+			Alternatively, you might develop a specialist application which interprets rich descriptions in a particular domain in order to target specific use-cases. In either case, you don’t need to know who the data comes from, only sufficient understanding of the vocabularies in use to satisfy your needs.
+		</para>
+		<para>
+			However, because we recognise that publishing and consuming Linked Open Data as an individual publisher or application developer may be unfamiliar territory, and so throughout the lifetime of the project we are committed to publishing documentation, developing tools and operating workshops in order to help developers and publishers work with RDF in general and RES in particular more easily.
+		</para>
+			
+	</section>
+	
+	<section xml:id="lod-further-reading">
+		<title>Further reading</title>
+		<itemizedlist>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF 1.1 primer</link></citetitle></para>
+			</listitem>		
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-turtle-20140225/">RDF 1.1 Turtle</link></citetitle> (language specification)</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-trig-20140225/">RDF 1.1 TriG</link></citetitle> (language specification)</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://patterns.dataincubator.org/book/">Linked Data Patterns</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf">Linked Data - The Story so Far</link></citetitle> (PDF)</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+</chapter>

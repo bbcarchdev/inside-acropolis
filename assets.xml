@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014 BBC
+
+  Licensed under the terms of the Creative Commons Attribution International
+  4.0 license. You may obtain a copy of the license at:
+
+	http://creativecommons.org/licenses/by/4.0/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="assets">
+	<title>Describing digital assets</title>
+	
+	<section xml:id="document-metadata">
+		<title>Metadata describing documents</title>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
+	
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
+				<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
+				<seg><literal>rdf:</literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+				<seg><uri>http://purl.org/dc/terms/</uri></seg>
+				<seg><literal>dct:</literal></seg>
+			</seglistitem>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI types</link></seg>
+				<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
+				<seg><literal>dmcit:</literal></seg>
+			</seglistitem>				
+		
+			<seglistitem>
+				<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
+				<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
+				<seg><literal>foaf:</literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/ns/formats/">W3C formats registry</link></seg>
+				<seg><uri>http://www.w3.org/ns/formats/</uri></seg>
+				<seg><literal>formats:</literal></seg>
+			</seglistitem>
+		
+		</segmentedlist>
+		
+		<section xml:id="describe-doc">
+			<title>Describing your document</title>
+			
+			<note>
+				<para>If the document is actually a data-set, see also the <link xlink:href="#collections">Collections and data-sets</link> section.</para>
+			</note>
+			
+			<para>
+				Give the document a class of <literal>foaf:Document</literal>:
+			</para>
+
+			<programlisting language="turtle"><![CDATA[</books/9781899066100> a foaf:Document .]]></programlisting>
+
+			<para>
+				Give the document a title:
+			</para>
+
+			<programlisting language="turtle"><![CDATA[</books/9781899066100> dct:title "'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .]]></programlisting>
+
+			<para>
+				If the document is not a data-set, specify the primary topic (that is, the URI of the thing described by the document):
+			</para>
+
+			<programlisting language="turtle"><![CDATA[</books/9781899066100> foaf:primaryTopic </books/12345#id> .]]></programlisting>
+
+			<para>
+				Link to each of the serialisations:
+			</para>
+			
+			<programlisting language="turtle"><![CDATA[</data/9781899066100> dct:hasFormat </data/9781899066100.ttl> .
+</data/9781899066100> dct:hasFormat </data/9781899066100.html> .]]></programlisting>
+		</section>
+
+		<section xml:id="doc-metadata-serialisations">
+			<title>Describe each of your serialisations</title>
+			<para>
+				Use a member of the DCMI type vocabulary as a class:
+			</para>
+			
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> a dmcit:Text .]]></programlisting>
+			
+			<para>
+				Where available, use a member of the W3C formats vocabulary as a class:
+			</para>
+
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> a formats:Turtle .]]></programlisting>
+			
+			<para>
+				Use the <literal>dct:format</literal> predicate, along with the MIME type beneath the <uri>http://purl.org/NET/mediatypes/</uri> tree:
+			</para>
+			
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:format <http://purl.org/NET/mediatypes/text/turtle> .]]></programlisting>			
+			
+			<para>
+				Give the serialisation a specific title:
+			</para>
+			
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as Turtle (RDF)"@en .]]></programlisting>			
+			
+			<para>
+				Specify the licensing terms for the serialisation, if applicable:
+			</para>
+			
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:rights <http://creativecommons.org/licenses/by/4.0/> .]]></programlisting>
+			
+			<para>
+				See the <link xlink:href="#rights">Metadata describing rights and licensing</link> section for details on the licensing statements required by RES, as well as information about supported licences.
+			</para>
+		</section>
+
+		<section xml:id="doc-metadata-example">
+			<title>Example</title>
+
+<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dmcit: <http://purl.org/dc/dcmitype/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+
+</data/9781899066100>
+	a foaf:Document ;
+	dct:title "'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .
+	foaf:primaryTopic </books/12345#id> ;
+	dct:hasFormat
+		</data/9781899066100.ttl> ,
+		</data/9781899066100.html> .
+
+</data/9781899066100.ttl>
+	a dcmit:Text, formats:Turtle ;
+	dct:format <http://purl.org/NET/mediatypes/text/turtle> ;
+	dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as Turtle (RDF)"@en ;
+	dct:rights <http://creativecommons.org/licenses/by/4.0/> .
+
+</data/9781899066100.html>
+	a dcmit:Text ;
+	dct:format <http://purl.org/NET/mediatypes/text/html> ;
+	dct:title "Description 'Acronyms and Synonyms in Medical Imaging' as a web page"@en .
+]]></programlisting>
+		</section>
+	</section>
+	
+	<section xml:id="collections">
+		<title>Collections and data-sets</title>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
+	
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+				<seg><uri>http://purl.org/dc/terms/</uri></seg>
+				<seg><literal>dct:</literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><link xlink:href="http://vocab.deri.ie/void">VoID</link></seg>
+				<seg><uri>http://rdfs.org/ns/void#</uri></seg>
+				<seg><literal>void:</literal></seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
+		<section xml:id="autodiscovery">
+			<title>Data-set auto-discovery</title>
+		</section>
+	</section>
+	
+	<section xml:id="images">
+		<title>Images</title>
+	</section>
+	
+	<section xml:id="video">
+		<title>Video</title>
+	</section>
+	
+	<section xml:id="audio">
+		<title>Audio</title>
+	</section>
+</chapter>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014 BBC
+
+  Licensed under the terms of the Creative Commons Attribution International
+  4.0 license. You may obtain a copy of the license at:
+
+	http://creativecommons.org/licenses/by/4.0/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="common">
+	<title>Common metadata</title>
+	
+	<para>
+		Vocabularies used in this section:
+	</para>
+	
+	<segmentedlist>
+		<segtitle>Vocabulary</segtitle>
+		<segtitle>Namespace URI</segtitle>
+		<segtitle>Prefix</segtitle>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
+			<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
+			<seg><literal>rdf:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</link></seg>
+			<seg><uri>http://www.w3.org/2000/01/rdf-schema#</uri></seg>
+			<seg><literal>rdfs:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+			<seg><uri>http://purl.org/dc/terms/</uri></seg>
+			<seg><literal>dct:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
+			<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
+			<seg><literal>foaf:</literal></seg>
+		</seglistitem>
+		
+	</segmentedlist>
+	
+	<para>
+		Dublin Core Metadata Initiative (DCMI) Terms is an extremely widely-used general-purpose metadata vocabulary which can be used in the first instance to describe both web and abstract resources.
+	</para>
+	<para>
+		In particular, the following predicates are recognised by Acropolis itself and may be relayed in the RES index:
+	</para>
+	
+	<segmentedlist>
+		<segtitle>Predicate</segtitle>
+		<segtitle>Meaning</segtitle>
+		
+		<seglistitem>
+			<seg><literal>dct:title</literal></seg>
+			<seg>Specifies the formal title of an item</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><literal>dct:rights</literal></seg>
+			<seg>Specifies a URI for rights information (see <link xlink:href="#rights">Metadata describing rights and licensing</link>)</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><literal>dct:license</literal></seg>
+			<seg>Alternative predicate for specifying rights information</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><literal>dct:subject</literal></seg>
+			<seg>Specifies the subject of something</seg>
+		</seglistitem>		
+
+	</segmentedlist>
+	
+	<para>
+		The FOAF vocabulary also includes some general-purpose predicates:
+	</para>
+	
+	<segmentedlist>
+		<segtitle>Predicate</segtitle>
+		<segtitle>Meaning</segtitle>
+		
+		<seglistitem>
+			<seg><literal>foaf:primaryTopic</literal></seg>
+			<seg>Specifies the primary topic of a document</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><literal>foaf:homepage</literal></seg>
+			<seg>Specifies the canonical homepage for something</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><literal>foaf:topic</literal></seg>
+			<seg>Specifies a topic of a page (may be used instead of <literal>dct:subject</literal>)</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><literal>foaf:depiction</literal></seg>
+			<seg>Specifies the URL of a still image which depicts the subject</seg>
+		</seglistitem>
+		
+	</segmentedlist>
+
+	
+	<section xml:id="sameas">
+		<title>Referencing alternative identifiers: expressing equivalence</title>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
+	
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/TR/owl2-syntax/">OWL</link></seg>
+				<seg><uri>http://www.w3.org/2002/07/owl#</uri></seg>
+				<seg><literal>owl:</literal></seg>
+			</seglistitem>
+		
+		</segmentedlist>
+		
+		<para>
+			Linked Open Data in general, and RES in particular, is at its most useful when the data describing things links to other data describing the same thing.
+		</para>
+
+		<para>
+			In RDF, this is achieved using the <literal>owl:sameAs</literal> predicate. This predicate implies a direct equivalence relationship—in effect, it creates a synonym.
+		</para>
+
+		<para>
+			You can use <literal>owl:sameAs</literal> whether or not the alternative identifiers use <literal>http:</literal> or <literal>https:</literal>, although the usefulness of URIs which aren't resolveable is limited.
+		</para>
+
+		<para>
+			For example, one might wish to specify that our book has an ISBN using the <literal>urn:isbn:</literal> URN scheme <citation><link xlink:href="http://tools.ietf.org/html/rfc3187">RFC3187</link></citation>:
+		</para>
+	
+		<programlisting language="turtle"><![CDATA[</books/9781899066100#id> owl:sameAs <urn:isbn:9781899066100> .]]></programlisting>
+	
+		<para>
+			We can also indicate that the book described by our data refers to the same book at the British Library:
+		</para>
+	
+		<programlisting language="turtle"><![CDATA[</books/9781899066100#id> owl:sameAs ]]>&lt;<link xlink:href="http://bnb.data.bl.uk/id/resource/011012558">http://bnb.data.bl.uk/id/resource/011012558</link>&gt; .</programlisting>
+				
+		<note>
+			<para>
+				Take care when using <literal>owl:sameAs</literal> to ensure that the subject and the object really are directly equivalent. In particular, make sure that you don’t accidentally state that somebody’s description of something (be it an HTML page or some other serialisation) is the same as the thing being described.
+			</para>
+		</note>
+		
+	</section>
+	
+	<section xml:id="rights">
+		<title>Metadata describing rights and licensing</title>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
+	
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+				<seg><uri>http://purl.org/dc/terms/</uri></seg>
+				<seg><literal>dct:</literal></seg>
+			</seglistitem>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/community/odrl/">ODRL 2.0</link></seg>
+				<seg><uri>http://www.w3.org/ns/odrl/2/</uri></seg>
+				<seg><literal>odrl:</literal></seg>
+			</seglistitem>
+		</segmentedlist>
+		
+		<para>
+			The data describing digital assets (including RDF representations themselves) must include explicit licensing data in order for it to be indexed by Acropolis and used by RES applications. Additionally, the RDF data must be licensed according to the terms of a supported permissive licence.
+		</para>
+		<para>
+			In order to express this, you can use the <literal>dct:rights</literal> or <literal>dct:licence</literal> predicates (at your option). Where the subject is an RDF representation, the object of the statement must be the well-known URI of a supported licence (see below). For other kinds of digital asset, the object of the statement can either be a well-known URI of a supported licence, or a reference to a set of terms described in RDF using the <link xlink:href="http://www.w3.org/ns/odrl/2/">ODRL 2.0 vocabulary</link>.
+		</para>
+		
+		<section xml:id="licenses">
+			<title>Well-known licences</title>
+			<para>
+				The Acropolis crawler discards RDF data which is not explicitly licensed using one of the well-known licenses listed below. Note that the URI listed here is the URI which must be used as the object in the licensing statement.
+			</para>
+			
+			<segmentedlist>
+				<segtitle>Licence</segtitle>
+				<segtitle>URI</segtitle>
+				
+				<seglistitem>
+					<seg>Creative Commons Public Domain (CC0)</seg>
+					<seg><uri><link xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</link></uri></seg>
+				</seglistitem>						
+
+				<seglistitem>
+					<seg>Library of Congress Public Domain</seg>
+					<seg><uri><link xlink:href="http://id.loc.gov/about/">http://id.loc.gov/about/</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Creative Commons Attribution 4.0 International (CC BY 4.0)</seg>
+					<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Open Government Licence</seg>
+					<seg><uri><link xlink:href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Digital Public Space Licence, version 1.0</seg>
+					<seg><uri><link xlink:href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Creative Commons 1.0 Generic (CC BY 1.0)</seg>
+					<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Creative Commons 2.5 Generic (CC BY 2.5)</seg>
+					<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Creative Commons 3.0 Unported (CC BY 3.0)</seg>
+					<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></uri></seg>
+				</seglistitem>						
+				
+				<seglistitem>
+					<seg>Creative Commons 3.0 US (CC BY 3.0 US)</seg>
+					<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</link></uri></seg>
+				</seglistitem>						
+				
+			</segmentedlist>
+			
+			<para>
+				The following example specifies that the Turtle representation of the data about our book is licensed according to the terms of the <citetitle>Creative Commons Attribution 4.0 International licence</citetitle>.
+			</para>
+			
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:rights <http://creativecommons.org/licenses/by/4.0/> .]]></programlisting>
+			
+			<para>
+				See the <link xlink:href="#document-metadata">Metadata describing documents</link> section for further details on describing representations.
+			</para>
+			
+		</section>
+		
+		<section xml:id="odrl">
+			<title>ODRL-based descriptions</title>
+			<para><remark>This section will be expanded significantly in future editions.</remark></para>
+		</section>
+		
+	</section>
+</chapter>

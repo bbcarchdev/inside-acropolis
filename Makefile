@@ -31,7 +31,9 @@ XSLT = docbook-html5/docbook-html5.xsl docbook-html5/doc.xsl docbook-html5/block
 
 all: $(HTML)
 	
-pdf: $(PDF)
+pdf:
+	rm -f $(PDF)
+	$(MAKE) $(PDF)
 
 $(HTML): $(XML) $(XSLT) styles.xml nav.xml
 	${XSLTPROC} -nonet --xinclude \
@@ -41,5 +43,5 @@ $(HTML): $(XML) $(XSLT) styles.xml nav.xml
 		docbook-html5/docbook-html5.xsl \
 		$< > $@
 
-$(PDF): $(HTML)
-	cat $< | wkpdf --print-background --stylesheet-media print --paper a4 --orientation portrait --ignore-http-errors --output $@
+$(PDF):
+	wkpdf --print-background --stylesheet-media print --paper a4 --orientation portrait --ignore-http-errors --output $@ -s http://bbcarchdev.github.io/inside-acropolis/

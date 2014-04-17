@@ -24,4 +24,5 @@
   <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6699852/732262/css/fonts.css" />
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,500,300italic,500italic|Inconsolata|Arapey" />
   <link rel="stylesheet" type="text/css" href="local.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
 </include>

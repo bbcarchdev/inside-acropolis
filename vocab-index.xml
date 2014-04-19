@@ -35,6 +35,13 @@
 		</seglistitem>
 		
 		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/wiki/WebAccessControl">Access Control ontology</link></seg>
+			<seg><uri>http://www.w3.org/ns/auth/acl</uri></seg>
+			<seg><literal>acl:</literal></seg>
+			<seg><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></seg>
+		</seglistitem>
+		
+		<seglistitem>
 			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</link></seg>
 			<seg><uri>http://purl.org/dc/terms/</uri></seg>
 			<seg><literal>dct:</literal></seg>
@@ -91,7 +98,7 @@
 			<seg><literal>formats:</literal></seg>
 			<seg><link xlink:href="#document-metadata">Metadata describing documents</link></seg>
 		</seglistitem>
-	
+		
 	</segmentedlist>
 
 </index>

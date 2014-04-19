@@ -40,8 +40,9 @@ $(HTML): $(XML) $(XSLT) styles.xml nav.xml
 		--param "html.linksfile" "'`pwd`/styles.xml'" \
 		--param "html.navfile" "'`pwd`/nav.xml'" \
 		--param "html.ie78css" "'http://bbcarchdev.github.io/painting-by-numbers/ie78.css'" \
+		-o $@ \
 		docbook-html5/docbook-html5.xsl \
-		$< > $@
+		$<
 
 $(PDF):
 	wkpdf --print-background --stylesheet-media print --paper a4 --orientation portrait --ignore-http-errors --output $@ -s http://bbcarchdev.github.io/inside-acropolis/

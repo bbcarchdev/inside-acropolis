@@ -45,4 +45,5 @@
 	<xi:include href="creative.xml" />
 	<xi:include href="tools.xml" />
 	<xi:include href="vocab-index.xml" />
+	<xi:include href="class-index.xml" />
 </book>

@@ -70,7 +70,7 @@
 		<seglistitem>
 			<seg><literal><link xlink:href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</link></literal></seg>
 			<seg>Physical things</seg>
-			<seg>…</seg>
+			<seg><link xlink:href="#things">Describing physical things</link></seg>
 		</seglistitem>
 		
 		<seglistitem>

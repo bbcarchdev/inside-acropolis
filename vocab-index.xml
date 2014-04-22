@@ -38,7 +38,7 @@
 			<seg><link xlink:href="http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html">CIDOC CRM</link></seg>
 			<seg><uri>http://www.cidoc-crm.org/cidoc-crm/</uri></seg>
 			<seg><literal>crm:</literal></seg>
-			<seg>…</seg>
+			<seg><link xlink:href="#things">Describing physical things</link></seg>
 		</seglistitem>
 		
 		<seglistitem>
@@ -108,8 +108,7 @@
 			<seg><link xlink:href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</link></seg>
 			<seg><uri>http://www.w3.org/2008/05/skos#</uri></seg>
 			<seg><literal>skos:</literal></seg>
-			<seg><link xlink:href="#concepts">Describing concepts and taxonomies
-</link></seg>			
+			<seg><link xlink:href="#concepts">Describing concepts and taxonomies</link></seg>			
 		</seglistitem>
 		
 		<seglistitem>

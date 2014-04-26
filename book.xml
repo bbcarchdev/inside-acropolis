@@ -47,4 +47,5 @@
 	<xi:include href="tools.xml" />
 	<xi:include href="vocab-index.xml" />
 	<xi:include href="class-index.xml" />
+	<xi:include href="predicate-index.xml" />
 </book>

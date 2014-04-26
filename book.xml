@@ -36,6 +36,7 @@
 	<xi:include href="architecture.xml" />
 	<xi:include href="publishers.xml" />
 	<xi:include href="consumers.xml" />
+	<xi:include href="structure.xml" />
 	<xi:include href="common.xml" />
 	<xi:include href="assets.xml" />
 	<xi:include href="things.xml" />

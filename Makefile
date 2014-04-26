@@ -20,9 +20,9 @@ XSLTPROC ?= xsltproc
 
 XML = book.xml \
 	legal.xml preface.xml intro.xml lod.xml architecture.xml publishers.xml \
-	consumers.xml common.xml assets.xml things.xml people.xml places.xml \
-	events.xml concepts.xml creative.xml tools.xml vocab-index.xml \
-	class-index.xml
+	consumers.xml structure.xml common.xml assets.xml things.xml people.xml \
+	places.xml events.xml concepts.xml creative.xml tools.xml vocab-index.xml \
+	class-index.xml predicate-index.xml
 
 ## Output files
 

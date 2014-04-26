@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014 BBC
+
+  Licensed under the terms of the Creative Commons Attribution International
+  4.0 license. You may obtain a copy of the license at:
+
+	http://creativecommons.org/licenses/by/4.0/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structure">
+	<title>Structure of the RES index</title>
+	<para>
+		The RES index is made up of a series of <firstterm>composite</firstterm>
+		entities which are constructed using the data discovered by the
+		crawler. Each of the composite entities has an <literal>owl:sameAs</literal>
+		relationship with the various source entities used to construct it,
+		a portion of whose data is cached in the index.
+	</para>
+	<para>
+		If you dereference the URI for the RES index (currently
+		<uri>http://alpha.acropolis.org.uk/</uri>, but this will change), the
+		result is some metadata about the index, including information about
+		how to perform different kinds of query, and some selected sample
+		entities.
+	</para>
+	<para>
+		When a query is performed against the index (i.e., by adding some query
+		parameters to the URI), the result is a small amount of metadata about
+		the query and the results along with a list of these composite entities.
+	</para>
+	<para>
+		If you then dereference one of these entities—<firstterm>drilling down</firstterm>
+		into it—the document returned will contain both the composite entity, and
+		the cached data about the source entities. If the entity references, or is
+		referenced by other entities, the relevant composite entities are also
+		included.
+	</para>
+	<tip>
+		An index of the predicates which are used to generate the composite
+		entities and cached alongside them can be found at <link xlink:href="#predicate-index">the
+		end of the book</link>.
+	</tip>
+</chapter>

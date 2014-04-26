@@ -40,7 +40,7 @@
 		In fact, best practice generally is that you publish in as many formats as you’re generally able to, and do so in a consistent fashion. And, while your “data views” (that is, the structured machine-readable representations of your data about things) are going to be very dull and uninteresting to most human beings, that doesn’t mean that you can’t serve nicely-designed web pages about them as the serialisation for ordinary web browsers.
 	</para>
 	<section xml:id="publishing-detail">
-		<title>Technical requirements for data publication</title>
+		<title>Checklist for data publication</title>
 		
 		<section xml:id="support-common-serialisations">
 			<title>Support the most common RDF serialisations</title>

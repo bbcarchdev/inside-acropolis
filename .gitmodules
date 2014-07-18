@@ -1,3 +1,3 @@
 [submodule "docbook-html5"]
 	path = docbook-html5
-	url = git://github.com/bbcarchdev/docbook-html5.git
+	url = https://github.com/bbcarchdev/docbook-html5.git

@@ -36,11 +36,11 @@ pdf:
 	$(MAKE) $(PDF)
 
 $(HTML): $(XML) $(XSLT) styles.xml nav.xml
-	${XSLTPROC} -nonet --xinclude \
-		--param "html.linksfile" "'`pwd`/styles.xml'" \
-		--param "html.navfile" "'`pwd`/nav.xml'" \
+	${XSLTPROC} --xinclude \
+		--param "html.linksfile" "'file://`pwd`/styles.xml'" \
+		--param "html.navfile" "'file://`pwd`/nav.xml'" \
 		--param "html.ie78css" "'http://bbcarchdev.github.io/painting-by-numbers/ie78.css'" \
-		docbook-html5/docbook-html5.xsl \
+		http://bbcarchdev.github.io/docbook-html5/docbook-html5.xsl \
 		$< > $@
 
 $(PDF):

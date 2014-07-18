@@ -13,4 +13,10 @@
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="creative">
 	<title>Describing creative works</title>
+	<tip>
+		<para>
+			The RES index entry for a creative work will have a class of <link xlink:href="http://vocab.org/frbr/core.html#Work">frbr:Work</link>.
+		</para>
+	</tip>
+	
 </chapter>

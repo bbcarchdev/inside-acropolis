@@ -13,4 +13,10 @@
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="places">
 	<title>Describing places</title>
+	<tip>
+		<para>
+			The RES index entry for a place will have a class of <link xlink:href="http://www.w3.org/2003/01/geo/">geo:SpatialThing</link>.
+		</para>
+	</tip>
+	
 </chapter>

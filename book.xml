@@ -36,8 +36,10 @@
 	<xi:include href="architecture.xml" />
 	<xi:include href="publishers.xml" />
 	<xi:include href="consumers.xml" />
+	<xi:include href="structure.xml" />
 	<xi:include href="common.xml" />
 	<xi:include href="assets.xml" />
+	<xi:include href="things.xml" />
 	<xi:include href="people.xml" />
 	<xi:include href="places.xml" />
 	<xi:include href="events.xml" />
@@ -45,4 +47,6 @@
 	<xi:include href="creative.xml" />
 	<xi:include href="tools.xml" />
 	<xi:include href="vocab-index.xml" />
+	<xi:include href="class-index.xml" />
+	<xi:include href="predicate-index.xml" />
 </book>

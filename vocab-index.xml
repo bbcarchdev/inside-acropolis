@@ -12,26 +12,33 @@
 
 -->
 <index version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="vocab-index">
-	<title>Vocabulary Index</title>
+	<title>Vocabulary index</title>
 
 	<segmentedlist>
 		<segtitle>Vocabulary</segtitle>
 		<segtitle>Namespace URI</segtitle>
 		<segtitle>Prefix</segtitle>
-		<segtitle>Section</segtitle>
-
+		<segtitle>Section</segtitle>		
+		
 		<seglistitem>
-			<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
-			<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
-			<seg><literal>rdf:</literal></seg>
-			<seg><link xlink:href="#common">Common metadata</link></seg>
+			<seg><link xlink:href="http://www.w3.org/wiki/WebAccessControl">Access Control ontology</link></seg>
+			<seg><uri>http://www.w3.org/ns/auth/acl</uri></seg>
+			<seg><literal>acl:</literal></seg>
+			<seg><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></seg>
 		</seglistitem>
 		
 		<seglistitem>
-			<seg><link xlink:href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</link></seg>
-			<seg><uri>http://www.w3.org/2000/01/rdf-schema#</uri></seg>
-			<seg><literal>rdfs:</literal></seg>
-			<seg><link xlink:href="#common">Common metadata</link></seg>
+			<seg><link xlink:href="http://www.w3.org/2003/01/geo/">Basic geo vocabulary</link></seg>
+			<seg><uri>http://www.w3.org/2003/01/geo/wgs84_pos#</uri></seg>
+			<seg><literal>geo:</literal></seg>
+			<seg><link xlink:href="#places">Describing places</link></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html">CIDOC CRM</link></seg>
+			<seg><uri>http://www.cidoc-crm.org/cidoc-crm/</uri></seg>
+			<seg><literal>crm:</literal></seg>
+			<seg><link xlink:href="#things">Describing physical things</link></seg>
 		</seglistitem>
 		
 		<seglistitem>
@@ -45,8 +52,15 @@
 			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Types</link></seg>
 			<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
 			<seg><literal>dmcit:</literal></seg>
-			<seg><link xlink:href="#document-metadata">Metadata describing documents</link></seg>
-		</seglistitem>				
+			<seg><link xlink:href="#document-metadata">Metadata describing documents</link>, <link xlink:href="#collections">Collections and data-sets</link></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://motools.sourceforge.net/event/event.html">Event ontology</link></seg>
+			<seg><uri>http://purl.org/NET/c4dm/event.owl#</uri></seg>
+			<seg><literal>event:</literal></seg>
+			<seg><link xlink:href="#events">Describing events</link></seg>
+		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
@@ -54,7 +68,14 @@
 			<seg><literal>foaf:</literal></seg>
 			<seg><link xlink:href="#common">Common metadata</link></seg>
 		</seglistitem>
-
+		
+		<seglistitem>
+			<seg><link xlink:href="http://vocab.org/frbr/core.html">FRBR Core</link></seg>
+			<seg><uri>http://purl.org/vocab/frbr/core#</uri></seg>
+			<seg><literal>frbr:</literal></seg>
+			<seg><link xlink:href="#creative">Describing creative works</link></seg>
+		</seglistitem>
+		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/community/odrl/">ODRL 2.0</link></seg>
 			<seg><uri>http://www.w3.org/ns/odrl/2/</uri></seg>
@@ -70,11 +91,24 @@
 		</seglistitem>
 		
 		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</link></seg>
+			<seg><uri>http://www.w3.org/2000/01/rdf-schema#</uri></seg>
+			<seg><literal>rdfs:</literal></seg>
+			<seg><link xlink:href="#common">Common metadata</link></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
+			<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
+			<seg><literal>rdf:</literal></seg>
+			<seg><link xlink:href="#common">Common metadata</link></seg>
+		</seglistitem>
+		
+		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</link></seg>
 			<seg><uri>http://www.w3.org/2008/05/skos#</uri></seg>
 			<seg><literal>skos:</literal></seg>
-			<seg><link xlink:href="#concepts">Describing concepts and taxonomies
-</link></seg>			
+			<seg><link xlink:href="#concepts">Describing concepts and taxonomies</link></seg>			
 		</seglistitem>
 		
 		<seglistitem>
@@ -91,7 +125,7 @@
 			<seg><literal>formats:</literal></seg>
 			<seg><link xlink:href="#document-metadata">Metadata describing documents</link></seg>
 		</seglistitem>
-	
+		
 	</segmentedlist>
 
 </index>

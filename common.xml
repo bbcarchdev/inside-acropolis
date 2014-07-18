@@ -272,4 +272,55 @@
 		</section>
 		
 	</section>
+	
+	<section xml:id="conditional-access">
+		<title>Describing conditionally-accessible resources</title>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
+		
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://www.w3.org/wiki/WebAccessControl">Access Control ontology</link></seg>
+				<seg><uri>http://www.w3.org/ns/auth/acl</uri></seg>
+				<seg><literal>acl:</literal></seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
+		<para>
+			Many kinds of digital asset are not available to the general public but may
+			be accessed by the RES audience: students and teachers affiliated with a
+			recognised educational institution in the UK. This may be because specific
+			exceptions in law allow access when it would not otherwise be possible, or
+			because the rights-holder has elected to make the assets available only to
+			those in education.
+		</para>
+		<para>
+			In order to support this, and ensure that users of RES applications are able to
+			use to the greatest range of material that they legitimately have access to,
+			the metadata describing those assets which aren’t available to the public but
+			are to educational users must describe means by which they are accessed.
+		</para>
+		<tip>
+			<para>
+				A given asset may be available from multiple sources, each with its own
+				specific constraints applied to who may access it. For example, a recording
+				of a radio programme might be held on behalf of educational users by two
+				separate online services, both requiring that the affiliated institution
+				be a licensee of the relevant <link xlink:href="http://www.era.org.uk">ERA licensing scheme</link>,
+				and both operating their own institutional-level subscription schemes. To be most
+				useful, the RES index must aggregate the metadata describing <emphasis>both</emphasis>
+				means of access, and the metadata must convey sufficient information so as
+				to allow applications to decide which, if any, should be presented to the
+				end-user.
+			</para>
+		</tip>						
+		<para><remark>This section will be expanded significantly in future editions.</remark></para>
+	</section>					
 </chapter>

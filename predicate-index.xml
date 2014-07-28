@@ -77,13 +77,6 @@
 		</seglistitem>
 				
 		<seglistitem>
-			<seg><literal>po:title</literal></seg>
-			<seg>Creative works</seg>
-			<seg>Yes</seg>
-			<seg>Yes, as <literal>rdfs:label</literal></seg>
-		</seglistitem>
-		
-		<seglistitem>
 			<seg><literal>foaf:depiction</literal></seg>
 			<seg>Any</seg>
 			<seg>Yes</seg>
@@ -105,14 +98,14 @@
 		</seglistitem>
 		
 		<seglistitem>
-			<seg><literal>wgs84_pos:lat</literal></seg>
+			<seg><literal>geo:lat</literal></seg>
 			<seg>Places</seg>
 			<seg>Yes</seg>
 			<seg>Yes</seg>
 		</seglistitem>
 
 		<seglistitem>
-			<seg><literal>wgs84_pos:long</literal></seg>
+			<seg><literal>geo:long</literal></seg>
 			<seg>Places</seg>
 			<seg>Yes</seg>
 			<seg>Yes</seg>

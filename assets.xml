@@ -41,7 +41,7 @@
 			<seglistitem>
 				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI types</link></seg>
 				<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
-				<seg><literal>dmcit:</literal></seg>
+				<seg><literal>dcmit:</literal></seg>
 			</seglistitem>				
 		
 			<seglistitem>
@@ -97,7 +97,7 @@
 				Use a member of the DCMI type vocabulary as a class:
 			</para>
 			
-			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> a dmcit:Text .]]></programlisting>
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> a dcmit:Text .]]></programlisting>
 			
 			<para>
 				Where available, use a member of the W3C formats vocabulary as a class:
@@ -133,7 +133,7 @@
 
 <programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix dmcit: <http://purl.org/dc/dcmitype/> .
+@prefix dcmit: <http://purl.org/dc/dcmitype/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix formats: <http://www.w3.org/ns/formats/> .
 

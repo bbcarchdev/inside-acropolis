@@ -33,6 +33,13 @@
 			<seg><literal>geo:</literal></seg>
 			<seg><link xlink:href="#places">Describing places</link></seg>
 		</seglistitem>
+
+		<seglistitem>
+			<seg><link xlink:href="http://creativecommons.org/ns">Creative Commons Rights Expression Language</link></seg>
+			<seg><uri>http://creativecommons.org/ns#</uri></seg>
+			<seg><literal>cc:</literal></seg>
+			<seg><link xlink:href="#rights">Metadata describing rights and licensing</link></seg>
+		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html">CIDOC CRM</link></seg>
@@ -51,7 +58,7 @@
 		<seglistitem>
 			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Types</link></seg>
 			<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
-			<seg><literal>dmcit:</literal></seg>
+			<seg><literal>dcmit:</literal></seg>
 			<seg><link xlink:href="#document-metadata">Metadata describing documents</link>, <link xlink:href="#collections">Collections and data-sets</link></seg>
 		</seglistitem>
 		
@@ -76,6 +83,13 @@
 			<seg><link xlink:href="#creative">Describing creative works</link></seg>
 		</seglistitem>
 		
+		<seglistitem>
+			<seg><link xlink:href="http://www.geonames.org/ontology/documentation.html">GeoNames Ontology</link></seg>
+			<seg><uri>http://www.geonames.org/ontology#</uri></seg>
+			<seg><literal>gn:</literal></seg>
+			<seg><link xlink:href="#places">Describing places</link></seg>
+		</seglistitem>
+
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/community/odrl/">ODRL 2.0</link></seg>
 			<seg><uri>http://www.w3.org/ns/odrl/2/</uri></seg>

@@ -29,23 +29,34 @@ XML = book.xml \
 HTML = index.html
 PDF = inside-acropolis.pdf
 
-## XSLT
+## XSLT for transforming DocBook-XML
 
-XSLT = docbook-html5/docbook-html5.xsl docbook-html5/doc.xsl docbook-html5/block.xsl docbook-html5/inline.xsl docbook-html5/toc.xsl
+XSLT = \
+	../docbook-html5/docbook-html5.xsl \
+	../docbook-html5/doc.xsl \
+	../docbook-html5/block.xsl \
+	../docbook-html5/inline.xsl \
+	../docbook-html5/toc.xsl
 
 all: $(HTML)
-	
+
 pdf:
 	rm -f $(PDF)
 	$(MAKE) $(PDF)
 
-$(HTML): $(XML) $(XSLT) styles.xml nav.xml
+clean:
+	rm -f $(HTML)
+
+pdfclean: clean
+	rm -f $(PDF)
+
+$(HTML): $(XML) $(XSLT)
 	${XSLTPROC} --xinclude \
-		--param "html.linksfile" "'file://`pwd`/styles.xml'" \
-		--param "html.navfile" "'file://`pwd`/nav.xml'" \
-		--param "html.ie78css" "'http://bbcarchdev.github.io/painting-by-numbers/ie78.css'" \
+		--param "html.linksfile" "'file://`pwd`/../docbook-html5/res-links.xml'" \
+		--param "html.navfile" "'file://`pwd`/../docbook-html5/res-nav.xml'" \
+		--param "html.ie78css" "'//bbcarchdev.github.io/painting-by-numbers/ie78.css'" \
 		-o $@ \
-		docbook-html5/docbook-html5.xsl \
+		../docbook-html5/docbook-html5.xsl \
 		$<
 
 $(PDF):

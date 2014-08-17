@@ -38,6 +38,9 @@ XSLT = \
 	../docbook-html5/inline.xsl \
 	../docbook-html5/toc.xsl
 
+LINKS = ../docbook-html5/res-links.xml
+NAV = ../docbook-html5/res-nav.xml
+
 all: $(HTML)
 
 pdf:
@@ -50,10 +53,10 @@ clean:
 pdfclean: clean
 	rm -f $(PDF)
 
-$(HTML): $(XML) $(XSLT)
+$(HTML): $(XML) $(XSLT) $(LINKS) $(NAV)
 	${XSLTPROC} --xinclude \
-		--param "html.linksfile" "'file://`pwd`/../docbook-html5/res-links.xml'" \
-		--param "html.navfile" "'file://`pwd`/../docbook-html5/res-nav.xml'" \
+		--param "html.linksfile" "'file://`pwd`/$(LINKS)'" \
+		--param "html.navfile" "'file://`pwd`/$(NAV)'" \
 		--param "html.ie78css" "'//bbcarchdev.github.io/painting-by-numbers/ie78.css'" \
 		-o $@ \
 		../docbook-html5/docbook-html5.xsl \

@@ -14,7 +14,16 @@
 ##  See the License for the specific language governing permissions and
 ##  limitations under the License.
 
+## These are the make rules for building this tree as part of the RES
+## website - https://bbcarchdev.github.io/res/
+
+PACKAGE = res-website/inside-acropolis
+
+sysconfdir ?= /etc
+webdir ?= /var/www
+
 XSLTPROC ?= xsltproc
+INSTALL ?= install
 
 ## Book elements
 
@@ -28,6 +37,11 @@ XML = book.xml \
 
 HTML = index.html
 PDF = inside-acropolis.pdf
+
+## Files to install
+
+FILES = $(HTML) local.css masthead.png
+XFILES = $(PDF)
 
 ## XSLT for transforming DocBook-XML
 
@@ -52,6 +66,11 @@ clean:
 
 pdfclean: clean
 	rm -f $(PDF)
+
+install: $(FILES)
+	$(INSTALL) -m 755 -d $(DESTDIR)$(webdir)/$(PACKAGE)
+	for i in $(FILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE) ; done
+	for i in $(XFILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE) ; done
 
 $(HTML): $(XML) $(XSLT) $(LINKS) $(NAV)
 	${XSLTPROC} --xinclude \

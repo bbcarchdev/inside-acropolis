@@ -53,9 +53,9 @@ pdfclean: clean
 	rm -f $(PDF)
 
 install: $(FILES)
-	$(INSTALL) -m 755 -d $(DESTDIR)$(webdir)/$(PACKAGE)
-	for i in $(FILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE) ; done
-	for i in $(XFILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE) ; done
+	$(INSTALL) -m 755 -d $(DESTDIR)$(webdir)/$(PACKAGE)/$(subdir)
+	for i in $(FILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE)/$(subdir) ; done
+	for i in $(XFILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE)/$(subdir) ; done
 
 $(HTML): $(XML) $(XSLT) $(LINKS) $(NAV)
 	$(XML2HTML) $<

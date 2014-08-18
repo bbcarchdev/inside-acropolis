@@ -17,13 +17,10 @@
 ## These are the make rules for building this tree as part of the RES
 ## website - https://bbcarchdev.github.io/res/
 
-PACKAGE = res-website/inside-acropolis
+subdir = inside-acropolis
+top = ..
 
-sysconfdir ?= /etc
-webdir ?= /var/www
-
-XSLTPROC ?= xsltproc
-INSTALL ?= install
+include $(top)/config.mk
 
 ## Book elements
 
@@ -43,23 +40,11 @@ PDF = inside-acropolis.pdf
 FILES = $(HTML) local.css masthead.png
 XFILES = $(PDF)
 
-## XSLT for transforming DocBook-XML
-
-XSLT = \
-	../docbook-html5/docbook-html5.xsl \
-	../docbook-html5/doc.xsl \
-	../docbook-html5/block.xsl \
-	../docbook-html5/inline.xsl \
-	../docbook-html5/toc.xsl
-
-LINKS = ../docbook-html5/res-links.xml
-NAV = ../docbook-html5/res-nav.xml
-
 all: $(HTML)
 
 pdf:
 	rm -f $(PDF)
-	$(MAKE) $(PDF)
+	$(MAKE) -f buildrules.make $(PDF)
 
 clean:
 	rm -f $(HTML)
@@ -73,13 +58,7 @@ install: $(FILES)
 	for i in $(XFILES) ; do $(INSTALL) -m 644 $$i $(DESTDIR)$(webdir)/$(PACKAGE) ; done
 
 $(HTML): $(XML) $(XSLT) $(LINKS) $(NAV)
-	${XSLTPROC} --xinclude \
-		--param "html.linksfile" "'file://`pwd`/$(LINKS)'" \
-		--param "html.navfile" "'file://`pwd`/$(NAV)'" \
-		--param "html.ie78css" "'//bbcarchdev.github.io/painting-by-numbers/ie78.css'" \
-		-o $@ \
-		../docbook-html5/docbook-html5.xsl \
-		$<
+	$(XML2HTML) $<
 
 $(PDF):
 	wkpdf --print-background --stylesheet-media print --paper a4 --orientation portrait --ignore-http-errors --output $@ -s http://bbcarchdev.github.io/inside-acropolis/

@@ -26,6 +26,69 @@
 		</listitem>
 	</itemizedlist>
 
+
+	<section xml:id="editorial-guidelines-for-product-developers">
+		<title>Editorial Guidelines for Product Developers</title>
+		<para>
+			What do we mean by “editorial”?
+		</para>
+		<para>
+			In this context we mean what is <emphasis>in</emphasis> the metadata and the associated media, such as text, video or images.
+		</para>
+		<itemizedlist>	
+			<listitem>
+				<para>What does it say and what is it about?</para>
+			</listitem>
+			<listitem>
+				<para>Is it suitable for all ages to see and hear?</para>
+			</listitem>
+			<listitem>
+				<para>Are there any limits you would want to set around who could see this material?</para>
+			</listitem>
+		</itemizedlist>
+		<para>
+			When making metadata and media available in to education, it is important to understand the expectations of the audience in terms of what they will see and hear.
+		</para>
+		<para>
+			These guidelines are intended to help product developers think about these issues as early in the design and development process as possible.
+		</para>
+		<para>
+			The RES platform is funded with public money and needs to show that it is serving the public interest and behaving responsibly.
+		</para>
+		<itemizedlist>	
+			<listitem>
+				<para>The RES project envisages that in schools and FE colleges it will be teachers who are the primary users of the products built on top of the RES platform, both the catalogue and the assets.</para>
+			</listitem>
+			<listitem>
+				<para>Teachers will then judge the suitability of the content for particular age ranges and make it available to pupils.</para>
+			</listitem>
+			<listitem>
+				<para>The pupils and students will therefore be the secondary users of any products, accessing a moderated version of the whole platform.</para>
+			</listitem>
+			<listitem>
+				<para>Teachers will need to share material with pupils and other teachers and this functionality will be vital.</para>
+			</listitem>
+			<listitem>
+				<para>Where possible the metadata will include any guidance as to the suitability of the content for particular age groups, for example the BBC would include <link xlink:href="http://www.bbc.co.uk/guidance/help/">Guidance warning metadata</link>.</para>
+			</listitem>
+			<listitem>
+				<para>How this will be displayed to teachers is an important consideration in the design of products and services.</para>
+			</listitem>
+			<listitem>
+				<para>However where no such information is available, it needs to be clear that this does <emphasise>not</emphasise> mean that the material is necessarily suitable for all ages (so perhaps a “no age range given” tag is appropriate?)</para>
+			</listitem>
+			<listitem>
+				<para>The RES project will provide teachers with guidelines about the range of material available in RES and hints on how to navigate and mediate such a large volume of metadata and media.</para>
+			</listitem>
+			<listitem>
+				<para>Teachers will also form their own view of what material is suitable for whom, and their ability to add that information to the metadata and share it is important.</para>
+			</listitem>
+			<listitem>
+				<para>Every product or service built on the RES platform must have a means of feeding back any concerns about aspects of the assets or the metadata to the provider of the catalogue and assets.</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+
 	<para><remark>This section will be expanded significantly in future editions.</remark></para>
 	
 </chapter>

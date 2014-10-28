@@ -39,6 +39,15 @@
 		<title>Tools for consuming Linked Open Data</title>
 		<itemizedlist>
 			<listitem>
+				<para><citetitle><link xlink:href="http://www.easyrdf.org">EasyRDF</link></citetitle> is a PHP library for consuming and producing RDF</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://github.com/RDFLib">RDFLib</link></citetitle> is a suite of libraries and tools for working with RDF in Python</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://github.com/Acubed/node-rdf">node-rdf</link></citetitle> is a suite of libraries and tools for working with RDF in ECMAScript (JavaScript), and in particular with Node.js</para>
+			</listitem>
+			<listitem>
 				<para><citetitle><link xlink:href="http://curl.haxx.se/libcurl/">libcurl</link></citetitle> is an extensible multi-protocol file transfer library with bindings for many high-level languages</para>
 			</listitem>
 			<listitem>

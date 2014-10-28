@@ -596,6 +596,106 @@
 	
 	<section xml:id="metadata-formats">
 		<title>Metadata formats</title>
+		
+		<segmentedlist>
+			<segtitle>Container</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Extensibility</segtitle>
+			<segtitle>Standalone?</segtitle>
+			<segtitle>Embedded in</segtitle>
+			<segtitle>Notes</segtitle>
+			
+			<seglistitem>
+				<seg>Exif</seg>
+				<seg>Unmaintained</seg>
+				<seg>Controlled</seg>
+				<seg>No</seg>
+				<seg>JPEG, TIFF, JPEG 2000, PNG</seg>
+				<seg>Largely superseded by XMP; contains IPTC IIM</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Adobe XMP</seg>
+				<seg>Adobe</seg>
+				<seg>Arbitrary (URIs)</seg>
+				<seg>Yes</seg>
+				<seg>TIFF, JPEG 2000, PDF</seg>
+				<seg>XMP is a subset of RDF/XML; widely-used</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>ID3v2</seg>
+				<seg>Various</seg>
+				<seg>Consensus</seg>
+				<seg>No</seg>
+				<seg>MP3, AIFF, MP4</seg>
+				<seg>Considered legacy, but widely-used</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Ogg</seg>
+				<seg>Xiph</seg>
+				<seg>Controlled</seg>
+				<seg>No</seg>
+				<seg>Ogg</seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>MP4</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>FourCC registry</seg>
+				<seg>No</seg>
+				<seg>Base Media and derivatives</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>MPEG-7</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Controlled</seg>
+				<seg>Yes</seg>
+				<seg>Base Media</seg>
+				<seg>XML-based; describes relationships between components</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>MPEG-21</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Controlled</seg>
+				<seg>Yes</seg>
+				<seg>Base Media</seg>
+				<seg>Includes rights expression</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>TV-Anytime</seg>
+				<seg>Unmaintained</seg>
+				<seg>Controlled</seg>
+				<seg>Yes</seg>
+				<seg>Base Media</seg>
+				<seg>Considered legacy but used in broadcast applications</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Turtle (RDF)</seg>
+				<seg>W3C</seg>
+				<seg>Arbitrary (URIs)</seg>
+				<seg>Yes</seg>
+				<seg></seg>
+				<seg>Not currently widely-used as a media metadata container; can be generated from RDF/XML</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>RDF/XML</seg>
+				<seg>W3C</seg>
+				<seg>Arbitrary (URIs)</seg>
+				<seg>Yes</seg>
+				<seg></seg>
+				<seg>Generally considered legacy, superseded by Turtle; basis of Adobe XMP</seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
 	</section>
 	
 	<section xml:id="packaging-formats">

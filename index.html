@@ -1816,6 +1816,9 @@ Content-Length: 272
 	
 	<section id="metadata-formats" class="section"><h1>Metadata formats</h1>
 		
+		
+		<div class="table"><table><thead><tr><th scope="col">Container</th><th scope="col">Authority</th><th scope="col">Extensibility</th><th scope="col">Standalone?</th><th scope="col">Embedded in</th><th scope="col">Notes</th></tr></thead><tbody><tr><td>Exif</td><td>Unmaintained</td><td>Controlled</td><td>No</td><td>JPEG, TIFF, JPEG 2000, PNG</td><td>Largely superseded by XMP; contains IPTC IIM</td></tr><tr><td>Adobe XMP</td><td>Adobe</td><td>Arbitrary (URIs)</td><td>Yes</td><td>TIFF, JPEG 2000, PDF</td><td>XMP is a subset of RDF/XML; widely-used</td></tr><tr><td>ID3v2</td><td>Various</td><td>Consensus</td><td>No</td><td>MP3, AIFF, MP4</td><td>Considered legacy, but widely-used</td></tr><tr><td>Ogg</td><td>Xiph</td><td>Controlled</td><td>No</td><td>Ogg</td><td/></tr><tr><td>MP4</td><td>ISO/MPEG</td><td>FourCC registry</td><td>No</td><td>Base Media and derivatives</td></tr><tr><td>MPEG-7</td><td>ISO/MPEG</td><td>Controlled</td><td>Yes</td><td>Base Media</td><td>XML-based; describes relationships between components</td></tr><tr><td>MPEG-21</td><td>ISO/MPEG</td><td>Controlled</td><td>Yes</td><td>Base Media</td><td>Includes rights expression</td></tr><tr><td>TV-Anytime</td><td>Unmaintained</td><td>Controlled</td><td>Yes</td><td>Base Media</td><td>Considered legacy but used in broadcast applications</td></tr><tr><td>Turtle (RDF)</td><td>W3C</td><td>Arbitrary (URIs)</td><td>Yes</td><td/><td>Not currently widely-used as a media metadata container; can be generated from RDF/XML</td></tr><tr><td>RDF/XML</td><td>W3C</td><td>Arbitrary (URIs)</td><td>Yes</td><td/><td>Generally considered legacy, superseded by Turtle; basis of Adobe XMP</td></tr></tbody></table></div>
+		
 	</section>
 	
 	<section id="packaging-formats" class="section"><h1>Packaging formats</h1>

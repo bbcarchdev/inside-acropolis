@@ -808,7 +808,8 @@ Content-Length: 272
 					</li>
 				<li>
 						If <var>count</var> is more than our configured
-						<var>max-redirects</var> value, skip to step X.
+						<var>max-redirects</var> value, return an error status
+						indicating that the redirect limit has been exceeded.
 					</li>
 				<li>
 						Create an HTTP request for <var>request-URI</var>,
@@ -852,7 +853,7 @@ Content-Length: 272
 								If the <code>Content-Type</code> is not one of <code class="constant">text/html</code>,
 								<code class="constant">application/xhtml+xml</code>, <code class="constant">application/vnd.wap.xhtml+xml</code>, <code class="constant">application/vnd.ctv.xhtml+xml</code> or
 								<code class="constant">application/vnd.hbbtv.xhtml+xml</code>, then skip to
-								step X.
+								step 14.
 							</p>
 						</li>
 						<li>

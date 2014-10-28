@@ -98,7 +98,8 @@
 				<listitem>
 					<para>
 						If <varname>count</varname> is more than our configured
-						<varname>max-redirects</varname> value, skip to step X.
+						<varname>max-redirects</varname> value, return an error status
+						indicating that the redirect limit has been exceeded.
 					</para>
 				</listitem>
 				<listitem>
@@ -153,7 +154,7 @@
 								If the <code>Content-Type</code> is not one of <constant>text/html</constant>,
 								<constant>application/xhtml+xml</constant>, <constant>application/vnd.wap.xhtml+xml</constant>, <constant>application/vnd.ctv.xhtml+xml</constant> or
 								<constant>application/vnd.hbbtv.xhtml+xml</constant>, then skip to
-								step X.
+								step 14.
 							</para>
 						</listitem>
 						<listitem>

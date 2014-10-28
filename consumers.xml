@@ -309,8 +309,8 @@
 				applications.
 			</para>
 			<para>
-				Described in more detail in <cite><link xlink:href="#structure">Structure of
-				the RES index</link></cite>, the index is itself Linked Open Data which can
+				Described in more detail in <citetitle><link xlink:href="#structure">Structure of
+				the RES index</link></citetitle>, the index is itself Linked Open Data which can
 				be retrieved and processed using the algorithms described above. The URI for
 				the index is currently
 				<uri><link xlink:href="http://beta.acropolis.org.uk/">http://beta.acropolis.org.uk</link></uri>, and this URI

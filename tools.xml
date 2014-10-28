@@ -5,12 +5,88 @@
 
  Copyright (c) 2014 BBC
 
-  Licensed under the terms of the Creative Commons Attribution International
-  4.0 license. You may obtain a copy of the license at:
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
 
-	http://creativecommons.org/licenses/by/4.0/
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
 
 -->
-<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="tools">
-	<title>Tools and resources</title>
-</chapter>
+<appendix version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="tools">
+	<title>Appendix I: Tools and resources</title>
+	
+	<section xml:id="guides">
+		<title>Guides</title>
+		<itemizedlist>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF 1.1 primer</link></citetitle></para>
+			</listitem>		
+			<listitem>
+				<para><citetitle><link xlink:href="http://patterns.dataincubator.org/book/">Linked Data Patterns</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf">Linked Data - The Story so Far</link></citetitle> (PDF)</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/Provider/Style/URI.html">Cool URIs don’t change</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</link></citetitle></para>
+			</listitem>
+		</itemizedlist>
+	</section>
+
+	<section xml:id="lod-consumer-tools">
+		<title>Tools for consuming Linked Open Data</title>
+		<itemizedlist>
+			<listitem>
+				<para><citetitle><link xlink:href="http://curl.haxx.se/libcurl/">libcurl</link></citetitle> is an extensible multi-protocol file transfer library with bindings for many high-level languages</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://librdf.org">Redland</link> (librdf)</citetitle> is a set of libraries for parsing, serialising and processing RDF</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://xmlsoft.org/html/index.html">libxml2</link></citetitle> is a very capable and widely used XML and HTML parsing library</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://bbcarchdev.github.io/liblod">liblod</link></citetitle> is a Linked Open Data client library developed by the RES project, and which uses the capabilities of libcurl, librdf and libxml2</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+
+	<section xml:id="lod-publishing-tools">
+		<title>Tools for processing RDF and publishing Linked Open Data</title>
+		<itemizedlist>
+			<listitem>
+				<para><citetitle><link xlink:href="http://d2rq.org">D2RQ</link></citetitle> is a system for transforming data in relational databses to RDF</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://bbcarchdev.github.io/twine/">Twine</link></citetitle> is an engine developed by the RES project for transforming data and pushing it into an RDF quad-store</para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://github.com/bbcarchdev/quilt">Quilt</link></citetitle> is a FastCGI application developed by the RES project for publishing the contents of an RDF quad-store as Linked Open Data</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+	
+	<section xml:id="tech-standards">
+		<title>Technical standards</title>
+		<itemizedlist>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-turtle-20140225/">RDF 1.1 Turtle</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-trig-20140225/">RDF 1.1 TriG</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/">RDF 1.1 XML Syntax</link> (RDF/XML)</citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://tools.ietf.org/html/rfc7230">RFC 7230: Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="https://tools.ietf.org/html/rfc7231">RFC 7231: Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</link></citetitle></para>
+			</listitem>
+		</itemizedlist>
+	</section>
+
+</appendix>

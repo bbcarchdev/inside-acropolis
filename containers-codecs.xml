@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<appendix version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="codecs-containers">
+	<title>Appendix II: Codecs &amp; container formats</title>
+	
+	<section xml:id="codec-video">
+		<title>Video codecs</title>
+		<segmentedlist>
+			<segtitle>Kind</segtitle>
+			<segtitle>Usage</segtitle>
+			<segtitle>Properties</segtitle>
+			<segtitle>Examples</segtitle>
+			
+			<seglistitem>
+				<seg>Preservation</seg>
+				<seg>Long-term archive storage</seg>
+				<seg>Lossless compression, typically 2:1</seg>
+				<seg>DNG sequence, Motion JPEG 2000 lossless, VC2 (Dirac) lossless</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Intermediate (mezzanine)</seg>
+				<seg>Fine-cut editing</seg>
+				<seg>Visually lossless, typically 4:1–6:1</seg>
+				<seg>VC2 (Dirac), VC3 (DNx), Apple ProRes</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Delivery</seg>
+				<seg>Distribution through a broadcast chain or publishing on physical media</seg>
+				<seg>Output format, constrained by bandwidth, typically 10:1–40:1</seg>
+				<seg>H.262 (MPEG-2 Part 2), H.264 (MPEG-4 Part 10, AVC)</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Browse</seg>
+				<seg>Lightweight, streamable, viewing proxy</seg>
+				<seg>Output format, constrained by bandwidth, typically in excess of 50:1</seg>
+				<seg>H.262 (MPEG-2 Part 2), H.264 (MPEG-4 Part 10, AVC), WebM (VP8+), Theora (VP3+), VP6</seg>
+			</seglistitem>
+		</segmentedlist>
+		
+		<segmentedlist>
+			<segtitle>Codec</segtitle>
+			<segtitle>Kind</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Lossy/Lossless</segtitle>
+			<segtitle>Depth</segtitle>
+			<segtitle>Chroma</segtitle>
+			<segtitle>Notes</segtitle>
+			
+			<seglistitem>
+				<seg>SMPTE VC-2 (Dirac)</seg>
+				<seg>Video</seg>
+				<seg>SMPTE/BBC</seg>
+				<seg>Both</seg>
+				<seg>8, 10, 12</seg>
+				<seg>4:2:0, 4:2:2, 4:4:4</seg>
+				<seg>Currently limited support</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>SMPTE VC-3 (DNx)</seg>
+				<seg>Video</seg>
+				<seg>SMTPE/Avid</seg>
+				<seg>Lossy</seg>
+				<seg>8, 10</seg>
+				<seg>3:1:1, 4:2:2, 4:4:4</seg>
+				<seg>Max 1080i59.94</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>H.262 (MPEG-2 Part 2)</seg>
+				<seg>Video</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Lossy</seg>
+				<seg>8</seg>
+				<seg>4:2:0, 4:2:2, 4:4:4</seg>
+				<seg>Considered legacy</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>H.264 (MPEG-4 Part 10, AVC)</seg>
+				<seg>Video</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Lossy</seg>
+				<seg>8, 10</seg>
+				<seg>4:2:0, 4:2:2, 4:4:4</seg>
+				<seg>Widely supported</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Apple ProRes</seg>
+				<seg>Video</seg>
+				<seg>Apple</seg>
+				<seg>Lossy</seg>
+				<seg>10, 12</seg>
+				<seg>4:2:2, 4:4:4</seg>
+				<seg>Proprietary intermediate codec</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Apple Intermediate Codec</seg>
+				<seg>Video</seg>
+				<seg>Apple</seg>
+				<seg>Lossy</seg>
+				<seg>8, 10</seg>
+				<seg>4:2:0</seg>
+				<seg>Considered legacy</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Ogg Theora/VP3</seg>
+				<seg>Video</seg>
+				<seg>Xiph</seg>
+				<seg>Lossy</seg>
+				<seg>8</seg>
+				<seg>4:2:0, 4:2:2, 4:4:4</seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>VP6</seg>
+				<seg>Video</seg>
+				<seg>Google/Adobe</seg>
+				<seg>Lossy</seg>
+				<seg>8</seg>
+				<seg>4:2:0</seg>
+				<seg>Classic Flash video codec</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>WebM/VP8+</seg>
+				<seg>Video</seg>
+				<seg>Google</seg>
+				<seg>8</seg>
+				<seg>4:2:0</seg>
+				<seg>Limited support</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Motion JPEG 2000</seg>
+				<seg>Video</seg>
+				<seg>ISO/JPEG</seg>
+				<seg>Both</seg>
+				<seg>8, 10</seg>
+				<seg>Various</seg>
+				<seg>Particularly suited to preservation</seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
+	</section>
+	
+	<section xml:id="codec-audio">
+		<title>Audio codecs</title>
+	</section>
+	
+	<section xml:id="codec-image">
+		<title>Image codecs</title>
+	</section>
+	
+	<section xml:id="containers">
+		<title>Container formats</title>
+	</section>
+	
+	<section xml:id="metadata-formats">
+		<title>Metadata formats</title>
+	</section>
+	
+	<section xml:id="packaging-formats">
+		<title>Packaging formats</title>
+	</section>
+	
+	<section xml:id="streaming-formats">
+		<title>Streaming formats</title>
+	</section>
+</appendix>

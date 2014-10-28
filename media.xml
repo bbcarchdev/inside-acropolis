@@ -29,7 +29,7 @@
 		While this chapter provides guidance on publishing media assets themselves, those
 		assets only become useful to RES and RES applications when they are properly described
 		in accompanying metadata. For more information on publishing data which describes
-		digital media assets, please refer to the chapter <cite><link xlink:href="#assets">Describing digital assets</link></cite>.
+		digital media assets, please refer to the chapter <citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle>.
 	</para>
 	
 	
@@ -71,7 +71,7 @@
 				While affording the greatest level of flexibility to the consuming application,
 				publishing media in this way is also the simplest from a technical perspective: the
 				encoded media files are simply uploaded to a web server and then
-				<cite><link xlink:href="#assets">described in the accompanying metadata</link></cite>.
+				<citetitle><link xlink:href="#assets">described in the accompanying metadata</link></citetitle>.
 			</para>
 			<para>
 				Use direct publication where:—
@@ -429,8 +429,8 @@
 		
 		<para>
 			For more information about describing rights restrictions and access-control mechansims,
-			see <cite><link xlink:href="#rights">Metadata describing rights and licensing</link></cite>
-			and <cite><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></cite>.
+			see <citetitle><link xlink:href="#rights">Metadata describing rights and licensing</link></citetitle>
+			and <citetitle><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></citetitle>.
 		</para>
 		
 		<section xml:id="media-geo">

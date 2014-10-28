@@ -47,6 +47,7 @@
 	<xi:include href="concepts.xml" />
 	<xi:include href="creative.xml" />
 	<xi:include href="tools.xml" />
+	<xi:include href="containers-codecs.xml" />
 	<xi:include href="vocab-index.xml" />
 	<xi:include href="class-index.xml" />
 	<xi:include href="predicate-index.xml" />

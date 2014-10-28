@@ -630,24 +630,4 @@ _:allison
 			
 	</section>
 	
-	<section xml:id="lod-further-reading">
-		<title>Further reading</title>
-		<itemizedlist>
-			<listitem>
-				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF 1.1 primer</link></citetitle></para>
-			</listitem>		
-			<listitem>
-				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-turtle-20140225/">RDF 1.1 Turtle</link></citetitle> (language specification)</para>
-			</listitem>
-			<listitem>
-				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/REC-trig-20140225/">RDF 1.1 TriG</link></citetitle> (language specification)</para>
-			</listitem>
-			<listitem>
-				<para><citetitle><link xlink:href="http://patterns.dataincubator.org/book/">Linked Data Patterns</link></citetitle></para>
-			</listitem>
-			<listitem>
-				<para><citetitle><link xlink:href="http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf">Linked Data - The Story so Far</link></citetitle> (PDF)</para>
-			</listitem>
-		</itemizedlist>
-	</section>
 </chapter>

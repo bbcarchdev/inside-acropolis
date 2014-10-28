@@ -56,7 +56,7 @@
 			<segtitle>Codec</segtitle>
 			<segtitle>Kind</segtitle>
 			<segtitle>Authority</segtitle>
-			<segtitle>Lossy/Lossless</segtitle>
+			<segtitle>Lossy/lossless</segtitle>
 			<segtitle>Depth</segtitle>
 			<segtitle>Chroma</segtitle>
 			<segtitle>Notes</segtitle>
@@ -206,7 +206,7 @@
 			<segtitle>Codec</segtitle>
 			<segtitle>Kind</segtitle>
 			<segtitle>Authority</segtitle>
-			<segtitle>Lossy/Lossless</segtitle>
+			<segtitle>Lossy/lossless</segtitle>
 			<segtitle>Notes</segtitle>
 
 			<seglistitem>
@@ -287,6 +287,125 @@
 	
 	<section xml:id="codec-image">
 		<title>Image codecs</title>
+		
+		<segmentedlist>
+			<segtitle>Kind</segtitle>
+			<segtitle>Usage</segtitle>
+			<segtitle>Properties</segtitle>
+			<segtitle>Examples</segtitle>
+			
+			<seglistitem>
+				<seg>Preservation</seg>
+				<seg>Long-term archive storage, editing &amp; composition</seg>
+				<seg>Lossless compression, typically 2:1</seg>
+				<seg>Adobe DNG (RAW), JPEG 2000 (ISO/IEC 15444) lossless, TIFF, PNG</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Delivery</seg>
+				<seg>Distribution through a broadcast chain or publishing on physical media</seg>
+				<seg>Output format, constrained by bandwidth, typically 10:1-40:1</seg>
+				<seg>JPEG 2000 (ISO/IEC 15444) lossless, TIFF, PNG</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Browse</seg>
+				<seg>Lightweight viewing proxy/thumbnail</seg>
+				<seg>Output format, constrained by bandwidth, typically in excess of 30:1</seg>
+				<seg>JPEG (ISO/IEC 10918), JPEG 2000 (ISO/IEC 15444) lossless, PNG</seg>
+			</seglistitem>
+		</segmentedlist>
+		
+		<segmentedlist>
+			<segtitle>Codec</segtitle>
+			<segtitle>Kind</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Lossy/lossless</segtitle>
+			<segtitle>Depth (BPC)</segtitle>
+			<segtitle>Chroma</segtitle>
+			<segtitle>Notes</segtitle>
+			
+			<seglistitem>
+				<seg>Adobe DNG</seg>
+				<seg>RAW image</seg>
+				<seg>Adobe</seg>
+				<seg>Lossless</seg>
+				<seg>Arbitrary</seg>
+				<seg></seg>
+				<seg>Derived from TIFF</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>DPX</seg>
+				<seg>Processed image</seg>
+				<seg>SMPTE</seg>
+				<seg>Lossless</seg>
+				<seg>8-64 log</seg>
+				<seg></seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>TIFF</seg>
+				<seg>ISO/Adobe</seg>
+				<seg>Both</seg>
+				<seg>Arbitrary</seg>
+				<seg>4:4:4, 4:2:0</seg>
+				<seg>Supports HDR, alpha</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>OpenEXR</seg>
+				<seg>Processed image</seg>
+				<seg>Disney-Pixar</seg>
+				<seg>Both</seg>
+				<seg>16</seg>
+				<seg></seg>
+				<seg>Supports HDR</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>JPEG 2000 (ISO/IEC 15444)</seg>
+				<seg>Processed image</seg>
+				<seg>ISO/JPEG</seg>
+				<seg>Both</seg>
+				<seg>8, 10</seg>
+				<seg>Various</seg>
+				<seg>Supports sequences with Motion JPEG 2000</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>JPEG (ISO/IEC 10918)</seg>
+				<seg>Processed image</seg>
+				<seg>ISO/JPEG</seg>
+				<seg>Lossy</seg>
+				<seg>8</seg>
+				<seg>4:2:0</seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>PNG (ISO/IEC 15948)</seg>
+				<seg>Processed image</seg>
+				<seg>W3C</seg>
+				<seg>Lossless</seg>
+				<seg>8bpp, 8bpc</seg>
+				<seg></seg>
+				<seg>Supports alpha</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>WebP</seg>
+				<seg>Processed image</seg>
+				<seg>Google</seg>
+				<seg>Both</seg>
+				<seg>8</seg>
+				<seg>4:2:0</seg>
+				<seg>Derived from WebM/VP8+</seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
 	</section>
 	
 	<section xml:id="containers">

@@ -26,7 +26,7 @@ include $(top)/config.mk
 
 XML = book.xml \
 	legal.xml preface.xml intro.xml lod.xml architecture.xml publishers.xml \
-	consumers.xml structure.xml common.xml assets.xml things.xml people.xml \
+	consumers.xml media.xml structure.xml common.xml assets.xml things.xml people.xml \
 	places.xml events.xml concepts.xml creative.xml tools.xml vocab-index.xml \
 	class-index.xml predicate-index.xml
 

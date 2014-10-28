@@ -316,6 +316,20 @@
 				<uri><link xlink:href="http://beta.acropolis.org.uk/">http://beta.acropolis.org.uk</link></uri>, and this URI
 				can be used as default “homepage” for RES applications.
 			</para>
+			<para>
+				In the same way that a homepage only provides the starting point for a web
+				browser, the same is true of the RES index: applications can allow users
+				to explore and search the index, but to also follow the onward links to
+				source data and media assets.
+			</para>
+			<para>
+				For some applications, use the RES index as a starting point won’t be
+				appropriate: it may be necessary or useful to implement an intermediary
+				service that provides additional capabilities or a specific curated
+				subset of resources. There is no requirement that RES applications
+				<emphasis>must</emphasis> directly use the base of the RES index
+				as their home.
+			</para>
 		</section>
 	</section>
 

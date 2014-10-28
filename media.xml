@@ -95,49 +95,52 @@
 				</listitem>
 			</itemizedlist>
 			
-			<section xml:id="media-direct-examples">
-				<title>Example</title>
+			<para>For example:—</para>
+			
+			<segmentedlist>
+				<segtitle>Property</segtitle>
+				<segtitle>Value</segtitle>
 				
-				<segmentedlist>
-					<segtitle>Property</segtitle>
-					<segtitle>Value</segtitle>
-					
-					<seglistitem>
-						<seg>Media asset URL</seg>
-						<seg><uri><link xlink:href="//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg</link></uri></seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>MIME type</seg>
-						<seg><constant>image/jpeg</constant></seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Poster image URL</seg>
-						<seg><uri><link xlink:href="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg</link></uri></seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Width</seg>
-						<seg>2021px</seg>
-					</seglistitem>
+				<seglistitem>
+					<seg>Media asset URL</seg>
+					<seg><uri><link xlink:href="//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg</link></uri></seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>MIME type</seg>
+					<seg><constant>image/jpeg</constant></seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Embeddable?</seg>
+					<seg>Yes</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Poster image URL</seg>
+					<seg><uri><link xlink:href="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg</link></uri></seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Width</seg>
+					<seg>2021px</seg>
+				</seglistitem>
 
-					<seglistitem>
-						<seg>Height</seg>
-						<seg>2694px</seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Title</seg>
-						<seg>Claude Monet 1899 Nadar crop</seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>License</seg>
-						<seg><link xlink:href="https://commons.wikimedia.org/wiki/Public_domain">Public domain</link></seg>
-					</seglistitem>
-				</segmentedlist>
-			</section>
+				<seglistitem>
+					<seg>Height</seg>
+					<seg>2694px</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Title</seg>
+					<seg>Claude Monet 1899 Nadar crop</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>License</seg>
+					<seg><link xlink:href="https://commons.wikimedia.org/wiki/Public_domain">Public domain</link></seg>
+				</seglistitem>
+			</segmentedlist>
 			
 		</section>
 	
@@ -194,49 +197,57 @@
 				</listitem>
 			</itemizedlist>
 			
-			<section xml:id="media-frame-examples">
-				<title>Example</title>
+			<para>For example:—</para>
+			
+			<segmentedlist>
+				<segtitle>Property</segtitle>
+				<segtitle>Value</segtitle>
 				
-				<segmentedlist>
-					<segtitle>Property</segtitle>
-					<segtitle>Value</segtitle>
-					
-					<seglistitem>
-						<seg>Media asset URL</seg>
-						<seg><uri><link xlink:href="//player.vimeo.com/video/110040373">//player.vimeo.com/video/110040373</link></uri></seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Poster image URL</seg>
-						<seg><uri><link xlink:href="//i.vimeocdn.com/video/494149068_960.jpg">//i.vimeocdn.com/video/494149068_960.jpg</link></uri></seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Preferred width</seg>
-						<seg>500px</seg>
-					</seglistitem>
+				<seglistitem>
+					<seg>Media asset URL</seg>
+					<seg><uri><link xlink:href="//player.vimeo.com/video/110040373">//player.vimeo.com/video/110040373</link></uri></seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>MIME type</seg>
+					<seg><constant>text/html</constant></seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Embeddable?</seg>
+					<seg>Yes</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Poster image URL</seg>
+					<seg><uri><link xlink:href="//i.vimeocdn.com/video/494149068_960.jpg">//i.vimeocdn.com/video/494149068_960.jpg</link></uri></seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Preferred width</seg>
+					<seg>500px</seg>
+				</seglistitem>
 
-					<seglistitem>
-						<seg>Preferred height</seg>
-						<seg>281px</seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Title</seg>
-						<seg>Mount Piños Astrophotography Time Lapse</seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Duration</seg>
-						<seg>45s</seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>License</seg>
-						<seg><link xlink:href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Unported (CC BY 3.0)</link></seg>
-					</seglistitem>
-				</segmentedlist>
-			</section>
+				<seglistitem>
+					<seg>Preferred height</seg>
+					<seg>281px</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Title</seg>
+					<seg>Mount Piños Astrophotography Time Lapse</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Duration</seg>
+					<seg>45s</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>License</seg>
+					<seg><link xlink:href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Unported (CC BY 3.0)</link></seg>
+				</seglistitem>
+			</segmentedlist>
 			
 		</section>
 	
@@ -273,48 +284,218 @@
 				</listitem>
 			</itemizedlist>
 			
-			<section xml:id="media-page-examples">
-				<title>Example</title>
+			<para>For example:—</para>
+			
+			<segmentedlist>
+				<segtitle>Property</segtitle>
+				<segtitle>Value</segtitle>
 				
-				<segmentedlist>
-					<segtitle>Property</segtitle>
-					<segtitle>Value</segtitle>
-					
-					<seglistitem>
-						<seg>Media asset URL</seg>
-						<seg><uri><link xlink:href="http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin">http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin</link></uri></seg>
-					</seglistitem>
+				<seglistitem>
+					<seg>Media asset URL</seg>
+					<seg><uri><link xlink:href="http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin">http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin</link></uri></seg>
+				</seglistitem>
 
-					<seglistitem>
-						<seg>Title</seg>
-						<seg>Horizon: 1981-1982: The Race to Ruin</seg>
-					</seglistitem>
+				<seglistitem>
+					<seg>Title</seg>
+					<seg>Horizon: 1981-1982: The Race to Ruin</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Embeddable?</seg>
+					<seg>No</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Duration</seg>
+					<seg>48m52s</seg>
+				</seglistitem>
+				
+				<seglistitem>
+					<seg>Geographical restriction</seg>
+					<seg>UK-only</seg>
+				</seglistitem>
 
-					<seglistitem>
-						<seg>Duration</seg>
-						<seg>48m52s</seg>
-					</seglistitem>
-					
-					<seglistitem>
-						<seg>Geographical restriction</seg>
-						<seg>UK-only</seg>
-					</seglistitem>
-
-				</segmentedlist>
-			</section>
+			</segmentedlist>
 			
 		</section>
 	</section>
 
 	<section xml:id="media-acl">
-		<title>Implementing access control</title>
+		<title>Access control and media availability</title>
+		
+		<para>
+			A key aim of the RES project is to increase the visibility of and access to
+			digital media resources which are available to staff and students of
+			educational establishments within the United Kingdom. While this naturally
+			includes the wealth of resources which are openly-licensed and available to
+			everybody, it also includes digital media which can <emphasis>only</emphasis>
+			be accessed at scale by UK educational users.
+		</para>
+		<para>
+			In order to provide access to this material, publishers typically implement
+			some kind of access control. While the RES platform itself is generally
+			agnostic to media assets and their access-control mechanisms, RES
+			applications require the ability to make user-interface decisions based upon
+			the access restrictions imposed upon the media.
+		</para>
+		<para>
+			For this reason, RES defines three specific kinds of access-control mechanism,
+			as well as a policy which RES-conformant media must be published according to.
+			Specifically, this policy is that media assets must:—
+		</para>
+		
+		<orderedlist>
+			<listitem>
+				<para>
+					Media must be available either freely or under the terms of a blanket
+					or statutorily-backed licensing scheme available to educational
+					establishments (or licenses may be obtained on their behalf by local
+					authorities or central government).
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					It must be possible to obtain the media without further subscription
+					or other charges, however “value-added” services may be provided
+					which offer additional capabilities (such as archiving, enhanced search),
+					provided those services can be readily subscribed to at an establishment
+					level.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					The media must be generally available on a long term basis. Media available
+					only for short periods has limited value in education because it prevents
+					the same resources being used again in the future.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					The technical access-control mechansims must be one or more of those
+					described below.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					The nature of the access-control mechanism must be described in the
+					metadata accompanying the media.
+				</para>
+			</listitem>
+		</orderedlist>
+		
+		<para>
+			For example, all of the following conform to the policy:—
+		</para>
+		
+		<itemizedlist>
+			<listitem>
+				<para>
+					Media published via Wikimedia Commons is available to
+					everybody on a permanent basis without any additional payment or subscritpion.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Programmes which are part of <link xlink:href="http://www.bbc.co.uk/bbcfour/collections">BBC
+					Four Collections</link> are made available to everybody in the UK on a long-term basis
+					(but may not be embedded). Access control is implemented through
+					<link xlink:href="#media-geo">geo-blocking</link>.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Recordings of broadcasts made according to the terms of <link xlink:href="http://www.legislation.gov.uk/ukpga/1988/48/section/35">Section
+					35 of the Copyright, Designs and Patents Act 1988 (as amended)</link> is
+					may be used by the institution who recorded it (or it was recorded on
+					behalf of), provided their <link xlink:href="http://www.era.org.uk">ERA Licence</link>
+					is maintained.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Services which are authorised by ERA to maintain an archive of Section 35 recordings
+					and make them available to ERA Licence-holders who pay a subscription fee, provided
+					access is through a mechanism described below.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					A consortium of rights-holders who together define a scheme for access to one or
+					more sets of media on an affordable establishment-level subscription basis, provided 
+					access is through a mechanism described below.
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+		<para>
+			For more information about describing rights restrictions and access-control mechansims,
+			see <cite><link xlink:href="#rights">Metadata describing rights and licensing</link></cite>
+			and <cite><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></cite>.
+		</para>
+		
+		<section xml:id="media-geo">
+			<title>Geographical restrictions (geo-blocking)</title>
+			<para>
+				Geo-blocking is the automatic determination of ability-to-access a resource
+				by looking up the end-user’s public IP address against a database correlating
+				IP address ranges with countries. For example, the address 132.185.240.10 is
+				part of a range which is within the UK, whereas 192.0.32.8 is part of a range
+				which is within the US.
+			</para>
+			<para>
+				Geo-location databases and live services are available both for free and on
+				commercial terms, with varying levels of quality and service assurance.
+			</para>
+			<para>
+				Geo-blocking should generally be applied only where other access-control mechanisms are
+				not applicable: for example, because a media asset is available to everybody
+				within a particular country.
+			</para>
+		</section>
 		
 		<section xml:id="media-saml">
 			<title>Federated access control using Shibboleth and the UK Access Management Federation</title>
+			<para>
+				<link xlink:href="https://shibboleth.net">Shibboleth</link> is a federated authentication
+				single sign-on mechanism which is widely used by providers of materials
+				to provide access only to staff and students of educational establishments.
+			</para>
+			<para>
+				The <link xlink:href="http://www.ukfederation.org.uk">UK Access Management Federation</link>,
+				operated by <link xlink:href="http://www.jisc.ac.uk/janet">Janet</link>, provides the
+				Shibboleth federation for UK institutions.
+			</para>
+			<para>
+				Shibboleth-protected resources present a sign-in page to users who are not already
+				authenticated, which makes it suitable for use with both the embeddable player and
+				the stand-alone playback page publication approaches described above.
+			</para>
+			<para>
+				Shibboleth-based access control is the preferred mechanism for use where media should be
+				made available only to educational users.
+			</para>
 		</section>
 		
 		<section xml:id="media-ipacl">
 			<title>IP-based access control</title>
+			
+			<para>
+				IP-based access control is often the simplest mechanism to implement, as it requires
+				only for the publisher to check the end-user’s public IP address against a white-list
+				and allow or permit access as required.
+			</para>
+			<para>
+				However, creating and maintaining that white-list can involve significant administrative
+				burden, particularly on a nation-wide basis, and it does not allow ready access to
+				media to remote-working staff and students without their institution providing
+				additional infrastructure such as remote-desktop services and VPNs.
+			</para>
+			<para>
+				IP-based access control should generally be employed alongside Shibboleth-based
+				authentication, and only for specific institutions which are not able to participate
+				in the UK Acesss Management Federation.
+			</para>
 		</section>
+		
 	</section>
 </chapter>

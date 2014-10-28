@@ -760,5 +760,56 @@
 	
 	<section xml:id="streaming-formats">
 		<title>Streaming formats</title>
+		
+		<segmentedlist>
+			<segtitle>Format</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Manifest format</segtitle>
+			<segtitle>Container formats</segtitle>
+			<segtitle>Notes</segtitle>
+		
+		
+			<seglistitem>
+				<seg>IIS Smooth Streaming</seg>
+				<seg>Microsoft</seg>
+				<seg>XML</seg>
+				<seg>MTS/TOD</seg>
+				<seg>HTTP-based adaptive streaming for Silverlight clients</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>RTSP &amp; RTP</seg>
+				<seg>IETF</seg>
+				<seg>SDP</seg>
+				<seg></seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>RTMP</seg>
+				<seg>Adobe</seg>
+				<seg>Protocol exchange</seg>
+				<seg></seg>
+				<seg>Adaptive streaming for Adobe Flash; considered legacy but remains widely-used, often alongside HLS</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Apple HLS</seg>
+				<seg>Apple/IETF</seg>
+				<seg>Extended playlist (m3u8)</seg>
+				<seg>Transport Stream (MPEG-2 Part 1)</seg>
+				<seg>Particularly well-supported on mobile devices</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Adobe HDS</seg>
+				<seg>Adobe</seg>
+				<seg>XML</seg>
+				<seg>FLV</seg>
+				<seg>Considered legacy; Adobe is transitioning to HLS for streaming media</seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
 	</section>
 </appendix>

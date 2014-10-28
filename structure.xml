@@ -22,7 +22,7 @@
 	</para>
 	<para>
 		If you dereference the URI for the RES index (currently
-		<uri>http://alpha.acropolis.org.uk/</uri>, but this will change), the
+		<uri>http://beta.acropolis.org.uk/</uri>, but this will change), the
 		result is some metadata about the index, including information about
 		how to perform different kinds of query, and some selected sample
 		entities.

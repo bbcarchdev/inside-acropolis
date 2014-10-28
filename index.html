@@ -15,7 +15,7 @@
 		<li><a href="https://bbcarchdev.github.io/res/code">Source code</a></li>
 	</ul></div></nav>
 		<div class="masthead"></div>
-		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">April 2014 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
+		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">October 2014 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
 	<p>
 		Copyright © 2014 BBC.
 	</p>
@@ -46,7 +46,7 @@
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
 	</p>
-</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Acropolis platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li><li><a href="#lod-further-reading">Further reading</a></li></ol></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li></ol></li><li><a href="#consumers">Requirements for consumers</a></li><li><a href="#structure">Structure of the RES index</a></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#licenses">Well-known licences</a></li><li><a href="#odrl">ODRL-based descriptions</a></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#images">Images</a></li><li><a href="#video">Video</a></li><li><a href="#audio">Audio</a></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#tools">Tools and resources</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Acropolis platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li><li><a href="#lod-further-reading">Further reading</a></li></ol></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#structure">Structure of the RES index</a></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#licenses">Well-known licences</a></li><li><a href="#odrl">ODRL-based descriptions</a></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#images">Images</a></li><li><a href="#video">Video</a></li><li><a href="#audio">Audio</a></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#tools">Tools and resources</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
 	
 	
 	
@@ -698,21 +698,327 @@ Content-Length: 272
 			</aside>
 		</section>
 	</section>
+
+	<section id="editorial-guidelines-for-content-providers" class="section"><h1>Editorial Guidelines for Content Providers</h1>
+		
+		<p>
+			What do we mean by “editorial”?
+		</p>
+		<p>
+			In this context we mean what is <em>in</em> the metadata and the associated media, such as text, video or images. 
+		</p>
+		<ul>
+			<li>What does it say and what is it about?</li>
+			<li>Is it suitable for all ages to see and hear?</li>
+			<li>Are there any limits you would want to set around who could see this material?</li>
+		</ul>
+		<p>
+			When making metadata and media available in to education, it is important to understand the expectations of the users in terms of what they will see and hear.
+		</p>
+		<p>
+			These guidelines are intended to help content providers think about these issues as early in the process as possible.
+		</p>
+		<p>
+			The RES platform is funded with public money and needs to show that it is serving the public interest and behaving responsibly.
+		</p>
+		<ul>
+			<li>Some items in physical collections are only available to certain users.</li>
+			<li>How is this information transferred to the online catalogue?</li>
+			<li>Are there items in your collections which you believe are not suitable for under-18s?</li>
+			<li>How will you help end users know this?</li>
+			<li>The RES proposal intends that in schools, the primary users of the products built on the RES aggregator will be teachers.</li>
+			<li>But teachers are over-worked and are more likely to use your material if it is easy and quick to identify as relevant to their students.</li>
+			<li>If you hold any data or guidance on age suitability you should include this in the data you publish.</li>
+			<li>Users will be able to feedback to you about concerns with the metadata or assets, including possible breach of copyright – how will you as an institution manage this?</li>
+			<li>Although you will probably already have a mechanism for dealing with feedback and/or requests of either a legal (copyright, data protection etc) or editorial nature, it is worth being aware that RES may expose your material to a wider audience and these requests may therefore increase. Can your existing workflows manage this?</li>
+			<li>In sharing data and assets are you comfortable that you are complying with the <a href="http://www.legislation.gov.uk/ukpga/1998/29/contents">Data Protection Act</a>.</li>
+		</ul>
+	</section>
 	
 </section>
-	<section id="consumers" class="chapter"><h1>Requirements for consumers</h1>
+	<section id="consumers" class="chapter"><h1>Requirements for consuming applications</h1>
 	
 	
 	<p>
-		Applications built for RES must be able to understand the index assembled by Acropolis, as well as the source data it refers to. Practically, it means that they must be able to:
+		Applications built for RES must be able to understand the index assembled by Acropolis, as well as the source data it refers to. Practically, it means that they must be able to retrieve and process RDF from remote web servers and interpret at least the “common metadata” vocabularies described in this book which are relevant to the consuming application.
 	</p>
-	<ul>	
-		<li>retrieve and process RDF from remote web servers;</li>
-		<li>interpret at least the “common metadata” vocabularies described in this book.</li>
-	</ul>
 
-	<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
-	
+	<section id="retrieving-lod" class="section"><h1>Retrieving and processing Linked Open Data</h1>
+		
+		<p>
+			In a perfect world, consuming Linked Open Data is as straightforward as:—
+		</p>
+		<ul>
+			<li>
+					Make a request for the URI you want to get data about, sending an
+					<code>Accept</code> HTTP request header containing the MIME types of
+					the formats you support in your application.
+				</li>
+			<li>
+					Parse the data in the response using an RDF parser.
+				</li>
+			<li>
+					Examine the parsed data to find triples whose subject is the URI that you
+					started with.
+				</li>
+		</ul>
+		<p>
+			While this process is simple, and could be implemented using virtually any HTTP
+			client in common use today, it brings about a few questions. How do you deal with
+			redirects? What happens if the server doesn't return the data in the format that
+			you asked for? Where do you <em>start</em>?
+		</p>
+		<p>
+			This chapter aims to answer all of these questions so that your RES application
+			can be both useful and robust in face of real-world challenges.
+		</p>
+		
+		<section id="consuming-detail" class="section"><h1>Consuming Linked Open Data in detail</h1>
+			
+			
+			<p>
+				As part of the RES project, we are developing a <a href="https://bbcarchdev.github.io/liblod/">Linked
+				Open Data client library</a>. Although at present this library is currently
+				only available to low-level languages such as C and C++, the process
+				it follows can be implemented in any language. It is intended to be a liberal
+				consumer which can deal with real situations, such as different kinds of
+				redirects and content negotiation failing or being disabled by the publisher.
+			</p>
+			<p>
+				The algorithm is as follows (implemented in the LOD library in
+				<a href="https://github.com/bbcarchdev/liblod/blob/master/fetch.c"><code class="filename">fetch.c</code></a>):—
+			</p>
+			<ol>
+				<li>
+						Optionally, check if data about the <var>request-URI</var>
+						is present in our RDF model: if so, return a reference to it.
+					</li>
+				<li>
+						Append <var>request-URI</var> to
+						<var>subject-list</var>.
+					</li>
+				<li>
+						If <var>request-URI</var> has a
+						<a href="https://wikipedia.org/wiki/Fragment_identifier">fragment</a>,
+						remove it and store it as <var>fragment</var>.
+					</li>
+				<li>
+						Set <var>followed-link</var> to <code class="constant">false</code>,
+						and <var>count</var> to 0.
+					</li>
+				<li>
+						If <var>count</var> is more than our configured
+						<var>max-redirects</var> value, skip to step X.
+					</li>
+				<li>
+						Create an HTTP request for <var>request-URI</var>,
+						setting the <code>Accept</code> header based upon the data
+						formats supported by the application. Note that RES requires
+						publishers and applications to support at
+						<em>least</em> RDF/XML
+						(<code class="constant">application/rdf+xml</code>) and Turtle
+						(<code class="constant">text/turtle</code>), but both clients and servers
+						may support other formats which can be negotiated.
+					</li>
+				<li>
+						Perform the HTTP request. Note that this should be a single
+						request-response pair, and not automatically follow redirects.
+					</li>
+				<li>
+						If a low-level error in performing the request occurred (such as
+						the hostname in the URI not being resolveable), return an error
+						status indicating that the request could not be performed.
+					</li>
+				<li>
+						Store the canonicalised form of <var>request-URI</var>
+						as the <var>base</var>.
+					</li>
+				<li>
+						Obtain the <code>Content-Type</code> of the response, if any, and store
+						it in <var>content-type</var>.
+					</li>
+				<li>
+					<p>
+						If the HTTP status code is between 200 and 299 and there is a
+						document body:—
+					</p>
+					<ol>
+						<li>
+							<p>
+								If <var>content-type</var> is not set, return an
+								error status indicating that no suitable data could be found.
+							</p>
+							<p>
+								If the <code>Content-Type</code> is not one of <code class="constant">text/html</code>,
+								<code class="constant">application/xhtml+xml</code>, <code class="constant">application/vnd.wap.xhtml+xml</code>, <code class="constant">application/vnd.ctv.xhtml+xml</code> or
+								<code class="constant">application/vnd.hbbtv.xhtml+xml</code>, then skip to
+								step X.
+							</p>
+						</li>
+						<li>
+								If <var>followed-link</var> is true, return an error
+								status indicating that a <code>&lt;link rel="alternate"&gt;</code>
+								has already been followed.
+							</li>
+						<li>
+								Parse the returned document as HTML, and extract any
+								<code class="tag">&lt;link&gt;</code> elements within
+								<code class="tag">&lt;head&gt;</code>
+								which have a <code class="tag">type</code> and
+								<code class="tag">href</code> attributes and a
+								<code class="tag">rel</code> attribute with a value
+								of <code class="constant">alternate</code>.
+							</li>
+						<li>
+								If no suitable <code class="tag">&lt;link&gt;</code> elements
+								were found, return an error status indicating that no
+								suitable data could be found.
+							</li>
+						<li>
+								Rank the returned links based upon the application's weighting
+								values (allowing an application to consume a particular
+								serialisation if available in preference to others).
+							</li>
+						<li>
+								Append the highest ranked link’s URI (that is, the value of the
+								<code class="tag">href</code> attribute) to
+								<var>subject-list</var>,
+								set <var>request-URI</var> to it,
+								set <var>followed-link</var> to <code class="constant">true</code>,
+								increment <var>count</var>, and skip back to step 5.
+							</li>	
+					</ol>
+				</li>
+				<li>
+					<p>
+						If the HTTP status code is between 300 and 399:—
+					</p>
+					<ol>
+						<li>
+								Set <var>target-URI</var> to the redirect target
+								(the <code>Location</code> header of the HTTP response). If no
+								target is available, return with an error status indicating
+								that an unsuitable HTTP status was returned.
+							</li>
+						<li>
+								If the HTTP status code is 303, set <var>request-URI</var>
+								to <var>target-URI</var>, increment
+								<var>count</var> and skip back to step 5.
+							</li>
+						<li>
+								If <var>fragment</var> is set, append it to
+								<var>target-URI</var>, replacing any fragment which might
+								be present already.
+							</li>
+						<li>
+								Push <var>target-URI</var> onto
+								<var>subject-list</var>, increment
+								<var>count</var>, and skip back to step 5.
+							</li>
+					</ol>
+				</li>
+				<li>
+						If the HTTP code is not between 200 and 399, return an error status
+						indicating that an HTTP error was returned by the server.
+					</li>
+				<li>
+						Optionally, if <var>content-type</var> is
+						<code class="constant">text/plain</code>,
+						<code class="constant">application/octet-stream</code> or
+						<code class="constant">application/x-unknown</code>,
+						attempt to determine a new content type via
+						<a href="https://wikipedia.org/wiki/Content_sniffing">content sniffing</a>. If successful, store the new type in <var>content-type</var>.
+					</li>
+				<li>
+						Parse the document body as <var>content-type</var> into
+						our RDF model. If the type is not supported, or parsing fails for any
+						other reason, return an error status.
+					</li>
+				<li>
+					<p>
+						Starting with the first item in <var>subject-list</var>:—
+					</p>
+					<ol>
+						<li>
+								Set <var>subject-URI</var> to the current entry in the
+								list.
+							</li>
+						<li>
+								Perform a query against the RDF model to determine whether any
+								triples whose subject are <var>subject-URI</var> exist.
+							</li>
+						<li>
+								If triples were found, return a reference to them.
+							</li>
+						<li>
+								Otherwise, move to the next item in
+								<var>subject-list</var>.
+							</li>
+					</ol>
+				</li>
+				<li>
+						Finally, return an error status indicating that no triples were
+						found in the retrieved data.
+					</li>
+			</ol>
+		</section>
+		
+		<section id="starting" class="section"><h1>A starting point: the RES index</h1>
+			
+			<p>
+				Just as an ordinary web browser needs a homepage or an address bar, so
+				too do Linked Open Data applications. Whether your application has a fixed
+				configured starting point or is intended to be an open-ended “data browser”,
+				the RES index is intended to be a useful Linked Open Data home for many
+				applications.
+			</p>
+			<p>
+				Described in more detail in <a href="#structure">Structure of
+				the RES index</a>, the index is itself Linked Open Data which can
+				be retrieved and processed using the algorithms described above. The URI for
+				the index is currently
+				<code class="uri"><a href="http://beta.acropolis.org.uk/">http://beta.acropolis.org.uk</a></code>, and this URI
+				can be used as default “homepage” for RES applications.
+			</p>
+		</section>
+	</section>
+
+	<section id="editorial-guidelines-for-product-developers" class="section"><h1>Editorial Guidelines for Product Developers</h1>
+		
+		<p>
+			What do we mean by “editorial”?
+		</p>
+		<p>
+			In this context we mean what is <em>in</em> the metadata and the associated media, such as text, video or images.
+		</p>
+		<ul>	
+			<li>What does it say and what is it about?</li>
+			<li>Is it suitable for all ages to see and hear?</li>
+			<li>Are there any limits you would want to set around who could see this material?</li>
+		</ul>
+		<p>
+			When making metadata and media available in to education, it is important to understand the expectations of the audience in terms of what they will see and hear.
+		</p>
+		<p>
+			These guidelines are intended to help product developers think about these issues as early in the design and development process as possible.
+		</p>
+		<p>
+			The RES platform is funded with public money and needs to show that it is serving the public interest and behaving responsibly.
+		</p>
+		<ul>	
+			<li>The RES project envisages that in schools and FE colleges it will be teachers who are the primary users of the products built on top of the RES platform, both the catalogue and the assets.</li>
+			<li>Teachers will then judge the suitability of the content for particular age ranges and make it available to pupils.</li>
+			<li>The pupils and students will therefore be the secondary users of any products, accessing a moderated version of the whole platform.</li>
+			<li>Teachers will need to share material with pupils and other teachers and this functionality will be vital.</li>
+			<li>Where possible the metadata will include any guidance as to the suitability of the content for particular age groups, for example the BBC would include <a href="http://www.bbc.co.uk/guidance/help/">Guidance warning metadata</a>.</li>
+			<li>How this will be displayed to teachers is an important consideration in the design of products and services.</li>
+			<li>However where no such information is available, it needs to be clear that this does not mean that the material is necessarily suitable for all ages (so perhaps a “no age range given” tag is appropriate?)</li>
+			<li>The RES project will provide teachers with guidelines about the range of material available in RES and hints on how to navigate and mediate such a large volume of metadata and media.</li>
+			<li>Teachers will also form their own view of what material is suitable for whom, and their ability to add that information to the metadata and share it is important.</li>
+			<li>Every product or service built on the RES platform must have a means of feeding back any concerns about aspects of the assets or the metadata to the provider of the catalogue and assets.</li>
+		</ul>
+	</section>
+
 </section>
 	<section id="structure" class="chapter"><h1>Structure of the RES index</h1>
 	
@@ -725,7 +1031,7 @@ Content-Length: 272
 	</p>
 	<p>
 		If you dereference the URI for the RES index (currently
-		<code class="uri">http://alpha.acropolis.org.uk/</code>, but this will change), the
+		<code class="uri">http://beta.acropolis.org.uk/</code>, but this will change), the
 		result is some metadata about the index, including information about
 		how to perform different kinds of query, and some selected sample
 		entities.

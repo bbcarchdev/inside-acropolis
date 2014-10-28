@@ -16,6 +16,7 @@
 	
 	<section xml:id="codec-video">
 		<title>Video codecs</title>
+
 		<segmentedlist>
 			<segtitle>Kind</segtitle>
 			<segtitle>Usage</segtitle>
@@ -165,6 +166,123 @@
 	
 	<section xml:id="codec-audio">
 		<title>Audio codecs</title>
+		
+		<segmentedlist>
+			<segtitle>Kind</segtitle>
+			<segtitle>Usage</segtitle>
+			<segtitle>Properties</segtitle>
+			<segtitle>Examples</segtitle>
+			
+			<seglistitem>
+				<seg>Preservation</seg>
+				<seg>Long-term archive storage</seg>
+				<seg>Lossless compression, typically 2:1</seg>
+				<seg>Raw PCM, FLAC, ALAC, Dolby TrueHD</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Intermediate (mezzanine)</seg>
+				<seg>Fine-cut editing</seg>
+				<seg>Audibly lossless, typically 4:1–6:1</seg>
+				<seg>Raw PCM, FLAC, ALAC, AAC (MPEG-2 Part 7, MPEG-4 Part 3), Dolby TrueHD</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Delivery</seg>
+				<seg>Distribution through a broadcast chain or publishing on physical media</seg>
+				<seg>Output format, constrained by bandwidth, typically 7:1</seg>
+				<seg>AAC (MPEG-2 Part 7, MPEG-4 Part 3), MP3 (MPEG-1 Part 3, MPEG-2 Part 3), Dolby AC-3, Dolby TrueHD</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Browse</seg>
+				<seg>Lightweight, streamable, proxy</seg>
+				<seg>Output format, constrained by bandwidth, typically in excess of 11:1</seg>
+				<seg>AAC (MPEG-2 Part 7, MPEG-4 Part 3), MP3 (MPEG-1 Part 3, MPEG-2 Part 3), Dolby AC-3</seg>
+			</seglistitem>
+		</segmentedlist>
+		
+		<segmentedlist>
+			<segtitle>Codec</segtitle>
+			<segtitle>Kind</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Lossy/Lossless</segtitle>
+			<segtitle>Notes</segtitle>
+
+			<seglistitem>
+				<seg>Raw PCM</seg>
+				<seg>Audio</seg>
+				<seg>Various</seg>
+				<seg>Uncompressed</seg>
+				<seg>Typically wrapped in AIFF or RIFF (WAV)</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>FLAC</seg>
+				<seg>Audio</seg>
+				<seg>Xiph</seg>
+				<seg>Lossless</seg>
+				<seg>Limited hardware support</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Apple Lossless (ALAC)</seg>
+				<seg>Audio</seg>
+				<seg>Apple</seg>
+				<seg>Lossless</seg>
+				<seg>Limited support</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Dolby TrueHD</seg>
+				<seg>Audio</seg>
+				<seg>Dolby</seg>
+				<seg>Lossless</seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Dolby AC-3</seg>
+				<seg>Audio</seg>
+				<seg>Dolby</seg>
+				<seg>Lossy</seg>
+				<seg>Widely supported in professional applications</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>AAC (MPEG-2 Part 7, MPEG-4 Part 3)</seg>
+				<seg>Audio</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Lossy</seg>
+				<seg>Widely supported</seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg>MP3 (MPEG-1 Part 3, MPEG-2 Part 3)</seg>
+				<seg>Audio</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Lossy</seg>
+				<seg>Very widely supported</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Ogg Vorbis</seg>
+				<seg>Audio</seg>
+				<seg>Xiph</seg>
+				<seg>Lossy</seg>
+				<seg>Adopted as audio codec for WebM</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Opus</seg>
+				<seg>Audio</seg>
+				<seg>IETF</seg>
+				<seg>Lossy</seg>
+				<seg>Currently being trialled, particularly by radio broadcasters</seg>
+			</seglistitem>
+		
+		</segmentedlist>
+		
 	</section>
 	
 	<section xml:id="codec-image">

@@ -700,6 +700,62 @@
 	
 	<section xml:id="packaging-formats">
 		<title>Packaging formats</title>
+		
+		<segmentedlist>
+			<segtitle>Package</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Metadata formats</segtitle>
+			<segtitle>Container formats</segtitle>
+			<segtitle>Multiple programs?</segtitle>
+			<segtitle>Notes</segtitle>
+			
+			<seglistitem>
+				<seg>AVCHD</seg>
+				<seg>Sony/Panasonic</seg>
+				<seg></seg>
+				<seg>MTS/TOD</seg>
+				<seg>Yes</seg>
+				<seg>Derived from Blu-Ray</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>DVD-Video</seg>
+				<seg>DVD Forum</seg>
+				<seg></seg>
+				<seg>Program Stream (MPEG-2 Part 1)</seg>
+				<seg>Yes</seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Blu-Ray</seg>
+				<seg>BDA</seg>
+				<seg></seg>
+				<seg>MTS/TOD</seg>
+				<seg>Yes</seg>
+				<seg></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>CinemaDNG</seg>
+				<seg>Adobe</seg>
+				<seg>XMP</seg>
+				<seg>MXF, DNG</seg>
+				<seg>No</seg>
+				<seg>Intended to package losslessly-encoded media</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Digital Production Partnership (DPP)</seg>
+				<seg>DPP</seg>
+				<seg>DPP XML</seg>
+				<seg>MXF</seg>
+				<seg>No</seg>
+				<seg>Intended for delivery of complete programmes to broadcasters</seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
 	</section>
 	
 	<section xml:id="streaming-formats">

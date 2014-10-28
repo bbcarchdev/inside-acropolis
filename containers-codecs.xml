@@ -410,6 +410,188 @@
 	
 	<section xml:id="containers">
 		<title>Container formats</title>
+		
+		<segmentedlist>
+			<segtitle>Container</segtitle>
+			<segtitle>Authority</segtitle>
+			<segtitle>Seekable?</segtitle>
+			<segtitle>Multiple tracks?</segtitle>
+			<segtitle>Multiple programs?</segtitle>
+			<segtitle>Notes</segtitle>
+			
+			<seglistitem>
+				<seg>Transport Stream (MPEG-2 Part 1)</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>No</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>Used by DVB, ATSC, ARIB, Apple HLS, modified for use by Blu-Ray and AVCHD</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Program Stream (MPEG-2 Part 1)</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Used by DVD-Video (VOB), HD-DVD (EVO)</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>QuickTime</seg>
+				<seg>Apple</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Now harmonised with and extends Base Media</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Base Media (MPEG-4 Part 12)</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Derived from QuickTime .mov</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>MP4 (MPEG-4 Part 14)</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Derived from Base Media</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>FLV</seg>
+				<seg>Adobe</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Derived from Base Media</seg>
+			</seglistitem>
+				
+			<seglistitem>
+				<seg>3GP &amp; 3G2</seg>
+				<seg>3GPP</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Derived from Base Media</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>AVCHD/Blu-Ray MTS/TOD</seg>
+				<seg>Various</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Transport Stream packets prefixed with a 32-bit timecode</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Elementary Stream (ES)</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>No</seg>
+				<seg>No</seg>
+				<seg>No</seg>
+				<seg>Raw codec data</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Packetized Elementary Stream (PES)</seg>
+				<seg>ISO/MPEG</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>No</seg>
+				<seg>Elementary Stream split into packets with an added header</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>MXF</seg>
+				<seg>SMPTE</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Forms the basis of the Digital Production Partnership (DPP) UK broadcasting delivery specification</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>AIFF</seg>
+				<seg>Apple</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>No</seg>
+				<seg>Typically used as a lightweight single-essence container</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>AAF</seg>
+				<seg>AMWA</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Derived from Microsoft (OLE) Structured Storage as used by legacy Microsoft Office</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Matroska</seg>
+				<seg>Matroska</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Not well-supported</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>JP2 (ISO 15444-12)</seg>
+				<seg>ISO/JPEG</seg>
+				<seg></seg>
+				<seg>No</seg>
+				<seg>No</seg>
+				<seg>Derived from Base Media; profiled for JPEG 2000 (and Motion JPEG 2000) essence</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>WebM</seg>
+				<seg>Google</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Derived from Matroska; only used to carry WebM audio &amp; video essence</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>RIFF</seg>
+				<seg>Microsoft</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>WAV and AVI are both RIFF formats</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>ASF</seg>
+				<seg>Microsoft</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>Considered legacy; WMA and WMV are both ASF formats</seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg>Ogg</seg>
+				<seg>Xiph</seg>
+				<seg>Yes</seg>
+				<seg>Yes</seg>
+				<seg>No</seg>
+				<seg>De facto container for Vorbis audio and Theora video</seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
 	</section>
 	
 	<section xml:id="metadata-formats">

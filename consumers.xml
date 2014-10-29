@@ -15,11 +15,19 @@
 	<title>Requirements for consuming applications</title>
 	
 	<para>
-		Applications built for RES must be able to understand the index assembled by Acropolis, as well as the source data it refers to. Practically, it means that they must be able to retrieve and process RDF from remote web servers and interpret at least the “common metadata” vocabularies described in this book which are relevant to the consuming application.
+		Applications built for RES must be able to understand the index assembled by Acropolis, as well as the source data it refers to. Practically, it means that they must be able to retrieve and process RDF from remote web servers and interpret at least the <link xlink:href="#common">common metadata</link> vocabularies described in this book which are relevant to the consuming application.
 	</para>
 
 	<section xml:id="retrieving-lod">
 		<title>Retrieving and processing Linked Open Data</title>
+		<tip>
+			Although it's useful to understand the mechanics of consuming
+			Linked Open Data if you are developing applications for it,
+			consumer libraries may exist for your preferred platform
+			and programming language already. A list of some of these is
+			included in <link xlink:href="#lod-consumer-tools">an appendix</link>
+			at the end of this book.
+		</tip>
 		<para>
 			In a perfect world, consuming Linked Open Data is as straightforward as:—
 		</para>
@@ -309,13 +317,17 @@
 				applications.
 			</para>
 			<para>
-				Described in more detail in <citetitle><link xlink:href="#structure">Structure of
-				the RES index</link></citetitle>, the index is itself Linked Open Data which can
+				Described in more detail in <citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>,
+				the index is itself Linked Open Data which can
 				be retrieved and processed using the algorithms described above. The URI for
 				the index is currently
 				<uri><link xlink:href="http://beta.acropolis.org.uk/">http://beta.acropolis.org.uk</link></uri>, and this URI
 				can be used as default “homepage” for RES applications.
 			</para>
+			<warning>
+				The URI to the API will change soon as the live version of the platform replaces
+				the current beta.
+			</warning>
 			<para>
 				In the same way that a homepage only provides the starting point for a web
 				browser, the same is true of the RES index: applications can allow users

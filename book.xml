@@ -33,10 +33,9 @@
 	<xi:include href="preface.xml" />
 	<xi:include href="intro.xml" />
 	<xi:include href="lod.xml" />
-	<xi:include href="architecture.xml" />
+	<xi:include href="structure.xml" />
 	<xi:include href="publishers.xml" />
 	<xi:include href="consumers.xml" />
-	<xi:include href="structure.xml" />
 	<xi:include href="media.xml" />
 	<xi:include href="common.xml" />
 	<xi:include href="assets.xml" />
@@ -46,6 +45,7 @@
 	<xi:include href="events.xml" />
 	<xi:include href="concepts.xml" />
 	<xi:include href="creative.xml" />
+	<xi:include href="architecture.xml" />
 	<xi:include href="tools.xml" />
 	<xi:include href="containers-codecs.xml" />
 	<xi:include href="vocab-index.xml" />

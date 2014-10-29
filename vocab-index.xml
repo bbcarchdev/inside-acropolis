@@ -18,126 +18,146 @@
 		<segtitle>Vocabulary</segtitle>
 		<segtitle>Namespace URI</segtitle>
 		<segtitle>Prefix</segtitle>
-		<segtitle>Section</segtitle>		
+		<segtitle>Section</segtitle>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/wiki/WebAccessControl">Access Control ontology</link></seg>
 			<seg><uri>http://www.w3.org/ns/auth/acl</uri></seg>
 			<seg><literal>acl:</literal></seg>
-			<seg><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></seg>
+			<seg><citetitle><link xlink:href="#conditional-access">Describing conditionally-accessible resources</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/2003/01/geo/">Basic geo vocabulary</link></seg>
 			<seg><uri>http://www.w3.org/2003/01/geo/wgs84_pos#</uri></seg>
 			<seg><literal>geo:</literal></seg>
-			<seg><link xlink:href="#places">Describing places</link></seg>
+			<seg><citetitle><link xlink:href="#places">Describing places</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><link xlink:href="http://creativecommons.org/ns">Creative Commons Rights Expression Language</link></seg>
 			<seg><uri>http://creativecommons.org/ns#</uri></seg>
 			<seg><literal>cc:</literal></seg>
-			<seg><link xlink:href="#rights">Metadata describing rights and licensing</link></seg>
+			<seg><citetitle><link xlink:href="#rights">Metadata describing rights and licensing</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html">CIDOC CRM</link></seg>
 			<seg><uri>http://www.cidoc-crm.org/cidoc-crm/</uri></seg>
 			<seg><literal>crm:</literal></seg>
-			<seg><link xlink:href="#things">Describing physical things</link></seg>
+			<seg><citetitle><link xlink:href="#things">Describing physical things</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</link></seg>
 			<seg><uri>http://purl.org/dc/terms/</uri></seg>
 			<seg><literal>dct:</literal></seg>
-			<seg><link xlink:href="#common">Common metadata</link>, <link xlink:href="#rights">Metadata describing rights and licensing</link>, <link xlink:href="#collections">Collections and data-sets</link></seg>
+			<seg><citetitle><link xlink:href="#common">Common metadata</link></citetitle>, <citetitle><link xlink:href="#rights">Metadata describing rights and licensing</link></citetitle>, <citetitle><link xlink:href="#collections">Collections and data-sets</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Types</link></seg>
 			<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
 			<seg><literal>dcmit:</literal></seg>
-			<seg><link xlink:href="#document-metadata">Metadata describing documents</link>, <link xlink:href="#collections">Collections and data-sets</link></seg>
+			<seg><citetitle><link xlink:href="#document-metadata">Metadata describing documents</link></citetitle>, <citetitle><link xlink:href="#collections">Collections and data-sets</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://motools.sourceforge.net/event/event.html">Event ontology</link></seg>
 			<seg><uri>http://purl.org/NET/c4dm/event.owl#</uri></seg>
 			<seg><literal>event:</literal></seg>
-			<seg><link xlink:href="#events">Describing events</link></seg>
+			<seg><citetitle><link xlink:href="#events">Describing events</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
 			<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
 			<seg><literal>foaf:</literal></seg>
-			<seg><link xlink:href="#common">Common metadata</link></seg>
+			<seg><citetitle><link xlink:href="#common">Common metadata</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://vocab.org/frbr/core.html">FRBR Core</link></seg>
 			<seg><uri>http://purl.org/vocab/frbr/core#</uri></seg>
 			<seg><literal>frbr:</literal></seg>
-			<seg><link xlink:href="#creative">Describing creative works</link></seg>
+			<seg><citetitle><link xlink:href="#creative">Describing creative works</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.geonames.org/ontology/documentation.html">GeoNames Ontology</link></seg>
 			<seg><uri>http://www.geonames.org/ontology#</uri></seg>
 			<seg><literal>gn:</literal></seg>
-			<seg><link xlink:href="#places">Describing places</link></seg>
+			<seg><citetitle><link xlink:href="#places">Describing places</link></citetitle></seg>
 		</seglistitem>
-
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.rssboard.org/media-rss">Media RSS</link></seg>
+			<seg><uri>http://search.yahoo.com/mrss/</uri></seg>
+			<seg><literal>mrss:</literal></seg>
+			<seg><citetitle><link xlink:href="#media">Publishing digital media</link></citetitle>, <citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle></seg>
+		</seglistitem>
+		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/community/odrl/">ODRL 2.0</link></seg>
 			<seg><uri>http://www.w3.org/ns/odrl/2/</uri></seg>
 			<seg><literal>odrl:</literal></seg>
-			<seg><link xlink:href="#rights">Metadata describing rights and licensing</link></seg>
+			<seg><citetitle><link xlink:href="#rights">Metadata describing rights and licensing</link></citetitle></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.opensearch.org/Specifications/OpenSearch/1.1">OpenSearch</link></seg>
+			<seg><uri>http://a9.com/-/spec/opensearch/1.1/</uri></seg>
+			<seg><literal>osd:</literal></seg>
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/TR/owl2-syntax/">OWL</link></seg>
 			<seg><uri>http://www.w3.org/2002/07/owl#</uri></seg>
 			<seg><literal>owl:</literal></seg>
-			<seg><link xlink:href="#sameas">Referencing alternative identifiers: expressing equivalence</link></seg>			
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>, <citetitle><link xlink:href="#sameas">Referencing alternative identifiers: expressing equivalence</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</link></seg>
 			<seg><uri>http://www.w3.org/2000/01/rdf-schema#</uri></seg>
 			<seg><literal>rdfs:</literal></seg>
-			<seg><link xlink:href="#common">Common metadata</link></seg>
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>, <citetitle><link xlink:href="#common">Common metadata</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
 			<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
 			<seg><literal>rdf:</literal></seg>
-			<seg><link xlink:href="#common">Common metadata</link></seg>
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>, <citetitle><link xlink:href="#common">Common metadata</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</link></seg>
 			<seg><uri>http://www.w3.org/2008/05/skos#</uri></seg>
 			<seg><literal>skos:</literal></seg>
-			<seg><link xlink:href="#concepts">Describing concepts and taxonomies</link></seg>			
+			<seg><citetitle><link xlink:href="#concepts">Describing concepts and taxonomies</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://vocab.deri.ie/void">VoID</link></seg>
 			<seg><uri>http://rdfs.org/ns/void#</uri></seg>
 			<seg><literal>void:</literal></seg>
-			<seg><link xlink:href="#collections">Collections and data-sets</link></seg>
-			
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>, <citetitle><link xlink:href="#collections">Collections and data-sets</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/ns/formats/">W3C formats registry</link></seg>
 			<seg><uri>http://www.w3.org/ns/formats/</uri></seg>
 			<seg><literal>formats:</literal></seg>
-			<seg><link xlink:href="#document-metadata">Metadata describing documents</link></seg>
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>, <citetitle><link xlink:href="#document-metadata">Metadata describing documents</link></citetitle></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/1999/xhtml/vocab">XHTML Vocabulary</link></seg>
+			<seg><uri>http://www.w3.org/1999/xhtml/vocab#</uri></seg>
+			<seg><literal>xhtml:</literal></seg>
+			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle></seg>
 		</seglistitem>
 		
 	</segmentedlist>

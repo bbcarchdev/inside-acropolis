@@ -34,8 +34,8 @@
 	<xi:include href="intro.xml" />
 	<xi:include href="lod.xml" />
 	<xi:include href="structure.xml" />
-	<xi:include href="publishers.xml" />
 	<xi:include href="consumers.xml" />
+	<xi:include href="publishers.xml" />
 	<xi:include href="media.xml" />
 	<xi:include href="common.xml" />
 	<xi:include href="assets.xml" />

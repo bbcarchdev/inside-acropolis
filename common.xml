@@ -218,9 +218,17 @@
 				In many cases, the simplest way of expressing rights information is to include it in the data that you're publishing, and this can often be accomplished by adding a single triple to each avaialble resource:
 			</para>
 			<programlisting language="turtle"><![CDATA[<> dct:license <http://creativecommons.org/publicdomain/zero/1.0/> .]]></programlisting>
+			<para>
+				The above example assumes that you do not set <literal>@base</literal> to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple. It is important that the subject of this triple is the URI of the actual concrete <emphasis>document</emphasis>. If you have different URIs for each RDF representation, and either send a <literal>Content-Location</literal> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <literal>/books/9781899066100.ttl</literal>).
+			</para>
 			<tip>
 				<para>
-					The above example assumes that you do not set <literal>@base</literal> to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple. It is important that the subject of this triple is the URI of the actual concrete <emphasis>document</emphasis>. If you have different URIs for each RDF representation, and either send a <literal>Content-Location</literal> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <literal>/books/9781899066100.ttl</literal>).
+					The Research &amp; Education Space crawler is <emphasis>stateless</emphasis>, like the underlying HTTP protocol itself. In practice, this means that when a document is being processed by the crawler, the only information which can be used to evaluate it is the <varname>request-URI</varname>, the <literal>Content-Location</literal> (if provided), any <link xlink:href="#rights-link">Link headers</link> that were sent, and the serialised RDF itself.
+				</para>
+				<para>
+					Most importantly, you cannot assume when you write your RDF that the crawler (or any other HTTP client) will be aware of alternative URIs which redirect to
+					your document (for example, via a <literal>303 See Other</literal> redirect), and so although you can include triples about those URIs in the document, they
+					will have no role in determining whether the licensing is suitable for use in the Research &amp; Education Space.
 				</para>
 			</tip>
 			<para>
@@ -265,7 +273,7 @@
 			<title>Expressing rights information using the Link HTTP header</title>
 			
 			<para>
-				It’s possible to express licensing information using the <literal><link xlink:href="https://tools.ietf.org/html/rfc5988">Link</link></literal> HTTP response header. To do so, simply emit a <literal>Link</literal> header pointing to one of the <link xlink:href="#licenses">well-known license URIs</link> listed below and <literal>rel="license"</literal>.
+				It’s possible to express licensing information using the <literal><link xlink:href="https://tools.ietf.org/html/rfc5988">Link</link></literal> HTTP response header. To do so, simply send a <literal>Link</literal> header pointing to one of the <link xlink:href="#licenses">well-known license URIs</link> listed below and <literal>rel="license"</literal>.
 			</para>
 			<programlisting><![CDATA[HTTP/1.1 200 OK
 Content-Type: text/turtle
@@ -275,7 +283,7 @@ Link: <http://creativecommons.org/publicdomain/zero/1.0/>;rel="license"]]></prog
 			</note>
 
 			<section xml:id="rights-link-apache">
-				<title>Configuring the Apache web server to send rights information in a Link HTTP header</title>
+				<title>Configuring Apache web server to send a Link header</title>
 				<para>
 					The Apache web server can be configured to send a <literal>Link</literal> header containing licensing information using <literal><link xlink:href="http://httpd.apache.org/docs/current/mod/mod_headers.html">mod_headers</link></literal>. Once the module has been enabled, you can use a configuration stanza similar to:—
 				</para>
@@ -286,7 +294,7 @@ Link: <http://creativecommons.org/publicdomain/zero/1.0/>;rel="license"]]></prog
 			</section>
 
 			<section xml:id="rights-link-varnish">
-				<title>Configuring the Varnish web cache to send rights information in a Link HTTP header</title>
+				<title>Configuring Varnish to send a Link header</title>
 				<para>
 					Varnish can be configured to send a <literal>Link</literal> header containing licensing information. You can do this by modifying the <literal>beresp.http</literal> object in the <literal>vcl_fetch</literal> function:
 				</para>

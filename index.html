@@ -1544,14 +1544,17 @@ Content-Length: 272
 			</p>
 			<pre class="code turtle"><code>&lt;&gt; dct:license &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt; .</code></pre>
 			<p>
-				The above example assumes that you do not set <code class="literal">@base</code> to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple. It is important that the subject of this triple is the URI of the actual concrete <em>document</em>. If you have different URIs for each RDF representation, and either send a <code class="literal">Content-Location</code> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <code class="literal">/books/9781899066100.ttl</code>).
+				The above example assumes that you do not set <code class="literal">@base</code> to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple.
 			</p>
-			<aside class="tip">
+			<p>
+				It is important that the subject of this triple is the URI of the concrete <em>document</em>. If you have different URIs for each RDF representation, and either send a <code class="literal">Content-Location</code> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <code class="literal">/books/9781899066100.ttl</code>).
+			</p>
+			<p>
+				This is because the Research &amp; Education Space crawler is <em>stateless</em>, just like the underlying HTTP protocol itself. In practice, this means that when a document is being processed by the crawler, the only information which can be used to evaluate it is the <var>request-URI</var>, the <code class="literal">Content-Location</code> (if provided), any <a href="#rights-link">Link headers</a> that were sent, and the serialised RDF itself.
+			</p>
+			<aside class="important">
 				<p>
-					The Research &amp; Education Space crawler is <em>stateless</em>, like the underlying HTTP protocol itself. In practice, this means that when a document is being processed by the crawler, the only information which can be used to evaluate it is the <var>request-URI</var>, the <code class="literal">Content-Location</code> (if provided), any <a href="#rights-link">Link headers</a> that were sent, and the serialised RDF itself.
-				</p>
-				<p>
-					Most importantly, you cannot assume when you write your RDF that the crawler (or any other HTTP client) will be aware of alternative URIs which redirect to
+					Most importantly, you cannot assume when you construct your RDF that the crawler (or any other HTTP client) will be aware of any alternative URIs which redirect to
 					your document (for example, via a <code class="literal">303 See Other</code> redirect), and so although you can include triples about those URIs in the document, they
 					will have no role in determining whether the licensing is suitable for use in the Research &amp; Education Space.
 				</p>

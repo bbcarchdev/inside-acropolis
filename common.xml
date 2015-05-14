@@ -276,7 +276,10 @@
 			<title>Expressing rights information using the Link HTTP header</title>
 			
 			<para>
-				It’s possible to express licensing information using the <literal><link xlink:href="https://tools.ietf.org/html/rfc5988">Link</link></literal> HTTP response header. To do so, simply send a <literal>Link</literal> header pointing to one of the <link xlink:href="#licenses">well-known license URIs</link> listed below and <literal>rel="license"</literal>.
+				It’s also possible to express licensing information using the <literal><link xlink:href="https://tools.ietf.org/html/rfc5988">Link</link></literal> HTTP response header, instead of incorporating it into the data itself. While it will mean that it’s less obvious to somebody looking directly at your data what the licensing terms are, there may be less work involved in expressing the information this way, depending upon how your particular setup. 
+			</para>
+			<para>	
+				To do so, simply send a <literal>Link</literal> header pointing to one of the <link xlink:href="#licenses">well-known license URIs</link> listed below and <literal>rel="license"</literal>.
 			</para>
 			<programlisting><![CDATA[HTTP/1.1 200 OK
 Content-Type: text/turtle

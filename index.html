@@ -1575,7 +1575,10 @@ Content-Length: 272
 			
 			
 			<p>
-				It’s possible to express licensing information using the <code class="literal"><a href="https://tools.ietf.org/html/rfc5988">Link</a></code> HTTP response header. To do so, simply send a <code class="literal">Link</code> header pointing to one of the <a href="#licenses">well-known license URIs</a> listed below and <code class="literal">rel="license"</code>.
+				It’s also possible to express licensing information using the <code class="literal"><a href="https://tools.ietf.org/html/rfc5988">Link</a></code> HTTP response header, instead of incorporating it into the data itself. While it will mean that it’s less obvious to somebody looking directly at your data what the licensing terms are, there may be less work involved in expressing the information this way, depending upon how your particular setup. 
+			</p>
+			<p>	
+				To do so, simply send a <code class="literal">Link</code> header pointing to one of the <a href="#licenses">well-known license URIs</a> listed below and <code class="literal">rel="license"</code>.
 			</p>
 			<pre class="code"><code>HTTP/1.1 200 OK
 Content-Type: text/turtle

@@ -1544,7 +1544,7 @@ Content-Length: 272
 			</p>
 			<pre class="code turtle"><code>&lt;&gt; dct:license &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt; .</code></pre>
 			<p>
-				The above example assumes that you do not set <code class="literal">@base</code>, or if present, you don't set it to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple.
+				This example assumes that you do not set <code class="literal">@base</code>, or if present, that you don't set it to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple.
 			</p>
 			<p>
 				It is important that the subject of this triple is the URI of the <em>concrete document</em>. If you have different URIs for each RDF representation, and either send a <code class="literal">Content-Location</code> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <code class="literal">/books/9781899066100.ttl</code>).

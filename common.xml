@@ -219,7 +219,7 @@
 			</para>
 			<programlisting language="turtle"><![CDATA[<> dct:license <http://creativecommons.org/publicdomain/zero/1.0/> .]]></programlisting>
 			<para>
-				The above example assumes that you do not set <literal>@base</literal>, or if present, you don't set it to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple.
+				This example assumes that you do not set <literal>@base</literal>, or if present, that you don't set it to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple.
 			</para>
 			<para>
 				It is important that the subject of this triple is the URI of the <emphasis>concrete document</emphasis>. If you have different URIs for each RDF representation, and either send a <literal>Content-Location</literal> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <literal>/books/9781899066100.ttl</literal>).

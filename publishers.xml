@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014 BBC
+ Copyright (c) 2014-2015 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -110,17 +110,17 @@
 		<section xml:id="explicit-licensing">
 			<title>Include licensing information in the data</title>
 			<para>
-				The data about the document or representation <emphasis role="strong">must</emphasis> include a rights information predicate referring to the well-known URI of a supported license. See the <link xlink:href="#rights">Metadata describing rights and licensing</link> section for further details.
+				The data about the representation <emphasis role="strong">must</emphasis> include a rights information triple referring to the well-known URI of a supported license. See the <link xlink:href="#rights">Metadata describing rights and licensing</link> section for further details.
 			</para>
 			<warning>
 				<para>
-					The RES crawler will discard data which does not include licensing data, because without it, the data cannot be used by RES applications.
+					The RES crawler will discard data which does not include licensing information, because without it the platform cannot determine nor relay whether it is suitable for use by RES applications.
 				</para>
 			</warning>
 		</section>
 		
 		<section xml:id="link-alternate">
-			<title>Link to the RDF representations from the HTML variant</title>		
+			<title>Link to the RDF representations from the HTML variant</title>
 			<para>
 				In your HTML representations, use the <code>&lt;link&gt;</code> element (within the <code>&lt;head&gt;</code> element) with a <literal>rel</literal> attribute of <literal>"alternate"</literal> in order to link to the other representations of the same document:
 			</para>

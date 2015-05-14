@@ -15,7 +15,7 @@
 		<li><a href="https://bbcarchdev.github.io/res/code">Source code</a></li>
 	</ul></div></nav>
 		<div class="masthead"></div>
-		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">October 2014 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
+		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">May 2015 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
 	<p>
 		Copyright © 2014 BBC.
 	</p>
@@ -32,21 +32,21 @@
 			This book is <em>deliberately</em> incomplete. It’s an evolving document, licensed under the terms of the <cite><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence, v2.0</a></cite>, and to which we are welcoming contributions. You can <a href="https://github.com/bbcarchdev/inside-acropolis">fork the repository on GitHub</a>, or <a href="mailto:RESFeedback@bbc.co.uk">e-mail the editor directly</a> if you would like to contribute or have suggestions for changes.</p>
 	</aside>
 	<p>
-		The <i class="firstterm">Research &amp; Education Space</i> (RES) is a project being jointly delivered by <a href="http://jisc.ac.uk">Jisc</a>, the <a href="http://bufvc.ac.uk">British Universities Film &amp; Video Council</a> (BUFVC), and the <a href="http://www.bbc.co.uk/">BBC</a>. Its aim is to bring as much as possible of the UK’s publicly-held archives, and more besides, to learners and teachers across the UK.
+		The <i class="firstterm">Research &amp; Education Space</i> is a platform being jointly delivered by <a href="http://jisc.ac.uk">Jisc</a>, the <a href="http://bufvc.ac.uk">British Universities Film &amp; Video Council</a> (BUFVC), and the <a href="http://www.bbc.co.uk/">BBC</a>. Its aim is to bring as much as possible of the UK’s publicly-held archives, and more besides, to learners and teachers across the UK.
 	</p>
 	<p>
-		At the heart of RES is <i class="firstterm">Acropolis</i>, a technical platform which will collect, index and organise rich structured data about those archive collections published as <i class="firstterm">Linked Open Data</i> (LOD) on the Web. The collected data is organised around the people, places, events, concepts and things related to the items in the archive collections—and, if the archive assets themselves are available in digital form, that data includes the information on how to access them, all in a consistent machine-readable form.
+		Powering the Research &amp; Education Space is <i class="firstterm">Acropolis</i>, a technical stack which collects, indexes and organises rich structured data about those archive collections published as <i class="firstterm">Linked Open Data</i> (LOD) on the Web. The collected data is organised around the people, places, events, concepts and things related to the items in the archive collections—and, if the archive assets themselves are available in digital form, that data includes the information on how to access them, all in a consistent machine-readable form.
 	</p>
 	<p>
-		Building on the Acropolis platform, applications can make use of this index, along with the source data itself, in order to make those collections accessible and meaningful.
+		Building on the Research &amp; Education Space, applications can make use of this index, along with the source data itself, to make those collections accessible and meaningful.
 	</p>
 	<p>
-		This book describes how a collection-holder can publish their data in a form which can be collected and indexed by Acropolis and used by applications, and how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion. 
+		This book describes how a collection-holder can publish their data in a form which can be collected and indexed by the platform and used by applications, and how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion.
 	</p>
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
 	</p>
-</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Acropolis platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li></ol></li><li><a href="#api">The RES API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#licenses">Well-known licences</a></li><li><a href="#odrl">ODRL-based descriptions</a></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#images">Images</a></li><li><a href="#video">Video</a></li><li><a href="#audio">Audio</a></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Appendix II: Codecs &amp; container formats</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Acropolis platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li></ol></li><li><a href="#api">The RES API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring the Apache web server to send rights information in a Link HTTP header</a></li><li><a href="#rights-link-varnish">Configuring the Varnish web cache to send rights information in a Link HTTP header</a></li></ol></li><li><a href="#licenses">Well-known licences</a></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#images">Images</a></li><li><a href="#video">Video</a></li><li><a href="#audio">Audio</a></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Appendix II: Codecs &amp; container formats</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
 	
 	
 	
@@ -1035,17 +1035,17 @@ _:allison
 		<section id="explicit-licensing" class="section"><h1>Include licensing information in the data</h1>
 			
 			<p>
-				The data about the document or representation <strong class="strong">must</strong> include a rights information predicate referring to the well-known URI of a supported license. See the <a href="#rights">Metadata describing rights and licensing</a> section for further details.
+				The data about the representation <strong class="strong">must</strong> include a rights information triple referring to the well-known URI of a supported license. See the <a href="#rights">Metadata describing rights and licensing</a> section for further details.
 			</p>
 			<aside class="warning">
 				<p>
-					The RES crawler will discard data which does not include licensing data, because without it, the data cannot be used by RES applications.
+					The RES crawler will discard data which does not include licensing information, because without it the platform cannot determine nor relay whether it is suitable for use by RES applications.
 				</p>
 			</aside>
 		</section>
 		
 		<section id="link-alternate" class="section"><h1>Link to the RDF representations from the HTML variant</h1>
-					
+			
 			<p>
 				In your HTML representations, use the <code>&lt;link&gt;</code> element (within the <code>&lt;head&gt;</code> element) with a <code class="literal">rel</code> attribute of <code class="literal">"alternate"</code> in order to link to the other representations of the same document:
 			</p>
@@ -1493,7 +1493,7 @@ Content-Length: 272
 		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/owl2-syntax/">OWL</a></td><td><code class="uri">http://www.w3.org/2002/07/owl#</code></td><td><code class="literal">owl:</code></td></tr></tbody></table></div>
 		
 		<p>
-			Linked Open Data in general, and RES in particular, is at its most useful when the data describing things links to other data describing the same thing.
+			Linked Open Data in general, and the Research &amp; Education Space in particular, is at its most useful when the data describing things links to other data describing the same thing.
 		</p>
 
 		<p>
@@ -1531,38 +1531,103 @@ Content-Length: 272
 			Vocabularies used in this section:
 		</p>
 	
-		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://www.w3.org/community/odrl/">ODRL 2.0</a></td><td><code class="uri">http://www.w3.org/ns/odrl/2/</code></td><td><code class="literal">odrl:</code></td></tr></tbody></table></div>
+		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://creativecommons.org/ns#">Creative Commons REL</a></td><td><code class="uri">http://creativecommons.org/ns#</code></td><td><code class="literal">cc:</code></td></tr><tr><td><a href="http://www.w3.org/ns/odrl/2/">ODRL 2.1</a></td><td><code class="uri">http://www.w3.org/ns/odrl/2/</code></td><td><code class="literal">odrl:</code></td></tr><tr><td><a href="http://schema.theodi.org/odrs/">ODRS Vocabulary</a></td><td><code class="uri">http://schema.theodi.org/odrs#</code></td><td><code class="literal">odrs:</code></td></tr><tr><td><a href="http://www.w3.org/1999/xhtml/vocab#">XHTML</a></td><td><code class="uri">http://www.w3.org/1999/xhtml/vocab#</code></td><td><code class="literal">xhtmnl:</code></td></tr></tbody></table></div>
 		
 		<p>
-			The data describing digital assets (including RDF representations themselves) must include explicit licensing data in order for it to be indexed by Acropolis and used by RES applications. Additionally, the RDF data must be licensed according to the terms of a supported permissive licence.
+			The data describing digital assets (including RDF representations themselves) must be made available under the terms of a <a href="#licenses">supported license</a> and include explicit licensing data in order for it to be indexed by the Research &amp; Education Space and be useable by applications. Our approach is aligned with the Open Data Institute’s <a href="http://theodi.org/guides/publishers-guide-to-the-open-data-rights-statement-vocabulary">guide to publishing machine-readable rights data</a>.
 		</p>
-		<p>
-			In order to express this, you can use the <code class="literal">dct:rights</code> or <code class="literal">dct:licence</code> predicates (at your option). Where the subject is an RDF representation, the object of the statement must be the well-known URI of a supported licence (see below). For other kinds of digital asset, the object of the statement can either be a well-known URI of a supported licence, or a reference to a set of terms described in RDF using the <a href="http://www.w3.org/ns/odrl/2/">ODRL 2.0 vocabulary</a>.
-		</p>
+		
+		<section id="rights-rdf" class="section"><h1>Incorporating rights information into RDF data</h1>
+			
+			<p>
+				In many cases, the simplest way of expressing rights information is to include it in the data that you're publishing, and this can often be accomplished by adding a single triple to each avaialble resource:
+			</p>
+			<pre class="code turtle"><code>&lt;&gt; dct:license &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt; .</code></pre>
+			<aside class="tip">
+				<p>
+					The above example assumes that you do not set <code class="literal">@base</code> to be anything other than the document’s own URI. If you do, you will need to be more specific in the subject of your licensing triple. It is important that the subject of this triple is the URI of the actual concrete <em>document</em>. If you have different URIs for each RDF representation, and either send a <code class="literal">Content-Location</code> header or redirect to them, you need to ensure that the subject of the licensing triple is representation-specific URI (e.g., <code class="literal">/books/9781899066100.ttl</code>).
+				</p>
+			</aside>
+			<p>
+				The Research &amp; Education Space crawler understands several common predicates for expressing the well-known URI of the license of a document:
+			</p>
+			<div class="table"><table><thead><tr><th scope="col">Predicate</th></tr></thead><tbody><tr><td><code class="literal"><a href="http://purl.org/dc/terms/license">dct:license</a></code></td></tr><tr><td><code class="literal"><a href="http://purl.org/dc/terms/rights">dct:rights</a></code></td></tr><tr><td><code class="literal"><a href="http://purl.org/dc/terms/accessRights">dct:accessRights</a></code></td></tr><tr><td><code class="literal"><a href="http://creativecommons.org/ns#license">cc:license</a></code></td></tr><tr><td><code class="literal"><a href="http://www.w3.org/1999/xhtml/vocab#license">xhtml:license</a></code></td></tr><tr><td><code class="literal"><a href="http://www.w3.org/1999/xhtml/vocab#copyright">xhtml:copyright</a></code></td></tr></tbody></table></div>
+			<p>
+				If you need to, you can provide more information than the license triple alone. For example, you might include a <em>request</em> which is not a formal requirement of the licensing terms, but you would like consumers to adhere to if possible.
+			</p>
+			<p>
+				One way to do this is to include a <code class="literal">dct:license</code> triple referring to the well-known license URI, alongisde a <code class="literal">dct:rights</code> triple pointing to a locally-defined <code class="literal">odrs:RightsStatement</code> entity (described using the <a href="http://schema.theodi.org/odrs/">Open Data Rights Statement Vocabulary</a>).
+			</p>
+		</section>
+		
+		<section id="rights-link" class="section"><h1>Expressing rights information using the Link HTTP header</h1>
+			
+			
+			<p>
+				It’s possible to express licensing information using the <code class="literal"><a href="https://tools.ietf.org/html/rfc5988">Link</a></code> HTTP response header. To do so, simply emit a <code class="literal">Link</code> header pointing to one of the <a href="#licenses">well-known license URIs</a> listed below and <code class="literal">rel="license"</code>.
+			</p>
+			<pre class="code"><code>HTTP/1.1 200 OK
+Content-Type: text/turtle
+Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</code></pre>
+			<aside class="info">
+				<p>The Research &amp; Education Space crawler translates <code class="literal">Link</code> headers into RDF triples while evaluating resources it has retrieved. Unless the header specifies otherwise, the subject is the URI considered to be that of the document (which is the <code class="literal">Content-Location</code> if specified, or the <var>request-URI</var> otherwise), the predicate is the <code class="literal">rel</code> value interpreted as a URI against a base of <code class="uri">http://www.w3.org/1999/xhtml/vocab#</code> (in other words, <code class="literal">license</code> is interpreted as <code class="uri">http://www.w3.org/1999/xhtml/vocab#license</code>, while a fully-qualified URI will be used as-is), and the object is the link <em>target</em> (in the example above, <code class="uri">http://creativecommons.org/publicdomain/zero/1.0/</code>).</p>
+			</aside>
+
+			<section id="rights-link-apache" class="section"><h1>Configuring the Apache web server to send rights information in a Link HTTP header</h1>
+				
+				<p>
+					The Apache web server can be configured to send a <code class="literal">Link</code> header containing licensing information using <code class="literal"><a href="http://httpd.apache.org/docs/current/mod/mod_headers.html">mod_headers</a></code>. Once the module has been enabled, you can use a configuration stanza similar to:—
+				</p>
+				<pre class="output"><samp>Header append Link "&lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel=\"license\""</samp></pre>
+				<p>
+					The <code class="literal">Header</code> directive is very flexible, and can be used at server, virtual host, virtual path or directory (<code class="filename">.htaccess</code>) level.
+				</p>
+			</section>
+
+			<section id="rights-link-varnish" class="section"><h1>Configuring the Varnish web cache to send rights information in a Link HTTP header</h1>
+				
+				<p>
+					Varnish can be configured to send a <code class="literal">Link</code> header containing licensing information. You can do this by modifying the <code class="literal">beresp.http</code> object in the <code class="literal">vcl_fetch</code> function:
+				</p>
+				<pre class="code vcl"><code>sub vcl_fetch
+{
+	if(req.url ~ "^/books/")
+	{
+		set beresp.http.Link = "&lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel=\"license\"";
+	}
+}
+</code></pre>
+			</section>
+		</section>
 		
 		<section id="licenses" class="section"><h1>Well-known licences</h1>
 			
 			<p>
-				The Acropolis crawler discards RDF data which is not explicitly licensed using one of the well-known licenses listed below. Note that the URI listed here is the URI which must be used as the object in the licensing statement.
+				The Research &amp; Education Space crawler discards RDF data which is not explicitly licensed using one of the well-known licenses listed below. Note that the URI listed here is the URI which must be used as the object in the licensing statement, as described above.
 			</p>
 			
-			<div class="table"><table><thead><tr><th scope="col">Licence</th><th scope="col">URI</th></tr></thead><tbody><tr><td>Creative Commons Public Domain (CC0)</td><td><code class="uri"><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></code></td></tr><tr><td>Library of Congress Public Domain</td><td><code class="uri"><a href="http://id.loc.gov/about/">http://id.loc.gov/about/</a></code></td></tr><tr><td>Creative Commons Attribution 4.0 International (CC BY 4.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></code></td></tr><tr><td>Open Government Licence</td><td><code class="uri"><a href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</a></code></td></tr><tr><td>Digital Public Space Licence, version 1.0</td><td><code class="uri"><a href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</a></code></td></tr><tr><td>Creative Commons 1.0 Generic (CC BY 1.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</a></code></td></tr><tr><td>Creative Commons 2.5 Generic (CC BY 2.5)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</a></code></td></tr><tr><td>Creative Commons 3.0 Unported (CC BY 3.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</a></code></td></tr><tr><td>Creative Commons 3.0 US (CC BY 3.0 US)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</a></code></td></tr></tbody></table></div>
+			<div class="table"><table><thead><tr><th scope="col">Licence</th><th scope="col">URI</th></tr></thead><tbody><tr><td>Creative Commons Public Domain (CC0)</td><td><code class="uri"><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></code></td></tr><tr><td>Library of Congress Public Domain</td><td><code class="uri"><a href="http://id.loc.gov/about/">http://id.loc.gov/about/</a></code></td></tr><tr><td>Creative Commons Attribution 4.0 International (CC BY 4.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></code></td></tr><tr><td>Open Government Licence</td><td>
+						<code class="uri"><a href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</a></code>,
+						<code class="uri"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></code>,
+						<code class="uri"><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></code>,
+						<code class="uri"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</a></code>,
+						<code class="uri"><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</a></code>,
+						<code class="uri"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</a></code>,
+						<code class="uri"><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</a></code>,
+						<code class="uri"><a href="http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html">http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html</a></code>,
+						<code class="uri"><a href="http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf">http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf</a></code>.
+					</td></tr><tr><td>Digital Public Space Licence, version 1.0</td><td><code class="uri"><a href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</a></code></td></tr><tr><td>Creative Commons 1.0 Generic (CC BY 1.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</a></code></td></tr><tr><td>Creative Commons 2.5 Generic (CC BY 2.5)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</a></code></td></tr><tr><td>Creative Commons 3.0 Unported (CC BY 3.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</a></code></td></tr><tr><td>Creative Commons 3.0 US (CC BY 3.0 US)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</a></code></td></tr></tbody></table></div>
 			
 			<p>
-				The following example specifies that the Turtle representation of the data about our book is licensed according to the terms of the <cite>Creative Commons Attribution 4.0 International licence</cite>.
+				The following example specifies that the Turtle representation of the data about our book is licensed according to the terms of the <cite>Creative Commons Attribution 4.0 International licence</cite>, using the host-relative URI identifying the specific representation.
 			</p>
 			
-			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:rights &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
+			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:license &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
 			
 			<p>
-				See the <a href="#document-metadata">Metadata describing documents</a> section for further details on describing representations.
+				See the <a href="#document-metadata">Metadata describing documents</a> section for further details on describing individual RDF representations.
 			</p>
 			
-		</section>
-		
-		<section id="odrl" class="section"><h1>ODRL-based descriptions</h1>
-			
-			<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
 		</section>
 		
 	</section>
@@ -1605,7 +1670,7 @@ Content-Length: 272
 			</p>
 		</aside>						
 		<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
-	</section>					
+	</section>
 </section>
 	<section id="assets" class="chapter"><h1>Describing digital assets</h1>
 	

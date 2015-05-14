@@ -215,7 +215,7 @@
 		<section xml:id="rights-rdf">
 			<title>Incorporating rights information into RDF data</title>
 			<para>
-				In many cases, the simplest way of expressing rights information is to include it in the data that you're publishing, and this can often be accomplished by adding a single triple to each avaialble resource:
+				In many cases, the simplest way of expressing rights information is to include it in the data that you're publishing, and this can often be accomplished by adding a single triple to each published resource:
 			</para>
 			<programlisting language="turtle"><![CDATA[<> dct:license <http://creativecommons.org/publicdomain/zero/1.0/> .]]></programlisting>
 			<para>

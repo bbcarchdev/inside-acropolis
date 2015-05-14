@@ -268,7 +268,7 @@
 				If you need to, you can provide more information than the license triple alone. For example, you might include a <emphasis>request</emphasis> which is not a formal requirement of the licensing terms, but you would like consumers to adhere to if possible.
 			</para>
 			<para>
-				One way to do this is to include a <literal>dct:license</literal> triple referring to the well-known license URI, alongisde a <literal>dct:rights</literal> triple pointing to a locally-defined <literal>odrs:RightsStatement</literal> entity (described using the <link xlink:href="http://schema.theodi.org/odrs/">Open Data Rights Statement Vocabulary</link>).
+				One way to do this is to include a <literal>dct:license</literal> triple referring to the well-known license URI, alongside a <literal>dct:rights</literal> triple pointing to a locally-defined <literal>odrs:RightsStatement</literal> entity (described using the <link xlink:href="http://schema.theodi.org/odrs/">Open Data Rights Statement Vocabulary</link>).
 			</para>
 		</section>
 		

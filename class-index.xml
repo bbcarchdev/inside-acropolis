@@ -19,6 +19,10 @@
 		aggregator, based upon the class they are evaluated as belonging
 		to:—
 	</para>
+
+	<tip>
+		<para>The currently-deployed rule-base used by the platform for processing classes can always be found in <link xlink:href="https://github.com/bbcarchdev/spindle/blob/live/twine/rulebase.ttl">Spindle’s Git repository</link>.</para>
+	</tip>
 	
 	<segmentedlist>
 		<segtitle>Class</segtitle>

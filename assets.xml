@@ -290,13 +290,27 @@
 			</listitem>
 			<listitem>
 				<para>
-					Use <literal>dct:license</literal> or
-					<literal>dct:rights</literal> to link to a policy document
-					describing <link xlink:href="#conditional-access">who is able to access the media asset</link>
-					if it is not generally-available.
+					Use a <link xlink:href="#rights-rdf">rights statement predicate</link>
+					to link to an RDF policy document describing
+					<link xlink:href="#conditional-access">who is able to
+					access the media asset</link> if it is not generally-available,
+					or use the well-known URI of a <link xlink:href="#licenses">well-known
+					license</link> if the asset is available according to those terms.
 				</para>
 			</listitem>
 		</itemizedlist>
+		<tip>
+			<para>
+				Unlike with RDF data itself, the Research &amp; Education Space
+				crawler will not discard information about
+				<emphasis>assets</emphasis> which lack licensing information.
+				However, achieving the best user experience depends upon
+				the appropriate data being available—particularly if a piece
+				of media is only conditionally-accessible (if the data does
+				not express as much properly, then end-users will be presented
+				with a login form which they cannot use).
+			</para>
+		</tip>
 		<para>
 			For example, you might describe an episode of a television programme,
 			using the <link xlink:href="http://www.bbc.co.uk/ontologies/po">programmes

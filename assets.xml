@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014 BBC
+ Copyright (c) 2014-2015 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -42,12 +42,18 @@
 				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI types</link></seg>
 				<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
 				<seg><literal>dcmit:</literal></seg>
-			</seglistitem>				
+			</seglistitem>
 		
 			<seglistitem>
 				<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
 				<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
 				<seg><literal>foaf:</literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><link xlink:href="http://mediatypes.appspot.com">Media types</link></seg>
+				<seg><uri>http://purl.org/NET/mediatypes/</uri></seg>
+				<seg><literal>mime:</literal></seg>
 			</seglistitem>
 
 			<seglistitem>
@@ -109,7 +115,7 @@
 				Use the <literal>dct:format</literal> predicate, along with the MIME type beneath the <uri>http://purl.org/NET/mediatypes/</uri> tree:
 			</para>
 			
-			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:format <http://purl.org/NET/mediatypes/text/turtle> .]]></programlisting>			
+			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:format <http://purl.org/NET/mediatypes/text/turtle> .]]></programlisting>
 			
 			<para>
 				Give the serialisation a specific title:
@@ -139,7 +145,7 @@
 
 </data/9781899066100>
 	a foaf:Document ;
-	dct:title "'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .
+	dct:title "Information about 'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .
 	foaf:primaryTopic </books/12345#id> ;
 	dct:hasFormat
 		</data/9781899066100.ttl> ,
@@ -154,7 +160,7 @@
 </data/9781899066100.html>
 	a dcmit:Text ;
 	dct:format <http://purl.org/NET/mediatypes/text/html> ;
-	dct:title "Description 'Acronyms and Synonyms in Medical Imaging' as a web page"@en .
+	dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as a web page"@en .
 ]]></programlisting>
 		</section>
 	</section>
@@ -191,7 +197,7 @@
 	</section>
 	
 	<section xml:id="av">
-		<title>Audio, video, images and documents</title>
+		<title>Audio, video, and images</title>
 		
 		<para>
 			Vocabularies used in this section:

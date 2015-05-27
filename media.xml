@@ -15,19 +15,19 @@
 	<title>Publishing digital media</title>
 	
 	<para>
-		The RES platform will not directly consume or publish digital media (audio, video, images,
+		The Research &amp; Education Space will not directly consume or publish digital media (audio, video, images,
 		documents) itself. However, it will aggregate data <emphasis>about</emphasis>
 		digital media which has been published in a form which can be used consistently
-		by RES applications.
+		by applications built on the platform.
 	</para>
 	<para>
 		This chapter describes how those media assets can be published in ways which will be
-		most useful to RES applications, while balancing the range of access mechanisms and
+		most useful to applications, while balancing the range of access mechanisms and
 		rights restrictions applicable to users in educational settings.
 	</para>
 	<para>
 		While this chapter provides guidance on publishing media assets themselves, those
-		assets only become useful to RES and RES applications when they are properly described
+		assets only become useful to within the Research &amp; Education Space when they are properly described
 		in accompanying metadata. For more information on publishing data which describes
 		digital media assets, please refer to the chapter <citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle>.
 	</para>
@@ -36,7 +36,7 @@
 	<section xml:id="media-publication">
 		<title>Approaches to publication</title>
 		<para>
-			There are three strategies for publishing media for RES:
+			There are three strategies for publishing media for the Research &amp; Education Space:
 			<link xlink:href="#media-direct">publishing “raw” media assets</link>,
 			providing <link xlink:href="#media-frame">embeddable players</link>,
 			and publishing <link xlink:href="#media-page">pages which
@@ -55,7 +55,7 @@
 		
 			<para>
 				Publishing media directly is most suited to situations where the media assets
-				are openly-licensed and can be both downloaded and streamed by RES
+				are openly-licensed and can be both downloaded and streamed by
 				applications. It is not suitable for media which is rights-restricted to the
 				extent that downloads are not permitted.
 			</para>
@@ -159,7 +159,7 @@
 				frame.
 			</para>
 			<para>
-				This approach limits the capabilities which can be offered by the RES application
+				This approach limits the capabilities which can be offered by the application
 				to its users: as far as the application is concerned, the contents of the
 				framed web page are completely opaque; it can only assume that the page
 				will provide a suitable player for the media asset, and will have no
@@ -254,7 +254,7 @@
 		<section xml:id="media-page">
 			<title>Stand-alone playback pages</title>
 			<para>
-				Stand-alone playback pages provide the least flexibility to RES
+				Stand-alone playback pages provide the least flexibility to
 				applications, and—depending upon presentation—may result in reduced
 				visibility of your media.
 			</para>
@@ -324,7 +324,7 @@
 		<title>Access control and media availability</title>
 		
 		<para>
-			A key aim of the RES project is to increase the visibility of and access to
+			A key aim of the Research &amp; Education Space is to increase the visibility of and access to
 			digital media resources which are available to staff and students of
 			educational establishments within the United Kingdom. While this naturally
 			includes the wealth of resources which are openly-licensed and available to
@@ -333,14 +333,14 @@
 		</para>
 		<para>
 			In order to provide access to this material, publishers typically implement
-			some kind of access control. While the RES platform itself is generally
-			agnostic to media assets and their access-control mechanisms, RES
+			some kind of access control. While the platform itself is generally
+			agnostic to media assets and their access-control mechanisms,
 			applications require the ability to make user-interface decisions based upon
 			the access restrictions imposed upon the media.
 		</para>
 		<para>
-			For this reason, RES defines three specific kinds of access-control mechanism,
-			as well as a policy which RES-conformant media must be published according to.
+			For this reason, the Research &amp; Education Space defines three specific kinds of access-control mechanism,
+			as well as a policy which conformant media must be published according to.
 			Specifically, this policy is that media assets must:—
 		</para>
 		

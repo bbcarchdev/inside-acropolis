@@ -73,7 +73,7 @@
 			<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
 			<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
 			<seg><literal>foaf:</literal></seg>
-			<seg><citetitle><link xlink:href="#common">Common metadata</link></citetitle></seg>
+			<seg><citetitle><link xlink:href="#common">Common metadata</link></citetitle>, <citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2015 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<index version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="licenses">
+	<title>License index</title>
+
+	<para>
+		The Research &amp; Education Space crawler discards RDF data which is
+		not explicitly licensed using one of the well-known licenses listed
+		below. Note that the URI listed here is the URI which must be used as
+		the object in the licensing statement, as described in
+		<citetitle><link xlink:href="#rights-rdf">Incorporating rights information into RDF data</link></citetitle>.
+	</para>
+		
+	<segmentedlist>
+		<segtitle>Licence</segtitle>
+		<segtitle>URI</segtitle>
+		
+		<seglistitem>
+			<seg>Creative Commons Public Domain (CC0)</seg>
+			<seg><uri><link xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</link></uri></seg>
+		</seglistitem>
+
+		<seglistitem>
+			<seg>Library of Congress Public Domain</seg>
+			<seg><uri><link xlink:href="http://id.loc.gov/about/">http://id.loc.gov/about/</link></uri></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Creative Commons Attribution 4.0 International (CC BY 4.0)</seg>
+			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</link></uri></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Open Government Licence</seg>
+			<seg>
+				<uri><link xlink:href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</link></uri>,
+				<uri><link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</link></uri>,
+				<uri><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</link></uri>,
+				<uri><link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</link></uri>,
+				<uri><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</link></uri>,
+				<uri><link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</link></uri>,
+				<uri><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</link></uri>,
+				<uri><link xlink:href="http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html">http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html</link></uri>,
+				<uri><link xlink:href="http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf">http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf</link></uri>.
+			</seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Digital Public Space Licence, version 1.0</seg>
+			<seg><uri><link xlink:href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</link></uri></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Creative Commons 1.0 Generic (CC BY 1.0)</seg>
+			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</link></uri></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Creative Commons 2.5 Generic (CC BY 2.5)</seg>
+			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</link></uri></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Creative Commons 3.0 Unported (CC BY 3.0)</seg>
+			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></uri></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg>Creative Commons 3.0 US (CC BY 3.0 US)</seg>
+			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</link></uri></seg>
+		</seglistitem>
+		
+	</segmentedlist>
+	
+	<note>
+		<para>
+			We aim to support all well-known licenses which conform to the
+			<link xlink:href="http://opendefinition.org">Open Definition</link>.
+			Please <link xlink:href="mailto:RESFeedback@bbc.co.uk">get in touch with us</link>
+			if you think we’ve missed the URI of a license which should be on this list.
+		</para>
+	</note>
+	
+</index>

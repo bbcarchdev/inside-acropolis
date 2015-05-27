@@ -190,15 +190,150 @@
 		</section>
 	</section>
 	
-	<section xml:id="images">
-		<title>Images</title>
-	</section>
+	<section xml:id="av">
+		<title>Audio, video, images and documents</title>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
 	
-	<section xml:id="video">
-		<title>Video</title>
-	</section>
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+				<seg><uri>http://purl.org/dc/terms/</uri></seg>
+				<seg><literal>dct:</literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI types</link></seg>
+				<seg><uri>http://purl.org/dc/dcmitype/</uri></seg>
+				<seg><literal>dcmit:</literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
+				<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
+				<seg><literal>foaf:</literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><link xlink:href="http://www.rssboard.org/media-rss">Media RSS</link></seg>
+				<seg><uri>http://search.yahoo.com/mrss/</uri></seg>
+				<seg><literal>mrss:</literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><link xlink:href="http://mediatypes.appspot.com">Media types</link></seg>
+				<seg><uri>http://purl.org/NET/mediatypes/</uri></seg>
+				<seg><literal>mime:</literal></seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
+		<para>
+			Describing your media assets (or, in the case of embeddable players,
+			the pages hosting them) allows applications to properly surface the
+			correct media for a user. You can do this even if your media assets
+			are hosted entirely separately from your data and other web pages.
+		</para>
+		<itemizedlist>
+			<listitem>
+				<para>
+					Because you are describing directly-retrievable resources,
+					the subject URIs are the actual URLs of your assets.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Use members of the <link xlink:href="http://dublincore.org/documents/2012/06/14/dcmi-terms/">DCMI Type Vocabulary</link>
+					as the classes of your assets:
+					<literal>dcmit:MovingImage</literal>,
+					<literal>dcmit:Sound</literal>, and so on.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					For each asset, include a <literal>dct:format</literal>
+					triple referring to the entry in the
+					<link xlink:href="http://mediatypes.appspot.com">media types vocabulary</link>
+					matching the MIME type of the resource. For example, an
+					MP4 audio file has a MIME type of <literal>audio/mp4</literal>,
+					and so the <literal>dct:format</literal> would be
+					<uri>http://purl.org/NET/mediatypes/audio/mp4</uri>.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Add triples to the RDF describing the <link xlink:href="#creative">creative work</link>
+					that this asset is a representation of: <literal>mrss:player</literal> (for embedded player pages),
+					<literal>foaf:page</literal> (for stand-alone playback pages) or
+					<literal>mrss:content</literal> (for directly-accessible media).
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Add <literal>foaf:primaryTopic</literal> triples to the data
+					describing your assets, referring to the most specific
+					<link xlink:href="#creative">creative work</link> entity
+					that the asset represents.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Use <literal>dct:license</literal> or
+					<literal>dct:rights</literal> to link to a policy document
+					describing <link xlink:href="#conditional-access">who is able to access the media asset</link>
+					if it is not generally-available.
+				</para>
+			</listitem>
+		</itemizedlist>
+		<para>
+			For example, you might describe an episode of a television programme,
+			using the <link xlink:href="http://www.bbc.co.uk/ontologies/po">programmes
+			ontology</link>, with the following:—
+		</para>
+		<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcmit: <http://purl.org/dc/dcmitype/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+@prefix po: <http://purl.org/ontology/po/> .
+
+</programmes/b04bndbd#programme>
+	a po:Episode ;
+	dct:title "Trampolining"@en-gb ;
+	po:version </programmes/b04bndb9#programme> ;
+	mrss:player <http://player.example.com/b513ef5a60fe47d5a45826e2c592fb3f> .
 	
-	<section xml:id="audio">
-		<title>Audio</title>
+</programmes/b04bndb9#programme>
+	a po:Version ;
+	rdfs:label "An episode of "Nina and the Neurons: Get Sporty - Trampolining"@en-gb ;
+	po:aspect_ration "16:9" ;
+	po:sound_format "Stereo" ;
+	po:duration 900 .
+
+<http://player.example.com/b513ef5a60fe47d5a45826e2c592fb3f>
+	a dcmit:MovingImage ;
+	dct:format <http://purl.org/NET/mediatypes/text/html> ;
+	dct:title "Nina and the Neurons: Get Sporty - CBeebies - 2015-05-27"@en-gb ;
+	foaf:primaryTopic </programmes/b04bndb9#programme> ;
+	dct:license <http://player.example.com/terms#id> .
+]]></programlisting>
+		<para>
+			This data describes an episode of <link xlink:href="http://www.bbc.co.uk/cbeebies/shows/nina-and-the-neurons">Nina
+			the Neurons</link>, a specific version of that episode, and an embeddable
+			web player for that version which is subject to access controls.
+		</para>
+		<para>
+			Note that in practice this data might be split over several RDF resources.
+			However, if the specified media asset URL does not perform content
+			negotiation and result in an RDF description of itself, you should
+			include the data about the asset in the same resource that you describe
+			the creative work that it is a representative of.
+		</para>
 	</section>
 </chapter>

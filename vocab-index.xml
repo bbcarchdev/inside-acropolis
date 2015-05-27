@@ -96,6 +96,13 @@
 			<seg><literal>mrss:</literal></seg>
 			<seg><citetitle><link xlink:href="#media">Publishing digital media</link></citetitle>, <citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle></seg>
 		</seglistitem>
+
+		<seglistitem>
+			<seg><link xlink:href="http://mediatypes.appspot.com">Media types</link></seg>
+			<seg><uri>http://purl.org/NET/mediatypes/</uri></seg>
+			<seg><literal>mime:</literal></seg>
+			<seg><citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle></seg>
+		</seglistitem>
 		
 		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/community/odrl/">ODRL 2.0</link></seg>

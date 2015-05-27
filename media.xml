@@ -71,7 +71,7 @@
 				While affording the greatest level of flexibility to the consuming application,
 				publishing media in this way is also the simplest from a technical perspective: the
 				encoded media files are simply uploaded to a web server and then
-				<citetitle><link xlink:href="#assets">described in the accompanying metadata</link></citetitle>.
+				<citetitle><link xlink:href="#av">described in the accompanying metadata</link></citetitle>.
 			</para>
 			<para>
 				Use direct publication where:—

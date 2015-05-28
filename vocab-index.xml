@@ -28,6 +28,13 @@
 		</seglistitem>
 		
 		<seglistitem>
+			<seg><link xlink:href="http://bibliontology.com">Bibliographic Ontology</link></seg>
+			<seg><uri>http://purl.org/ontology/bibo/</uri></seg>
+			<seg><literal>bibo:</literal></seg>
+			<seg><citetitle><link xlink:href="#creative">Describing creative works</link></citetitle></seg>
+		</seglistitem>
+		
+		<seglistitem>
 			<seg><link xlink:href="http://www.w3.org/2003/01/geo/">Basic geo vocabulary</link></seg>
 			<seg><uri>http://www.w3.org/2003/01/geo/wgs84_pos#</uri></seg>
 			<seg><literal>geo:</literal></seg>
@@ -123,6 +130,13 @@
 			<seg><uri>http://www.w3.org/2002/07/owl#</uri></seg>
 			<seg><literal>owl:</literal></seg>
 			<seg><citetitle><link xlink:href="#api">The RES API: the index and how it’s structured</link></citetitle>, <citetitle><link xlink:href="#sameas">Referencing alternative identifiers: expressing equivalence</link></citetitle></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.bbc.co.uk/ontologies/po">Programmes Ontology</link></seg>
+			<seg><uri>http://purl.org/ontology/po/</uri></seg>
+			<seg><literal>po:</literal></seg>
+			<seg><citetitle><link xlink:href="#creative">Describing creative works</link></citetitle></seg>
 		</seglistitem>
 		
 		<seglistitem>

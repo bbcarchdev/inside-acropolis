@@ -14,8 +14,20 @@
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="assets">
 	<title>Describing digital assets</title>
 	
+	<para>
+		When we talk about “digital assets”, we mean digital resources that
+		users can stream or download to their devices: video, audio and image
+		files, web pages, and other kinds of document.
+	</para>
+	
+	<para>
+		In many cases, these digital assets are a <firstterm>manifestation</firstterm>
+		of a <link xlink:href="#creative">creative work</link> which should be
+		described separately and related to the assets.
+	</para>
+	
 	<section xml:id="document-metadata">
-		<title>Metadata describing documents</title>
+		<title>Metadata describing documents (including RDF serialisations)</title>
 		
 		<para>
 			Vocabularies used in this section:
@@ -81,7 +93,7 @@
 				Give the document a title:
 			</para>
 
-			<programlisting language="turtle"><![CDATA[</books/9781899066100> dct:title "'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .]]></programlisting>
+			<programlisting language="turtle"><![CDATA[</books/9781899066100> dct:title "Information about 'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .]]></programlisting>
 
 			<para>
 				If the document is not a data-set, specify the primary topic (that is, the URI of the thing described by the document):
@@ -311,12 +323,14 @@
 				with a login form which they cannot use).
 			</para>
 		</tip>
-		<para>
-			For example, you might describe an episode of a television programme,
-			using the <link xlink:href="http://www.bbc.co.uk/ontologies/po">programmes
-			ontology</link>, with the following:—
-		</para>
-		<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+		<section xml:id="av-example">
+			<title>Example</title>
+			<para>
+				For example, you might describe an episode of a television programme,
+				using the <link xlink:href="http://www.bbc.co.uk/ontologies/po">programmes
+				ontology</link>, with the following:—
+			</para>
+			<programlisting language="turtle"><![CDATA[@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcmit: <http://purl.org/dc/dcmitype/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -343,17 +357,18 @@
 	foaf:primaryTopic </programmes/b04bndb9#programme> ;
 	dct:license <http://player.example.com/terms#id> .
 ]]></programlisting>
-		<para>
-			This data describes an episode of <link xlink:href="http://www.bbc.co.uk/cbeebies/shows/nina-and-the-neurons">Nina
-			the Neurons</link>, a specific version of that episode, and an embeddable
-			web player for that version which is subject to access controls.
-		</para>
-		<para>
-			Note that in practice this data might be split over several RDF resources.
-			However, if the specified media asset URL does not perform content
-			negotiation and result in an RDF description of itself, you should
-			include the data about the asset in the same resource that you describe
-			the creative work that it is a representative of.
-		</para>
+			<para>
+				This data describes an episode of <link xlink:href="http://www.bbc.co.uk/cbeebies/shows/nina-and-the-neurons">Nina
+				the Neurons</link>, a specific version of that episode, and an embeddable
+				web player for that version which is subject to access controls.
+			</para>
+			<para>
+				Note that in practice this data might be split over several RDF resources.
+				However, if the specified media asset URL does not perform content
+				negotiation and result in an RDF description of itself, you should
+				include the data about the asset in the same resource that you describe
+				the creative work that it is a representative of.
+			</para>
+		</section>
 	</section>
 </chapter>

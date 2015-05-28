@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014 BBC
+ Copyright (c) 2014-2105 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -19,4 +19,103 @@
 		</para>
 	</tip>
 	
+	<para>
+		Vocabularies used in this section:
+	</para>
+
+	<segmentedlist>
+		<segtitle>Vocabulary</segtitle>
+		<segtitle>Namespace URI</segtitle>
+		<segtitle>Prefix</segtitle>
+
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
+			<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
+			<seg><literal>rdf:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://bibliontology.com">Bibliographic Ontology</link></seg>
+			<seg><uri>http://purl.org/ontology/bibo/</uri></seg>
+			<seg><literal>bibo:</literal></seg>
+		</seglistitem>
+
+		<seglistitem>
+			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+			<seg><uri>http://purl.org/dc/terms/</uri></seg>
+			<seg><literal>dct:</literal></seg>
+		</seglistitem>
+	
+		<seglistitem>
+			<seg><link xlink:href="http://vocab.org/frbr/core.html">FRBR Core</link></seg>
+			<seg><uri>http://purl.org/vocab/frbr/core#</uri></seg>
+			<seg><literal>frbr:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.bbc.co.uk/ontologies/po">Programmes Ontology</link></seg>
+			<seg><uri>http://purl.org/ontology/po/</uri></seg>
+			<seg><literal>po:</literal></seg>
+		</seglistitem>
+	</segmentedlist>
+	
+	<para>
+		“Creative works” is the broad term used to describe books, magazines,
+		photographs, paintings, music, TV shows, and so on. In the Research
+		&amp; Education Space, a creative work is a distinct entity with its
+		own description separate to any <link xlink:href="#assets">digital
+		assets</link> which are <emphasis>manifestations</emphasis> of
+		creative works. It’s not uncommon for there to be multiple
+		digital manifestations hosted by different organisations of the same
+		creative work.
+	</para>
+	
+	<itemizedlist>
+		<listitem>
+			<para>
+				Use the <link xlink:href="http://www.bbc.co.uk/ontologies/po">Programmes
+				Ontology</link> to describe television, radio, and online-only
+				programmes, clips and series.
+			</para>
+		</listitem>
+		<listitem>
+			<para>
+				Use the <link xlink:href="http://bibliontology.com">Bibliographic
+				Ontology</link> to describe books and periodicals.
+			</para>
+		</listitem>
+		<listitem>
+			<para>
+				Use <literal>foaf:topic</literal> and <literal>foaf:primaryTopic</literal>
+				as appropriate to relate creative works to the subjects of
+				those works. Where possible, use URIs for terms that are
+				also used by other people, such as <link xlink:href="https://www.wikidata.org/">WikiData</link>
+				and <link xlink:href="http://dbpedia.org">DBpedia</link>.
+			</para>
+			<para>
+				If you have your own subject hierarchy which is also published
+				as Linked Open Data, you can establish topic references into
+				that hierarchy, and then express the <link xlink:href="#sameas">equivalence</link>
+				between your terms and those defined by others.
+			</para>
+		</listitem>
+		<listitem>
+			<para>
+				Try to express as much detail about your creative works as you
+				feasibly can. In particular, if your works are organised into
+				series, or might have different editions or versions, it's
+				helpful to express this information as it enables more
+				comprehensive user journeys.
+			</para>
+		</listitem>
+		<listitem>
+			<para>
+				Follow the patterns described in <citetitle><link xlink:href="#assets">Describing
+				digital assets</link></citetitle> to relate specific manifestations
+				of works to the information about the works themselves. This
+				allows interfaces to offer links or embedded playback facilities
+				for media.
+			</para>
+		</listitem>
+	</itemizedlist>
 </chapter>

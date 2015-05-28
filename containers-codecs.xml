@@ -11,8 +11,8 @@
 	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
 
 -->
-<appendix version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="codecs-containers">
-	<title>Appendix II: Codecs &amp; container formats</title>
+<index version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="codecs-containers">
+	<title>Codec &amp; container format reference</title>
 	
 	<section xml:id="codec-video">
 		<title>Video codecs</title>
@@ -417,6 +417,7 @@
 			<segtitle>Seekable?</segtitle>
 			<segtitle>Multiple tracks?</segtitle>
 			<segtitle>Multiple programs?</segtitle>
+			<segtitle>MIME type</segtitle>
 			<segtitle>Notes</segtitle>
 			
 			<seglistitem>
@@ -425,6 +426,7 @@
 				<seg>No</seg>
 				<seg>Yes</seg>
 				<seg>Yes</seg>
+				<seg><literal>video/MP2T</literal></seg>
 				<seg>Used by DVB, ATSC, ARIB, Apple HLS, modified for use by Blu-Ray and AVCHD</seg>
 			</seglistitem>
 			
@@ -434,6 +436,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>video/MP2P</literal></seg>
 				<seg>Used by DVD-Video (VOB), HD-DVD (EVO)</seg>
 			</seglistitem>
 			
@@ -443,6 +446,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>video/quicktime</literal></seg>
 				<seg>Now harmonised with and extends Base Media</seg>
 			</seglistitem>
 			
@@ -452,6 +456,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg>Various</seg>
 				<seg>Derived from QuickTime .mov</seg>
 			</seglistitem>
 			
@@ -461,6 +466,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>video/mp4</literal>, <literal>audio/mp4</literal></seg>
 				<seg>Derived from Base Media</seg>
 			</seglistitem>
 			
@@ -470,6 +476,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>video/x-flv</literal></seg>
 				<seg>Derived from Base Media</seg>
 			</seglistitem>
 				
@@ -479,6 +486,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>video/3gpp</literal></seg>
 				<seg>Derived from Base Media</seg>
 			</seglistitem>
 			
@@ -488,6 +496,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>video/MP2T</literal></seg>
 				<seg>Transport Stream packets prefixed with a 32-bit timecode</seg>
 			</seglistitem>
 			
@@ -497,6 +506,7 @@
 				<seg>No</seg>
 				<seg>No</seg>
 				<seg>No</seg>
+				<seg>Various</seg>
 				<seg>Raw codec data</seg>
 			</seglistitem>
 			
@@ -506,6 +516,7 @@
 				<seg>Yes</seg>
 				<seg>No</seg>
 				<seg>No</seg>
+				<seg>None (<literal>application/octet-stream</literal>)</seg>
 				<seg>Elementary Stream split into packets with an added header</seg>
 			</seglistitem>
 			
@@ -515,6 +526,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>application/mxf</literal></seg>
 				<seg>Forms the basis of the Digital Production Partnership (DPP) UK broadcasting delivery specification</seg>
 			</seglistitem>
 			
@@ -524,6 +536,7 @@
 				<seg>Yes</seg>
 				<seg>No</seg>
 				<seg>No</seg>
+				<seg><literal>audio/x-aiff</literal>, <literal>audio/aiff</literal></seg>
 				<seg>Typically used as a lightweight single-essence container</seg>
 			</seglistitem>
 			
@@ -533,6 +546,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg>None (<literal>application/octet-stream</literal>)</seg>
 				<seg>Derived from Microsoft (OLE) Structured Storage as used by legacy Microsoft Office</seg>
 			</seglistitem>
 			
@@ -542,6 +556,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>audio/x-matroska</literal>, <literal>video/x-matroska</literal></seg>
 				<seg>Not well-supported</seg>
 			</seglistitem>
 			
@@ -551,6 +566,7 @@
 				<seg></seg>
 				<seg>No</seg>
 				<seg>No</seg>
+				<seg><literal>image/jp2</literal>, <literal>image/jpx</literal>, <literal>image/jpm</literal>, <literal>video/mj2</literal></seg>
 				<seg>Derived from Base Media; profiled for JPEG 2000 (and Motion JPEG 2000) essence</seg>
 			</seglistitem>
 			
@@ -560,6 +576,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>audio/webm</literal>, <literal>video/webm</literal></seg>
 				<seg>Derived from Matroska; only used to carry WebM audio &amp; video essence</seg>
 			</seglistitem>
 			
@@ -569,6 +586,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg>Various (particularly <literal>audio/vnd.wave</literal>, <literal>audio/wav</literal>, <literal>audio/wave</literal>, <literal>audio/x-wav</literal>, <literal>video/x-msvideo</literal>)</seg>
 				<seg>WAV and AVI are both RIFF formats</seg>
 			</seglistitem>
 			
@@ -578,6 +596,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>audio/x-ms-wma</literal>, <literal>video/x-ms-wmv</literal></seg>
 				<seg>Considered legacy; WMA and WMV are both ASF formats</seg>
 			</seglistitem>
 			
@@ -587,6 +606,7 @@
 				<seg>Yes</seg>
 				<seg>Yes</seg>
 				<seg>No</seg>
+				<seg><literal>audio/ogg</literal>, <literal>video/ogg</literal></seg>
 				<seg>De facto container for Vorbis audio and Theora video</seg>
 			</seglistitem>
 			
@@ -812,4 +832,4 @@
 		</segmentedlist>
 		
 	</section>
-</appendix>
+</index>

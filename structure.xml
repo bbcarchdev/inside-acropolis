@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014 BBC
+ Copyright (c) 2014-2015 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -12,7 +12,7 @@
 
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="api">
-	<title>The RES API: the index and how it’s structured</title>
+	<title>The Research &amp; Education Space API: the index and how it’s structured</title>
 	
 	<tip>
 		Because the API is read-only and exposed through HTTP Content Negotiation,
@@ -68,26 +68,27 @@
 	</segmentedlist>
 	
 	<para>
-		At the core of the platform is the <firstterm>RES index</firstterm>.
+		At the core of the platform is the <firstterm>Resarch &amp; Education Space index</firstterm>.
 		This index is available as <link xlink:href="http://acropolis.org.uk/">web pages</link>
 		(to make it easier for application developers to see what’s there and
 		how it works), but is primarily published as Linked Open Data. Accessing
-		the index and requesting machine-readable data is the RES platform API.
+		the index and requesting machine-readable data <emphasis>is</emphasis> the Research &amp; Education
+		Space API.
 	</para>
 	
 	<para>
-		The RES index takes the form of a <literal>void:Dataset</literal>, and
-		the operations that you might perform against the RES index will often
+		The index takes the form of a <literal>void:Dataset</literal>, and
+		the operations that you might perform against the index will often
 		be applicable to other datasets that you might encounter.
 	</para>
 	<para>
 		Depending upon your application design, it may be desirable to offer
 		the same browse and query capabilities to any dataset that the user
-		navigates to, rather than hard-coding behaviour specific to the RES
+		navigates to, rather than hard-coding behaviour specific to the
 		index.
 	</para>
 	<info>
-		It is likely that the capabilties of the RES index will evolve over time.
+		It is likely that the capabilties of the index will evolve over time.
 		While every effort will be made not to <emphasis>remove</emphasis>
 		functionality or fundamentally alter the way that it is exposed,
 		applications should where possible base the capabilities offered upon
@@ -156,14 +157,14 @@
 	<section xml:id="structure">
 		<title>Structure of the index</title>
 		<para>
-			The RES index is made up of a series of <firstterm>composite</firstterm>
+			The index is made up of a series of <firstterm>composite</firstterm>
 			entities which are constructed using the data discovered by the
 			crawler. Each of the composite entities has an <literal>owl:sameAs</literal>
 			relationship with the various source entities used to construct it,
 			a portion of whose data is cached in the index.
 		</para>
 		<para>
-			If you dereference the URI for the RES index, the
+			If you dereference the URI for the index, the
 			result is some metadata about the index itself, including information about
 			how to perform different kinds of query, the different browseable
 			partitions, and some selected sample entities.
@@ -191,7 +192,7 @@
 		<title>Common API operations</title>
 		<para>
 			Below is a list of some of the most common kinds of operation an application
-			might wish to perform against the RES index. Note that these operations can
+			might wish to perform against the index. Note that these operations can
 			apply to <emphasis>any</emphasis> dataset.
 		</para>
 		

@@ -234,10 +234,355 @@
 
 		<section xml:id="spindle-twine">
 			<title>Spindle module for Twine</title>
+			<para>
+				Within the platform, Linked Open Data which has been
+				successfully retrieved by <link xlink:href="#anansi">Anansi</link>
+				is cached in a RADOS bucket. The <uri>s3://</uri> URLs are passed to
+				to the <link xlink:href="#twine">Twine</link> message queue for
+				processing by Spindle’s
+				<link xlink:href="https://github.com/bbcarchdev/spindle/tree/develop/twine">module for Twine</link>
+				along with Twine's provided RDF quads processor.
+			</para>
+			<para>
+				The module includes both a pre-processor and post-processor, and is
+				responsible for implementing the co-reference aggregation, indexing
+				and caching logic of the Research &amp; Education Space.
+			</para>
+			<para>
+				When first loaded, the module parses and evaluates its
+				<link xlink:href="https://github.com/bbcarchdev/spindle/blob/develop/twine/rulebase.ttl">rule-base</link>,
+				which specifies how co-referencing predicates should be interpreted,
+				which predicates in source data should be cached, and the
+				relationship between source classes and predicates those incorporated
+				into the aggregate generated entities. See the <link xlink:href="#class-index">class</link>
+				and <link xlink:href="#predicate-index">predicate</link> indices
+				for more information on these relationships.
+			</para>
+			<para>
+				The <link xlink:href="https://github.com/bbcarchdev/spindle/blob/develop/twine/preproc.c">pre-processor</link>
+				is applied to any data before it is written to platform’s
+				quad-store, and uses the information in the rule-base to remove
+				triples from the graph which should not be cached.
+			</para>
+			<para>
+				Once the data has been “stripped” by the pre-processor, Twine’s
+				<link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/processors/rdf.c">RDF quads</link>
+				processor writes the updated graphs to a quad-store via a SPARQL PUT
+				request. Thus, the quad-store contains a copy of all of the
+				source data which the rule-base specifies should be cached by
+				the platform.
+			</para>
+			<para>
+				Twine invokes any registered post-processors for each graph
+				which is updated once the update has been completed, and the
+				Spindle module installs a post-processing handler so that it
+				can perform indexing and aggregation when this happens. The
+				post-processing steps are described in the following-sections:—
+			</para>
+			<section xml:id="spindle-coref">
+				<title>Co-reference discovery</title>
+				<para>
+					For each updated graph, Spindle generates a list of co-references
+					using the matching rules specified in the rule-base. To do
+					this, both the source data and existing cached data
+					referring to the subjects are evaluated (that is, the order
+					that the data is processed by Spindle doesn’t matter, which
+					is important because Anansi might encounter it in any
+					order). Where no co-references were found for a particular subject,
+					it's added to the co-reference list as a “dangling reference”.
+				</para>
+				<para>
+					Next, each entry in the list of co-references is assigned a
+					UUID which is used to form the URI of the entity within
+					the Research &amp; Education Space index.
+				</para>
+				<para>
+					Where a particular entity is encountered for the first time
+					(either because all of the known co-references are within
+					the graph being processed, or because no co-references were
+					found), a new UUID is generated and assigned to the entity.
+				</para>
+				<para>
+					Where the newly-discovered co-references refer only to the
+					same existing entity (and possibly to other entities about
+					which there is no existing data), the existing entity’s
+					UUID is simply assigned to the entity.
+				</para>
+				<para>
+					Finally, where the co-references span two or more existing
+					entities, they are all assigned the same UUID (that is, the
+					existing entries will be updated as well).
+				</para>
+				<para>
+					The result is a set of pairs of “local” subject URIs
+					(comprised of the configured base URI, followed by the UUID
+					assigned as described above, and a fixed fragment of
+					<literal>#id</literal>) and “remote” subject URIs from the
+					source data. These pairs are written into either the quad-store
+					as <literal>owl:sameAs</literal> triples (in the graph with
+					the same name as the configured base URI), or are written
+					into a SQL database table.
+				</para>
+				<para>
+					Each updated local UUID-derived URI is added to a list
+					for this processing pass which is passed to the subsequent
+					phases described below.
+				</para>
+				<para>
+					For example, if we begin with no previously-cached data
+					and process a graph which states that <literal>A</literal>
+					and <literal>B</literal> are equivalent, then the pair of
+					<literal>(A, B)</literal> will be added to the co-reference
+					list described at the beginning of this section. Because
+					this co-reference doesn’t refer to any previously-known
+					entities, it’s assigned a newly-generated UUID which we can
+					refer to as <literal>U1</literal>, and two local-remote
+					co-reference pairs are generated and stored in the quad-store
+					or SQL database:—
+				</para>
+				<orderedlist>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, A)</literal></para>
+					</listitem>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, B)</literal></para>
+					</listitem>
+				</orderedlist>
+				<para>
+					Next, we process another graph which states that <literal>C</literal>
+					and <literal>D</literal> are equivalent, and this results in
+					a new UUID being generated, <literal>U2</literal>, and two
+					new pairs being generated and stored:—
+				</para>
+				<orderedlist>
+					<listitem>
+						<para><literal>(http://baseuri/U2#id, C)</literal></para>
+					</listitem>
+					<listitem>
+						<para><literal>(http://baseuri/U2#id, D)</literal></para>
+					</listitem>
+				</orderedlist>
+				<para>
+					If we then process a graph which states that <literal>A</literal>
+					and <literal>D</literal> or equivalent (possibly as well as
+					other subjects), then one of the references from
+					<literal>U1</literal> or <literal>U2</literal> will be
+					updated so that all of <literal>A</literal>, <literal>B</literal>,
+					<literal>C</literal> and <literal>D</literal> are all stored
+					as co-references from a single local entity. For example
+					purposes, we shall say that <literal>U1</literal> will be
+					the chosen UUID, although either could occur (the choice
+					is not currently deterministic). Thus, we update the
+					<literal>U2</literal> references such that:—
+				</para>
+				<orderedlist>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, C)</literal></para>
+					</listitem>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, D)</literal></para>
+					</listitem>
+				</orderedlist>
+				<para>
+					This means that if we query our quad-store or SQL database
+					for co-references for <literal>U1</literal>, the following
+					pairs will be returned:—
+				</para>
+				<orderedlist>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, A)</literal></para>
+					</listitem>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, B)</literal></para>
+					</listitem>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, C)</literal></para>
+					</listitem>
+					<listitem>
+						<para><literal>(http://baseuri/U1#id, D)</literal></para>
+					</listitem>
+				</orderedlist>
+			</section>
+			<section xml:id="spindle-proxy">
+				<title>Proxy generation</title>
+				<para>
+					For each updated local URI, a <firstterm>proxy</firstterm>
+					is generated: that is an RDF entity which is distilled
+					using the the rule-base from all of the source data it is
+					co-referenced with.
+				</para>
+				<para>
+					The rule-base consists of two sets of rules for proxy
+					generation, which are processed in turn. First, the
+					<link xlink:href="#class-index">class</link> of the proxy
+					is determined, by finding all of the classes of all of the
+					co-referenced entities and ordering them according to the
+					score value in rule-base.
+				</para>
+				<para>
+					Next, a similar process is applied to <link xlink:href="#predicate-index">properties</link>
+					across the source data. The property rules include a similar
+					scoring approach to that used by the classes (so that, for example,
+					<literal>skos:prefLabel</literal> takes precedence over
+					<literal>rdfs:label</literal>), as well as discrimination
+					by data type (longitude and latitude should not be an
+					<literal>xsd:dateTime</literal>, for example) and class
+					applicability (that is, some properties are ignored unless
+					the class determined in the previous step is a particular
+					value: e.g., <literal>gn:parentFeature</literal> would be ignored
+					for a <literal>foaf:Person</literal>).
+				</para>
+				<para>
+					All of this “conveyed” data has a UUID-derived local subject
+					URI, as described above, and is placed in a named graph
+					whose URI is in the form <literal>http://baseURI/UUID</literal>.
+				</para>
+			</section>
+			<section xml:id="spindle-index">
+				<title>Indexing</title>
+				<para>
+					If Spindle is configured to use a SQL database as an index,
+					then certain elements of the generated entity are stored in
+					database tables for later query and retrieval. These include:—
+				</para>
+				<itemizedlist>
+					<listitem>
+						<para>the combined list of RDF classes of the entity;</para>
+					</listitem>
+					<listitem>
+						<para>
+							the label and description in any languages they are
+							available;
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							the UUIDs of any entities that have this entity as a topic;
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							if this item is a creative work, then any digital
+							assets which are manifestations of it;
+						</para>
+					</listitem>
+					<listitem>
+						<para>if the entity is a place, the longitude and latitude, if known; and</para>
+					</listitem>
+					<listitem>
+						<para>
+							if this item is a digital asset, then information
+							about the <emphasis>kind</emphasis> (e.g., moving-image, sound, interactive resource, etc.),
+							<emphasis>type</emphasis> (in the form of a MIME type, such as <literal>text/html</literal>),
+							and where the asset is known to be <link xlink:href="#conditional-access">conditionally accessible</link>,
+							the URIs of audiences which are able to access it.
+						</para>
+					</listitem>
+				</itemizedlist>
+			</section>
+			<section xml:id="spindle-precomposed">
+				<title>Storing pre-composed quads</title>
+			</section>
+			<para>
+				The RDF graph generated above (see <cite><citetitle><link xlink:href="#spindle-proxy">Proxy generation</link></citetitle></cite>)
+				is written to an S3 or RADOS bucket as <link xlink:href="http://www.w3.org/TR/n-quads/">N-Quads</link>
+				if the module has been configured to do so. If not, then the graph is written into the
+				quad-store instead.
+			</para>
+			<para>
+				Where N-Quads are stored in a bucket, the document will also
+				include all of the data about the co-referenced entities from
+				their source graphs as well. This means that the
+				<link xlink:href="#spindle-quilt">Spindle module for Quilt</link> can
+				rapidly retrieve the majority of the data about an entity with
+				a single authenticated <literal>GET</literal> request to the bucket.
+			</para>
 		</section>
 		
 		<section xml:id="spindle-quilt">
 			<title>Spindle module for Quilt</title>
+			<para>
+				The <link xlink:href="https://github.com/bbcarchdev/spindle/tree/develop/quilt">Spindle module for Quilt</link> is a companion to the corresponding
+				<link xlink:href="spindle-twine">Twine module</link> described above,
+				and includes several capabilites not present in the simple
+				resource-graph module that is included with Quilt itself:—
+			</para>
+			<itemizedlist>
+				<listitem>
+					<para>
+						the ability to perform URI look-up queries (i.e., locate
+						the entry within the index which is coreferenced to the
+						specified URI and redirect to it);
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						the ability to retrieve data about the co-referenced
+						entities from their original graphs;
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						when configured with an S3 or RADOS bucket, the module
+						can avoid SPARQL for simple fetches and instead perform
+						a simple fetch from the bucket; and
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						when configured to use a SQL database, the ability to
+						efficiently perform complex queries, such as “locate all
+						places like ‘france’ which have related video that is
+						available to users of a particular service”.
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>
+				When configured with both a SQL database and an S3 or RADOS bucket,
+				the module does not perform any SPARQL queries at all, although
+				this may change in the future as graph databases evolve.
+			</para>
+			<para>
+				The module processes four kinds of request, which are described
+				in more detail in the section <cite><citetitle><link xlink:href="#api">The Research &amp; Education Space API: the index and how it’s structured</link></citetitle></cite>:—
+			</para>
+			<itemizedlist>
+				<listitem>
+					<para>
+						a “root resource” request, which generates data about
+						the different class partitions and the available query
+						capabilities; 
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						an item request, which retrieves data about the item
+						using its “local” URI, as well as data about related
+						entities and media;
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						a look-up request, which accepts a subject URI and responds
+						either with a <literal>303 See other</literal> redirect
+						response, or a <literal>404 Not found</literal> (if the
+						URI is not present in the index); and
+					</para>
+				</listitem>
+				<listitem>
+					<para>
+						an index query request, which can be a query across
+						any combination of RDF class, free-form text, related media
+						kind, related media MIME type or audience.
+					</para>
+				</listitem>
+			</itemizedlist>
+			<para>
+				Because the API provided by the module is read-only, the cluster
+				of Quilt instances can be scaled up and down to meet demand as
+				required with minimal co-ordination (subject to underlying database
+				scalability).
+			</para>
 		</section>
 		
 	</section>

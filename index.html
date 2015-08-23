@@ -15,7 +15,7 @@
 		<li><a href="https://bbcarchdev.github.io/res/code">Source code</a></li>
 	</ul></div></nav>
 		<div class="masthead"></div>
-		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">May 2015 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
+		<h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">August 2015 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
 	<p>
 		Copyright © 2014-2015 BBC.
 	</p>
@@ -46,7 +46,7 @@
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
 	</p>
-</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Research &amp; Education Space platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li></ol></li><li><a href="#api">The RES API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring Apache web server to send a Link header</a></li><li><a href="#rights-link-varnish">Configuring Varnish to send a Link header</a></li></ol></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents (including RDF serialisations)</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Research &amp; Education Space platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does RES use RDF?</a></li></ol></li><li><a href="#api">The RES API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring Apache web server to send a Link header</a></li><li><a href="#rights-link-varnish">Configuring Varnish to send a Link header</a></li></ol></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents (including RDF serialisations)</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
 	
 	
 	
@@ -59,7 +59,9 @@
 		which is made of up three main components: a specialised web crawler,
 		<i class="firstterm">Anansi</i>, an <i class="firstterm">aggregator</i>,
 		<i class="firstterm">Spindle</i>, and a public API layer,
-		<i class="firstterm">Quilt</i>.
+		<i class="firstterm">Quilt</i>. You can read more about the architecture
+		of the stack in the section
+		<cite><a href="">Under the hood: the architecture of Acropolis</a></cite>.
 	</p>
 	<p>
 		<a href="https://github.com/bbcarchdev/anansi/">Anansi’s</a>
@@ -2076,7 +2078,221 @@ Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</c
 	<section id="architecture" class="chapter"><h1>Under the hood: the architecture of Acropolis</h1>
 	
 	
-	<p><i class="remark">This section will be expanded significantly in future editions.</i></p>
+	<p>
+		The Acroplolis stack consists of several distinct, relatively simple services.
+		Within the Research &amp; Education Space, they are used together,
+		but each can be deployed independently to suit different applications.
+	</p>
+	
+	<figure class="full">
+		
+		<img src="acropolis-architecture.svg"/>
+	<figcaption>High-level architecture of the Acropolis stack</figcaption></figure>
+	
+	<section id="quilt" class="section"><h1>Quilt</h1>
+		
+
+		<p>
+			<a href="https://github.com/bbcarchdev/quilt">Quilt</a>
+			is a modular Linked Open Data server. At its simplest, Quilt can
+			serve a directory tree of <a href="http://www.w3.org/TR/turtle/">Turtle</a>
+			files in the various RDF serialisations supported by <a href="http://librdf.org">librdf</a>,
+			but it can be extended with new <i class="firstterm">engines</i>
+			(which can retrieve data from alternative sources),
+			<i class="firstterm">serialisers</i> (which can output the data in
+			different formats), and <i class="firstterm">SAPIs</i> (server interfaces,
+			which receive requests from different sources).
+		</p>
+		<p>
+			The core of Quilt is <a href="https://github.com/bbcarchdev/quilt/tree/live/libquilt">libquilt</a>,
+			which is linked into the SAPI that is used to receive requests. libquilt
+			encapsulates request and response data, and implements a common
+			approach to configuration, loading modules, and request processing
+			workflow irrespective of SAPI is in use. Each request follows the
+			following process:
+		</p>
+		<ol>
+			<li>
+					Encapsulate request data obtained from the SAPI (such as the
+					request-URI, and any request headers) along with an empty
+					<a href="http://librdf.org/docs/api/redland-model.html">librdf model</a>
+					which will contain the response data. This encapsulated
+					request-response object is then passed to the engine and then
+					on to the serialiser which generates the response payload.
+				</li>
+			<li>
+					Perform <a href="https://en.wikipedia.org/wiki/Content_negotiation">content negotiation</a>
+					to determine the best response format supported by both the
+					client and the server.
+				</li>
+			<li>
+					Pass the request to the configured engine for processing:
+					the engine is responsible for populating the RDF model (or
+					returning an error response if it's unable to).
+				</li>
+			<li>
+					The serialiser for the negotiated response format completes
+					the request by serialising the RDF model in that format.
+				</li>
+		</ol>
+		<p>
+			Quilt includes two SAPIs: a <a href="https://github.com/bbcarchdev/quilt/blob/live/fcgi.c">FastCGI</a>
+			interface, which receives requests from any web server supporting the
+			<a href="http://www.fastcgi.com/">FastCGI interface</a>,
+			and a <a href="https://github.com/bbcarchdev/quilt/blob/live/cli.c">command-line SAPI</a>
+			which is useful for testing and debugging. New SAPIs can be developed
+			by implementing the <a href="https://github.com/bbcarchdev/quilt/blob/live/libquilt/libquilt-sapi.h">Quilt server inteface</a>
+			and linking against libquilt.
+		</p>
+		<p>
+			Quilt itself comes with engines for obtaining data from <a href="https://github.com/bbcarchdev/quilt/blob/live/engines/file.c">files</a>
+			and from <a href="https://github.com/bbcarchdev/quilt/blob/live/engines/resourcegraph.c">a quad-store</a>.
+			In both cases, the engines perform simple translation of the request-URI
+			into a file path or a graph URI and populate the RDF model with the
+			contents of that file or graph.
+		</p>
+		<p>
+			Engines could be developed which obtain data from any source. For example, the
+			<a href="http://billings.acropolis.org.uk">BBC billings data</a>
+			service, operated as part of the Research &amp; Education Space, is
+			implemented as an engine which populates RDF models based upon queries
+			performed against a SQL database.
+		</p>
+		<p>
+			The Acropolis stack includes another engine, <a href="#spindle-quilt">Spindle</a>,
+			which implements the query capabilities provided to applications by the
+			<a href="http://acropolis.org.uk/">Research &amp; Education Space API</a>.
+		</p>
+		<p>
+			libquilt itself incorporates a serialiser which will generate output
+			from an RDF model in any <a href="http://librdf.org/docs/api/redland-serializer.html">format supported by librdf</a>.
+			An <a href="https://github.com/bbcarchdev/quilt/blob/live/serialisers/html.c">additional serialiser</a> is included which can generate HTML from
+			templates written using a subset of the <a href="http://liquidmarkup.org">Liquid</a>
+			templating language.
+		</p>
+	</section>
+	
+	<section id="twine" class="section"><h1>Twine</h1>
+		
+		<p>
+			<a href="https://github.com/bbcarchdev/twine">Twine</a> is a simple, modular, queue-driven workflow engine designed for
+			RDF processing. It receives <a href="https://www.amqp.org">AMQP</a>
+			messages whose payload is a document which can be transformed to
+			RDF and pushed, using <a href="http://www.w3.org/TR/sparql11-update/">SPARQL 1.1 Update</a>
+			into a quad-store. Future versions of Twine may support other queue
+			mechanisms, such as <a href="https://aws.amazon.com/sqs/">Amazon SQS</a>.
+			More information about using Twine can be found in the
+			<a href="https://bbcarchdev.github.io/twine/">manual pages</a>.
+		</p>
+		<p>
+			Twine is typically operated as a continuously-running daemon,
+			<a href="https://bbcarchdev.github.io/twine/twine-writerd.8">twine-writerd</a>.
+			Each received message must include a <i class="firstterm">content type</i>
+			in its headers, which is used to termine which processing module the
+			message should be routed to.
+		</p>
+		<p>
+			An <a href="https://github.com/bbcarchdev/twine/blob/develop/libtwine/libtwine.h">internal API</a> allows this basic workflow to be augmented by support
+			for new message types, pre-processors (which can perform early
+			transformation of RDF graphs before normal message processors are
+			invoked), and post-processors (which can perform additional work
+			based upon the final rendition of a graph).
+		</p>
+		<p>
+			Twine includes processors for <a href="https://github.com/bbcarchdev/twine/blob/develop/processors/rdf.c">TriG and N-Quads</a>
+			(which simply store each named graph within the source data),
+			<a href="https://github.com/bbcarchdev/twine/blob/develop/processors/geonames.c">the GeoNames RDF dump format</a>,
+			and a configurable <a href="https://github.com/bbcarchdev/twine/blob/develop/processors/xslt.c">XSLT processor</a>
+			which applies user-supplied <a href="http://www.w3.org/TR/xslt20/">XSL transforms</a> in order to generate
+			RDF/XML from source data in an artbitrary XML format.
+		</p>
+		<p>
+			A special class of processors, called <i class="firstterm">handlers</i>,
+			allows for a degree of indirection in message processing. Handlers
+			use the contents of a message to retrieve data from another source
+			which can then be passed back to Twine for processing as if it had
+			been received as a message directly.
+		</p>
+		<p>
+			For example, an <a href="https://github.com/bbcarchdev/twine/blob/develop/handlers/s3.c">S3 handler</a>
+			receives messages whose payload is simply one or more S3 URLs (i.e.,
+			URLs in the form <code class="uri">s3://bucketname/path/to/resource</code>). Each
+			is fetched in turn, and passed back to Twine for normal processing.
+			The S3 handler works with both Amazon S3 and the
+			<a href="http://ceph.com/docs/master/radosgw/">Ceph RADOS object gateway</a>.
+		</p>
+		<p>
+			The <a href="https://github.com/bbcarchdev/twine/blob/develop/handlers/anansi.c">Anansi</a>
+			handler is very similar to the S3 handler, but it is designed to
+			process messages containing S3 URLs to objects and extended metadata
+			cached in a bucket by the <a href="#anansi">Anansi web crawler</a>.
+		</p>
+		<p>
+			<i class="firstterm">Bridges</i> are tools which push messages
+			<em>into</em> the Twine processing queue. A simple
+			example bridge, <a href="http://bbcarchdev.github.io/twine/twine-inject.8">twine-inject</a>
+			reads from standard input and pushes the contents directly into the
+			queue. An <a href="https://github.com/bbcarchdev/twine/blob/develop/bridges/anansi-bridge.c">additional bridge</a>
+			is included which queries an Anansi database for newly-cached
+			resources and pushes messages containing their URLs into the
+			processing queue.
+		</p>
+		<p>
+			For the Research &amp; Education Space, the <a href="#spindle-twine">Spindle module for Twine</a>
+			is responsible for processing RDF crawled by Anansi in order to
+			generate <a href="#api">the index</a>.
+		</p>
+	</section>	
+	
+	<section id="anansi" class="section"><h1>Anansi</h1>
+		
+		<p>
+			<a href="https://github.com/bbcarchdev/anansi">Anansi</a> is a web crawler,
+			which is used in the Research &amp; Education Space to find and cache
+			Linked Open Data for processing by <a href="#twine">Twine</a>.
+		</p>
+		<p>
+			Anansi is implemented as a generic web crawling library, <a href="https://github.com/bbcarchdev/anansi/tree/develop/libcrawl">libcrawl</a>,
+			and crawling daemon, <a href="https://github.com/bbcarchdev/anansi/tree/develop/crawler">crawld</a>.
+			Loadable modules are used to provide support for different cache
+			stores and for processing engines which are able to inspect
+			retrieved resources (and potentially reject them if they do not
+			meet desired criteria), and extract URLs which should be added to
+			the crawler queue.
+		</p>
+		<p>
+			The daemon is intended to operate in a parallel fashion. Although
+			an instance can be configured to run in a fixed-size cluster, it
+			can also use <a href="https://github.com/coreos/etcd">etcd</a>
+			for dynamic peer discovery. In this dynamic configuration, the
+			cluster can be expanded or contracted at will, with Anansi
+			automatically re-balancing each node when the cluster size changes.
+		</p>
+		<p>
+			Anansi includes a generic <a href="https://github.com/bbcarchdev/anansi/blob/develop/crawler/processors/rdf.c">RDF processor</a>,
+			which indiscriminately follows any URIs found in documents which
+			can be parsed by librdf. This is extended by the
+			<a href="https://github.com/bbcarchdev/anansi/blob/develop/crawler/processors/lod.c">Linked Open Data module</a>,
+			which requires that explicit open licensing is present and rejects
+			resources which don’t include licensing information, or whose licence
+			is not in the configurable white-list. This module is used by the
+			Research &amp; Education Space to process RDF and reject resources
+			which do not meet the <a href="#licenses">licensing criteria</a>.
+		</p>
+	</section>
+	
+	<section id="spindle" class="section"><h1>Spindle</h1>
+		
+
+		<section id="spindle-twine" class="section"><h1>Spindle module for Twine</h1>
+			
+		</section>
+		
+		<section id="spindle-quilt" class="section"><h1>Spindle module for Quilt</h1>
+			
+		</section>
+		
+	</section>
 	
 </section>
 	

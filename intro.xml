@@ -19,7 +19,9 @@
 		which is made of up three main components: a specialised web crawler,
 		<firstterm>Anansi</firstterm>, an <firstterm>aggregator</firstterm>,
 		<firstterm>Spindle</firstterm>, and a public API layer,
-		<firstterm>Quilt</firstterm>.
+		<firstterm>Quilt</firstterm>. You can read more about the architecture
+		of the stack in the section
+		<cite><citetitle><link xlink:xhref="#architecture">Under the hood: the architecture of Acropolis</link></citetitle></cite>.
 	</para>
 	<para>
 		<link xlink:href="https://github.com/bbcarchdev/anansi/">Anansi’s</link>

@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014 BBC
+ Copyright (c) 2014-2015 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -14,6 +14,232 @@
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="architecture">
 	<title>Under the hood: the architecture of Acropolis</title>
 	
-	<para><remark>This section will be expanded significantly in future editions.</remark></para>
+	<para>
+		The Acroplolis stack consists of several distinct, relatively simple services.
+		Within the Research &amp; Education Space, they are used together,
+		but each can be deployed independently to suit different applications.
+	</para>
+	
+	<figure pgwide="1">
+		<title>High-level architecture of the Acropolis stack</title>
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="acropolis-architecture.svg" />
+			</imageobject>
+		</mediaobject>
+	</figure>
+	
+	<section xml:id="quilt">
+		<title>Quilt</title>
+
+		<para>
+			<link xlink:href="https://github.com/bbcarchdev/quilt">Quilt</link>
+			is a modular Linked Open Data server. At its simplest, Quilt can
+			serve a directory tree of <link xlink:href="http://www.w3.org/TR/turtle/">Turtle</link>
+			files in the various RDF serialisations supported by <link xlink:href="http://librdf.org">librdf</link>,
+			but it can be extended with new <firstterm>engines</firstterm>
+			(which can retrieve data from alternative sources),
+			<firstterm>serialisers</firstterm> (which can output the data in
+			different formats), and <firstterm>SAPIs</firstterm> (server interfaces,
+			which receive requests from different sources).
+		</para>
+		<para>
+			The core of Quilt is <link xlink:href="https://github.com/bbcarchdev/quilt/tree/live/libquilt">libquilt</link>,
+			which is linked into the SAPI that is used to receive requests. libquilt
+			encapsulates request and response data, and implements a common
+			approach to configuration, loading modules, and request processing
+			workflow irrespective of SAPI is in use. Each request follows the
+			following process:
+		</para>
+		<orderedlist>
+			<listitem>
+				<para>
+					Encapsulate request data obtained from the SAPI (such as the
+					request-URI, and any request headers) along with an empty
+					<link xlink:href="http://librdf.org/docs/api/redland-model.html">librdf model</link>
+					which will contain the response data. This encapsulated
+					request-response object is then passed to the engine and then
+					on to the serialiser which generates the response payload.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Perform <link xlink:href="https://en.wikipedia.org/wiki/Content_negotiation">content negotiation</link>
+					to determine the best response format supported by both the
+					client and the server.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Pass the request to the configured engine for processing:
+					the engine is responsible for populating the RDF model (or
+					returning an error response if it's unable to).
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					The serialiser for the negotiated response format completes
+					the request by serialising the RDF model in that format.
+				</para>
+			</listitem>
+		</orderedlist>
+		<para>
+			Quilt includes two SAPIs: a <link xlink:href="https://github.com/bbcarchdev/quilt/blob/live/fcgi.c">FastCGI</link>
+			interface, which receives requests from any web server supporting the
+			<link xlink:href="http://www.fastcgi.com/">FastCGI interface</link>,
+			and a <link xlink:href="https://github.com/bbcarchdev/quilt/blob/live/cli.c">command-line SAPI</link>
+			which is useful for testing and debugging. New SAPIs can be developed
+			by implementing the <link xlink:href="https://github.com/bbcarchdev/quilt/blob/live/libquilt/libquilt-sapi.h">Quilt server inteface</link>
+			and linking against libquilt.
+		</para>
+		<para>
+			Quilt itself comes with engines for obtaining data from <link xlink:href="https://github.com/bbcarchdev/quilt/blob/live/engines/file.c">files</link>
+			and from <link xlink:href="https://github.com/bbcarchdev/quilt/blob/live/engines/resourcegraph.c">a quad-store</link>.
+			In both cases, the engines perform simple translation of the request-URI
+			into a file path or a graph URI and populate the RDF model with the
+			contents of that file or graph.
+		</para>
+		<para>
+			Engines could be developed which obtain data from any source. For example, the
+			<link xlink:href="http://billings.acropolis.org.uk">BBC billings data</link>
+			service, operated as part of the Research &amp; Education Space, is
+			implemented as an engine which populates RDF models based upon queries
+			performed against a SQL database.
+		</para>
+		<para>
+			The Acropolis stack includes another engine, <link xlink:href="#spindle-quilt">Spindle</link>,
+			which implements the query capabilities provided to applications by the
+			<link xlink:href="http://acropolis.org.uk/">Research &amp; Education Space API</link>.
+		</para>
+		<para>
+			libquilt itself incorporates a serialiser which will generate output
+			from an RDF model in any <link xlink:href="http://librdf.org/docs/api/redland-serializer.html">format supported by librdf</link>.
+			An <link xlink:href="https://github.com/bbcarchdev/quilt/blob/live/serialisers/html.c">additional serialiser</link> is included which can generate HTML from
+			templates written using a subset of the <link xlink:href="http://liquidmarkup.org">Liquid</link>
+			templating language.
+		</para>
+	</section>
+	
+	<section xml:id="twine">
+		<title>Twine</title>
+		<para>
+			<link xlink:href="https://github.com/bbcarchdev/twine">Twine</link> is a simple, modular, queue-driven workflow engine designed for
+			RDF processing. It receives <link xlink:href="https://www.amqp.org">AMQP</link>
+			messages whose payload is a document which can be transformed to
+			RDF and pushed, using <link xlink:href="http://www.w3.org/TR/sparql11-update/">SPARQL 1.1 Update</link>
+			into a quad-store. Future versions of Twine may support other queue
+			mechanisms, such as <link xlink:href="https://aws.amazon.com/sqs/">Amazon SQS</link>.
+			More information about using Twine can be found in the
+			<link xlink:href="https://bbcarchdev.github.io/twine/">manual pages</link>.
+		</para>
+		<para>
+			Twine is typically operated as a continuously-running daemon,
+			<link xlink:href="https://bbcarchdev.github.io/twine/twine-writerd.8">twine-writerd</link>.
+			Each received message must include a <firstterm>content type</firstterm>
+			in its headers, which is used to termine which processing module the
+			message should be routed to.
+		</para>
+		<para>
+			An <link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/libtwine/libtwine.h">internal API</link> allows this basic workflow to be augmented by support
+			for new message types, pre-processors (which can perform early
+			transformation of RDF graphs before normal message processors are
+			invoked), and post-processors (which can perform additional work
+			based upon the final rendition of a graph).
+		</para>
+		<para>
+			Twine includes processors for <link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/processors/rdf.c">TriG and N-Quads</link>
+			(which simply store each named graph within the source data),
+			<link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/processors/geonames.c">the GeoNames RDF dump format</link>,
+			and a configurable <link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/processors/xslt.c">XSLT processor</link>
+			which applies user-supplied <link xlink:href="http://www.w3.org/TR/xslt20/">XSL transforms</link> in order to generate
+			RDF/XML from source data in an artbitrary XML format.
+		</para>
+		<para>
+			A special class of processors, called <firstterm>handlers</firstterm>,
+			allows for a degree of indirection in message processing. Handlers
+			use the contents of a message to retrieve data from another source
+			which can then be passed back to Twine for processing as if it had
+			been received as a message directly.
+		</para>
+		<para>
+			For example, an <link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/handlers/s3.c">S3 handler</link>
+			receives messages whose payload is simply one or more S3 URLs (i.e.,
+			URLs in the form <uri>s3://bucketname/path/to/resource</uri>). Each
+			is fetched in turn, and passed back to Twine for normal processing.
+			The S3 handler works with both Amazon S3 and the
+			<link xlink:href="http://ceph.com/docs/master/radosgw/">Ceph RADOS object gateway</link>.
+		</para>
+		<para>
+			The <link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/handlers/anansi.c">Anansi</link>
+			handler is very similar to the S3 handler, but it is designed to
+			process messages containing S3 URLs to objects and extended metadata
+			cached in a bucket by the <link xlink:href="#anansi">Anansi web crawler</link>.
+		</para>
+		<para>
+			<firstterm>Bridges</firstterm> are tools which push messages
+			<emphasis>into</emphasis> the Twine processing queue. A simple
+			example bridge, <link xlink:href="http://bbcarchdev.github.io/twine/twine-inject.8">twine-inject</link>
+			reads from standard input and pushes the contents directly into the
+			queue. An <link xlink:href="https://github.com/bbcarchdev/twine/blob/develop/bridges/anansi-bridge.c">additional bridge</link>
+			is included which queries an Anansi database for newly-cached
+			resources and pushes messages containing their URLs into the
+			processing queue.
+		</para>
+		<para>
+			For the Research &amp; Education Space, the <link xlink:href="#spindle-twine">Spindle module for Twine</link>
+			is responsible for processing RDF crawled by Anansi in order to
+			generate <link xlink:href="#api">the index</link>.
+		</para>
+	</section>	
+	
+	<section xml:id="anansi">
+		<title>Anansi</title>
+		<para>
+			<link xlink:href="https://github.com/bbcarchdev/anansi">Anansi</link> is a web crawler,
+			which is used in the Research &amp; Education Space to find and cache
+			Linked Open Data for processing by <link xlink:href="#twine">Twine</link>.
+		</para>
+		<para>
+			Anansi is implemented as a generic web crawling library, <link xlink:href="https://github.com/bbcarchdev/anansi/tree/develop/libcrawl">libcrawl</link>,
+			and crawling daemon, <link xlink:href="https://github.com/bbcarchdev/anansi/tree/develop/crawler">crawld</link>.
+			Loadable modules are used to provide support for different cache
+			stores and for processing engines which are able to inspect
+			retrieved resources (and potentially reject them if they do not
+			meet desired criteria), and extract URLs which should be added to
+			the crawler queue.
+		</para>
+		<para>
+			The daemon is intended to operate in a parallel fashion. Although
+			an instance can be configured to run in a fixed-size cluster, it
+			can also use <link xlink:href="https://github.com/coreos/etcd">etcd</link>
+			for dynamic peer discovery. In this dynamic configuration, the
+			cluster can be expanded or contracted at will, with Anansi
+			automatically re-balancing each node when the cluster size changes.
+		</para>
+		<para>
+			Anansi includes a generic <link xlink:href="https://github.com/bbcarchdev/anansi/blob/develop/crawler/processors/rdf.c">RDF processor</link>,
+			which indiscriminately follows any URIs found in documents which
+			can be parsed by librdf. This is extended by the
+			<link xlink:href="https://github.com/bbcarchdev/anansi/blob/develop/crawler/processors/lod.c">Linked Open Data module</link>,
+			which requires that explicit open licensing is present and rejects
+			resources which don’t include licensing information, or whose licence
+			is not in the configurable white-list. This module is used by the
+			Research &amp; Education Space to process RDF and reject resources
+			which do not meet the <link xlink:href="#licenses">licensing criteria</link>.
+		</para>
+	</section>
+	
+	<section xml:id="spindle">
+		<title>Spindle</title>
+
+		<section xml:id="spindle-twine">
+			<title>Spindle module for Twine</title>
+		</section>
+		
+		<section xml:id="spindle-quilt">
+			<title>Spindle module for Quilt</title>
+		</section>
+		
+	</section>
 	
 </chapter>

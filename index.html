@@ -46,7 +46,7 @@
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
 	</p>
-</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Research &amp; Education Space platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does the Research &amp; Education Space use RDF?</a></li></ol></li><li><a href="#api">The Research &amp; Education Space API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring Apache web server to send a Link header</a></li><li><a href="#rights-link-varnish">Configuring Varnish to send a Link header</a></li></ol></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents (including RDF serialisations)</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a><ol><li><a href="#spindle-coref">Co-reference discovery</a></li><li><a href="#spindle-proxy">Proxy generation</a></li><li><a href="#spindle-index">Indexing</a></li><li><a href="#spindle-precomposed">Storing pre-composed quads</a></li></ol></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li></ol></nav><article>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Research &amp; Education Space platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does the Research &amp; Education Space use RDF?</a></li></ol></li><li><a href="#api">The Research &amp; Education Space API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring Apache web server to send a Link header</a></li><li><a href="#rights-link-varnish">Configuring Varnish to send a Link header</a></li></ol></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents (including RDF serialisations)</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a><ol><li><a href="#spindle-coref">Co-reference discovery</a></li><li><a href="#spindle-proxy">Proxy generation</a></li><li><a href="#spindle-index">Indexing</a></li><li><a href="#spindle-precomposed">Storing pre-composed quads</a></li></ol></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li><li class="backmatter"><a href="#glossary">Glossary</a></li></ol></nav><article>
 	
 	
 	
@@ -2599,6 +2599,7 @@ Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</c
 	
 	
 	
+	
 </article><section id="tools" class="appendix"><h1>Appendix I: Tools and resources</h1>
 	
 	
@@ -2646,6 +2647,90 @@ Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</c
 		</ul>
 	</section>
 
+</section><section id="glossary" class="glossary"><h1>Glossary</h1>
+	
+	
+	<dl class="glossentry">
+		<dt class="term">audience (conditional access)</dt>
+		<dd class="def">
+				Within the Research &amp; Education Space, in the context
+				of conditional access to resources, the term audience refers
+				to a specific group of people who are assigned an identifier
+				in the form of a URI. This allows any data about resources
+				accessible to that group to use the same identifier to refer
+				to them, and for the Research &amp; Education Space index to
+				allow queries for digital assets which can be accessed by
+				them.
+			</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">Content negotiation</dt>
+		<dd class="def">
+				The mechanism by which an HTTP user-agent specifies the list of
+				formats it is able to interpret, and a server selects the format
+				it will return a document in based upon that information (in
+				principle, it selects the highest-scored format from the
+				intersection of client-supported and server-supported formats).
+			</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">creative work</dt>
+		<dd class="def">
+				The abstract form of the output of a creative process. Creative
+				works can have manifestations in several forms, some of which
+				may be digital assets. For example, a book can be a creative
+				work, with both printed and EPUB editions being (physical
+				and digital) manifestations of it.
+			</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">digital asset</dt>
+		<dd class="def">
+				Any sort of document or media, including machine-readable data,
+				which can be represented digitally. This includes RDF/XML documents,
+				PDFs, MP3 audio, PowerPoint presentations, and so on.
+			</dd>
+	</dl>
+
+	<dl class="glossentry">
+		<dt class="term">entity</dt>
+		<dd class="def">Something which is described by some data. Often termed a <i class="firstterm">resource</i> in the RDF specifications, but this can be confusing because “resource” is often used to refer to a document which can be transferred electronically (particularly via HTTP).</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">Linked Data</dt>
+		<dd class="def">Data which is published on the web using resolveable URIs as identifiers, so that de-referencing the URI of something retrieves the data about it.</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">Linked Open Data</dt>
+		<dd class="def">Linked Data which is also <a href="http://opendefinition.org/od/">openly licensed</a>.</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">manifestation (creative work)</dt>
+		<dd class="def">
+			<p>
+				A particular physical or digital version of a creative work.
+				For example, a PDF can be a digital asset which is a
+				manifestation of a book, which is a creative work.
+			</p>
+			<p>
+				Not all digital assets are manifestations of creative works:
+				some digital assets are representations of data produced by
+				some automated process, for example.
+			</p>
+		</dd>
+	</dl>
+	
+	<dl class="glossentry">
+		<dt class="term">serialisation</dt>
+		<dd class="def">A concrete representation of a document (typically RDF) in some format.</dd>
+	</dl>
+	
 </section><section id="codecs-containers" class="index"><h1>Codec &amp; container format reference</h1>
 	
 	

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2015 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<glossary version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="glossary">
+	<title>Glossary</title>
+	
+	<glossentry>
+		<glossterm>audience (conditional access)</glossterm>
+		<glossdef>
+			<para>
+				Within the Research &amp; Education Space, in the context
+				of conditional access to resources, the term audience refers
+				to a specific group of people who are assigned an identifier
+				in the form of a URI. This allows any data about resources
+				accessible to that group to use the same identifier to refer
+				to them, and for the Research &amp; Education Space index to
+				allow queries for digital assets which can be accessed by
+				them.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>Content negotiation</glossterm>
+		<glossdef>
+			<para>
+				The mechanism by which an HTTP user-agent specifies the list of
+				formats it is able to interpret, and a server selects the format
+				it will return a document in based upon that information (in
+				principle, it selects the highest-scored format from the
+				intersection of client-supported and server-supported formats).
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>creative work</glossterm>
+		<glossdef>
+			<para>
+				The abstract form of the output of a creative process. Creative
+				works can have manifestations in several forms, some of which
+				may be digital assets. For example, a book can be a creative
+				work, with both printed and EPUB editions being (physical
+				and digital) manifestations of it.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>digital asset</glossterm>
+		<glossdef>
+			<para>
+				Any sort of document or media, including machine-readable data,
+				which can be represented digitally. This includes RDF/XML documents,
+				PDFs, MP3 audio, PowerPoint presentations, and so on.
+			</para>
+		</glossdef>
+	</glossentry>
+
+	<glossentry>
+		<glossterm>entity</glossterm>
+		<glossdef>
+			<para>Something which is described by some data. Often termed a <firstterm>resource</firstterm> in the RDF specifications, but this can be confusing because “resource” is often used to refer to a document which can be transferred electronically (particularly via HTTP).</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>Linked Data</glossterm>
+		<glossdef>
+			<para>Data which is published on the web using resolveable URIs as identifiers, so that de-referencing the URI of something retrieves the data about it.</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>Linked Open Data</glossterm>
+		<glossdef>
+			<para>Linked Data which is also <link xlink:href="http://opendefinition.org/od/">openly licensed</link>.</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>manifestation (creative work)</glossterm>
+		<glossdef>
+			<para>
+				A particular physical or digital version of a creative work.
+				For example, a PDF can be a digital asset which is a
+				manifestation of a book, which is a creative work.
+			</para>
+			<para>
+				Not all digital assets are manifestations of creative works:
+				some digital assets are representations of data produced by
+				some automated process, for example.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>serialisation</glossterm>
+		<glossdef>
+			<para>A concrete representation of a document (typically RDF) in some format.</para>
+		</glossdef>
+	</glossentry>
+	
+</glossary>

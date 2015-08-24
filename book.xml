@@ -52,4 +52,5 @@
 	<xi:include href="vocab-index.xml" />
 	<xi:include href="class-index.xml" />
 	<xi:include href="predicate-index.xml" />
+	<xi:include href="glossary.xml" />
 </book>

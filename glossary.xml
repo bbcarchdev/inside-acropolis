@@ -15,6 +15,25 @@
 	<title>Glossary</title>
 	
 	<glossentry>
+		<glossterm>Acropolis</glossterm>
+		<glossdef>
+			<para>
+				The software stack which powers the Research &amp; Education Space.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>Anansi</glossterm>
+		<glossdef>
+			<para>
+				The Acropolis web crawler, which is used in the Research &amp;
+				Education Space to locate Linked Open Data.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
 		<glossterm>audience (conditional access)</glossterm>
 		<glossdef>
 			<para>
@@ -39,6 +58,17 @@
 				it will return a document in based upon that information (in
 				principle, it selects the highest-scored format from the
 				intersection of client-supported and server-supported formats).
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>co-reference</glossterm>
+		<glossdef>
+			<para>
+				A piece of data which states that two identifiers (in the form
+				of URIs within the context of the Research &amp; Education Space)
+				refer to the same entity.
 			</para>
 		</glossdef>
 	</glossentry>
@@ -105,9 +135,41 @@
 	</glossentry>
 	
 	<glossentry>
+		<glossterm>Quilt</glossterm>
+		<glossdef>
+			<para>
+				A Linked Data server which is part of the Acropolis stack. Used
+				within the Research &amp; Education Space to serve its API.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
 		<glossterm>serialisation</glossterm>
 		<glossdef>
 			<para>A concrete representation of a document (typically RDF) in some format.</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>Spindle</glossterm>
+		<glossdef>
+			<para>
+				The aggregator which forms part of the Acropolis stack, comprising
+				plug-in modules for Twine and Quilt. Responsible for generating
+				and serving the Research &amp; Education Space index.
+			</para>
+		</glossdef>
+	</glossentry>
+	
+	<glossentry>
+		<glossterm>Twine</glossterm>
+		<glossdef>
+			<para>
+				An RDF processing engine which is part of the Acropolis stack,
+				and which is used in the Research &amp; Education Space to
+				process Linked Open Data that has been fetched by Anansi.
+			</para>
 		</glossdef>
 	</glossentry>
 	

@@ -17,7 +17,7 @@ XML = book.xml \
 dist_noinst_DATA = $(XML)
 
 dist_iihtdoc_DATA = index.html local.css masthead.png inside-acropolis.pdf \
-	res-architecture.svg
+	res-architecture.svg acropolis-architecture.svg
 
 index.html: $(XML) $(XSLTFILES) $(NAV) $(LINKS)
 	$(XML2HTML) $<

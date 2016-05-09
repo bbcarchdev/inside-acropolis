@@ -33,9 +33,9 @@
 	<xi:include href="preface.xml" />
 	<xi:include href="intro.xml" />
 	<xi:include href="lod.xml" />
-	<xi:include href="structure.xml" />
-	<xi:include href="consumers.xml" />
 	<xi:include href="publishers.xml" />
+	<xi:include href="consumers.xml" />
+	<xi:include href="structure.xml" />
 	<xi:include href="describing.xml" />
 	<xi:include href="architecture.xml" />
 	<xi:include href="tools.xml" />

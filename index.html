@@ -16,10 +16,10 @@
 	</ul></div></nav>
 		<div class="masthead"></div>
 		<nav class="secondarynav"><div class="inner"><ul>
-    <li><a href="https://bbcarchdev.github.io/res/guides">Guides</a></li>
+    <li><a href="/res/guides">Guides</a></li>
     <li><a href="http://acropolis.org.uk">Developer API</a></li>
-    <li><a href="https://bbcarchdev.github.io/res/tools">Tools</a></li>
-    <li><a href="https://bbcarchdev.github.io/res/code">Source code</a></li>
+    <li><a href="/res/tools">Tools</a></li>
+    <li><a href="/res/code">Source code</a></li>
   </ul></div></nav><h1>Inside Acropolis</h1><h2>A guide to the Research &amp; Education Space for contributors and developers</h2><p class="edition">August 2015 Edition</p><p class="editor">Edited by Mo McRoberts, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
 	<p>
 		Copyright © 2014-2015 BBC.
@@ -48,7 +48,7 @@
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
 	</p>
-</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Research &amp; Education Space platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does the Research &amp; Education Space use RDF?</a></li></ol></li><li><a href="#api">The Research &amp; Education Space API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring Apache web server to send a Link header</a></li><li><a href="#rights-link-varnish">Configuring Varnish to send a Link header</a></li></ol></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents (including RDF serialisations)</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li></ol></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#creative">Describing creative works</a></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a><ol><li><a href="#spindle-coref">Co-reference discovery</a></li><li><a href="#spindle-proxy">Proxy generation</a></li><li><a href="#spindle-index">Indexing</a></li><li><a href="#spindle-precomposed">Storing pre-composed quads</a></li></ol></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li><li class="backmatter"><a href="#glossary">Glossary</a></li></ol></nav><article>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#intro">An introduction to the Research &amp; Education Space platform</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li><li><a href="#why-rdf">Why does the Research &amp; Education Space use RDF?</a></li></ol></li><li><a href="#api">The Research &amp; Education Space API: the index and how it’s structured</a><ol><li><a href="#capabilities">Discovering capabilities</a></li><li><a href="#structure">Structure of the index</a></li><li><a href="#operations">Common API operations</a></li></ol></li><li><a href="#consumers">Requirements for consuming applications</a><ol><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in detail</a></li><li><a href="#starting">A starting point: the RES index</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial Guidelines for Product Developers</a></li></ol></li><li><a href="#publishers">Requirements for publishers</a><ol><li><a href="#publishing-detail">Checklist for data publication</a><ol><li><a href="#support-common-serialisations">Support the most common RDF serialisations</a></li><li><a href="#self-describing-documents">Describe the document and serialisations as well as the item</a></li><li><a href="#explicit-licensing">Include licensing information in the data</a></li><li><a href="#link-alternate">Link to the RDF representations from the HTML variant</a></li><li><a href="#perform-conneg">Perform content negotiation when requests are received for item URIs</a></li></ol></li><li><a href="#editorial-guidelines-for-content-providers">Editorial Guidelines for Content Providers</a></li></ol></li><li><a href="#describing-consuming">Describing and consuming data</a><ol><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Referencing alternative identifiers: expressing equivalence</a></li><li><a href="#rights">Metadata describing rights and licensing</a><ol><li><a href="#rights-rdf">Incorporating rights information into RDF data</a></li><li><a href="#rights-link">Expressing rights information using the Link HTTP header</a><ol><li><a href="#rights-link-apache">Configuring Apache web server to send a Link header</a></li><li><a href="#rights-link-varnish">Configuring Varnish to send a Link header</a></li></ol></li></ol></li><li><a href="#conditional-access">Describing conditionally-accessible resources</a></li></ol></li><li><a href="#assets">Describing digital assets</a><ol><li><a href="#document-metadata">Metadata describing documents (including RDF serialisations)</a><ol><li><a href="#describe-doc">Describing your document</a></li><li><a href="#doc-metadata-serialisations">Describe each of your serialisations</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li></ol></li><li><a href="#concepts">Describing concepts and taxonomies</a></li><li><a href="#media">Publishing digital media</a><ol><li><a href="#media-publication">Approaches to publication</a><ol><li><a href="#media-direct">Publishing media directly</a></li><li><a href="#media-frame">Embeddable players</a></li><li><a href="#media-page">Stand-alone playback pages</a></li></ol></li><li><a href="#media-acl">Access control and media availability</a><ol><li><a href="#media-geo">Geographical restrictions (geo-blocking)</a></li><li><a href="#media-saml">Federated access control using Shibboleth and the UK Access Management Federation</a></li><li><a href="#media-ipacl">IP-based access control</a></li></ol></li></ol></li><li><a href="#creative">Describing creative works</a></li><li><a href="#things">Describing physical things</a></li><li><a href="#people">Describing people, projects and organisations</a></li><li><a href="#places">Describing places</a></li><li><a href="#events">Describing events</a></li></ol></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a><ol><li><a href="#spindle-coref">Co-reference discovery</a></li><li><a href="#spindle-proxy">Proxy generation</a></li><li><a href="#spindle-index">Indexing</a></li><li><a href="#spindle-precomposed">Storing pre-composed quads</a></li></ol></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li><li class="backmatter"><a href="#glossary">Glossary</a></li></ol></nav><article>
 	
 	
 	
@@ -1179,336 +1179,38 @@ Content-Length: 272
 	</section>
 	
 </section>
-	<section id="media" class="chapter"><h1>Publishing digital media</h1>
+	<section id="describing-consuming" class="chapter"><h1>Describing and consuming data</h1>
 	
-	
-	<p>
-		The Research &amp; Education Space will not directly consume or publish digital media (audio, video, images,
-		documents) itself. However, it will aggregate data <em>about</em>
-		digital media which has been published in a form which can be used consistently
-		by applications built on the platform.
-	</p>
-	<p>
-		This chapter describes how those media assets can be published in ways which will be
-		most useful to applications, while balancing the range of access mechanisms and
-		rights restrictions applicable to users in educational settings.
-	</p>
-	<p>
-		While this chapter provides guidance on publishing media assets themselves, those
-		assets only become useful to within the Research &amp; Education Space when they are properly described
-		in accompanying metadata. For more information on publishing data which describes
-		digital media assets, please refer to the chapter <cite><a href="#assets">Describing digital assets</a></cite>.
-	</p>
-	
-	
-	<section id="media-publication" class="section"><h1>Approaches to publication</h1>
-		
-		<p>
-			There are three strategies for publishing media for the Research &amp; Education Space:
-			<a href="#media-direct">publishing “raw” media assets</a>,
-			providing <a href="#media-frame">embeddable players</a>,
-			and publishing <a href="#media-page">pages which
-			include playback capabilities</a>.
-		</p>
-		
-		<aside class="tip">
-			<p>
-				A media publisher may make use of any or all of these strategies, possibly combined
-				with access-control mechanisms where rights or other legal restrictions require it.
-			</p>
-		</aside>
-		
-		<section id="media-direct" class="section"><h1>Publishing media directly</h1>
-			
-		
-			<p>
-				Publishing media directly is most suited to situations where the media assets
-				are openly-licensed and can be both downloaded and streamed by
-				applications. It is not suitable for media which is rights-restricted to the
-				extent that downloads are not permitted.
-			</p>
-			<p>
-				Direct publishing allows an application to make use of native playback,
-				viewing, editing, and tagging capabilities, and consequentially offers the
-				greatest level of flexibility to applications and users alike. While it provides
-				no technical barrier to end-users <em>sharing</em> downloaded media
-				(in whole or part on its own, or combined into a larger composition), it does
-				not automatically imply that sharing is permitted.
-			</p>
-			<p>
-				While affording the greatest level of flexibility to the consuming application,
-				publishing media in this way is also the simplest from a technical perspective: the
-				encoded media files are simply uploaded to a web server and then
-				<cite><a href="#av">described in the accompanying metadata</a></cite>.
-			</p>
-			<p>
-				Use direct publication where:—
-			</p>
-			<ul>
-				<li>
-						Licensing allows both streaming <em>and</em> download of
-						the media asset.
-					</li>
-				<li>
-						If you want to allow snipping or other kinds of editing of the media.
-					</li>
-				<li>
-						You want to provide the widest possible range of device support.
-					</li>
-			</ul>
-			
-			<p>For example:—</p>
-			
-			<div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Media asset URL</td><td><code class="uri"><a href="//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg</a></code></td></tr><tr><td>MIME type</td><td><code class="constant">image/jpeg</code></td></tr><tr><td>Embeddable?</td><td>Yes</td></tr><tr><td>Poster image URL</td><td><code class="uri"><a href="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg</a></code></td></tr><tr><td>Width</td><td>2021px</td></tr><tr><td>Height</td><td>2694px</td></tr><tr><td>Title</td><td>Claude Monet 1899 Nadar crop</td></tr><tr><td>License</td><td><a href="https://commons.wikimedia.org/wiki/Public_domain">Public domain</a></td></tr></tbody></table></div>
-			
-		</section>
-	
-		<section id="media-frame" class="section"><h1>Embeddable players</h1>
-			
-			<p>
-				Embeddable players are best suited to situations where media files should
-				not be downloaded by applications and end-users, but the playback capability
-				may be provided in-line with other content by an application.
-			</p>
-			<p>
-				With an embeddable player, although media assets themselves are published in
-				some fashion, the resource described in accompanying metadata is a web page
-				capable of playing them, typically via an <code class="tag">&lt;iframe&gt;</code>
-				or equivalent, with the metadata including the preferred dimensions of the
-				frame.
-			</p>
-			<p>
-				This approach limits the capabilities which can be offered by the application
-				to its users: as far as the application is concerned, the contents of the
-				framed web page are completely opaque; it can only assume that the page
-				will provide a suitable player for the media asset, and will have no
-				control over playback.
-			</p>
-			<p>
-				Use an embeddable player where:—
-			</p>
-			<ul>
-				<li>
-						Licensing only permits streaming of the asset, but
-						<em>does</em> allow its presentation as part of a larger
-						body of content (for example, within in a MOOC).
-					</li>
-				<li>
-						Media is only available through a technology which
-						may not be widely supported except through a custom player.
-					</li>
-				<li>
-						Your media is published through a third party solution which does
-						not provide ready access to direct media asset URLs.
-					</li>
-				<li>
-						As a fall-back option alongside a direct media link (for example,
-						to enable an application to generate the embeddable player code
-						snippet for pasting into a MOOC or social network).
-					</li>
-			</ul>
-			
-			<p>For example:—</p>
-			
-			<div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Media asset URL</td><td><code class="uri"><a href="//player.vimeo.com/video/110040373">//player.vimeo.com/video/110040373</a></code></td></tr><tr><td>MIME type</td><td><code class="constant">text/html</code></td></tr><tr><td>Embeddable?</td><td>Yes</td></tr><tr><td>Poster image URL</td><td><code class="uri"><a href="//i.vimeocdn.com/video/494149068_960.jpg">//i.vimeocdn.com/video/494149068_960.jpg</a></code></td></tr><tr><td>Preferred width</td><td>500px</td></tr><tr><td>Preferred height</td><td>281px</td></tr><tr><td>Title</td><td>Mount Piños Astrophotography Time Lapse</td></tr><tr><td>Duration</td><td>45s</td></tr><tr><td>License</td><td><a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Unported (CC BY 3.0)</a></td></tr></tbody></table></div>
-			
-		</section>
-	
-		<section id="media-page" class="section"><h1>Stand-alone playback pages</h1>
-			
-			<p>
-				Stand-alone playback pages provide the least flexibility to
-				applications, and—depending upon presentation—may result in reduced
-				visibility of your media.
-			</p>
-			<p>
-				With this strategy, an application is not able to embed your media
-				at all, but instead must navigate to the page that you provide in
-				a browser window. The application might provide a thumbnail or text
-				link to your playback page, or it might choose to omit the media
-				altogether if including it would result in a poor user experience.
-			</p>
-			<p>
-				Use a stand-alone playback page where:—
-			</p>
-			<ul>
-				<li>
-						Licensing restrictions mean that you’re not able to authorise
-						any kind of embedding.
-					</li>
-				<li>
-						As a fall-back option alongside an embeddable player or direct
-						media links (particularly if you already publish a playback page
-						for each media asset).
-					</li>
-			</ul>
-			
-			<p>For example:—</p>
-			
-			<div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Media asset URL</td><td><code class="uri"><a href="http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin">http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin</a></code></td></tr><tr><td>Title</td><td>Horizon: 1981-1982: The Race to Ruin</td></tr><tr><td>Embeddable?</td><td>No</td></tr><tr><td>Duration</td><td>48m52s</td></tr><tr><td>Geographical restriction</td><td>UK-only</td></tr></tbody></table></div>
-			
-		</section>
-	</section>
 
-	<section id="media-acl" class="section"><h1>Access control and media availability</h1>
-		
-		
-		<p>
-			A key aim of the Research &amp; Education Space is to increase the visibility of and access to
-			digital media resources which are available to staff and students of
-			educational establishments within the United Kingdom. While this naturally
-			includes the wealth of resources which are openly-licensed and available to
-			everybody, it also includes digital media which can <em>only</em>
-			be accessed at scale by UK educational users.
-		</p>
-		<p>
-			In order to provide access to this material, publishers typically implement
-			some kind of access control. While the platform itself is generally
-			agnostic to media assets and their access-control mechanisms,
-			applications require the ability to make user-interface decisions based upon
-			the access restrictions imposed upon the media.
-		</p>
-		<p>
-			For this reason, the Research &amp; Education Space defines three specific kinds of access-control mechanism,
-			as well as a policy which conformant media must be published according to.
-			Specifically, this policy is that media assets must:—
-		</p>
-		
-		<ol>
-			<li>
-					Media must be available either freely or under the terms of a blanket
-					or statutorily-backed licensing scheme available to educational
-					establishments (or licenses may be obtained on their behalf by local
-					authorities or central government).
-				</li>
-			<li>
-					It must be possible to obtain the media without further subscription
-					or other charges, however “value-added” services may be provided
-					which offer additional capabilities (such as archiving, enhanced search),
-					provided those services can be readily subscribed to at an establishment
-					level.
-				</li>
-			<li>
-					The media must be generally available on a long term basis. Media available
-					only for short periods has limited value in education because it prevents
-					the same resources being used again in the future.
-				</li>
-			<li>
-					The technical access-control mechansims must be one or more of those
-					described below.
-				</li>
-			<li>
-					The nature of the access-control mechanism must be described in the
-					metadata accompanying the media.
-				</li>
-		</ol>
-		
-		<p>
-			For example, all of the following conform to the policy:—
-		</p>
-		
-		<ul>
-			<li>
-					Media published via Wikimedia Commons is available to
-					everybody on a permanent basis without any additional payment or subscritpion.
-				</li>
-			<li>
-					Programmes which are part of <a href="http://www.bbc.co.uk/bbcfour/collections">BBC
-					Four Collections</a> are made available to everybody in the UK on a long-term basis
-					(but may not be embedded). Access control is implemented through
-					<a href="#media-geo">geo-blocking</a>.
-				</li>
-			<li>
-					Recordings of broadcasts made according to the terms of <a href="http://www.legislation.gov.uk/ukpga/1988/48/section/35">Section
-					35 of the Copyright, Designs and Patents Act 1988 (as amended)</a> is
-					may be used by the institution who recorded it (or it was recorded on
-					behalf of), provided their <a href="http://www.era.org.uk">ERA Licence</a>
-					is maintained.
-				</li>
-			<li>
-					Services which are authorised by ERA to maintain an archive of Section 35 recordings
-					and make them available to ERA Licence-holders who pay a subscription fee, provided
-					access is through a mechanism described below.
-				</li>
-			<li>
-					A consortium of rights-holders who together define a scheme for access to one or
-					more sets of media on an affordable establishment-level subscription basis, provided 
-					access is through a mechanism described below.
-				</li>
-		</ul>
-		
-		<p>
-			For more information about describing rights restrictions and access-control mechansims,
-			see <cite><a href="#rights">Metadata describing rights and licensing</a></cite>
-			and <cite><a href="#conditional-access">Describing conditionally-accessible resources</a></cite>.
-		</p>
-		
-		<section id="media-geo" class="section"><h1>Geographical restrictions (geo-blocking)</h1>
-			
-			<p>
-				Geo-blocking is the automatic determination of ability-to-access a resource
-				by looking up the end-user’s public IP address against a database correlating
-				IP address ranges with countries. For example, the address 132.185.240.10 is
-				part of a range which is within the UK, whereas 192.0.32.8 is part of a range
-				which is within the US.
-			</p>
-			<p>
-				Geo-location databases and live services are available both for free and on
-				commercial terms, with varying levels of quality and service assurance.
-			</p>
-			<p>
-				Geo-blocking should generally be applied only where other access-control mechanisms are
-				not applicable: for example, because a media asset is available to everybody
-				within a particular country.
-			</p>
-		</section>
-		
-		<section id="media-saml" class="section"><h1>Federated access control using Shibboleth and the UK Access Management Federation</h1>
-			
-			<p>
-				<a href="https://shibboleth.net">Shibboleth</a> is a federated authentication
-				single sign-on mechanism which is widely used by providers of materials
-				to provide access only to staff and students of educational establishments.
-			</p>
-			<p>
-				The <a href="http://www.ukfederation.org.uk">UK Access Management Federation</a>,
-				operated by <a href="http://www.jisc.ac.uk/janet">Janet</a>, provides the
-				Shibboleth federation for UK institutions.
-			</p>
-			<p>
-				Shibboleth-protected resources present a sign-in page to users who are not already
-				authenticated, which makes it suitable for use with both the embeddable player and
-				the stand-alone playback page publication approaches described above.
-			</p>
-			<p>
-				Shibboleth-based access control is the preferred mechanism for use where media should be
-				made available only to educational users.
-			</p>
-		</section>
-		
-		<section id="media-ipacl" class="section"><h1>IP-based access control</h1>
-			
-			
-			<p>
-				IP-based access control is often the simplest mechanism to implement, as it requires
-				only for the publisher to check the end-user’s public IP address against a white-list
-				and allow or permit access as required.
-			</p>
-			<p>
-				However, creating and maintaining that white-list can involve significant administrative
-				burden, particularly on a nation-wide basis, and it does not allow ready access to
-				media to remote-working staff and students without their institution providing
-				additional infrastructure such as remote-desktop services and VPNs.
-			</p>
-			<p>
-				IP-based access control should generally be employed alongside Shibboleth-based
-				authentication, and only for specific institutions which are not able to participate
-				in the UK Acesss Management Federation.
-			</p>
-		</section>
-		
-	</section>
-</section>
+	<p>
+	  The Research &amp; Education Space works on the basis that publishers
+	  of data consumed by the platform and product developers using the API
+	  both use the same sets of terms (vocabularies). If a publisher uses
+	  a predicates tha aren't supported by a product, then that data is
+	  essentially invisible to that product, resulting in a poor user
+	  experience.
+	</p>
+	<p>
+	  Rather than attempt to describe a vocabulary which includes the classes
+	  and predicates needed to describe any conceivable kind of entity,
+	  the approach taken by the Research &amp; Education Space is to identify
+	  those which are already in common usage and document them: for many
+	  publishers, this means that what they are already doing is entirely
+	  sufficient (or requires only very minor changes), while for product
+	  developers the amount of special-casing required to deal with data
+	  indexed by the Research &amp; Education Space platform is kept to a
+	  minimum.
+	</p>
+	<p>
+	  This chapter contains the recommended approaches to describing
+	  different kinds of entity. Data publishers should read it as our
+	  recommendations for how those entities should be described (although
+	  publishers are always free to include <em>additional</em>
+	  data not covered by our recommendations). Product developers should
+	  read the chapter as being a description of how they ought to expect
+	  the data which is surfaced by the platform to be structured.
+	</p>
+
 	<section id="common" class="chapter"><h1>Common metadata</h1>
 	
 	
@@ -1973,35 +1675,6 @@ Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</c
 		</section>
 	</section>
 </section>
-	<section id="things" class="chapter"><h1>Describing physical things</h1>
-	
-	<aside class="tip">
-		<p>
-			The RES index entry for a physical thing will have a class of <a href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</a>.
-		</p>
-	</aside>
-</section>
-	<section id="people" class="chapter"><h1>Describing people, projects and organisations</h1>
-	
-</section>
-	<section id="places" class="chapter"><h1>Describing places</h1>
-	
-	<aside class="tip">
-		<p>
-			The RES index entry for a place will have a class of <a href="http://www.w3.org/2003/01/geo/">geo:SpatialThing</a>.
-		</p>
-	</aside>
-	
-</section>
-	<section id="events" class="chapter"><h1>Describing events</h1>
-	
-	<aside class="tip">
-		<p>
-			The RES index entry for an event will have a class of <a href="http://motools.sourceforge.net/event/event.html#term_Event">event:Event</a>.
-		</p>
-	</aside>
-	
-</section>
 	<section id="concepts" class="chapter"><h1>Describing concepts and taxonomies</h1>
 	
 	
@@ -2011,6 +1684,336 @@ Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</c
 	
 	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</a></td><td><code class="uri">http://www.w3.org/2008/05/skos#</code></td><td><code class="literal">skos:</code></td></tr></tbody></table></div>
 	
+</section>
+	<section id="media" class="chapter"><h1>Publishing digital media</h1>
+	
+	
+	<p>
+		The Research &amp; Education Space will not directly consume or publish digital media (audio, video, images,
+		documents) itself. However, it will aggregate data <em>about</em>
+		digital media which has been published in a form which can be used consistently
+		by applications built on the platform.
+	</p>
+	<p>
+		This chapter describes how those media assets can be published in ways which will be
+		most useful to applications, while balancing the range of access mechanisms and
+		rights restrictions applicable to users in educational settings.
+	</p>
+	<p>
+		While this chapter provides guidance on publishing media assets themselves, those
+		assets only become useful to within the Research &amp; Education Space when they are properly described
+		in accompanying metadata. For more information on publishing data which describes
+		digital media assets, please refer to the chapter <cite><a href="#assets">Describing digital assets</a></cite>.
+	</p>
+	
+	
+	<section id="media-publication" class="section"><h1>Approaches to publication</h1>
+		
+		<p>
+			There are three strategies for publishing media for the Research &amp; Education Space:
+			<a href="#media-direct">publishing “raw” media assets</a>,
+			providing <a href="#media-frame">embeddable players</a>,
+			and publishing <a href="#media-page">pages which
+			include playback capabilities</a>.
+		</p>
+		
+		<aside class="tip">
+			<p>
+				A media publisher may make use of any or all of these strategies, possibly combined
+				with access-control mechanisms where rights or other legal restrictions require it.
+			</p>
+		</aside>
+		
+		<section id="media-direct" class="section"><h1>Publishing media directly</h1>
+			
+		
+			<p>
+				Publishing media directly is most suited to situations where the media assets
+				are openly-licensed and can be both downloaded and streamed by
+				applications. It is not suitable for media which is rights-restricted to the
+				extent that downloads are not permitted.
+			</p>
+			<p>
+				Direct publishing allows an application to make use of native playback,
+				viewing, editing, and tagging capabilities, and consequentially offers the
+				greatest level of flexibility to applications and users alike. While it provides
+				no technical barrier to end-users <em>sharing</em> downloaded media
+				(in whole or part on its own, or combined into a larger composition), it does
+				not automatically imply that sharing is permitted.
+			</p>
+			<p>
+				While affording the greatest level of flexibility to the consuming application,
+				publishing media in this way is also the simplest from a technical perspective: the
+				encoded media files are simply uploaded to a web server and then
+				<cite><a href="#av">described in the accompanying metadata</a></cite>.
+			</p>
+			<p>
+				Use direct publication where:—
+			</p>
+			<ul>
+				<li>
+						Licensing allows both streaming <em>and</em> download of
+						the media asset.
+					</li>
+				<li>
+						If you want to allow snipping or other kinds of editing of the media.
+					</li>
+				<li>
+						You want to provide the widest possible range of device support.
+					</li>
+			</ul>
+			
+			<p>For example:—</p>
+			
+			<div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Media asset URL</td><td><code class="uri"><a href="//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/a/a4/Claude_Monet_1899_Nadar_crop.jpg</a></code></td></tr><tr><td>MIME type</td><td><code class="constant">image/jpeg</code></td></tr><tr><td>Embeddable?</td><td>Yes</td></tr><tr><td>Poster image URL</td><td><code class="uri"><a href="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg">//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/180px-Claude_Monet_1899_Nadar_crop.jpg</a></code></td></tr><tr><td>Width</td><td>2021px</td></tr><tr><td>Height</td><td>2694px</td></tr><tr><td>Title</td><td>Claude Monet 1899 Nadar crop</td></tr><tr><td>License</td><td><a href="https://commons.wikimedia.org/wiki/Public_domain">Public domain</a></td></tr></tbody></table></div>
+			
+		</section>
+	
+		<section id="media-frame" class="section"><h1>Embeddable players</h1>
+			
+			<p>
+				Embeddable players are best suited to situations where media files should
+				not be downloaded by applications and end-users, but the playback capability
+				may be provided in-line with other content by an application.
+			</p>
+			<p>
+				With an embeddable player, although media assets themselves are published in
+				some fashion, the resource described in accompanying metadata is a web page
+				capable of playing them, typically via an <code class="tag">&lt;iframe&gt;</code>
+				or equivalent, with the metadata including the preferred dimensions of the
+				frame.
+			</p>
+			<p>
+				This approach limits the capabilities which can be offered by the application
+				to its users: as far as the application is concerned, the contents of the
+				framed web page are completely opaque; it can only assume that the page
+				will provide a suitable player for the media asset, and will have no
+				control over playback.
+			</p>
+			<p>
+				Use an embeddable player where:—
+			</p>
+			<ul>
+				<li>
+						Licensing only permits streaming of the asset, but
+						<em>does</em> allow its presentation as part of a larger
+						body of content (for example, within in a MOOC).
+					</li>
+				<li>
+						Media is only available through a technology which
+						may not be widely supported except through a custom player.
+					</li>
+				<li>
+						Your media is published through a third party solution which does
+						not provide ready access to direct media asset URLs.
+					</li>
+				<li>
+						As a fall-back option alongside a direct media link (for example,
+						to enable an application to generate the embeddable player code
+						snippet for pasting into a MOOC or social network).
+					</li>
+			</ul>
+			
+			<p>For example:—</p>
+			
+			<div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Media asset URL</td><td><code class="uri"><a href="//player.vimeo.com/video/110040373">//player.vimeo.com/video/110040373</a></code></td></tr><tr><td>MIME type</td><td><code class="constant">text/html</code></td></tr><tr><td>Embeddable?</td><td>Yes</td></tr><tr><td>Poster image URL</td><td><code class="uri"><a href="//i.vimeocdn.com/video/494149068_960.jpg">//i.vimeocdn.com/video/494149068_960.jpg</a></code></td></tr><tr><td>Preferred width</td><td>500px</td></tr><tr><td>Preferred height</td><td>281px</td></tr><tr><td>Title</td><td>Mount Piños Astrophotography Time Lapse</td></tr><tr><td>Duration</td><td>45s</td></tr><tr><td>License</td><td><a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Unported (CC BY 3.0)</a></td></tr></tbody></table></div>
+			
+		</section>
+	
+		<section id="media-page" class="section"><h1>Stand-alone playback pages</h1>
+			
+			<p>
+				Stand-alone playback pages provide the least flexibility to
+				applications, and—depending upon presentation—may result in reduced
+				visibility of your media.
+			</p>
+			<p>
+				With this strategy, an application is not able to embed your media
+				at all, but instead must navigate to the page that you provide in
+				a browser window. The application might provide a thumbnail or text
+				link to your playback page, or it might choose to omit the media
+				altogether if including it would result in a poor user experience.
+			</p>
+			<p>
+				Use a stand-alone playback page where:—
+			</p>
+			<ul>
+				<li>
+						Licensing restrictions mean that you’re not able to authorise
+						any kind of embedding.
+					</li>
+				<li>
+						As a fall-back option alongside an embeddable player or direct
+						media links (particularly if you already publish a playback page
+						for each media asset).
+					</li>
+			</ul>
+			
+			<p>For example:—</p>
+			
+			<div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead><tbody><tr><td>Media asset URL</td><td><code class="uri"><a href="http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin">http://www.bbc.co.uk/iplayer/episode/p0285z2y/horizon-19811982-the-race-to-ruin</a></code></td></tr><tr><td>Title</td><td>Horizon: 1981-1982: The Race to Ruin</td></tr><tr><td>Embeddable?</td><td>No</td></tr><tr><td>Duration</td><td>48m52s</td></tr><tr><td>Geographical restriction</td><td>UK-only</td></tr></tbody></table></div>
+			
+		</section>
+	</section>
+
+	<section id="media-acl" class="section"><h1>Access control and media availability</h1>
+		
+		
+		<p>
+			A key aim of the Research &amp; Education Space is to increase the visibility of and access to
+			digital media resources which are available to staff and students of
+			educational establishments within the United Kingdom. While this naturally
+			includes the wealth of resources which are openly-licensed and available to
+			everybody, it also includes digital media which can <em>only</em>
+			be accessed at scale by UK educational users.
+		</p>
+		<p>
+			In order to provide access to this material, publishers typically implement
+			some kind of access control. While the platform itself is generally
+			agnostic to media assets and their access-control mechanisms,
+			applications require the ability to make user-interface decisions based upon
+			the access restrictions imposed upon the media.
+		</p>
+		<p>
+			For this reason, the Research &amp; Education Space defines three specific kinds of access-control mechanism,
+			as well as a policy which conformant media must be published according to.
+			Specifically, this policy is that media assets must:—
+		</p>
+		
+		<ol>
+			<li>
+					Media must be available either freely or under the terms of a blanket
+					or statutorily-backed licensing scheme available to educational
+					establishments (or licenses may be obtained on their behalf by local
+					authorities or central government).
+				</li>
+			<li>
+					It must be possible to obtain the media without further subscription
+					or other charges, however “value-added” services may be provided
+					which offer additional capabilities (such as archiving, enhanced search),
+					provided those services can be readily subscribed to at an establishment
+					level.
+				</li>
+			<li>
+					The media must be generally available on a long term basis. Media available
+					only for short periods has limited value in education because it prevents
+					the same resources being used again in the future.
+				</li>
+			<li>
+					The technical access-control mechansims must be one or more of those
+					described below.
+				</li>
+			<li>
+					The nature of the access-control mechanism must be described in the
+					metadata accompanying the media.
+				</li>
+		</ol>
+		
+		<p>
+			For example, all of the following conform to the policy:—
+		</p>
+		
+		<ul>
+			<li>
+					Media published via Wikimedia Commons is available to
+					everybody on a permanent basis without any additional payment or subscritpion.
+				</li>
+			<li>
+					Programmes which are part of <a href="http://www.bbc.co.uk/bbcfour/collections">BBC
+					Four Collections</a> are made available to everybody in the UK on a long-term basis
+					(but may not be embedded). Access control is implemented through
+					<a href="#media-geo">geo-blocking</a>.
+				</li>
+			<li>
+					Recordings of broadcasts made according to the terms of <a href="http://www.legislation.gov.uk/ukpga/1988/48/section/35">Section
+					35 of the Copyright, Designs and Patents Act 1988 (as amended)</a> is
+					may be used by the institution who recorded it (or it was recorded on
+					behalf of), provided their <a href="http://www.era.org.uk">ERA Licence</a>
+					is maintained.
+				</li>
+			<li>
+					Services which are authorised by ERA to maintain an archive of Section 35 recordings
+					and make them available to ERA Licence-holders who pay a subscription fee, provided
+					access is through a mechanism described below.
+				</li>
+			<li>
+					A consortium of rights-holders who together define a scheme for access to one or
+					more sets of media on an affordable establishment-level subscription basis, provided 
+					access is through a mechanism described below.
+				</li>
+		</ul>
+		
+		<p>
+			For more information about describing rights restrictions and access-control mechansims,
+			see <cite><a href="#rights">Metadata describing rights and licensing</a></cite>
+			and <cite><a href="#conditional-access">Describing conditionally-accessible resources</a></cite>.
+		</p>
+		
+		<section id="media-geo" class="section"><h1>Geographical restrictions (geo-blocking)</h1>
+			
+			<p>
+				Geo-blocking is the automatic determination of ability-to-access a resource
+				by looking up the end-user’s public IP address against a database correlating
+				IP address ranges with countries. For example, the address 132.185.240.10 is
+				part of a range which is within the UK, whereas 192.0.32.8 is part of a range
+				which is within the US.
+			</p>
+			<p>
+				Geo-location databases and live services are available both for free and on
+				commercial terms, with varying levels of quality and service assurance.
+			</p>
+			<p>
+				Geo-blocking should generally be applied only where other access-control mechanisms are
+				not applicable: for example, because a media asset is available to everybody
+				within a particular country.
+			</p>
+		</section>
+		
+		<section id="media-saml" class="section"><h1>Federated access control using Shibboleth and the UK Access Management Federation</h1>
+			
+			<p>
+				<a href="https://shibboleth.net">Shibboleth</a> is a federated authentication
+				single sign-on mechanism which is widely used by providers of materials
+				to provide access only to staff and students of educational establishments.
+			</p>
+			<p>
+				The <a href="http://www.ukfederation.org.uk">UK Access Management Federation</a>,
+				operated by <a href="http://www.jisc.ac.uk/janet">Janet</a>, provides the
+				Shibboleth federation for UK institutions.
+			</p>
+			<p>
+				Shibboleth-protected resources present a sign-in page to users who are not already
+				authenticated, which makes it suitable for use with both the embeddable player and
+				the stand-alone playback page publication approaches described above.
+			</p>
+			<p>
+				Shibboleth-based access control is the preferred mechanism for use where media should be
+				made available only to educational users.
+			</p>
+		</section>
+		
+		<section id="media-ipacl" class="section"><h1>IP-based access control</h1>
+			
+			
+			<p>
+				IP-based access control is often the simplest mechanism to implement, as it requires
+				only for the publisher to check the end-user’s public IP address against a white-list
+				and allow or permit access as required.
+			</p>
+			<p>
+				However, creating and maintaining that white-list can involve significant administrative
+				burden, particularly on a nation-wide basis, and it does not allow ready access to
+				media to remote-working staff and students without their institution providing
+				additional infrastructure such as remote-desktop services and VPNs.
+			</p>
+			<p>
+				IP-based access control should generally be employed alongside Shibboleth-based
+				authentication, and only for specific institutions which are not able to participate
+				in the UK Acesss Management Federation.
+			</p>
+		</section>
+		
+	</section>
 </section>
 	<section id="creative" class="chapter"><h1>Describing creative works</h1>
 	
@@ -2077,6 +2080,37 @@ Link: &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;;rel="license"</c
 				for media.
 			</li>
 	</ul>
+</section>
+	<section id="things" class="chapter"><h1>Describing physical things</h1>
+	
+	<aside class="tip">
+		<p>
+			The RES index entry for a physical thing will have a class of <a href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</a>.
+		</p>
+	</aside>
+</section>
+	<section id="people" class="chapter"><h1>Describing people, projects and organisations</h1>
+	
+</section>
+	<section id="places" class="chapter"><h1>Describing places</h1>
+	
+	<aside class="tip">
+		<p>
+			The RES index entry for a place will have a class of <a href="http://www.w3.org/2003/01/geo/">geo:SpatialThing</a>.
+		</p>
+	</aside>
+	
+</section>
+	<section id="events" class="chapter"><h1>Describing events</h1>
+	
+	<aside class="tip">
+		<p>
+			The RES index entry for an event will have a class of <a href="http://motools.sourceforge.net/event/event.html#term_Event">event:Event</a>.
+		</p>
+	</aside>
+	
+</section>
+	
 </section>
 	<section id="architecture" class="chapter"><h1>Under the hood: the architecture of Acropolis</h1>
 	

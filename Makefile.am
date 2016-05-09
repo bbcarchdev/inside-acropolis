@@ -12,7 +12,7 @@ XML = book.xml \
 	consumers.xml media.xml structure.xml common.xml assets.xml things.xml \
 	people.xml places.xml events.xml concepts.xml creative.xml tools.xml \
 	containers-codecs.xml vocab-index.xml class-index.xml predicate-index.xml \
-	licenses.xml glossary.xml
+	licenses.xml glossary.xml describing.xml
 
 dist_noinst_DATA = $(XML)
 

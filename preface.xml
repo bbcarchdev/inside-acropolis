@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014-2015 BBC
+ Copyright (c) 2014-2016 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -29,4 +29,43 @@
 	<para role="screen-only">
 		This book is also available in <link xlink:href="inside-acropolis.pdf">PDF format</link>.
 	</para>
+	<section xml:id="how-to-use-this-book">
+	  <title>How to use this book</title>
+	  <para>
+		<citetitle>Inside Acropolis</citetitle> is aimed at two key audiences:
+		<emphasis>collection holders</emphasis> (people and organisations who
+		have data that they do or can publish as linked open data describing
+		concepts, people, places, things, events or media), and
+		<emphasis>product developers</emphasis> (people and organisations
+		who want to build software that uses the Research &amp; Education
+		Space API).
+	  </para>
+	  <para>
+		Everyone should read the <link xlink:href="#intro"><citetitle>Introduction to the Research &amp; Education Space platform</citetitle></link>.
+		If you’re new to RDF or linked open data, you should also read the
+		<link xlink:href="#lod"><citetitle>Linked Open Data: What is it, and how does it work?</citetitle></link> section.
+	  </para>
+	  <para>
+		<emphasis>Collection holders</emphasis> should read the
+		<link xlink:href="#publishers"><citetitle>Requirements for publishers</citetitle></link> section, which includes some high-level technical and
+		editorial guidance and on how to produce data which is suitable for
+		indexing by the Research &amp; Education Space platform and used by
+		applications developed using its API.
+	  </para>
+	  <para>
+		<emphasis>Product developers</emphasis> should read the
+		<link xlink:href="#consumers"><citetitle>Requirements for consuming applications</citetitle></link>
+		section, which contains high-level technical and editorial guidance,
+		as well as the <link xlink:href="#api"><citetitle>The Research &amp; Education Space API: the index and how it's structured</citetitle></link>
+		section, which explains how to interact with the platform’s API
+		specifically, as distinct from a generic linked open data service.
+	  </para>
+	  <para>
+		Finally, it is essential that everyone working with the Research &amp;
+		Education Space reads the <link xlink:href="#describing-consuming"><citetitle>Describing and consuming data</citetitle></link> section,
+		which describes the specific classes and predicates that publishers
+		are recommended to use in their data, and product developers should
+		expect to see appearing in the data they consume.
+	  </para>
+	</section>
 </preface>

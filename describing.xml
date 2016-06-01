@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="describing-consuming">
+	<title>Describing and consuming data</title>
+
+	<para>
+	  The Research &amp; Education Space works on the basis that publishers
+	  of data consumed by the platform and product developers using the API
+	  both use the same sets of terms (vocabularies). If a publisher uses
+	  a predicates tha aren't supported by a product, then that data is
+	  essentially invisible to that product, resulting in a poor user
+	  experience.
+	</para>
+	<para>
+	  Rather than attempt to describe a vocabulary which includes the classes
+	  and predicates needed to describe any conceivable kind of entity,
+	  the approach taken by the Research &amp; Education Space is to identify
+	  those which are already in common usage and document them: for many
+	  publishers, this means that what they are already doing is entirely
+	  sufficient (or requires only very minor changes), while for product
+	  developers the amount of special-casing required to deal with data
+	  indexed by the Research &amp; Education Space platform is kept to a
+	  minimum.
+	</para>
+	<para>
+	  This chapter contains the recommended approaches to describing
+	  different kinds of entity. Data publishers should read it as our
+	  recommendations for how those entities should be described (although
+	  publishers are always free to include <emphasis>additional</emphasis>
+	  data not covered by our recommendations). Product developers should
+	  read the chapter as being a description of how they ought to expect
+	  the data which is surfaced by the platform to be structured.
+	</para>
+
+	<xi:include href="common.xml" />
+	<xi:include href="assets.xml" />
+	<xi:include href="concepts.xml" />
+	<xi:include href="media.xml" />
+	<xi:include href="creative.xml" />
+	<xi:include href="things.xml" />
+	<xi:include href="people.xml" />
+	<xi:include href="places.xml" />
+	<xi:include href="events.xml" />
+	
+</chapter>

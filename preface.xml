@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014-2016 BBC
+ Copyright (c) 2014-2015 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -18,10 +18,13 @@
 			This book is <emphasis>deliberately</emphasis> incomplete. It’s an evolving document, licensed under the terms of the <citetitle><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence, v2.0</link></citetitle>, and to which we are welcoming contributions. You can <link xlink:href="https://github.com/bbcarchdev/inside-acropolis">fork the repository on GitHub</link>, or <link xlink:href="mailto:RESFeedback@bbc.co.uk">e-mail the editor directly</link> if you would like to contribute or have suggestions for changes.</para>
 	</note>
 	<para>
-		The <firstterm>Research &amp; Education Space</firstterm> (RES) is a partnership project between <link xlink:href="http://jisc.ac.uk">Jisc</link>, <link xlink:href="http://bufvc.ac.uk">Learning on Screen</link>, and the <link xlink:href="http://www.bbc.co.uk/">BBC</link> that aims to make it easier for teachers, students and academics to discover, access and use material held in the public collections of broadcasters, museums, libraries, galleries and publishers.
+		The <firstterm>Research &amp; Education Space</firstterm> is a platform being jointly delivered by <link xlink:href="http://jisc.ac.uk">Jisc</link>, the <link xlink:href="http://bufvc.ac.uk">British Universities Film &amp; Video Council</link> (BUFVC), and the <link xlink:href="http://www.bbc.co.uk/">BBC</link>. Its aim is to bring as much as possible of the UK’s publicly-held archives, and more besides, to learners and teachers across the UK.
 	</para>
 	<para>
-		Powering the Research &amp; Education Space is <firstterm>Acropolis</firstterm>, an open source software stack which collects, indexes and organises rich structured data about those archive collections published as <firstterm>Linked Open Data</firstterm> (LOD) on the Web. The collected data is organised around the people, places, events, concepts and things related to the items in the archive collections. If the archive assets themselves are available in digital form, that data includes the information on how to access them, all in a consistent machine-readable form. The RES platform has a powerful API to ensure applications can make use of the index data, along with the source data, to make those collections accessible and meaningful.
+		Powering the Research &amp; Education Space is <firstterm>Acropolis</firstterm>, a technical stack which collects, indexes and organises rich structured data about those archive collections published as <firstterm>Linked Open Data</firstterm> (LOD) on the Web. The collected data is organised around the people, places, events, concepts and things related to the items in the archive collections—and, if the archive assets themselves are available in digital form, that data includes the information on how to access them, all in a consistent machine-readable form.
+	</para>
+	<para>
+		Building on the Research &amp; Education Space, applications can make use of this index, along with the source data itself, to make those collections accessible and meaningful.
 	</para>
 	<para>
 		This book describes how a collection-holder can publish their data in a form which can be collected and indexed by the platform and used by applications, and how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion.
@@ -29,43 +32,4 @@
 	<para role="screen-only">
 		This book is also available in <link xlink:href="inside-acropolis.pdf">PDF format</link>.
 	</para>
-	<section xml:id="how-to-use-this-book">
-	  <title>How to use this book</title>
-	  <para>
-		<citetitle>Inside Acropolis</citetitle> is aimed at two key audiences:
-		<emphasis>collection holders</emphasis> (people and organisations who
-		have data that they do or can publish as linked open data describing
-		concepts, people, places, things, events or media), and
-		<emphasis>product developers</emphasis> (people and organisations
-		who want to build software that uses the Research &amp; Education
-		Space API).
-	  </para>
-	  <para>
-		Everyone should read the <link xlink:href="#intro"><citetitle>Introduction to the Research &amp; Education Space platform</citetitle></link>.
-		If you’re new to RDF or linked open data, you should also read the
-		<link xlink:href="#lod"><citetitle>Linked Open Data: What is it, and how does it work?</citetitle></link> section.
-	  </para>
-	  <para>
-		<emphasis>Collection holders</emphasis> should read the
-		<link xlink:href="#publishers"><citetitle>Requirements for publishers</citetitle></link> section, which includes some high-level technical and
-		editorial guidance and on how to produce data which is suitable for
-		indexing by the Research &amp; Education Space platform and used by
-		applications developed using its API.
-	  </para>
-	  <para>
-		<emphasis>Product developers</emphasis> should read the
-		<link xlink:href="#consumers"><citetitle>Requirements for consuming applications</citetitle></link>
-		section, which contains high-level technical and editorial guidance,
-		as well as the <link xlink:href="#api"><citetitle>The Research &amp; Education Space API: the index and how it's structured</citetitle></link>
-		section, which explains how to interact with the platform’s API
-		specifically, as distinct from a generic linked open data service.
-	  </para>
-	  <para>
-		Finally, it is essential that everyone working with the Research &amp;
-		Education Space reads the <link xlink:href="#describing-consuming"><citetitle>Describing and consuming data</citetitle></link> section,
-		which describes the specific classes and predicates that publishers
-		are recommended to use in their data, and product developers should
-		expect to see appearing in the data they consume.
-	  </para>
-	</section>
 </preface>

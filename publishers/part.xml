@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="publishers">
+	<title>Publishing data for the Research &amp; Education Space</title>
+
+	<para>
+		Publishers wishing to make their data visible in the Acropolis index and useable by RES applications must conform to a small set of basic requirements. These are:
+	</para>
+
+	<itemizedlist>
+		<listitem>
+			<para>The data must be expressed as RDF and published as Linked Open Data;</para>
+		</listitem>
+		<listitem>
+			<para>the data must be licensed under permissive terms (in particular, it must allow re-use in both	commercial and non-commercial applications);</para>
+		</listitem>
+		<listitem>
+			<para>the licensing terms must be included in the data itself so that consumers can perform automated due diligence before using it;</para>
+		</listitem>
+		<listitem>
+			<para>the data should use the vocabularies described in this book for best results (although you are free to use other vocabularies too).</para>
+		</listitem>
+	</itemizedlist>
+
+	<para>
+		Although the Research &amp; Education Space requires that you publish Linked Open Data, that doesn’t
+		mean you can’t also publish your data in other ways. While human-facing
+		HTML pages are the obvious example, there’s nothing about publishing
+		Linked Open Data which means you can’t also publish JSON with a bespoke
+		schema, CSV, OpenOffice.org spreadsheets, or operate complex query APIs
+		requiring registration to use.
+	</para>
+	<para>
+		In fact, best practice generally is that you publish in as many formats
+		as you’re able to, and do so in a consistent fashion. And, while your
+		“data views” (that is, the structured machine-readable representations
+		of your data about things) are going to be very dull and uninteresting
+		to most human beings, that doesn’t mean that you can’t serve
+		nicely-designed web pages about them as the serialisation for ordinary
+		web browsers.
+	</para>
+	
+	<xi:include href="checklist.xml" />
+	<xi:include href="media.xml" />
+	<xi:include href="editorial.xml" />
+	
+</part>

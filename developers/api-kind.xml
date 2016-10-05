@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="determine-kind">
+  <title>Determine the kind of entity that retrieved data describes</title>
+  <para>
+	Once you have retrieved data from the index about an entity
+	(which might be the index itself), determining the type
+	of the entity allows you to determine how that data should be
+	presented and tailor further user journeys appropriately.
+  </para>
+  
+  <para>
+	The <literal>rdf:type</literal> properties in the data describing
+	an entity represent the <emphasis>class</emphasis> or kind of
+	entity being described. The platform will
+	<link xlink:href="#class-index">automatically assign very broad classes</link>,
+	but will also convey all of the classes which can be found in
+	the source data.
+  </para>
+  
+  <para>
+	The example below shows the data held in the index about
+	<uri>http://acropolis.org.uk/824ac9e32f8b48b48a54be3c069f95bc#id</uri>,
+	which is the URI assigned by the platform for <firstterm>Jabal Karsh</firstterm>,
+	a place in Saudi Arabia. The class <literal>geo:SpatialThing</literal>
+	is assigned by the platform (because the aggregated data was determined
+	when it was indexed to refer to a place). The class
+	<literal>gn:Feature</literal> is also present, because one or
+	more descriptions of the place in source data used this class.
+  </para>
+  
+  <programlisting language="turtle"><![CDATA[<http://acropolis.org.uk/824ac9e32f8b48b48a54be3c069f95bc#id>
+	a gn:Feature, geo:SpatialThing ;
+	dct:isPartOf <http://acropolis.org.uk/7a811505b8304933b47f9ab6a90b9da8#id> ;
+	olo:slot <http://acropolis.org.uk/824ac9e32f8b48b48a54be3c069f95bc#7a811505b8304933b47f9ab6a90b9da8> ;
+	gn:locatedIn <http://acropolis.org.uk/e71507eb3c764e4a8a914a141672c512#id> ;
+	rdfs:label "Jabal Karsh" ;
+	rdfs:seeAlso <http://acropolis.org.uk/7a811505b8304933b47f9ab6a90b9da8#id> ;
+	geo:lat 26.1 ;
+	geo:long 39.65 .
+]]></programlisting>
+  <para>
+	Once your application has determined which of the classes applies to the
+	entity you’ve retrieved data about, it can determine how to proceed with
+	processing the data further and presenting it. For example, when something
+	is a place—as in the example shown above—it can look for geographical
+	co-ordinates and show them on a map. Meanwhile, a dataset might be
+	presented as a listing with search and refinement options.
+  </para>
+</section>

@@ -11,8 +11,8 @@
 	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
 
 -->
-<index version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="codecs-containers">
-	<title>Codec &amp; container format reference</title>
+<appendix version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="codecs-containers">
+	<title>Appendix II: Codec &amp; container format reference</title>
 	
 	<section xml:id="codec-video">
 		<title>Video codecs</title>
@@ -832,4 +832,4 @@
 		</segmentedlist>
 		
 	</section>
-</index>
+</appendix>

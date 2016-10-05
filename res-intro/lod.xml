@@ -603,31 +603,5 @@ _:allison
 			</para>
 		</tip>		
 	</section>
-
-	<section xml:id="why-rdf">
-		<title>Why does the Research &amp; Education Space use RDF?</title>
-		<para>
-			RDF isn’t necessarily the simplest way of expressing some data about something, and that means it’s often not the first choice for publishers and consumers. Often, an application consuming some data is designed specifically for one particular dataset, and so its interactions are essentially bespoke and comparatively easy to define.  
-		</para>
-		<para>
-			The Research &amp; Education Space, by nature, brings together a large number of different structured datasets, describing lots of different kinds of things, with a need for a wide range of applications to be able to work with those sets in a consistent fashion.
-		</para>
-		<para>
-			At the time of writing (ten years after its introduction), RDF’s use of URIs as identifiers, common vocabularies and data types, inherent flexibility and well-defined structure means that is the only option for achieving this.
-		</para>
-		<para>
-			Whether you’re describing an audio clip or the year 1987, a printed book or the concept of a documentary film, RDF provides the ability to express the data you hold in intricate detail, without being beholden to a single central authority to validate the modelling work undertaken by experts in your field.
-		</para>
-		<para>
-			For application developers, the separation of grammar and vocabularies means that applications can interpret data in as much or as little detail as is useful for the end-users. For instance, you might develop an application which understands a small set of general-purpose metadata terms but which can be used with virtually everything surfaced through the Research &amp; Education Space.
-		</para>
-		<para>
-			Alternatively, you might develop a specialist application which interprets rich descriptions in a particular domain in order to target specific use-cases. In either case, you don’t need to know who the data comes from, only sufficient understanding of the vocabularies in use to satisfy your needs.
-		</para>
-		<para>
-			However, because we recognise that publishing and consuming Linked Open Data as an individual publisher or application developer may be unfamiliar territory, and so throughout the lifetime of the project we are committed to publishing documentation, developing tools and operating workshops in order to help developers and publishers work more easily with RDF in general and the Research &amp; Education Space in particular.
-		</para>
-			
-	</section>
 	
 </chapter>

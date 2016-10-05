@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="rights">
+		<title>Rights and licensing</title>
+		
+		<para>
+			The Research &amp; Education Space aggregates data which can be
+			re-used by a wide range of applications, and much of that data
+			describes digital media (such as videos and photographs) which
+			are accessible only to certain groups of people.
+		</para>
+		<para>
+			To minimise the risk of data being incorporated into the index which
+			applications cannot use, and to ensure an optimum user experience
+			when querying for related media, it's crucial that the data that
+			collections publish includes accurate rights and licensing
+			information.
+		</para>
+				
+		<para>
+			Linked Open Data must be published under the terms of a
+			<link xlink:href="#licenses">supported license</link> and include
+			explicit licensing data in order for it to be indexed by the
+			Research &amp; Education Space and be useable by applications.
+			Our approach is aligned with the Open Data Institute’s
+			<link xlink:href="http://theodi.org/guides/publishers-guide-to-the-open-data-rights-statement-vocabulary">guide to publishing machine-readable rights data</link>.
+		</para>
+		
+		<para>
+			The Research &amp; Education Space crawler understands several common predicates for expressing the well-known URI of the license of a document:
+		</para>
+		
+		<segmentedlist>
+			<segtitle>Predicate</segtitle>
+			
+			<seglistitem>
+				<seg><literal><link xlink:href="http://purl.org/dc/terms/license">dct:license</link></literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><literal><link xlink:href="http://purl.org/dc/terms/rights">dct:rights</link></literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><literal><link xlink:href="http://purl.org/dc/terms/accessRights">dct:accessRights</link></literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><literal><link xlink:href="http://creativecommons.org/ns#license">cc:license</link></literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><literal><link xlink:href="http://www.w3.org/1999/xhtml/vocab#license">xhtml:license</link></literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><literal><link xlink:href="http://www.w3.org/1999/xhtml/vocab#copyright">xhtml:copyright</link></literal></seg>
+			</seglistitem>
+		</segmentedlist>
+		
+		<section xml:id="rights-rdf">
+			<title>Simple licensing statements</title>
+			<para>
+				In many cases, the simplest way of expressing rights information 
+				is to include it in the data that you're publishing, and this
+				can often be accomplished by adding a single triple to each
+				published documents using the <literal>dct:rights</literal>
+				predicate or an equivalent (see above) predicates and a
+				<link xlink:href="#licenses">supported license URI</link>.
+			</para>
+			<para>
+				For data to be indexed by the Research &amp; Education Space,
+				the crawler must be able to find (or derive) a licensing triple
+				where the URL of the RDF document itself is the subject—essentially
+				a triple which states “this document is licensed according to
+				the terms identified by the following URI…”. In Turtle, this
+				can be written as a triple similar to the below:
+			</para>
+
+			<programlisting language="turtle"><![CDATA[<> dct:license <http://creativecommons.org/publicdomain/zero/1.0/> .]]></programlisting>
+			<para>
+				This example assumes that you do not set <literal>@base</literal>,
+				or if you do, that you don't set it to be anything other than
+				the document’s own URL. If you do, you will need to be more
+				specific in the subject of your licensing triple.
+			</para>
+			
+			<para>
+				Publishers should also include similar triples for any digital
+				assets that are referenced in the data which are licensed under
+				a common set of terms. For example, if the data describes a set
+				of images licensed under the terms of the Creative Commons
+				Attribution License 4.0, then you should include triples
+				indicating this.
+			</para>
+			<note>
+				While the Research &amp; Education Space requires that ingested
+				RDF data licensed under open terms, this requirement does
+				<strong>not</strong> apply to digital assets <emphasis>described</emphasis>
+				by that data.
+			</note>
+
+			<section xml:id="rights-rdf-example">
+			  <title>Example</title>
+		<para>
+			The following example specifies that the Turtle representation of the data about our book is <link xlink:href="#licenses">licensed</link> according to the terms of the <citetitle>Creative Commons Attribution 4.0 International licence</citetitle>, using the host-relative URI identifying the specific representation.
+		</para>
+		
+		<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:license <http://creativecommons.org/licenses/by/4.0/> .]]></programlisting>
+
+			</section>
+			
+			<section xml:id="rights-rdf-collections">
+				<title>Tips for collection-holders</title>
+				<para>
+					It is important that the subject of this triple is the URI of the
+					<emphasis>concrete document</emphasis>. If you have different URIs
+					for each RDF representation, and either send a
+					<literal>Content-Location</literal> header or redirect to them,
+					you need to ensure that the subject of the licensing triple is
+					representation-specific URI (e.g., <literal>/books/9781899066100.ttl</literal>).
+				</para>
+				<para>
+					This is because the Research &amp; Education Space crawler is
+					<emphasis>stateless</emphasis>, just like the underlying HTTP
+					protocol itself. In practice, this means that when a document is
+					being processed by the crawler, the only information which can
+					be used to evaluate it is the <varname>request-URI</varname>,
+					the <literal>Content-Location</literal> (if provided), any
+					<link xlink:href="#rights-link">Link headers</link> that were
+					sent, and the serialised RDF itself.
+				</para>
+				<important>
+					<para>
+						Most importantly, you cannot assume when you construct your RDF that the crawler (or any other HTTP client) will be aware of any alternative URIs which redirect to
+						your document (for example, via a <literal>303 See Other</literal> redirect), and so although you can include triples about those URIs in the document, they
+						will have no role in determining whether the licensing is suitable for use in the Research &amp; Education Space.
+					</para>
+				</important>
+			
+				<para>
+					For publishers for whom publishing a licensing triple in each
+					document is difficult (for example because it involves adding a
+					large number of triples to a store due to the nature of the
+					publication workflow), there are alternative—equivalent—mechanisms
+					described in the <cite><citetitle><link xlink:href="#explicit-licensing">Publishing data for the Research &amp; Education Space</link></citetitle></cite>
+					part of this book.
+				</para>
+			
+				<para>
+					If you need to, you can provide more information than the license triple alone. For example, you might include a <emphasis>request</emphasis> which is not a formal requirement of the licensing terms, but you would like consumers to adhere to if possible.
+				</para>
+				<para>
+					One way to do this is to include a <literal>dct:license</literal> triple referring to the well-known license URI, alongside a <literal>dct:rights</literal> triple pointing to a locally-defined <literal>odrs:RightsStatement</literal> entity (described using the <link xlink:href="http://schema.theodi.org/odrs/">Open Data Rights Statement Vocabulary</link>).
+				</para>
+			</section>
+
+			<section xml:id="rights-rdf-developers">
+			  <title>Tips for application developers</title>
+			  <para>
+				The Research &amp; Education Space was designed such that
+				applications do not have to <emphasis>trust</emphasis> the
+				platform regarding data licensing. As the crawler discriminates
+				based upon the presence of explicit data licensing statements,
+				an application is always able to verify those statements at
+				source itself using the same mechanisms employed by the
+				crawler.
+			  </para>
+			</section>		
+
+		</section> <!-- #rights-rdf -->
+		
+
+<!--		
+		<para>
+			See the <link xlink:href="#document-metadata">Metadata describing documents</link> section for further details on describing individual RDF representations.
+		</para>
+		
+	</section> -->
+	
+		<section xml:id="conditional-access">
+			<title>Conditionally-accessible resources</title>
+
+			<para>
+				Many kinds of resource are not available to the general
+				public but may be accessed by the key audience of the Research
+				&amp; Education Space: students and teachers affiliated with
+				a recognised educational institution in the UK. This may be
+				because specific exceptions in law allow access when it would
+				not otherwise be possible, or because the rights-holder has
+				elected to make the assets available only to those in
+				formal education.
+			</para>
+			<para>
+				In order to support this, and ensure that users of RES
+				applications are able to use to the greatest range of
+				material that they legitimately have access to, the metadata
+				describing those assets which aren’t available to the public
+				but are to educational users must describe means by which
+				they are accessed.
+			</para>
+		
+			<tip>
+				<para>
+					A given asset may be available from multiple sources,
+					each with its own specific constraints applied to who 
+					may access it. For example, a recording of a radio
+					programme might be held on behalf of educational users by
+					two separate online services, both requiring that the
+					affiliated institution be a licensee of the relevant
+					<link xlink:href="http://www.era.org.uk">ERA licensing scheme</link>,
+					and both operating their own institutional-level
+					subscription schemes. To be most useful, the index
+					must aggregate the metadata describing
+					<emphasis>both</emphasis> means of access, and the
+					metadata must convey sufficient information so as
+					to allow applications to decide which, if any, should be
+					presented to the end-user.
+				</para>
+			</tip>
+
+			<para>
+			  Conditional access is described by publishing the following data:
+			</para>
+			
+			<itemizedlist>
+			  <listitem>
+				<para>
+				  Assigning a URI to the group of people who may access the
+				  resource, known by the Research &amp; Education Space
+				  as an <firstterm>audience URI</firstterm>.
+				</para>
+			  </listitem>				  
+			  <listitem>
+				<para>
+				  A rights statement, which uses the
+				  <link xlink:href="http://www.w3.org/ns/odrl/2/">ODRL vocabulary</link>
+				  to grant <emphasis>conditional</emphasis> permission to
+				  access the resources the statement is associated with.
+				</para>
+			  </listitem>
+			  <listitem>
+				<para>
+				  Using one of the rights predicates described above to
+				  associate an actual resource with the rights statement.
+				</para>
+			  </listitem>
+			</itemizedlist>
+			
+			<para>
+			  When this data is processed, the Research &amp; Education Space
+			  indexes the fact that the resource is conditionally-accessible
+			  and the URI assigned to the group of people who have permission
+			  to access it.
+			</para>
+
+			<tip>
+			  <para>
+				Where multiple publishers participate in a scheme using
+				a common authentication mechanism to grant access to the
+				same set of users, they should agree to use the same
+				audience URI to identify those users.
+			  </para>
+			</tip>
+
+			<para>
+			  Applications can then use this URI when performing queries in
+			  order to include restricted resources in the results.
+			</para>
+			
+			<section xml:id="conditional-access-example">
+			  <title>Example</title>
+			  <para>
+				The following example excerpt describes two <link xlink:href="#creative">episodes of television programmes</link>,
+				and their associated media players (see <cite><citetitle><link xlink:href="#av">Audio, video, and images</link></citetitle></cite>) which are
+				both accessible only to authorised users of the
+				<link xlink:href="http://shakespeare.ch.bbc.co.uk">BBC Shakespeare Archive Resource</link>.
+			  </para>
+
+			  <programlisting language="turtle"><![CDATA[<http://shakespeare.acropolis.org.uk/programmes/PCDD329F#id> a po:Episode ;
+	rdfs:label "Arall Fyd"@cy-gb ;
+	mrss:player <http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player> .
+
+<http://shakespeare.acropolis.org.uk/programmes/LRPI646P#id> a po:Episode ;
+	rdfs:label "Five to Eleven - Cyril Luckham"@en-gb ;
+	mrss:player <http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player> .
+
+<http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player>
+	dct:format <http://purl.org/NET/mediatypes/text/html> ;
+	dct:license <http://shakespeare.acropolis.org.uk/terms#id> ;
+	a dcmitype:MovingImage .
+
+<http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player>
+	dct:format <http://purl.org/NET/mediatypes/text/html> ;
+	dct:license <http://shakespeare.acropolis.org.uk/terms#id> ;
+	a dcmitype:MovingImage .
+
+<http://shakespeare.acropolis.org.uk/terms#id>
+	a odrl:Policy ;
+	rdfs:label "Accessible only by authorised users in formal education in the UK"@en-gb ;
+	odrl:permission <http://shakespeare.acropolis.org.uk/terms#play> .
+
+<http://shakespeare.acropolis.org.uk/terms#play>
+	a odrl:Permission ;
+	odrl:action odrl:play ;
+	odrl:assignee <http://shakespeare.acropolis.org.uk/#members> .
+
+<http://shakespeare.acropolis.org.uk/#members>
+	a odrl:Group ;
+	rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
+
+]]></programlisting>
+			  <para>
+				In the example above, the two <literal>po:Episode</literal>
+				entities state that they have an embeddable media player
+				using the <literal>mrss:player</literal> predicate. The data
+				describing the two player URIs indicates that specific
+				licensing terms apply to them, identified by the URI
+				<uri>http://shakespeare.acropolis.org.uk/terms#id</uri>, which
+				is an <link xlink:href="http://www.w3.org/ns/odrl/2/ODRL21#term-Policy">ODRL Policy</link>.
+			  </para>
+			  <para>
+				The policy statement includes a permission (identified as
+				<uri>http://shakespeare.acropolis.org.uk/terms#play</uri>,
+				although the Research &amp; Education Space does not require
+				an explicit URI to be assigned to each individual permission),
+				which states that the action <literal><link xlink:href="http://www.w3.org/ns/odrl/2/ODRL21#term-play">odrl:play</link></literal>
+				may be performed by members of the group
+				<uri>http://shakespeare.acropolis.org.uk/#members</uri>.
+			  </para>
+			  <para>
+				When this data is processed by the Research &amp; Education
+				Space, the platform indexes the fact that these players are
+				associated with their respective creative works, and that
+				they are accessible only be members of the audience group
+				which has the URI
+				<uri>http://shakespeare.acropolis.org.uk/#members</uri>.
+			  </para>
+			</section>
+
+			<section xml:id="conditional-access-collections">
+			  <title>Tips for collection-holders</title>
+			  <para>
+				It is important to remember that the Research &amp; Education
+				Space platform, and the applications which use its API, are
+				not responsible for enforcing access control applied to
+				resources that you publish. The mechanisms described here
+				are used to describe the access restrictions that you already
+				have in place so that user interfaces can properly account
+				for them.
+			  </para>
+			  <para>
+				In the absence of data to the contrary, the platform will
+				assume that media resources are generally accessible to the
+				public. Once data has been processed which describes access
+				restrictions, the index is updated accordingly.
+			  </para>
+			  <para>
+				Access restrictions are only recognised when they assign
+				one of the ODRL actions <literal>odrl:play</literal>,
+				<literal>odrl:present</literal>, <literal>odrl:display</literal>
+				or <literal>odrl:use</literal> to an audience URI using the
+				<literal>odrl:assignee</literal> predicate as part of an ODRL
+				policy statement. Other forms of policy are not processed,
+				and permissions related to other types of action are ignored.
+			  </para>
+			  <warning>
+				<para>
+				  The Research &amp; Education Space platform is not
+				  able to fully process and index more complex policy
+				  statements, for example those which grant permission to
+				  an audience group but where that grant is subject to
+				  additional restrictions—if this is expressed, the additional
+				  restrictions will not be conveyed in the index, and end-user
+				  applications may not be able to deal intelligently with
+				  them. Such policies are best avoided.
+				</para>
+			  </warning>
+			</section>		
+			
+			<section xml:id="conditional-access-developers">
+			  <title>Tips for application developers</title>
+
+			  <para>
+				By default, the Research &amp; Education Space API will not
+				include conditionally-accessible resources in results of
+				queries. This means that when querying for concepts which
+				have associated media, the default behaviour is to return
+				those concepts whose associated media appears to be available
+				to all.
+			  </para>
+			  
+			  <para>
+				In order to include conditionally-accessible resources in
+				the results, an application must explicitly include the
+				<literal>for</literal> parameter in <link xlink:href="#operations">its queries</link>,
+				which specifies the URI of an audience group to include.
+			  </para>
+			  
+			  <para>
+				Applications should provide a mechanism for the user
+				or administrator to specify which audience groups users
+				are part of. Note that this doesn't grant or deny access
+				to the resources themselves—that's the responsibility of
+				the publisher of those resources—but is instead a mechanism
+				for applications to hide from view those resources which are
+				not accessible to the end-user.
+			  </para>
+
+			  <para>
+				Information about the audience groups known to the
+				platform can be retrieved from the
+				<link xlink:href="#audience-groups"><literal>/audiences</literal></link>
+				dataset. By periodically retrieving this dataset, applications
+				can populate a list of audience groups for users or
+				administrators to choose from.
+			  </para>
+			</section>
+
+		</section> <!-- #conditional-access -->
+		
+
+</section>

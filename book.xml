@@ -27,22 +27,33 @@
 				</affiliation>
 			</personname>
 		</editor>
-		<edition>May 2016 Edition</edition>
+		<edition>October 2016 Edition</edition>
 		<xi:include href="legal.xml" />
 	</info>
 	<xi:include href="preface.xml" />
-	<xi:include href="intro.xml" />
-	<xi:include href="lod.xml" />
-	<xi:include href="publishers.xml" />
-	<xi:include href="consumers.xml" />
-	<xi:include href="structure.xml" />
-	<xi:include href="describing.xml" />
-	<xi:include href="architecture.xml" />
-	<xi:include href="tools.xml" />
-	<xi:include href="containers-codecs.xml" />
-	<xi:include href="licenses.xml" />
-	<xi:include href="vocab-index.xml" />
-	<xi:include href="class-index.xml" />
-	<xi:include href="predicate-index.xml" />
+
+	<!-- Main book sections -->
+	<!-- 1. An introduction the ... platform -->
+	<xi:include href="res-intro/part.xml" />
+	<!-- Developing applications -->
+	<xi:include href="developers/part.xml" />
+	<!-- Publishing data -->
+	<xi:include href="publishers/part.xml" />
+	<!-- Metdata -->
+	<xi:include href="using/part.xml" />
+	<!-- Under the hood -->
+	<xi:include href="architecture/part.xml" />
+
+	<!-- Appendices -->
+	<xi:include href="appendices/tools.xml" />
+	<xi:include href="appendices/containers-codecs.xml" />
+	
+	<!-- Indices -->
+	<xi:include href="indices/licenses.xml" />
+	<xi:include href="indices/vocab-index.xml" />
+	<xi:include href="indices/class-index.xml" />
+	<xi:include href="indices/predicate-index.xml" />
+	
+	<!-- Glossary -->
 	<xi:include href="glossary.xml" />
 </book>

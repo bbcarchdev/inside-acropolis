@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="query-capabilities">
+	<title>Determine browse and query capabilities</title>
+	<para>
+		If the data you have retrieved describes a dataset (either the
+		root of the API itself, a partition, some related dataset, or a
+		set of results), then it will include properties which describe
+		the available browse and query capabilities.
+	</para>
+		
+	<para>
+		Applications can use the presence (or absence) of these different
+		properties in order to determine the facilities which should
+		be offered to users. For example, where a dataset description
+		includes OpenSearch metadata (see below), the application can
+		use that metadata provide to present search fields to the user.
+	</para>
+		
+	<section xml:id="class-partitions">
+		<title>Class partitions</title>
+		<para>
+			These are subsets of the index organised by the RDF class of
+			the entities within them, linked to via <literal>void:classPartition</literal>.
+		</para>
+		<para>
+			For example, at the root there is a <literal>/places</literal> partition
+			which is an index of all of the entities which have the
+			<literal>geo:SpatialThing</literal> class:
+		</para>
+		<programlisting language="turtle"><![CDATA[</> void:classPartition </places> .
+
+</places>
+	a void:Dataset ;
+	rdfs:label "Places"@en ;
+	void:class geo:SpatialThing .]]></programlisting>
+	</section>
+	
+	<section xml:id="related-datasets">
+		<title>Related data sets</title>
+		<para>
+			There are a limited number of datasets which are generated
+			by the platform itself but do not form part of the core
+			index. These are referenced using the <literal>rdfs:seeAlso</literal>
+			predicate:
+	</para>
+	<programlisting language="turtle"><![CDATA[</> rdfs:seeAlso </audiences> .
+
+</audiences>
+	a void:Dataset ;
+	rdfs:label "Audiences" .]]></programlisting>
+	</section>
+				
+	<section xml:id="opensearch">
+		<title>OpenSearch metadata</title>
+		<para>
+			<link xlink:href="http://www.opensearch.org/">OpenSearch</link> is a mechanism
+			for conveying machine-readable data about query capabilities.
+		</para>
+		<para>
+			At the root of the index, the Research &amp;
+			Education Space API uses the <literal>void:openSearchDescription</literal>
+			predicate to link to an OpenSearch XML document which
+			describes the search options available across the
+			whole index.
+		</para>
+		<para>
+			Perhaps more usefully, some of the key OpenSearch
+			terms (specifically, <literal>osd:template</literal>
+			and <literal>osd:language</literal>) are used as
+			predicates against each individual dataset, ensuring
+			that applications have the data needed to offer
+			scoped searches to users.
+		</para>
+		<para>
+			The example below shows the OpenSearch properties
+			provided at the root:
+		</para>
+		<programlisting language="turtle"><![CDATA[</> void:openSearchDescription </index.osd> ;
+	osd:language "en-gb", "ga-gb", "cy-gb", "gd-gb" ;
+	osd:template "http://acropolis.org.uk/?class={rdfs:Class?}&for={odrl:Party?}&lang={language?}&limit={count?}&media={dct:DCMIType?}&offset={startIndex?}&q={searchTerms?}&type={dct:IMT?}" .]]></programlisting>
+		<para>
+			Note that the <literal>language</literal>,
+			<literal>count</literal>, <literal>startIndex</literal>
+			and <literal>searchTerms</literal> placeholders are
+			defined by OpenSearch itself, while other placeholders
+			(such as <literal>dct:DCMIType</literal>) are RDF
+			classes, where the value if provided is intended to be
+			the URI of an entity which has that class. For example,
+			the value of the <literal>media</literal> parameter
+			should be the URI of a well-known instance of the
+			<literal>dct:DCMIType</literal> class.
+		</para>
+	</section>
+			
+	<section xml:id="ordered-results">
+		<title>Ordered results</title>
+		<para>
+		  When your application retrieves RDF data, it can be any
+		  order—a particular triple appearing near the start of some
+		  serialised data doesn't indicate anything about the prominence
+		  of that triple.
+		</para>
+		<para>
+		  For query results in particular, ordering can be important—the
+		  difference in relevance between the first and tenth results can
+		  be quite significant.
+		</para>
+		<para>
+		  In order to convey an ordered result-set, the API generates
+		  additional triples using the <link xlink:href="http://purl.org/ontology/olo/20100723/orderedlistontology.html">Ordered List Ontology</link> to
+		  define <firstterm>slots</firstterm>:
+		</para>
+<programlisting language="turtle"><![CDATA[<http://acropolis.org.uk/places?q=paris>
+    osd:Language "cy-gb", "en-gb", "ga-gb", "gd-gb" ;
+    osd:template "http://acropolis.org.uk/places?for={odrl:Party?}&lang={language?}&limit={count?}&media={dct:DCMIType?}&offset={startIndex?}&q={searchTerms?}&type={dct:IMT?}" ;
+    dct:hasFormat <http://acropolis.org.uk/places.ttl?q=paris> ;
+    dct:isPartOf <http://acropolis.org.uk/places> ;
+    olo:slot <http://acropolis.org.uk/places.ttl?q=paris#427cf01d1215477489dee6091de16e65>, <http://acropolis.org.uk/places.ttl?q=paris#735793ca9cd845e19ae32627e79333db> ;
+    a void:Dataset ;
+    rdfs:label "Places containing \"paris\""@en-gb ;
+    rdfs:seeAlso <http://acropolis.org.uk/427cf01d1215477489dee6091de16e65#id>, <http://acropolis.org.uk/735793ca9cd845e19ae32627e79333db#id> .
+
+<http://acropolis.org.uk/places.ttl?q=paris#427cf01d1215477489dee6091de16e65>
+    olo:index 1 ;
+    olo:item <http://acropolis.org.uk/427cf01d1215477489dee6091de16e65#id> ;
+    a olo:Slot ;
+    rdfs:label "Result #1"@en-gb .
+
+<http://acropolis.org.uk/427cf01d1215477489dee6091de16e65#id>
+    a gn:Feature, geo:SpatialThing, skos:Concept ;
+    rdfs:label "75873"@post, "Lutetia Parisorum"@la, "PAR"@iata, "Paarys"@gv, "Pari"@ln, "Paries"@li, "Pariggi"@scn, "Parigi"@it, "Pariis"@et, "Pariisi"@fi, "Parijs"@nl, "Paris", "Paris"@als, "Paris"@cy, "Paris"@da, "Paris"@de, "Paris"@eu, "Paris"@fr, "Paris"@gd, "Paris"@ia, "Paris"@id, "Paris"@io, "Paris"@ksh, "Paris"@kw, "Paris"@lad, "Paris"@lmo, "Paris"@mg, "Paris"@ms, "Paris"@na, "Paris"@nds, "Paris"@nn, "Paris"@no, "Paris"@pms, "Paris"@pt, "Paris"@ro, "Paris"@sco, "Paris"@sv, "Paris"@sw, "Paris"@tl, "Paris"@tr, "Paris"@ty, "Paris"@vi, "Paris"@vls, "Paris (France)"@en, "Parisi"@sq, "Pariz"@br, "Pariz"@hr, "Pariz"@sl, "Parizo"@eo, "Parys"@af, "Parys"@fy, "Paryż"@pl, "Paryžius"@lt, "Paräis"@lb, "París"@an, "París"@ast, "París"@ca, "París"@es, "París"@is, "París"@oc, "París"@tet, "París - Paris"@gl, "Paríž"@sk, "Parîs"@ku, "Parīze"@lv, "Paříž"@cs, "Páras"@ga, "Párizs"@hu, "http://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%B8%D0%B6"@link, "Παρίσι"@el, "Париж"@bg, "Париж"@os, "Париж"@ru, "Париж"@tg, "Париж"@uk, "Париз"@mk, "Париз"@sr, "Парыж"@be, "Փարիզ"@hy, "פריז"@he, "باريس"@ar, "پارىژ"@ug, "پاریس"@fa, "پیرس"@ur, "ܦܪܝܣ"@arc, "पॅरिस"@mr, "பாரிஸ்"@ta, "ಪ್ಯಾರಿಸ್"@kn, "ปารีส"@th, "პარიზი"@ka, "ፓሪስ"@am, "パリ"@ja, "巴黎"@zh, "파리 시"@ko ;
+    geo:lat 48.85341 ;
+    geo:long 2.3488 .
+
+<http://acropolis.org.uk/places.ttl?q=paris#735793ca9cd845e19ae32627e79333db>
+    olo:index 2 ;
+    olo:item <http://acropolis.org.uk/735793ca9cd845e19ae32627e79333db#id> ;
+    a olo:Slot ;
+    rdfs:label "Result #2"@en-gb .
+
+<http://acropolis.org.uk/735793ca9cd845e19ae32627e79333db#id>
+    a gn:Feature, geo:SpatialThing, skos:Concept ;
+    rdfs:label "75460"@post, "Paris", "Paris (Texas)"@en, "http://en.wikipedia.org/wiki/Paris%2C_Texas"@link, "Париж"@ru ;
+    geo:lat 33.660939 ;
+    geo:long -95.555513 .
+
+]]></programlisting>	
+		<para>
+		  Note that the statements in the above example have been
+		  re-ordered for clarity, but an RDF processor should not care.
+		</para>
+		<para>
+		  In this example, the API has returned two results for a
+		  query of places matching the free-text term “paris”. To process
+		  this data, an application would first locate the triples whose
+		  subject the URI being dereferenced (in this instance,
+		  <uri>http://acropolis.org.uk/places?q=paris</uri>), then look
+		  for <literal>olo:slot</literal> predicates, and assemble a list
+		  which can be sorted from the objects of those slots. For each
+		  slot, the <literal>olo:index</literal> property specifies the
+		  numeric sort order (where lower numbers are more prominent), and
+		  <literal>olo:item</literal> connects the slot to the actual result
+		  entry.
+		</para>
+		<para>
+		  Therefore, we can see that the first result is “Paris (France)” (<uri>http://acropolis.org.uk/427cf01d1215477489dee6091de16e65#id</uri>), while the second is “Paris (Texas)” (<uri>http://acropolis.org.uk/735793ca9cd845e19ae32627e79333db#id</uri>).
+		</para>
+	</section>
+			
+	<section xml:id="pagination">
+		<title>Pagination</title>
+		<para>
+		  It will often be the case that datasets and result-sets will be
+		  paginated when they are returned from the API.
+		</para>
+		<para>
+		  In order to traverse the paginated results, applications can
+		  use the <literal>xhtml:prev</literal> and <literal>xhtml:next</literal>
+		  properties where present, which link to the previous and next
+		  page of results respectively.
+		</para>
+<programlisting language="turtle"><![CDATA[<http://acropolis.org.uk/?q=hamlet>
+	xhtml:next <http://acropolis.org.uk/?offset=25&q=hamlet> .]]></programlisting>
+	</section>
+
+</section>

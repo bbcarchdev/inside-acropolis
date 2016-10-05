@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014-2015 BBC
+ Copyright (c) 2014-2016 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -12,7 +12,7 @@
 
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="intro">
-	<title>An introduction to the Research &amp; Education Space platform</title>
+	<title>Overview</title>
 	<para>
 		The Research &amp; Education Space is powered by an <link xlink:href="https://bbcarchdev.github.io/res/code">open
 		source software</link> stack named <firstterm>Acropolis</firstterm>,
@@ -32,15 +32,15 @@
 	</para>
 	<para>
 		<link xlink:href="https://github.com/bbcarchdev/spindle/">Spindle</link>,
-		which is actually implemented as a plug-in module for our data workflow
+		which is actually implemented as plug-in modules for our data workflow
 		engine—<link xlink:href="https://github.com/bbcarchdev/twine/">Twine</link>—examines
-		the data, looking for instances where the same digital, physical
-		or conceptual entity is described in more than one place, particularly where
-		the data <link xlink:href="#sameas">explicitly states the equivalence</link>,
+		the data, looking for places where the same digital, physical
+		or conceptual entity is described by Linked Open Data in more than one
+		place, particularly where the data <link xlink:href="#sameas">explicitly states the equivalence</link>,
 		and aggregates and stores that information in an index.
 	</para>
 	<para>
-		This <firstterm>subject-oriented</firstterm> index is the very heart of
+		This <link xlink:href="#structure"><firstterm>subject-oriented</firstterm> index</link> is the very heart of
 		the Resarch &amp; Education Space: by re-arranging published data so
 		that it's organised around the entities described by it, instead of by
 		publisher or data-set, applications are able to rapidly locate all of
@@ -68,7 +68,7 @@
 		We will not be directly developing end-user applications as part of
 		the Research &amp; Education Space itself, although sample code and
 		demonstrations will be published to assist software developers in
-		doing so. There will be a “powered by RES”
+		doing so. There there will be a “powered by the Research &amp; Education Space”
 		logo scheme rolled out during the course of the project.
 	</para>
 	<para>

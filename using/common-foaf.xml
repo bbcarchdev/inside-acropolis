@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="foaf">
+
+  <title>The Friend-of-a-friend (FOAF) vocabulary</title>
+  
+  <para>
+	The FOAF vocabulary also includes some general-purpose predicates
+	which are widely-understood:
+  </para>
+  
+  <segmentedlist>
+	<segtitle>Predicate</segtitle>
+	<segtitle>Meaning</segtitle>
+	
+	<seglistitem>
+	  <seg><literal>foaf:primaryTopic</literal></seg>
+	  <seg>Specifies the primary topic of a document</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>foaf:isPrimaryTopicOf</literal></seg>
+	  <seg>Specifies that a subject is the key topic of a web page or other resource</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>foaf:topic</literal></seg>
+	  <seg>Specifies a topic of a page (may be used instead of <literal>dct:subject</literal>)</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>foaf:homepage</literal></seg>
+	  <seg>Specifies the canonical homepage for something</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>foaf:depiction</literal></seg>
+	  <seg>Specifies the URL of a still image which depicts the subject</seg>
+	</seglistitem>
+	
+  </segmentedlist>
+
+</section>

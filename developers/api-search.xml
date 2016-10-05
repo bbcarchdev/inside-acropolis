@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="search">
+  <title>Search for entities</title>
+  <para>
+	Where searching is available within a dataset (including the root), the
+	<literal>osd:template</literal> will be present, providing an
+	<link xlink:href="#opensearch">OpenSearch template</link> which can be
+	populated with query parameters. The most important parameters are
+	described below for reference.
+  </para>
+  <note>
+	<para>
+	  At present, there is not a well-supported mechanism for fully 
+	  describing the search capabilities as Linked Open Data, although we
+	  are exploring possibilities in this area. In the meantime, applications
+	  will most likely need to hard-code behaviours relating to certain
+	  query parameters—but where possible should do so based upon their
+	  presence within the OpenSearch template.
+	</para>
+  </note>
+  <para>
+	The <literal>q</literal> parameter is a free-text query field which can
+	be used (often in combination with other parameters) to find entities
+	whose name or description includes particular words.
+  </para>
+  <para>
+	The <literal>class</literal> parameter restricts the query to only
+	those entities which are of the specified class (e.g., <uri>http://xmlns.com/foaf/0.1/Agent</uri>).
+  </para>
+  <para>
+	The <literal>media</literal>, <literal>type</literal> and
+	<literal>for</literal> parameters are used to perform <firstterm>media-scoped</firstterm>
+	queries: these restrict the results to entries which are indexed as
+	having <emphasis>related media</emphasis> matching the given parameters.
+  </para>
+  <para>
+	The <literal>media</literal> parameter accepts either a URI within
+	the <link xlink:href="http://dublincore.org/documents/2000/07/11/dcmi-type-vocabulary/">DCMI Type Vocabulary</link>, or one of the defined aliases:
+	<literal>audio</literal>, <literal>collection</literal>, <literal>dataset</literal>, <literal>image</literal>, <literal>interactive</literal>, <literal>software</literal>, <literal>text</literal> and <literal>video</literal>, or the
+	special value <literal>any</literal>.
+  </para>
+  <note>
+	<para>
+	  Web pages and data views are themselves a kind of media which may
+	  be indexed by the platform, which may yield results which are
+	  initially confusing. The <literal>media=any</literal> query can
+	  be helpful for debugging, but has limited practical use in applications
+	  for this reason.
+	</para>
+  </note>
+  <para>
+	The <literal>type</literal> parameter restricts results to entries which
+	have related media of the specified MIME type. Note that the broad class of
+	MIME type may differ from the media kind described above; for example,
+	a video playback web page is a <literal>video</literal> which has a
+	MIME type of <literal>text/html</literal>. Generally applications will
+	not need to expose this filter to end-users.
+  </para>
+  <para>
+	The <literal>for</literal> parameter expands the scope of the query,
+	rather than restricts it: by default, a media query only includes results
+	where the related media is available to general public; the
+	<literal>for</literal> parameter causes the API to <emphasis>also</emphasis>
+	include items whose related media is available only to the group of people
+	identified by the specified URI. See <cite><citetitle><link xlink:href="#audience-groups">Discover known audience group URIs</link></citetitle></cite>
+	for further details.
+  </para>
+</section>

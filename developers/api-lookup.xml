@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="uri-lookup">
+  <title>Find the index entry for an entity given its URI</title>
+  <para>
+	The <firstterm>URI look-up capability</firstterm> is available when a
+	dataset (including the root) has the <literal>void:uriLookupEndpoint</literal>
+	property. The value of this property is the URL to which an encoded
+	URI to look up should be appended. For example:
+  </para>
+<programlisting language="turtle"><![CDATA[<http://acropolis.org.uk/>
+	void:uriLookupEndpoint <http://acropolis.org.uk/?uri=> .
+]]></programlisting>
+	<para>
+	  Given the above triple found at the root, an application can locate
+	  the entry corresponding to a well-known URI by URL-encoding it and
+	  appending it to the look-up endpoint. The API will then return either
+	  a redirect response, or a 404 (“Not found”):
+	</para>
+	<screen><prompt>$ </prompt> <userinput>curl -v -H 'Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0.5' http://acropolis.org.uk/?uri=http://dbpedia.org/resource/France</userinput><![CDATA[
+*   Trying 132.185.142.106...
+* Connected to acropolis.org.uk (132.185.142.106) port 80 (#0)
+> GET /?uri=http://dbpedia.org/resource/France HTTP/1.1
+> Host: acropolis.org.uk
+> User-Agent: curl/7.49.1
+> Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0.5
+> 
+< HTTP/1.1 303 See other
+< Server: Apache/2.2.22 (Debian)
+< Location: /323248ebe45e47f1a7041c482df3950f#id
+< Content-Length: 0
+< Accept-Ranges: bytes
+< Date: Wed, 05 Oct 2016 07:29:46 GMT
+< X-Varnish: 809858881
+< Age: 0
+< Via: 1.1 varnish
+< Connection: keep-alive
+< X-Cache: MISS from vm-gw-0.ch.internal
+< 
+* Connection #0 to host acropolis.org.uk left intact]]></screen>
+	<para>
+	  In the above example, the redirect is to <uri>http://acropolis.org.uk/427cf01d1215477489dee6091de16e65#id</uri>, which the application can then
+	  dereference.
+	</para>
+	<note>
+	  <para>
+		Where the <literal>void:uriLookupEndpoint</literal> property appears
+		on a dataset which is not the root, it describes an endpoint which
+		provides a look-up capability scoped to the current dataset or results.
+		It is at the option of the application developer whether this
+		capability is exposed to users, or if only a global look-up option
+		is provided where both are available.
+	  </para>
+	</note>
+</section>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="consumers">
+  <title>Developing applications for the Research &amp; Education Space</title>
+  
+  <para>
+	The Research &amp; Education Space is designed to be a platform for
+	developers to build applications upon.
+  </para>
+  <para>
+	While you can
+	<link xlink:href="http://acropolis.org.uk">browse the data</link>
+	indexed by the platform in a web browser, those web pages aren’t
+	intended for use by ordinary end-users—they’re just an interface to
+	aid debugging and testing.
+  </para>
+  <para>
+	What you see there is an HTML representation of the Research &amp;
+	Education Space API—a Linked Open Data service which provides
+	information and query facilities about the entities indexed by the
+	platform.
+  </para>
+  
+  <para>
+	This part of the book is split into several chapters:
+  </para>
+  <variablelist>
+	<varlistentry>
+	  <term><cite><citetitle><link xlink:href="#api">An introduction to the Research &amp; Education Space API</link></citetitle></cite></term>
+	  <listitem>
+		<para>
+		  Provides an introduction to how applications can interact with the
+		  API and how developers can test different kinds of request.
+		</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><cite><citetitle><link xlink:href="#operations">Common API operations</link></citetitle></cite></term>
+	  <listitem>
+		<para>
+		  Describes the different kinds of API operations which are available
+		  and how to make use of them.
+		</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><cite><citetitle><link xlink:href="#retrieving-lod">Retrieving and processing Linked Open Data</link></citetitle></cite></term>
+	  <listitem>
+		<para>
+		  Describes the process of de-referencing Linked Open Data URIs, both
+		  in theory and in practice, including a detailed description of our
+		  approach for implementing a robust Linked Open Data client.
+		</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><cite><citetitle><link xlink:href="#developer-best-practices">Best practices</link></citetitle></cite></term>
+	  <listitem>
+		<para>
+		  Our recommendations for what to do—and what not to do—in order to
+		  get the best out of the API and avoid some common pitfalls.
+		</para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><cite><citetitle><link xlink:href="#editorial-guidelines-for-product-developers">Editorial guidelines for product developers</link></citetitle></cite></term>
+	  <listitem>
+		<para>
+		  Discusses some of the <firstterm>editorial</firstterm> issues
+		  involved in building applications using the Research &amp; Education
+		  Space, such as targeting different age-groups.
+		</para>
+	  </listitem>
+	</varlistentry>
+  </variablelist>
+
+<!--	<para>
+		Applications developed using the Research &amp; Education Space must be able
+		to <emphasis>both</emphasis> understand the index assembled by the platform
+		<emphasis>and</emphasis> the source data it’s derived from.
+		Practically, this means that they must be able to retrieve and process
+		RDF from remote web servers and interpret at least the
+		<link xlink:href="#common">common metadata</link> vocabularies described
+		in this book which are relevant to the consuming application.
+	</para> -->
+
+
+	
+	<xi:include href="api.xml" />
+	<xi:include href="api-operations.xml" />
+	<xi:include href="retrieving-lod.xml" />
+	<xi:include href="best-practices.xml" />
+	<xi:include href="editorial.xml" />
+
+</part>

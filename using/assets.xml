@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014-2015 BBC
+ Copyright (c) 2014-2016 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -12,27 +12,81 @@
 
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="assets">
-	<title>Describing digital assets</title>
+	<title>Digital assets</title>
 	
 	<para>
 		When we talk about “digital assets”, we mean digital resources that
 		users can stream or download to their devices: video, audio and image
-		files, web pages, and other kinds of document.
+		files, web pages, and other kinds of document, including machine-readable
+		data and collections.
 	</para>
 	
 	<para>
 		In many cases, these digital assets are a <firstterm>manifestation</firstterm>
-		of a <link xlink:href="#creative">creative work</link> which should be
-		described separately and related to the assets.
+		of a <link xlink:href="#creative">creative work</link> (which should be
+		described separately and related to the digital assets).
+	</para>
+	
+	<para>
+		In contrast to the case where some non-digital entity (such as a person
+		or a concept) is being described, the subject URI used in the data
+		is the actual URL of the digital asset.
+	</para>
+	
+	<note>
+		<para>
+			Data about digital assets is what makes the Research &amp; Education
+			Space most useful. A publisher describing the assets they are making
+			available, in what formats, to whom, how they are organised, and to
+			what topics the assets are related to allows the platform to index
+			that information and users to perform queries upon it.
+		</para>
+	</note>
+	
+	<tip>
+		<para>
+			The dataset containing all of the assets (except for collections)
+			which have been indexed by the Research &amp; Education Space
+			platform can be accessed using the <link xlink:href="http://acropolis.org.uk/assets"><literal>/assets</literal></link>
+			endpoint. However, it is usually more useful to locate relevant
+			assets by searching for <firstterm>topics</firstterm> which have
+			related media meeting specific criteria.
+		</para>
+	</tip>
+	
+	<para>
+		Although we recommend you read this whole section, we have split it
+		into three broad categories of assets that you may be publishing or
+		consuming data about: <cite><citetitle><link xlink:href="#document-metadata">Documents</link></citetitle></cite>,
+		<cite><citetitle><link xlink:href="#av">Audio, video and images</link></citetitle></cite>, and
+		<cite><citetitle><link xlink:href="#collections">Collections and data-sets</link></citetitle></cite>.
 	</para>
 	
 	<section xml:id="document-metadata">
-		<title>Metadata describing documents (including RDF serialisations)</title>
+		<title>Documents</title>
 		
+		<para>
+			The term <firstterm>documents</firstterm> is intended to include
+			any sort of document-based media: web pages, machine-readable data
+			in various forms (including RDF serialisations, CSV, XML, and
+			proprietary formats), PDFs, Office documents, and so on. The
+			guidance in this section <emphasis>also</emphasis> applies if you
+			are describing <link xlink:href="#av">audio, video or image</link>
+			assets.
+		</para>
+		
+		<note>
+			<para>
+				Documents are assigned a <link xlink:href="#class-index">class</link>
+				of <literal>foaf:Document</literal> when they are
+				indexed.
+			</para>
+		</note>
+
 		<para>
 			Vocabularies used in this section:
 		</para>
-	
+		
 		<segmentedlist>
 			<segtitle>Vocabulary</segtitle>
 			<segtitle>Namespace URI</segtitle>
@@ -73,14 +127,17 @@
 				<seg><uri>http://www.w3.org/ns/formats/</uri></seg>
 				<seg><literal>formats:</literal></seg>
 			</seglistitem>
-		
 		</segmentedlist>
 		
 		<section xml:id="describe-doc">
-			<title>Describing your document</title>
+			<title>Describing a document</title>
 			
 			<note>
-				<para>If the document is actually a data-set, see also the <link xlink:href="#collections">Collections and data-sets</link> section.</para>
+				<para>
+					If the document is actually a data-set, also
+					see the <cite><citetitle><link xlink:href="#collections">Collections and
+					data-sets</link></citetitle></cite> section.
+				</para>
 			</note>
 			
 			<para>
@@ -96,7 +153,8 @@
 			<programlisting language="turtle"><![CDATA[</books/9781899066100> dct:title "Information about 'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library & Museum"@en .]]></programlisting>
 
 			<para>
-				If the document is not a data-set, specify the primary topic (that is, the URI of the thing described by the document):
+				If the document is not a data-set, specify the primary topic
+				(that is, the URI of the thing described by the document):
 			</para>
 
 			<programlisting language="turtle"><![CDATA[</books/9781899066100> foaf:primaryTopic </books/12345#id> .]]></programlisting>
@@ -110,21 +168,25 @@
 		</section>
 
 		<section xml:id="doc-metadata-serialisations">
-			<title>Describe each of your serialisations</title>
+			<title>Describing the serialisations of a document</title>
 			<para>
-				Use a member of the DCMI type vocabulary as a class:
+				Use a member of the DCMI type vocabulary as a class, where the
+				subject is the URL of the serialisation:
 			</para>
 			
 			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> a dcmit:Text .]]></programlisting>
 			
 			<para>
-				Where available, use a member of the W3C formats vocabulary as a class:
+				Where available, use a member of the W3C formats vocabulary as a
+				class:
 			</para>
 
 			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> a formats:Turtle .]]></programlisting>
 			
 			<para>
-				Use the <literal>dct:format</literal> predicate, along with the MIME type beneath the <uri>http://purl.org/NET/mediatypes/</uri> tree:
+				Use the <literal>dct:format</literal> predicate, along with the
+				MIME type beneath the <uri>http://purl.org/NET/mediatypes/</uri>
+				tree:
 			</para>
 			
 			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:format <http://purl.org/NET/mediatypes/text/turtle> .]]></programlisting>
@@ -142,7 +204,10 @@
 			<programlisting language="turtle"><![CDATA[</books/9781899066100.ttl> dct:rights <http://creativecommons.org/licenses/by/4.0/> .]]></programlisting>
 			
 			<para>
-				See the <link xlink:href="#rights">Metadata describing rights and licensing</link> section for details on the licensing statements required by RES, as well as information about supported licences.
+				Also see the <link xlink:href="#rights">Metadata describing rights
+				and licensing</link> section for details on the licensing
+				statements required by RES, as well as information about
+				supported licences.
 			</para>
 		</section>
 
@@ -174,37 +239,6 @@
 	dct:format <http://purl.org/NET/mediatypes/text/html> ;
 	dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as a web page"@en .
 ]]></programlisting>
-		</section>
-	</section>
-	
-	<section xml:id="collections">
-		<title>Collections and data-sets</title>
-		
-		<para>
-			Vocabularies used in this section:
-		</para>
-	
-		<segmentedlist>
-			<segtitle>Vocabulary</segtitle>
-			<segtitle>Namespace URI</segtitle>
-			<segtitle>Prefix</segtitle>
-		
-			<seglistitem>
-				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
-				<seg><uri>http://purl.org/dc/terms/</uri></seg>
-				<seg><literal>dct:</literal></seg>
-			</seglistitem>
-			
-			<seglistitem>
-				<seg><link xlink:href="http://vocab.deri.ie/void">VoID</link></seg>
-				<seg><uri>http://rdfs.org/ns/void#</uri></seg>
-				<seg><literal>void:</literal></seg>
-			</seglistitem>
-			
-		</segmentedlist>
-		
-		<section xml:id="autodiscovery">
-			<title>Data-set auto-discovery</title>
 		</section>
 	</section>
 	
@@ -302,7 +336,7 @@
 			</listitem>
 			<listitem>
 				<para>
-					Use a <link xlink:href="#rights-rdf">rights statement predicate</link>
+					Use a <link xlink:href="#rights">rights statement predicate</link>
 					to link to an RDF policy document describing
 					<link xlink:href="#conditional-access">who is able to
 					access the media asset</link> if it is not generally-available,
@@ -320,9 +354,12 @@
 				the appropriate data being available—particularly if a piece
 				of media is only conditionally-accessible (if the data does
 				not express as much properly, then end-users will be presented
-				with a login form which they cannot use).
+				with a login form which they cannot use). See the
+				<cite><citetitle><link xlink:href="#conditional-access">Conditionally-accessible resources</link></citetitle></cite> section for further
+				details.
 			</para>
 		</tip>
+
 		<section xml:id="av-example">
 			<title>Example</title>
 			<para>
@@ -346,7 +383,7 @@
 </programmes/b04bndb9#programme>
 	a po:Version ;
 	rdfs:label "An episode of "Nina and the Neurons: Get Sporty - Trampolining"@en-gb ;
-	po:aspect_ration "16:9" ;
+	po:aspect_ratio "16:9" ;
 	po:sound_format "Stereo" ;
 	po:duration 900 .
 
@@ -371,4 +408,68 @@
 			</para>
 		</section>
 	</section>
+	
+	<section xml:id="collections">
+		<title>Collections and data-sets</title>
+		
+		<para>
+			In this context, we use the term <firstterm>collection</firstterm>
+			to refer to any arbitrary group of entities indexed by the Research
+			&amp; Education Space. Publishers can explicitly group subjects
+			that they describe together into collections, and applications
+			can scope their queries to only those items which appear within
+			a specific collection.
+		</para>
+
+		<note>
+			<para>
+				Collections are assigned a <link xlink:href="#class-index">class</link>
+				of <literal>dcmitype:Collection</literal> when they are
+				indexed.
+			</para>
+		</note>
+		
+		<tip>
+			<para>
+				The dataset containing all of the collections which have
+				been indexed by the Research &amp; Education Space
+				platform can be accessed using the <link xlink:href="http://acropolis.org.uk/collections"><literal>/collections</literal></link>
+				endpoint.
+			</para>
+		</tip>
+		
+		<para>
+			Vocabularies used in this section:
+		</para>
+	
+		<segmentedlist>
+			<segtitle>Vocabulary</segtitle>
+			<segtitle>Namespace URI</segtitle>
+			<segtitle>Prefix</segtitle>
+		
+			<seglistitem>
+				<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+				<seg><uri>http://purl.org/dc/terms/</uri></seg>
+				<seg><literal>dct:</literal></seg>
+			</seglistitem>
+
+			<seglistitem>
+				<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
+				<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
+				<seg><literal>foaf:</literal></seg>
+			</seglistitem>
+			
+			<seglistitem>
+				<seg><link xlink:href="http://vocab.deri.ie/void">VoID</link></seg>
+				<seg><uri>http://rdfs.org/ns/void#</uri></seg>
+				<seg><literal>void:</literal></seg>
+			</seglistitem>
+			
+		</segmentedlist>
+		
+		<section xml:id="autodiscovery">
+			<title>Data-set auto-discovery</title>
+		</section>
+	</section>
+	
 </chapter>

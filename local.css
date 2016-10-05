@@ -15,24 +15,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-.masthead:before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  background-size: auto 100%;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-}
-body>header .masthead{
-  position: relative;
-  background-color: #6c71c4;
-}
-body>header .masthead:before {
+body>header .masthead {
 	display: block;
-	background-image: url('masthead.png');
+	background: #6c71c4 url('masthead.png') 50% 50% no-repeat;
 }

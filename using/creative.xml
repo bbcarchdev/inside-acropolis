@@ -3,7 +3,7 @@
 
  Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 
- Copyright (c) 2014-2105 BBC
+ Copyright (c) 2014-2016 BBC
 
   Licensed under the terms of the Open Government Licence, version 2.0.
   You may obtain a copy of the license at:
@@ -12,10 +12,10 @@
 
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="creative">
-	<title>Describing creative works</title>
+	<title>Creative works</title>
 	<tip>
 		<para>
-			The RES index entry for a creative work will have a class of <link xlink:href="http://vocab.org/frbr/core.html#Work">frbr:Work</link>.
+			Creative works are assigned a class of <link xlink:href="http://vocab.org/frbr/core.html#Work">frbr:Work</link> when they are indexed.
 		</para>
 	</tip>
 	

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="developer-best-practices">
+	<title>Best practices</title>
+
+	<section xml:id="best-accept">
+	  <title>Be careful what you accept</title>
+	  <para>
+		Take care not to include <literal>*</literal> in your HTTP <literal>Accept</literal>
+		header unless your application really can deal intelligently with
+		responses of any type. Similarly, don't explicitly include types
+		which your application can’t process properly.
+	  </para>
+	</section>
+
+	<section xml:id="best-middleware">
+	  <title>Implement your own middleware</title>
+	  <para>
+		However you implement your application (e.g., Javascript in a web browser,
+		a mobile app, etc.), avoid having end-users connecting directly to the
+		Research &amp; Education Space API: instead, provide a middleware layer
+		that you maintain and control instead. This has several benefits:
+	  </para>
+	  <itemizedlist>
+		<listitem><para>
+		  It allows you to implement caching which insulates your application
+		  (and your users) from any performance or availability issues which
+		  might arise either in the platform, or any of the external data
+		  sources.
+		</para></listitem>
+		<listitem><para>
+		  It provides you with an opportunity to augment or filter results
+		  before returning them to your application.
+		</para></listitem>
+		<listitem><para>
+		  It allows you to transform data in a format which is best suited
+		  to your application (for example, you might arrange things such that
+		  only your middleware needs to understand Turtle and RDF/XML, while
+		  the data is delivered to your application as JSON regardless of
+		  its source format).
+		</para></listitem>
+		<listitem><para>
+		  It allows you to fetch source data where needed, without relying
+		  on widespread implementation of <link xlink:href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</link>
+		  across all sources of data.
+		</para></listitem>
+	  </itemizedlist>
+	</section>
+
+	<section xml:id="best-behaviour">
+	  <title>Tailor behaviour to the data</title>
+	  <para>
+		Applications should hard-code as little behaviour as possible to
+		particular URIs or patterns: instead, behaviours should generally
+		be triggered by the nature of the data retrieved.
+	  </para>
+	</section>
+
+	<section xml:id="best-follow">
+	  <title>Follow your nose</title>
+	  <para>
+		API responses will often include data that your application doesn’t
+		need, and should ignore. Rather than attempting to iterate all of
+		the data in a response, treat it as a tree that you traverse,
+		starting with the data whose subject is the URI that you wanted
+		to dereference in the first place.
+	  </para>
+	</section>
+	
+	<section xml:id="best-source">
+	  <title>Use the source</title>
+	  <para>
+		While the Research &amp; Education Space aims for correctness, it
+		does not aim for completeness, and can guarantee neither. Applications
+		should be prepared to retrieve the source data referenced by
+		entries in the index and process it directly to obtain further
+		details.
+	  </para>
+	</section>
+
+</chapter>

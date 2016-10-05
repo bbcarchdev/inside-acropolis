@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="locate-source">
+		<title>Locate the source data for an entity</title>
+		<para>
+			Because the platform only provides a high-level index with
+			minimal cached source data, applications will often need to
+			fetch the original data that was indexed by the platform for
+			further detail on the entities that have been indexed.
+		</para>
+		<para>
+			Source data is always available in one of the two RDF
+			serialisations that all RES applications must support: Turtle,
+			and RDF/XML. Publishers may also make data available in other
+			RDF serialisations (and other formats altogether), and applications
+			can use HTTP Content Negotiation to obtain data in a preferred
+			format supported by both the client and server.
+		</para>
+		<para>
+			The index entry for an entity contains <literal>owl:sameAs</literal>
+			triples which link the URIs of the entity as used in source
+			data to the URI assigned by the Research &amp; Education Space
+			platform. Therefore, an application can examine all of the triples
+			which match this pattern to obtain a list of source URIs.
+		</para>
+		<para>
+			The example below shows some of the data held in the index about
+			Shakespeare’s <firstterm>Julius Ceaser</firstterm>, which has
+			the URI <uri>http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id</uri>
+			assigned to it by the platform:
+		</para>
+		
+		<programlisting language="turtle"><![CDATA[<http://dbpedia.org/resource/Julius_Caesar_%28play%29>
+owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id> .
+
+<http://dbpedia.org/resource/Julius_Caesar_(play)>
+owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id>, <http://www.dbpedialite.org/things/57328#id> .
+
+<http://rdf.freebase.com/ns/guid.9202a8c04000641f800000000006df71>
+owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id> .
+
+<http://rdf.freebase.com/ns/m.0frwk>
+owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id> .
+
+<http://www.dbpedialite.org/things/57328#id>
+owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id>, <http://dbpedia.org/resource/Julius_Caesar_%28play%29>, <http://rdf.freebase.com/ns/guid.9202a8c04000641f800000000006df71>, <http://rdf.freebase.com/ns/m.0frwk>, <http://www.wikidata.org/entity/Q215750> .
+
+<http://www.wikidata.org/entity/Q215750>
+owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id>, <http://dbpedia.org/resource/Julius_Caesar_(play)> .
+]]></programlisting>
+
+		<para>
+			In this example, there are a number of <literal>owl:sameAs</literal>
+			triples, some of which were expressed in the source data indexed
+			by the platform. To obtain a list of the URIs for the entity
+			as used in the source data, we can filter the triples for those matching
+			the following pattern:—
+		</para>
+		<programlisting language="turtle"><![CDATA[?uri owl:sameAs <http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id> .]]></programlisting>
+		<para>
+			Applying this filter results in the following list:—
+		</para>
+		<segmentedlist>
+			<segtitle>URI</segtitle>
+			<seglistitem>
+				<seg><uri>http://dbpedia.org/resource/Julius_Caesar_%28play%29</uri></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://dbpedia.org/resource/Julius_Caesar_(play)</uri></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://rdf.freebase.com/ns/guid.9202a8c04000641f800000000006df71</uri></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://rdf.freebase.com/ns/m.0frwk</uri></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://www.dbpedialite.org/things/57328#id</uri></seg>
+			</seglistitem>
+			<seglistitem>
+				<seg><uri>http://www.wikidata.org/entity/Q215750</uri></seg>
+			</seglistitem>
+			
+		</segmentedlist>	
+</section>

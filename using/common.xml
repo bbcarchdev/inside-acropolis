@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="common">
+	<title>Common metadata</title>
+	
+	<note>
+		By “common metadata” we mean the set of properties which can reasonably
+		be applied to virtually any kind of entity.
+	</note>
+	
+	<para>
+		Vocabularies used in this chapter:
+	</para>
+	
+	<segmentedlist>
+		<segtitle>Vocabulary</segtitle>
+		<segtitle>Namespace URI</segtitle>
+		<segtitle>Prefix</segtitle>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</link></seg>
+			<seg><uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</uri></seg>
+			<seg><literal>rdf:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</link></seg>
+			<seg><uri>http://www.w3.org/2000/01/rdf-schema#</uri></seg>
+			<seg><literal>rdfs:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</link></seg>
+			<seg><uri>http://purl.org/dc/terms/</uri></seg>
+			<seg><literal>dct:</literal></seg>
+		</seglistitem>
+
+		<seglistitem>
+		  <seg><link xlink:href="http://www.w3.org/TR/owl2-syntax/">OWL</link></seg>
+		  <seg><uri>http://www.w3.org/2002/07/owl#</uri></seg>
+		  <seg><literal>owl:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+			<seg><link xlink:href="http://xmlns.com/foaf/spec/">FOAF</link></seg>
+			<seg><uri>http://xmlns.com/foaf/0.1/</uri></seg>
+			<seg><literal>foaf:</literal></seg>
+		</seglistitem>
+
+		<seglistitem>
+		  <seg><link xlink:href="http://www.w3.org/1999/xhtml/vocab#">XHTML</link></seg>
+		  <seg><uri>http://www.w3.org/1999/xhtml/vocab#</uri></seg>
+		  <seg><literal>xhtml:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+		  <seg><link xlink:href="http://creativecommons.org/ns#">Creative Commons REL</link></seg>
+		  <seg><uri>http://creativecommons.org/ns#</uri></seg>
+		  <seg><literal>cc:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+		  <seg><link xlink:href="http://www.w3.org/ns/odrl/2/">ODRL 2.x</link></seg>
+		  <seg><uri>http://www.w3.org/ns/odrl/2/</uri></seg>
+		  <seg><literal>odrl:</literal></seg>
+		</seglistitem>
+		
+		<seglistitem>
+		  <seg><link xlink:href="http://schema.theodi.org/odrs/">ODRS Vocabulary</link></seg>
+		  <seg><uri>http://schema.theodi.org/odrs#</uri></seg>
+		  <seg><literal>odrs:</literal></seg>
+		</seglistitem>
+		
+	</segmentedlist>
+
+	<xi:include href="common-class.xml" />
+	<xi:include href="common-generic.xml" />
+	<xi:include href="common-sameas.xml" />
+	<xi:include href="common-rights.xml" />
+
+<!--	<xi:include href="common-rdf.xml" />
+	<xi:include href="common-rdfs.xml" />
+	<xi:include href="common-dcmi.xml" />
+	<xi:include href="common-foaf.xml" /> -->
+	
+</chapter>

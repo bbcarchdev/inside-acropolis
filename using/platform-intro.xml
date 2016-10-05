@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="platform-intro">
+	<title>Introduction</title>
+	
+	<para>
+	  The Research &amp; Education Space platform indexes linked open data, and
+	  presents its API in the same fashion. This part of the book is intended
+	  for both collection-holders seeking guidance on how to most effectively
+	  publish their data so that it can be indexed by the platform, and for
+	  software developers wanting to know how to interact with it.
+	</para>
+
+	<para>
+	  Although some chapters are more applicable to some audiences than others
+	  (for example, it isn’t necessary for collection-holders to have a deep
+	  understanding of the available API operations), we do recommend that
+	  both collection-holders and application developers read this part of
+	  the book in full to best understand how to get the most out of the
+	  platform.
+	</para>
+	
+	<para>
+		At the core of the platform is the <firstterm>Resarch &amp; Education Space index</firstterm>.
+		This index is available as <link xlink:href="http://acropolis.org.uk/">web pages</link>
+		(to make it easier for application developers to see what’s there and
+		how it works), but is primarily published as Linked Open Data in various
+		machine-readable RDF serialisations. Accessing the index via HTTP 
+		<literal>GET</literal> requests and using Content Negotiation to ask for
+		machine-readable data is how you use the Research &amp; Education Space
+		API.
+	</para>
+	
+</chapter>

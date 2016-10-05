@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="dcmi">
+  <title>Dublin Core Metadata</title>
+  
+  <para>
+	<cite><citetitle><link xlink:href="http://dublincore.org/documents/dcmi-terms/">DCMI Metadata Terms</link></citetitle></cite> constitute an
+	extremely widely-used general-purpose metadata vocabulary which can be
+	used in the to help describe both digital and abstract resources.
+  </para>
+
+  <para>
+	In particular, the following predicates are recognised by the Research
+	&amp; Education Space platform:
+  </para>
+  
+  <segmentedlist>
+	<segtitle>Predicate</segtitle>
+	<segtitle>Meaning</segtitle>
+	
+	<seglistitem>
+	  <seg><literal>dct:title</literal></seg>
+	  <seg>Specifies the formal title of an item</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>dct:rights</literal></seg>
+	  <seg>Specifies a URI for rights information (see <link xlink:href="#rights">Metadata describing rights and licensing</link>)</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>dct:license</literal></seg>
+	  <seg>Alternative predicate for specifying rights information</seg>
+	</seglistitem>
+	
+	<seglistitem>
+	  <seg><literal>dct:subject</literal></seg>
+	  <seg>Specifies the subject of something</seg>
+	</seglistitem>		
+	
+  </segmentedlist>
+
+  <section xml:id="dcmi-example">
+	<title>Example</title>
+  </section>
+
+  <section xml:id="dcmi-collections">
+	<title>Tips for collection-holders</title>
+  </section>
+  
+  <section xml:id="dcmi-developers">
+	<title>Tips for application developers</title>
+  </section>
+
+</section>

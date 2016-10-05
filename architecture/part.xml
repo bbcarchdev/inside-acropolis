@@ -11,7 +11,7 @@
 	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
 
 -->
-<chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="architecture">
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="architecture">
 	<title>Under the hood: the architecture of Acropolis</title>
 	
 	<para>
@@ -587,4 +587,4 @@
 		
 	</section>
 	
-</chapter>
+</part>

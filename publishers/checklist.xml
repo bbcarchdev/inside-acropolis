@@ -63,7 +63,7 @@
 		<para>
 			This doesn’t mean that where there isn’t a widely-used term to
 			support something from your data that you shouldn’t publish it,
-			rather than you should only invent your own vocabularies of
+			rather that you should only invent your own vocabularies of
 			terms where existing well-known terms don’t fit.
 		</para>
 		<tip>
@@ -73,7 +73,7 @@
 				<uri>http://example.com/terms#title</uri>, and abbreviate
 				it in your documentation and Turtle as <literal>ex:title</literal>,
 				that doesn’t mean that any application can safely
-				assume that it represents the descriptive title of an entit
+				assume that it represents the descriptive title of an entity
 				(indeed, it may represent a different
 				<link xlink:href="https://en.wiktionary.org/wiki/title">kind of title</link>,
 				or simply be poorly-named for humans!).

@@ -40,10 +40,15 @@
 	those entities which are of the specified class (e.g., <uri>http://xmlns.com/foaf/0.1/Agent</uri>).
   </para>
   <para>
-	The <literal>media</literal>, <literal>type</literal> and
-	<literal>for</literal> parameters are used to perform <firstterm>media-scoped</firstterm>
+	The <literal>media</literal> and <literal>type</literal>
+	parameters are used to perform <firstterm>media-scoped</firstterm>
 	queries: these restrict the results to entries which are indexed as
 	having <emphasis>related media</emphasis> matching the given parameters.
+  </para>
+  <para>
+  The <literal>for</literal> parameter expands the scope of the query,
+  rather than restricts it, allowing extra related media to be included
+  in addition to that which is available to the general public;
   </para>
   <para>
 	The <literal>media</literal> parameter accepts either a URI within

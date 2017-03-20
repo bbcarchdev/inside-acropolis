@@ -35,6 +35,21 @@
 		</itemizedlist>
 	</section>
 
+	<section xml:id="blog-posts">
+		<title>Useful blog posts</title>
+		<itemizedlist>
+			<listitem>
+				<para><citetitle><link xlink:href="http://res-project.tumblr.com/post/145608555223/inside-acropolis-how-to-unlock-the-archives/">Inside Acropolis: How To Unlock The Archives</link></citetitle></para>
+			</listitem>		
+			<listitem>
+				<para><citetitle><link xlink:href="http://res-project.tumblr.com/post/146940470153/interacting-with-res-in-php">Interacting with RES in PHP</link></citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle><link xlink:href="http://res-project.tumblr.com/post/154464075083/what-does-res-do-with-your-data">What Does RES Do With Your Data</link></citetitle> (PDF)</para>
+			</listitem>
+		</itemizedlist>
+	</section>
+
 	<section xml:id="lod-consumer-tools">
 		<title>Tools for consuming Linked Open Data</title>
 		<itemizedlist>

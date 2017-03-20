@@ -67,23 +67,29 @@
 	<para>
 		We will not be directly developing end-user applications as part of
 		the Research &amp; Education Space itself, although sample code and
-		demonstrations will be published to assist software developers in
-		doing so. There there will be a “powered by the Research &amp; Education Space”
-		logo scheme rolled out during the course of the project.
+		demonstrations have been published(<link xlink:href="http://res-project.tumblr.com/post/145608555223/inside-acropolis-how-to-unlock-the-archives">inside-acropolis-how-to-unlock-the-rchives</link>, 
+		<link xlink:href="http://res-project.tumblr.com/post/146940470153/interacting-with-res-in-php">
+		interacting-with-res-in-php</link> and 
+		<link xlink:href="http://res-project.tumblr.com/post/154464075083/what-does-res-do-with-your-data">
+		what-does-res-do-with-your-data</link>) to assist software developers in
+		doing so. There is also a “powered by RES” logo.
 	</para>
 	<para>
 		The Research &amp; Education Space only indexes and publishes data which
 		has been released under terms which permit re-use in both commercial
 		<emphasis>and</emphasis> non-commercial settings, so that all kinds of
-		applications can be developed using the platform.
+		applications can be developed using the platform.Go to our Blog(
+		<link xlink:href="http://res-project.tumblr.com/post/143892270473/open-data-the-digital-equivalent-of-letting">open-data-the-digital-equivalen-of-letting</link> and 
+		<link xlink:href="http://res-project.tumblr.com/post/144859969193/the-pros-and-cons-of-open-licensing-vs">
+		the-pros-and-cons-of-open-licensing</link>) to find out more on issue of licensing.
 	</para>
 	<para>
-		For the Resarch &amp; Education Space to be most useful, holders of
+		For the Research &amp; Education Space to be most useful, holders of
 		publicly-funded archive collections across the UK should publish Linked
 		Open Data describing their collections (including related digital assets,
 		where they exist). Although many collections are already doing so or
-		plan to, the Research &amp; Education Space project partners will be
-		providing tools and advice to collection-holders in order to assist them
-		throughout the lifetime of the project.
+		plan to, the Research &amp; Education Space technical team will be
+		providing tools and advice to collection-holders in order to assist them.
+		Go to our blog(<link xlink:href="http://res-project.tumblr.com/post/151930243658/why-publish-modes-records-as-linked-data">why-publish-modes-records-as-linked-data</link>) to find out how one collection holder has made their data compatible with RES.
 	</para>
 </chapter>

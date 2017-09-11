@@ -37,8 +37,6 @@
 	<xi:include href="res-intro/part.xml" />
 	<!-- Developing applications -->
 	<xi:include href="developers/part.xml" />
-	<!-- Metadata -->
-	<xi:include href="using/part.xml" />
 	<!-- Under the hood -->
 	<xi:include href="architecture/part.xml" />
 

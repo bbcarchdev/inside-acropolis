@@ -13,7 +13,7 @@
 -->
 <part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="consumers">
   <title>Developing applications for the Research &amp; Education Space</title>
-  
+
   <para>
 	The Research &amp; Education Space is designed to be a platform for
 	developers to build applications upon.
@@ -31,7 +31,7 @@
 	information and query facilities about the entities indexed by the
 	platform.
   </para>
-  
+
   <para>
 	This part of the book is split into several chapters:
   </para>
@@ -85,20 +85,30 @@
 	</varlistentry>
   </variablelist>
 
-<!--	<para>
-		Applications developed using the Research &amp; Education Space must be able
-		to <emphasis>both</emphasis> understand the index assembled by the platform
-		<emphasis>and</emphasis> the source data it’s derived from.
-		Practically, this means that they must be able to retrieve and process
-		RDF from remote web servers and interpret at least the
-		<link xlink:href="#common">common metadata</link> vocabularies described
-		in this book which are relevant to the consuming application.
-	</para> -->
-
-
-	
 	<xi:include href="api.xml" />
 	<xi:include href="api-operations.xml" />
+
+  <!-- ???TODO -->
+  <xi:include href="rights.xml" />
+  <xi:include href="equivalence.xml" />
+
+  <section xml:id="finding-media">
+    <title>???TODO Finding usable media</title>
+
+    <para>
+      ???mostly reuse stuff from rights.xml about audience and licence?
+    </para>
+
+    <para>
+      ???what's the audience?
+    </para>
+
+    <para>
+      ???what's the licence?
+    </para>
+  </section>
+  <!-- END ???TODO -->
+
 	<xi:include href="retrieving-lod.xml" />
 	<xi:include href="best-practices.xml" />
 	<xi:include href="editorial.xml" />

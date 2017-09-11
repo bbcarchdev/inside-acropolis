@@ -14,7 +14,7 @@
 <book version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<title>Inside Acropolis</title>
 	<subtitle>A guide to the Research &amp; Education Space for contributors and developers</subtitle>
-	<info>		
+	<info>
 		<editor>
 			<personname>
 				<firstname>Mo</firstname>
@@ -37,8 +37,6 @@
 	<xi:include href="res-intro/part.xml" />
 	<!-- Developing applications -->
 	<xi:include href="developers/part.xml" />
-	<!-- Publishing data -->
-	<xi:include href="publishers/part.xml" />
 	<!-- Metdata -->
 	<xi:include href="using/part.xml" />
 	<!-- Under the hood -->
@@ -47,13 +45,13 @@
 	<!-- Appendices -->
 	<xi:include href="appendices/tools.xml" />
 	<xi:include href="appendices/containers-codecs.xml" />
-	
+
 	<!-- Indices -->
 	<xi:include href="indices/licenses.xml" />
 	<xi:include href="indices/vocab-index.xml" />
 	<xi:include href="indices/class-index.xml" />
 	<xi:include href="indices/predicate-index.xml" />
-	
+
 	<!-- Glossary -->
 	<xi:include href="glossary.xml" />
 </book>

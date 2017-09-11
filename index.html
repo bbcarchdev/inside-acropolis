@@ -46,7 +46,7 @@
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
 	</p>
-</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#res-intro">An introduction to the Research &amp; Education Space platform</a><ol><li><a href="#intro">Overview</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li></ol></li><li><a href="#why-rdf">Why does the Research &amp; Education Space use RDF?</a></li></ol></li><li><a href="#consumers">Developing applications for the Research &amp; Education Space</a><ol><li><a href="#api">An introduction to the Research &amp; Education Space API</a><ol><li><a href="#api-basics">The basics</a></li><li><a href="#testing-requests">Testing requests on the command-line</a></li></ol></li><li><a href="#operations">Common API operations</a><ol><li><a href="#determine-kind">Determine the kind of entity that retrieved data describes</a></li><li><a href="#query-capabilities">Determine browse and query capabilities</a><ol><li><a href="#class-partitions">Class partitions</a></li><li><a href="#related-datasets">Related data sets</a></li><li><a href="#opensearch">OpenSearch metadata</a></li><li><a href="#ordered-results">Ordered results</a></li><li><a href="#pagination">Pagination</a></li></ol></li><li><a href="#locate-source">Locate the source data for an entity</a></li><li><a href="#uri-lookup">Find the index entry for an entity given its URI</a></li><li><a href="#search">Search for entities</a></li><li><a href="#iterate-results">Iterate a partition or result-set</a></li><li><a href="#audience-groups">Discover known audience group URIs</a></li></ol></li><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in practice</a></li><li><a href="#starting">A starting point: the Research &amp; Education Space index</a></li></ol></li><li><a href="#developer-best-practices">Best practices</a><ol><li><a href="#best-accept">Be careful what you accept</a></li><li><a href="#best-middleware">Implement your own middleware</a></li><li><a href="#best-behaviour">Tailor behaviour to the data</a></li><li><a href="#best-follow">Follow your nose</a></li><li><a href="#best-source">Use the source</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial guidelines for product developers</a></li></ol></li><li><a href="#using">Working with the platform</a><ol><li><a href="#platform-intro">Introduction</a></li><li><a href="#common">Common metadata</a><ol><li><a href="#common-classes">Classes</a><ol><li><a href="#common-classes-example">Example</a></li></ol></li><li><a href="#generic">Generic descriptive terms</a><ol><li>Example</li></ol></li><li><a href="#sameas">Expressing equivalence with other identifiers</a><ol><li><a href="#sameas-collections">Tips for collection-holders</a></li><li><a href="#sameas-developers">Tips for application developers</a></li></ol></li><li><a href="#rights">Rights and licensing</a><ol><li><a href="#rights-rdf">Simple licensing statements</a><ol><li><a href="#rights-rdf-example">Example</a></li><li><a href="#rights-rdf-collections">Tips for collection-holders</a></li><li><a href="#rights-rdf-developers">Tips for application developers</a></li></ol></li><li><a href="#conditional-access">Conditionally-accessible resources</a><ol><li><a href="#conditional-access-example">Example</a></li><li><a href="#conditional-access-collections">Tips for collection-holders</a></li><li><a href="#conditional-access-developers">Tips for application developers</a></li></ol></li></ol></li></ol></li><li><a href="#assets">Digital assets</a><ol><li><a href="#document-metadata">Documents</a><ol><li><a href="#describe-doc">Describing a document</a></li><li><a href="#doc-metadata-serialisations">Describing the serialisations of a document</a></li><li><a href="#doc-metadata-example">Example</a></li></ol></li><li><a href="#av">Audio, video, and images</a><ol><li><a href="#av-example">Example</a></li></ol></li><li><a href="#collections">Collections and data-sets</a><ol><li><a href="#autodiscovery">Data-set auto-discovery</a></li></ol></li></ol></li><li><a href="#things">Physical things</a></li><li><a href="#people">People, projects and organisations</a></li><li><a href="#places">Places (and other geographical features)</a></li><li><a href="#events">Events and time-spans</a></li><li><a href="#concepts">Concepts and taxonomies</a></li><li><a href="#creative">Creative works</a></li></ol></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a><ol><li><a href="#spindle-coref">Co-reference discovery</a></li><li><a href="#spindle-proxy">Proxy generation</a></li><li><a href="#spindle-index">Indexing</a></li><li><a href="#spindle-precomposed">Storing pre-composed quads</a></li></ol></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#blog-posts">Useful blog posts</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Appendix II: Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li><li class="backmatter"><a href="#glossary">Glossary</a></li></ol></nav><article>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter"><a href="#preface">Preface</a></li><li><a href="#res-intro">An introduction to the Research &amp; Education Space platform</a><ol><li><a href="#intro">Overview</a></li><li><a href="#lod">Linked Open Data: What is it, and how does it work?</a><ol><li><a href="#uris">Web addresses, URLs and URIs</a></li><li><a href="#triples">Describing things with triples</a></li><li><a href="#predicates-vocabs">Predicates and vocabularies</a></li><li><a href="#subject-uris">Subject URIs</a></li><li><a href="#classes">Defining what something is: classes</a></li><li><a href="#describing">Describing things defined by other people</a></li><li><a href="#turtle">Turtle: the terse triple language</a></li><li><a href="#quads">From three to four: relaying provenance with quads</a></li></ol></li><li><a href="#why-rdf">Why does the Research &amp; Education Space use RDF?</a></li></ol></li><li><a href="#consumers">Developing applications for the Research &amp; Education Space</a><ol><li><a href="#api">An introduction to the Research &amp; Education Space API</a><ol><li><a href="#api-basics">The basics</a></li><li><a href="#testing-requests">Testing requests on the command-line</a></li></ol></li><li><a href="#operations">Common API operations</a><ol><li><a href="#determine-kind">Determine the kind of entity that retrieved data describes</a></li><li><a href="#query-capabilities">Determine browse and query capabilities</a><ol><li><a href="#class-partitions">Class partitions</a></li><li><a href="#related-datasets">Related data sets</a></li><li><a href="#opensearch">OpenSearch metadata</a></li><li><a href="#ordered-results">Ordered results</a></li><li><a href="#pagination">Pagination</a></li></ol></li><li><a href="#locate-source">Locate the source data for an entity</a></li><li><a href="#uri-lookup">Find the index entry for an entity given its URI</a></li><li><a href="#search">Search for entities</a></li><li><a href="#iterate-results">Iterate a partition or result-set</a></li><li><a href="#audience-groups">Discover known audience group URIs</a></li></ol></li><li><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a><ol><li><a href="#consuming-detail">Consuming Linked Open Data in practice</a></li><li><a href="#starting">A starting point: the Research &amp; Education Space index</a></li></ol></li><li><a href="#developer-best-practices">Best practices</a><ol><li><a href="#best-accept">Be careful what you accept</a></li><li><a href="#best-middleware">Implement your own middleware</a></li><li><a href="#best-behaviour">Tailor behaviour to the data</a></li><li><a href="#best-follow">Follow your nose</a></li><li><a href="#best-source">Use the source</a></li></ol></li><li><a href="#editorial-guidelines-for-product-developers">Editorial guidelines for product developers</a></li></ol></li><li><a href="#using">Working with the platform</a><ol><li><a href="#platform-intro">Introduction</a></li><li><a href="#common">Common metadata</a><ol><li><a href="#sameas">Expressing equivalence with other identifiers</a><ol><li><a href="#sameas-developers">Tips for application developers</a></li></ol></li><li><a href="#rights">Rights and licensing</a><ol><li><a href="#rights-rdf-developers">Tips for application developers</a></li><li><a href="#conditional-access">Conditionally-accessible resources</a><ol><li><a href="#conditional-access-example">Example</a></li><li><a href="#conditional-access-developers">Tips for application developers</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#architecture">Under the hood: the architecture of Acropolis</a><ol><li><a href="#quilt">Quilt</a></li><li><a href="#twine">Twine</a></li><li><a href="#anansi">Anansi</a></li><li><a href="#spindle">Spindle</a><ol><li><a href="#spindle-twine">Spindle module for Twine</a><ol><li><a href="#spindle-coref">Co-reference discovery</a></li><li><a href="#spindle-proxy">Proxy generation</a></li><li><a href="#spindle-index">Indexing</a></li><li><a href="#spindle-precomposed">Storing pre-composed quads</a></li></ol></li><li><a href="#spindle-quilt">Spindle module for Quilt</a></li></ol></li></ol></li><li class="backmatter"><a href="#tools">Appendix I: Tools and resources</a><ol><li class="backmatter"><a href="#guides">Guides</a></li><li class="backmatter"><a href="#blog-posts">Useful blog posts</a></li><li class="backmatter"><a href="#lod-consumer-tools">Tools for consuming Linked Open Data</a></li><li class="backmatter"><a href="#lod-publishing-tools">Tools for processing RDF and publishing Linked Open Data</a></li><li class="backmatter"><a href="#tech-standards">Technical standards</a></li></ol></li><li class="backmatter"><a href="#codecs-containers">Appendix II: Codec &amp; container format reference</a><ol><li class="backmatter"><a href="#codec-video">Video codecs</a></li><li class="backmatter"><a href="#codec-audio">Audio codecs</a></li><li class="backmatter"><a href="#codec-image">Image codecs</a></li><li class="backmatter"><a href="#containers">Container formats</a></li><li class="backmatter"><a href="#metadata-formats">Metadata formats</a></li><li class="backmatter"><a href="#packaging-formats">Packaging formats</a></li><li class="backmatter"><a href="#streaming-formats">Streaming formats</a></li></ol></li><li class="backmatter"><a href="#licenses">License index</a></li><li class="backmatter"><a href="#vocab-index">Vocabulary index</a></li><li class="backmatter"><a href="#class-index">Class index</a></li><li class="backmatter"><a href="#predicate-index">Predicate index</a></li><li class="backmatter"><a href="#glossary">Glossary</a></li></ol></nav><article>
 	
 	
 	
@@ -1805,151 +1805,58 @@ owl:sameAs &lt;http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id&gt;, 
 </section>
 	<section id="common" class="chapter"><h1>Common metadata</h1>
 	
-	
+
 	<aside class="info">
 		By “common metadata” we mean the set of properties which can reasonably
 		be applied to virtually any kind of entity.
 	</aside>
-	
+
 	<p>
 		Vocabularies used in this chapter:
 	</p>
-	
+
 	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</a></td><td><code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td><td><code class="literal">rdf:</code></td></tr><tr><td><a href="http://www.w3.org/TR/2014/PER-rdf-schema-20140109/">RDF schema</a></td><td><code class="uri">http://www.w3.org/2000/01/rdf-schema#</code></td><td><code class="literal">rdfs:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://www.w3.org/TR/owl2-syntax/">OWL</a></td><td><code class="uri">http://www.w3.org/2002/07/owl#</code></td><td><code class="literal">owl:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td></tr><tr><td><a href="http://www.w3.org/1999/xhtml/vocab#">XHTML</a></td><td><code class="uri">http://www.w3.org/1999/xhtml/vocab#</code></td><td><code class="literal">xhtml:</code></td></tr><tr><td><a href="http://creativecommons.org/ns#">Creative Commons REL</a></td><td><code class="uri">http://creativecommons.org/ns#</code></td><td><code class="literal">cc:</code></td></tr><tr><td><a href="http://www.w3.org/ns/odrl/2/">ODRL 2.x</a></td><td><code class="uri">http://www.w3.org/ns/odrl/2/</code></td><td><code class="literal">odrl:</code></td></tr><tr><td><a href="http://schema.theodi.org/odrs/">ODRS Vocabulary</a></td><td><code class="uri">http://schema.theodi.org/odrs#</code></td><td><code class="literal">odrs:</code></td></tr></tbody></table></div>
 
-	<section id="common-classes" class="section"><h1>Classes</h1>
-  
-
-  <p>
-	As mentioned <a href="#classes">previously</a>, a predicate
-	defined by RDF itself, <code class="literal">rdf:type</code> is used to state what
-	<em>kind</em> of thing an entity is.
-  </p>
-
-  <p>
-	The Research &amp; Education Space uses these classes, mapping them to
-	one of a small number of generic classes (see the <cite><a href="#class-index">Class index</a></cite>
-	for further details), which group the entities into partitions for
-	ease of discovery, and also affects how certain class-specific
-	predicates are interpreted (see the subsequent chapters in this
-	part of the book for further details).
-  </p>
-
-  <section id="common-classes-example" class="section"><h1>Example</h1>
-	
-	<p>
-	  The following example states that the entity with the URI <code class="uri"><a href="http://www.w3.org/People/Berners-Lee/">https://www.w3.org/People/Berners-Lee/card#i</a></code>
-	  is a <a href="#class-index">person</a>. Note that in Turtle,
-	  the language used for examples, <code class="literal">rdf:type</code>
-	  is abbreviated simply to <code class="literal">a</code>.
-	</p>
-
-	<pre class="code turtle"><code>@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-
-&lt;https://www.w3.org/People/Berners-Lee/card#i&gt; a foaf:Person .
-</code></pre>
-
-	<p>
-	  Expressed as N-Triples instead, this would be written as:
-	</p>
-	<pre class="code n-triples"><code>&lt;https://www.w3.org/People/Berners-Lee/card#i&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://xmlns.com/foaf/0.1/Person&gt; .</code></pre>
-  </section>
-  
-</section>
-	<section id="generic" class="section"><h1>Generic descriptive terms</h1>
-  
-
-  <section class="section"><h1>Example</h1>
-	
-  </section>
-
-</section>
 	<section id="sameas" class="section"><h1>Expressing equivalence with other identifiers</h1>
   
-  
+
   <p>
 	Linked Open Data in general, and the Research &amp; Education Space
 	in particular, is at its most useful when the data describing things
 	links to other data describing the same thing.
   </p>
-  
+
   <p>
 	In RDF, this is achieved using the <code class="literal">owl:sameAs</code>
 	predicate. This predicate implies a direct equivalence
 	relationship—in effect, it creates a synonym.
   </p>
-  	  
+
   <p>
-	You can use <code class="literal">owl:sameAs</code> whether or not the
-	alternative identifiers use <code class="literal">http:</code> or
-	<code class="literal">https:</code>, although the practical usefulness of URIs
-	which can’t resolved as Linked Open Data can be quite limited.
-  </p>
-  
-  <p>
-	For example, one might wish to specify that our book has an ISBN
+	For example, a dataset might specify that a book has an ISBN
 	using the <code class="literal">urn:isbn:</code> URN scheme
 	[<cite><a href="http://tools.ietf.org/html/rfc3187">RFC3187</a></cite>]:
   </p>
-  
+
   <pre class="code turtle"><code>&lt;/books/9781899066100#id&gt; owl:sameAs &lt;urn:isbn:9781899066100&gt; .</code></pre>
-  
+
   <p>
-	We can also indicate that the book described by our data refers to
+	The data may also indicate that the book described refers to
 	the same book at the British Library:
   </p>
-  
+
   <pre class="code turtle"><code>&lt;/books/9781899066100#id&gt; owl:sameAs &lt;<a href="http://bnb.data.bl.uk/id/resource/011012558">http://bnb.data.bl.uk/id/resource/011012558</a>&gt; .</code></pre>
-  
+
   <p>
 	The outcome of this is that if an application queries the index
 	for data about the entity identified as <code class="uri">urn:isbn:9781899066100</code>,
-	any data describing the entity using <em>your</em>
-	identifier, or the British Library’s, will also be aggregated by
-	the index and returned.
+	any data describing the entity using <em>either</em>
+	identifier will be returned.
   </p>
-  
-  <section id="sameas-collections" class="section"><h1>Tips for collection-holders</h1>
-	
-	
-	<p>
-	  Asserting the equivalence between your own authoratitive
-	  identifiers and <em>well-known</em> identifiers
-	  for the same entity is an easy way to ensure that the Research
-	  &amp; Education Space properly connects your information with
-	  other people’s.
-	</p>
-	
-	<aside class="info">
-	  <p>
-		Take care when using <code class="literal">owl:sameAs</code> to ensure
-		that the subject and the object really are directly equivalent.
-		In particular, make sure that you don’t accidentally state that
-		somebody’s description of something (be it an HTML page or some
-		other serialisation) is the same as the thing being described.
-	  </p>
-	</aside>
-	
-	<p>
-	  While you could look for equivalent identifiers managed by other
-	  collections and make <code class="literal">owl:sameAs</code> assertions
-	  about any you can find, this is likely to be wasted effort.
-	  Instead, if everyone expresses the equivalence with the common
-	  well-known identifier, the index will aggregate all of the
-	  data from all of the collections which state equivalence with
-	  that single identifier.
-	</p>
-	
-	<p>
-	  Note that this doesn’t only apply to identifier schemes which
-	  are formal standards: it works just as well with Wikidata URIs
-	  as it does with ISBNs or GTINs.
-	</p>
-  </section>
-  
+
   <section id="sameas-developers" class="section"><h1>Tips for application developers</h1>
 	
-	
+
 	<p>
 	  When an application retrieves data from the index about an
 	  entity, the Research &amp; Education Space includes information
@@ -1961,7 +1868,7 @@ owl:sameAs &lt;http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id&gt;, 
 	  automatically assigned by the Research &amp; Education Space
 	  platform.
 	</p>
-	
+
 	<aside class="info">
 	  If you retrieve quads, rather than triples, from the index,
 	  these assertions are placed in a graph whose URI begins with
@@ -1970,852 +1877,253 @@ owl:sameAs &lt;http://acropolis.org.uk/5878ea99754a44cbb682c3e7b9d9c266#id&gt;, 
 	  be distinguished from statements made in the source data.
 	</aside>
   </section>
-  
+
 </section>
 	<section id="rights" class="section"><h1>Rights and licensing</h1>
-		
-		
-		<p>
-			The Research &amp; Education Space aggregates data which can be
-			re-used by a wide range of applications, and much of that data
-			describes digital media (such as videos and photographs) which
-			are accessible only to certain groups of people.
-		</p>
-		<p>
-			To minimise the risk of data being incorporated into the index which
-			applications cannot use, and to ensure an optimum user experience
-			when querying for related media, it's crucial that the data that
-			collections publish includes accurate rights and licensing
-			information.
-		</p>
-				
-		<p>
-			Linked Open Data must be published under the terms of a
-			<a href="#licenses">supported license</a> and include
-			explicit licensing data in order for it to be indexed by the
-			Research &amp; Education Space and be useable by applications.
-			Our approach is aligned with the Open Data Institute’s
-			<a href="http://theodi.org/guides/publishers-guide-to-the-open-data-rights-statement-vocabulary">guide to publishing machine-readable rights data</a>.
-		</p>
-		
-		<p>
-			The Research &amp; Education Space crawler understands several common predicates for expressing the well-known URI of the license of a document:
-		</p>
-		
-		<div class="table"><table><thead><tr><th scope="col">Predicate</th></tr></thead><tbody><tr><td><code class="literal"><a href="http://purl.org/dc/terms/license">dct:license</a></code></td></tr><tr><td><code class="literal"><a href="http://purl.org/dc/terms/rights">dct:rights</a></code></td></tr><tr><td><code class="literal"><a href="http://purl.org/dc/terms/accessRights">dct:accessRights</a></code></td></tr><tr><td><code class="literal"><a href="http://creativecommons.org/ns#license">cc:license</a></code></td></tr><tr><td><code class="literal"><a href="http://www.w3.org/1999/xhtml/vocab#license">xhtml:license</a></code></td></tr><tr><td><code class="literal"><a href="http://www.w3.org/1999/xhtml/vocab#copyright">xhtml:copyright</a></code></td></tr></tbody></table></div>
-		
-		<section id="rights-rdf" class="section"><h1>Simple licensing statements</h1>
-			
-			<p>
-				In many cases, the simplest way of expressing rights information 
-				is to include it in the data that you're publishing, and this
-				can often be accomplished by adding a single triple to each
-				published documents using the <code class="literal">dct:rights</code>
-				predicate or an equivalent (see above) predicates and a
-				<a href="#licenses">supported license URI</a>.
-			</p>
-			<p>
-				For data to be indexed by the Research &amp; Education Space,
-				the crawler must be able to find (or derive) a licensing triple
-				where the URL of the RDF document itself is the subject—essentially
-				a triple which states “this document is licensed according to
-				the terms identified by the following URI…”. In Turtle, this
-				can be written as a triple similar to the below:
-			</p>
-
-			<pre class="code turtle"><code>&lt;&gt; dct:license &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt; .</code></pre>
-			<p>
-				This example assumes that you do not set <code class="literal">@base</code>,
-				or if you do, that you don't set it to be anything other than
-				the document’s own URL. If you do, you will need to be more
-				specific in the subject of your licensing triple.
-			</p>
-			
-			<p>
-				Publishers should also include similar triples for any digital
-				assets that are referenced in the data which are licensed under
-				a common set of terms. For example, if the data describes a set
-				of images licensed under the terms of the Creative Commons
-				Attribution License 4.0, then you should include triples
-				indicating this.
-			</p>
-			<aside class="info">
-				While the Research &amp; Education Space requires that ingested
-				RDF data licensed under open terms, this requirement does
-				not apply to digital assets <em>described</em>
-				by that data.
-			</aside>
-
-			<section id="rights-rdf-example" class="section"><h1>Example</h1>
-			  
-		<p>
-			The following example specifies that the Turtle representation of the data about our book is <a href="#licenses">licensed</a> according to the terms of the <cite>Creative Commons Attribution 4.0 International licence</cite>, using the host-relative URI identifying the specific representation.
-		</p>
-		
-		<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:license &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
-
-			</section>
-			
-			<section id="rights-rdf-collections" class="section"><h1>Tips for collection-holders</h1>
-				
-				<p>
-					It is important that the subject of this triple is the URI of the
-					<em>concrete document</em>. If you have different URIs
-					for each RDF representation, and either send a
-					<code class="literal">Content-Location</code> header or redirect to them,
-					you need to ensure that the subject of the licensing triple is
-					representation-specific URI (e.g., <code class="literal">/books/9781899066100.ttl</code>).
-				</p>
-				<p>
-					This is because the Research &amp; Education Space crawler is
-					<em>stateless</em>, just like the underlying HTTP
-					protocol itself. In practice, this means that when a document is
-					being processed by the crawler, the only information which can
-					be used to evaluate it is the <var>request-URI</var>,
-					the <code class="literal">Content-Location</code> (if provided), any
-					<a href="#rights-link">Link headers</a> that were
-					sent, and the serialised RDF itself.
-				</p>
-				<aside class="important">
-					<p>
-						Most importantly, you cannot assume when you construct your RDF that the crawler (or any other HTTP client) will be aware of any alternative URIs which redirect to
-						your document (for example, via a <code class="literal">303 See Other</code> redirect), and so although you can include triples about those URIs in the document, they
-						will have no role in determining whether the licensing is suitable for use in the Research &amp; Education Space.
-					</p>
-				</aside>
-			
-				<p>
-					For publishers for whom publishing a licensing triple in each
-					document is difficult (for example because it involves adding a
-					large number of triples to a store due to the nature of the
-					publication workflow), there are alternative—equivalent—mechanisms
-					described in the <cite><a href="#explicit-licensing">Publishing data for the Research &amp; Education Space</a></cite>
-					part of this book.
-				</p>
-			
-				<p>
-					If you need to, you can provide more information than the license triple alone. For example, you might include a <em>request</em> which is not a formal requirement of the licensing terms, but you would like consumers to adhere to if possible.
-				</p>
-				<p>
-					One way to do this is to include a <code class="literal">dct:license</code> triple referring to the well-known license URI, alongside a <code class="literal">dct:rights</code> triple pointing to a locally-defined <code class="literal">odrs:RightsStatement</code> entity (described using the <a href="http://schema.theodi.org/odrs/">Open Data Rights Statement Vocabulary</a>).
-				</p>
-			</section>
-
-			<section id="rights-rdf-developers" class="section"><h1>Tips for application developers</h1>
-			  
-			  <p>
-				The Research &amp; Education Space was designed such that
-				applications do not have to <em>trust</em> the
-				platform regarding data licensing. As the crawler discriminates
-				based upon the presence of explicit data licensing statements,
-				an application is always able to verify those statements at
-				source itself using the same mechanisms employed by the
-				crawler.
-			  </p>
-			</section>		
-
-		</section> 
-		
-
-
 	
-		<section id="conditional-access" class="section"><h1>Conditionally-accessible resources</h1>
-			
 
-			<p>
-				Many kinds of resource are not available to the general
-				public but may be accessed by the key audience of the Research
-				&amp; Education Space: students and teachers affiliated with
-				a recognised educational institution in the UK. This may be
-				because specific exceptions in law allow access when it would
-				not otherwise be possible, or because the rights-holder has
-				elected to make the assets available only to those in
-				formal education.
-			</p>
-			<p>
-				In order to support this, and ensure that users of RES
-				applications are able to use to the greatest range of
-				material that they legitimately have access to, the metadata
-				describing those assets which aren’t available to the public
-				but are to educational users must describe means by which
-				they are accessed.
-			</p>
+	<p>
+		The Research &amp; Education Space aggregates data which can be
+		re-used by a wide range of applications, and much of that data
+		describes digital media (such as videos and photographs) which
+		are accessible only to certain groups of people.
+	</p>
+
+	<p>
+		To minimise the risk of data being incorporated into the index which
+		applications cannot use, and to ensure an optimum user experience
+		when querying for related media, it's crucial that the data that
+		collections publish includes accurate rights and licensing
+		information.
+	</p>
+
+	<p>
+		Linked Open Data must be published under the terms of a
+		<a href="#licenses">supported license</a> and include
+		explicit licensing data in order for it to be indexed by the
+		Research &amp; Education Space and be useable by applications.
+		Our approach is aligned with the Open Data Institute’s
+		<a href="http://theodi.org/guides/publishers-guide-to-the-open-data-rights-statement-vocabulary">guide to publishing machine-readable rights data</a>.
+	</p>
+
+	<p>
+		The Research &amp; Education Space crawler understands several common predicates for expressing the well-known URI of the license of a document; see ???data publishers's guide.
+	</p>
+
+	<section id="rights-rdf-developers" class="section"><h1>Tips for application developers</h1>
+	  
+
+	  <p>
+		The Research &amp; Education Space was designed such that
+		applications do not have to <em>trust</em> the
+		platform regarding data licensing. As the crawler discriminates
+		based upon the presence of explicit data licensing statements,
+		an application is always able to verify those statements at
+		source itself using the same mechanisms employed by the
+		crawler.
+	  </p>
+	</section>
+
+	<section id="conditional-access" class="section"><h1>Conditionally-accessible resources</h1>
 		
-			<aside class="tip">
-				<p>
-					A given asset may be available from multiple sources,
-					each with its own specific constraints applied to who 
-					may access it. For example, a recording of a radio
-					programme might be held on behalf of educational users by
-					two separate online services, both requiring that the
-					affiliated institution be a licensee of the relevant
-					<a href="http://www.era.org.uk">ERA licensing scheme</a>,
-					and both operating their own institutional-level
-					subscription schemes. To be most useful, the index
-					must aggregate the metadata describing
-					<em>both</em> means of access, and the
-					metadata must convey sufficient information so as
-					to allow applications to decide which, if any, should be
-					presented to the end-user.
-				</p>
-			</aside>
 
+		<p>
+			Many kinds of resource are not available to the general
+			public but may be accessed by the key audience of the Research
+			&amp; Education Space: students and teachers affiliated with
+			a recognised educational institution in the UK. This may be
+			because specific exceptions in law allow access when it would
+			not otherwise be possible, or because the rights-holder has
+			elected to make the assets available only to those in
+			formal education.
+		</p>
+		<p>
+			In order to support this, and ensure that users of RES
+			applications are able to use to the greatest range of
+			material that they legitimately have access to, the metadata
+			describing those assets which aren’t available to the public
+			but are to educational users must describe means by which
+			they are accessed.
+		</p>
+
+		<aside class="tip">
 			<p>
-			  Conditional access is described by publishing the following data:
+				A given asset may be available from multiple sources,
+				each with its own specific constraints applied to who
+				may access it. For example, a recording of a radio
+				programme might be held on behalf of educational users by
+				two separate online services, both requiring that the
+				affiliated institution be a licensee of the relevant
+				<a href="http://www.era.org.uk">ERA licensing scheme</a>,
+				and both operating their own institutional-level
+				subscription schemes. To be most useful, the index
+				must aggregate the metadata describing
+				<em>both</em> means of access, and the
+				metadata must convey sufficient information so as
+				to allow applications to decide which, if any, should be
+				presented to the end-user.
 			</p>
-			
-			<ul>
-			  <li>
-				  Assigning a URI to the group of people who may access the
-				  resource, known by the Research &amp; Education Space
-				  as an <i class="firstterm">audience URI</i>.
-				</li>				  
-			  <li>
-				  A rights statement, which uses the
-				  <a href="http://www.w3.org/ns/odrl/2/">ODRL vocabulary</a>
-				  to grant <em>conditional</em> permission to
-				  access the resources the statement is associated with.
-				</li>
-			  <li>
-				  Using one of the rights predicates described above to
-				  associate an actual resource with the rights statement.
-				</li>
-			</ul>
-			
-			<p>
-			  When this data is processed, the Research &amp; Education Space
-			  indexes the fact that the resource is conditionally-accessible
-			  and the URI assigned to the group of people who have permission
-			  to access it.
-			</p>
+		</aside>
 
-			<aside class="tip">
-			  <p>
-				Where multiple publishers participate in a scheme using
-				a common authentication mechanism to grant access to the
-				same set of users, they should agree to use the same
-				audience URI to identify those users.
-			  </p>
-			</aside>
+		<p>
+		  Conditional access is described by the following data:
+		</p>
 
-			<p>
-			  Applications can then use this URI when performing queries in
-			  order to include restricted resources in the results.
-			</p>
-			
-			<section id="conditional-access-example" class="section"><h1>Example</h1>
-			  
-			  <p>
-				The following example excerpt describes two <a href="#creative">episodes of television programmes</a>,
-				and their associated media players (see <cite><a href="#av">Audio, video, and images</a></cite>) which are
-				both accessible only to authorised users of the
-				<a href="http://shakespeare.ch.bbc.co.uk">BBC Shakespeare Archive Resource</a>.
-			  </p>
+		<ul>
+		  <li>
+			    A URI representing a the group of people who may access the
+			    resource, known by the Research &amp; Education Space
+			    as an <i class="firstterm">audience URI</i>.
+			  </li>
 
-			  <pre class="code turtle"><code>&lt;http://shakespeare.acropolis.org.uk/programmes/PCDD329F#id&gt; a po:Episode ;
-	rdfs:label "Arall Fyd"@cy-gb ;
-	mrss:player &lt;http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player&gt; .
+		  <li>
+			    A rights statement, which uses the
+			    <a href="http://www.w3.org/ns/odrl/2/">ODRL vocabulary</a>
+			    to grant <em>conditional</em> permission to
+			    access the resources the statement is associated with.
+			  </li>
+
+		  <li>
+			    A rights predicates associating an actual resource with the rights statement. See ???data publisher's guide for the list of predicates.
+			  </li>
+		</ul>
+
+		<p>
+		  When this data is processed, the Research &amp; Education Space
+		  indexes the fact that the resource is conditionally-accessible
+		  and the URI assigned to the group of people who have permission
+		  to access it.
+		</p>
+
+		<aside class="tip">
+		  <p>
+			Where multiple publishers participate in a scheme using
+			a common authentication mechanism to grant access to the
+			same set of users, they should agree to use the same
+			audience URI to identify those users.
+		  </p>
+		</aside>
+
+		<p>
+		  Applications can then use this URI when performing queries in
+		  order to include restricted resources in the results.
+		</p>
+
+		<section id="conditional-access-example" class="section"><h1>Example</h1>
+		  
+
+		  <p>
+			  The following example excerpt describes two <a href="#creative">episodes of television programmes</a>,
+			  and their associated media players which are
+			  both accessible only to authorised users of the
+			  <a href="http://shakespeare.ch.bbc.co.uk">BBC Shakespeare Archive Resource</a>.
+		  </p>
+
+		  <pre class="code turtle"><code>&lt;http://shakespeare.acropolis.org.uk/programmes/PCDD329F#id&gt; a po:Episode ;
+rdfs:label "Arall Fyd"@cy-gb ;
+mrss:player &lt;http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player&gt; .
 
 &lt;http://shakespeare.acropolis.org.uk/programmes/LRPI646P#id&gt; a po:Episode ;
-	rdfs:label "Five to Eleven - Cyril Luckham"@en-gb ;
-	mrss:player &lt;http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player&gt; .
+rdfs:label "Five to Eleven - Cyril Luckham"@en-gb ;
+mrss:player &lt;http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player&gt; .
 
 &lt;http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player&gt;
-	dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
-	dct:license &lt;http://shakespeare.acropolis.org.uk/terms#id&gt; ;
-	a dcmitype:MovingImage .
+dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
+dct:license &lt;http://shakespeare.acropolis.org.uk/terms#id&gt; ;
+a dcmitype:MovingImage .
 
 &lt;http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player&gt;
-	dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
-	dct:license &lt;http://shakespeare.acropolis.org.uk/terms#id&gt; ;
-	a dcmitype:MovingImage .
+dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
+dct:license &lt;http://shakespeare.acropolis.org.uk/terms#id&gt; ;
+a dcmitype:MovingImage .
 
 &lt;http://shakespeare.acropolis.org.uk/terms#id&gt;
-	a odrl:Policy ;
-	rdfs:label "Accessible only by authorised users in formal education in the UK"@en-gb ;
-	odrl:permission &lt;http://shakespeare.acropolis.org.uk/terms#play&gt; .
+a odrl:Policy ;
+rdfs:label "Accessible only by authorised users in formal education in the UK"@en-gb ;
+odrl:permission &lt;http://shakespeare.acropolis.org.uk/terms#play&gt; .
 
 &lt;http://shakespeare.acropolis.org.uk/terms#play&gt;
-	a odrl:Permission ;
-	odrl:action odrl:play ;
-	odrl:assignee &lt;http://shakespeare.acropolis.org.uk/#members&gt; .
+a odrl:Permission ;
+odrl:action odrl:play ;
+odrl:assignee &lt;http://shakespeare.acropolis.org.uk/#members&gt; .
 
 &lt;http://shakespeare.acropolis.org.uk/#members&gt;
-	a odrl:Group ;
-	rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
+a odrl:Group ;
+rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 
 </code></pre>
-			  <p>
-				In the example above, the two <code class="literal">po:Episode</code>
-				entities state that they have an embeddable media player
-				using the <code class="literal">mrss:player</code> predicate. The data
-				describing the two player URIs indicates that specific
-				licensing terms apply to them, identified by the URI
-				<code class="uri">http://shakespeare.acropolis.org.uk/terms#id</code>, which
-				is an <a href="http://www.w3.org/ns/odrl/2/ODRL21#term-Policy">ODRL Policy</a>.
-			  </p>
-			  <p>
-				The policy statement includes a permission (identified as
-				<code class="uri">http://shakespeare.acropolis.org.uk/terms#play</code>,
-				although the Research &amp; Education Space does not require
-				an explicit URI to be assigned to each individual permission),
-				which states that the action <code class="literal"><a href="http://www.w3.org/ns/odrl/2/ODRL21#term-play">odrl:play</a></code>
-				may be performed by members of the group
-				<code class="uri">http://shakespeare.acropolis.org.uk/#members</code>.
-			  </p>
-			  <p>
-				When this data is processed by the Research &amp; Education
-				Space, the platform indexes the fact that these players are
-				associated with their respective creative works, and that
-				they are accessible only be members of the audience group
-				which has the URI
-				<code class="uri">http://shakespeare.acropolis.org.uk/#members</code>.
-			  </p>
-			</section>
 
-			<section id="conditional-access-collections" class="section"><h1>Tips for collection-holders</h1>
-			  
-			  <p>
-				It is important to remember that the Research &amp; Education
-				Space platform, and the applications which use its API, are
-				not responsible for enforcing access control applied to
-				resources that you publish. The mechanisms described here
-				are used to describe the access restrictions that you already
-				have in place so that user interfaces can properly account
-				for them.
-			  </p>
-			  <p>
-				In the absence of data to the contrary, the platform will
-				assume that media resources are generally accessible to the
-				public. Once data has been processed which describes access
-				restrictions, the index is updated accordingly.
-			  </p>
-			  <p>
-				Access restrictions are only recognised when they assign
-				one of the ODRL actions <code class="literal">odrl:play</code>,
-				<code class="literal">odrl:present</code>, <code class="literal">odrl:display</code>
-				or <code class="literal">odrl:use</code> to an audience URI using the
-				<code class="literal">odrl:assignee</code> predicate as part of an ODRL
-				policy statement. Other forms of policy are not processed,
-				and permissions related to other types of action are ignored.
-			  </p>
-			  <aside class="warning">
-				<p>
-				  The Research &amp; Education Space platform is not
-				  able to fully process and index more complex policy
-				  statements, for example those which grant permission to
-				  an audience group but where that grant is subject to
-				  additional restrictions—if this is expressed, the additional
-				  restrictions will not be conveyed in the index, and end-user
-				  applications may not be able to deal intelligently with
-				  them. Such policies are best avoided.
-				</p>
-			  </aside>
-			</section>		
-			
-			<section id="conditional-access-developers" class="section"><h1>Tips for application developers</h1>
-			  
+	    <p>
+		    In the example above, the two <code class="literal">po:Episode</code>
+		    entities state that they have an embeddable media player
+		    using the <code class="literal">mrss:player</code> predicate. The data
+		    describing the two player URIs indicates that specific
+		    licensing terms apply to them, identified by the URI
+		    <code class="uri">http://shakespeare.acropolis.org.uk/terms#id</code>, which
+		    is an <a href="http://www.w3.org/ns/odrl/2/ODRL21#term-Policy">ODRL Policy</a>.
+	    </p>
 
-			  <p>
-				By default, the Research &amp; Education Space API will not
-				include conditionally-accessible resources in results of
-				queries. This means that when querying for concepts which
-				have associated media, the default behaviour is to return
-				those concepts whose associated media appears to be available
-				to all.
-			  </p>
-			  
-			  <p>
-				In order to include conditionally-accessible resources in
-				the results, an application must explicitly include the
-				<code class="literal">for</code> parameter in <a href="#operations">its queries</a>,
-				which specifies the URI of an audience group to include.
-			  </p>
-			  
-			  <p>
-				Applications should provide a mechanism for the user
-				or administrator to specify which audience groups users
-				are part of. Note that this doesn't grant or deny access
-				to the resources themselves—that's the responsibility of
-				the publisher of those resources—but is instead a mechanism
-				for applications to hide from view those resources which are
-				not accessible to the end-user.
-			  </p>
+	    <p>
+		    The policy statement includes a permission (identified as
+		    <code class="uri">http://shakespeare.acropolis.org.uk/terms#play</code>,
+		    although the Research &amp; Education Space does not require
+		    an explicit URI to be assigned to each individual permission),
+		    which states that the action <code class="literal"><a href="http://www.w3.org/ns/odrl/2/ODRL21#term-play">odrl:play</a></code>
+		    may be performed by members of the group
+		    <code class="uri">http://shakespeare.acropolis.org.uk/#members</code>.
+	    </p>
 
-			  <p>
-				Information about the audience groups known to the
-				platform can be retrieved from the
-				<a href="#audience-groups"><code class="literal">/audiences</code></a>
-				dataset. By periodically retrieving this dataset, applications
-				can populate a list of audience groups for users or
-				administrators to choose from.
-			  </p>
-			</section>
+	    <p>
+		    When this data is processed by the Research &amp; Education
+		    Space, the platform indexes the fact that these players are
+		    associated with their respective creative works, and that
+		    they are accessible only be members of the audience group
+		    which has the URI
+		    <code class="uri">http://shakespeare.acropolis.org.uk/#members</code>.
+	    </p>
+	  </section>
 
-		</section> 
-		
+	  <section id="conditional-access-developers" class="section"><h1>Tips for application developers</h1>
+	    
 
+	    <p>
+		    By default, the Research &amp; Education Space API will not
+		    include conditionally-accessible resources in results of
+		    queries. This means that when querying for concepts which
+		    have associated media, the default behaviour is to return
+		    those concepts whose associated media appears to be available
+		    to all.
+	    </p>
+
+	    <p>
+		    In order to include conditionally-accessible resources in
+		    the results, an application must explicitly include the
+		    <code class="literal">for</code> parameter in <a href="#operations">its queries</a>,
+		    which specifies the URI of an audience group to include.
+	    </p>
+
+	    <p>
+	      Applications should provide a mechanism for the user
+	      or administrator to specify which audience groups users
+	      are part of. Note that this doesn't grant or deny access
+	      to the resources themselves—that's the responsibility of
+	      the publisher of those resources—but is instead a mechanism
+	      for applications to hide from view those resources which are
+	      not accessible to the end-user.
+	    </p>
+
+	    <p>
+		    Information about the audience groups known to the
+		    platform can be retrieved from the
+		    <a href="#audience-groups"><code class="literal">/audiences</code></a>
+		    dataset. By periodically retrieving this dataset, applications
+		    can populate a list of audience groups for users or
+		    administrators to choose from.
+	    </p>
+	  </section>
+  </section>
 </section>
 
-
-	
-</section>
-	<section id="assets" class="chapter"><h1>Digital assets</h1>
-	
-	
-	<p>
-		When we talk about “digital assets”, we mean digital resources that
-		users can stream or download to their devices: video, audio and image
-		files, web pages, and other kinds of document, including machine-readable
-		data and collections.
-	</p>
-	
-	<p>
-		In many cases, these digital assets are a <i class="firstterm">manifestation</i>
-		of a <a href="#creative">creative work</a> (which should be
-		described separately and related to the digital assets).
-	</p>
-	
-	<p>
-		In contrast to the case where some non-digital entity (such as a person
-		or a concept) is being described, the subject URI used in the data
-		is the actual URL of the digital asset.
-	</p>
-	
-	<aside class="info">
-		<p>
-			Data about digital assets is what makes the Research &amp; Education
-			Space most useful. A publisher describing the assets they are making
-			available, in what formats, to whom, how they are organised, and to
-			what topics the assets are related to allows the platform to index
-			that information and users to perform queries upon it.
-		</p>
-	</aside>
-	
-	<aside class="tip">
-		<p>
-			The dataset containing all of the assets (except for collections)
-			which have been indexed by the Research &amp; Education Space
-			platform can be accessed using the <a href="http://acropolis.org.uk/assets"><code class="literal">/assets</code></a>
-			endpoint. However, it is usually more useful to locate relevant
-			assets by searching for <i class="firstterm">topics</i> which have
-			related media meeting specific criteria.
-		</p>
-	</aside>
-	
-	<p>
-		Although we recommend you read this whole section, we have split it
-		into three broad categories of assets that you may be publishing or
-		consuming data about: <cite><a href="#document-metadata">Documents</a></cite>,
-		<cite><a href="#av">Audio, video and images</a></cite>, and
-		<cite><a href="#collections">Collections and data-sets</a></cite>.
-	</p>
-	
-	<section id="document-metadata" class="section"><h1>Documents</h1>
-		
-		
-		<p>
-			The term <i class="firstterm">documents</i> is intended to include
-			any sort of document-based media: web pages, machine-readable data
-			in various forms (including RDF serialisations, CSV, XML, and
-			proprietary formats), PDFs, Office documents, and so on. The
-			guidance in this section <em>also</em> applies if you
-			are describing <a href="#av">audio, video or image</a>
-			assets.
-		</p>
-		
-		<aside class="info">
-			<p>
-				Documents are assigned a <a href="#class-index">class</a>
-				of <code class="literal">foaf:Document</code> when they are
-				indexed.
-			</p>
-		</aside>
-
-		<p>
-			Vocabularies used in this section:
-		</p>
-		
-		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</a></td><td><code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td><td><code class="literal">rdf:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI types</a></td><td><code class="uri">http://purl.org/dc/dcmitype/</code></td><td><code class="literal">dcmit:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td></tr><tr><td><a href="http://mediatypes.appspot.com">Media types</a></td><td><code class="uri">http://purl.org/NET/mediatypes/</code></td><td><code class="literal">mime:</code></td></tr><tr><td><a href="http://www.w3.org/ns/formats/">W3C formats registry</a></td><td><code class="uri">http://www.w3.org/ns/formats/</code></td><td><code class="literal">formats:</code></td></tr></tbody></table></div>
-		
-		<section id="describe-doc" class="section"><h1>Describing a document</h1>
-			
-			
-			<aside class="info">
-				<p>
-					If the document is actually a data-set, also
-					see the <cite><a href="#collections">Collections and
-					data-sets</a></cite> section.
-				</p>
-			</aside>
-			
-			<p>
-				Give the document a class of <code class="literal">foaf:Document</code>:
-			</p>
-
-			<pre class="code turtle"><code>&lt;/books/9781899066100&gt; a foaf:Document .</code></pre>
-
-			<p>
-				Give the document a title:
-			</p>
-
-			<pre class="code turtle"><code>&lt;/books/9781899066100&gt; dct:title "Information about 'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library &amp; Museum"@en .</code></pre>
-
-			<p>
-				If the document is not a data-set, specify the primary topic
-				(that is, the URI of the thing described by the document):
-			</p>
-
-			<pre class="code turtle"><code>&lt;/books/9781899066100&gt; foaf:primaryTopic &lt;/books/12345#id&gt; .</code></pre>
-
-			<p>
-				Link to each of the serialisations:
-			</p>
-			
-			<pre class="code turtle"><code>&lt;/data/9781899066100&gt; dct:hasFormat &lt;/data/9781899066100.ttl&gt; .
-&lt;/data/9781899066100&gt; dct:hasFormat &lt;/data/9781899066100.html&gt; .</code></pre>
-		</section>
-
-		<section id="doc-metadata-serialisations" class="section"><h1>Describing the serialisations of a document</h1>
-			
-			<p>
-				Use a member of the DCMI type vocabulary as a class, where the
-				subject is the URL of the serialisation:
-			</p>
-			
-			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; a dcmit:Text .</code></pre>
-			
-			<p>
-				Where available, use a member of the W3C formats vocabulary as a
-				class:
-			</p>
-
-			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; a formats:Turtle .</code></pre>
-			
-			<p>
-				Use the <code class="literal">dct:format</code> predicate, along with the
-				MIME type beneath the <code class="uri">http://purl.org/NET/mediatypes/</code>
-				tree:
-			</p>
-			
-			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; .</code></pre>
-			
-			<p>
-				Give the serialisation a specific title:
-			</p>
-			
-			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as Turtle (RDF)"@en .</code></pre>			
-			
-			<p>
-				Specify the licensing terms for the serialisation, if applicable:
-			</p>
-			
-			<pre class="code turtle"><code>&lt;/books/9781899066100.ttl&gt; dct:rights &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
-			
-			<p>
-				Also see the <a href="#rights">Metadata describing rights
-				and licensing</a> section for details on the licensing
-				statements required by RES, as well as information about
-				supported licences.
-			</p>
-		</section>
-
-		<section id="doc-metadata-example" class="section"><h1>Example</h1>
-			
-
-<pre class="code turtle"><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
-@prefix dcmit: &lt;http://purl.org/dc/dcmitype/&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix formats: &lt;http://www.w3.org/ns/formats/&gt; .
-
-&lt;/data/9781899066100&gt;
-	a foaf:Document ;
-	dct:title "Information about 'Acronyms and Synonyms in Medical Imaging' at the Intergalatic Alliance Library &amp; Museum"@en .
-	foaf:primaryTopic &lt;/books/12345#id&gt; ;
-	dct:hasFormat
-		&lt;/data/9781899066100.ttl&gt; ,
-		&lt;/data/9781899066100.html&gt; .
-
-&lt;/data/9781899066100.ttl&gt;
-	a dcmit:Text, formats:Turtle ;
-	dct:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; ;
-	dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as Turtle (RDF)"@en ;
-	dct:rights &lt;http://creativecommons.org/licenses/by/4.0/&gt; .
-
-&lt;/data/9781899066100.html&gt;
-	a dcmit:Text ;
-	dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
-	dct:title "Description of 'Acronyms and Synonyms in Medical Imaging' as a web page"@en .
-</code></pre>
-		</section>
-	</section>
-	
-	<section id="av" class="section"><h1>Audio, video, and images</h1>
-		
-		
-		<p>
-			Vocabularies used in this section:
-		</p>
-	
-		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI types</a></td><td><code class="uri">http://purl.org/dc/dcmitype/</code></td><td><code class="literal">dcmit:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td></tr><tr><td><a href="http://www.rssboard.org/media-rss">Media RSS</a></td><td><code class="uri">http://search.yahoo.com/mrss/</code></td><td><code class="literal">mrss:</code></td></tr><tr><td><a href="http://mediatypes.appspot.com">Media types</a></td><td><code class="uri">http://purl.org/NET/mediatypes/</code></td><td><code class="literal">mime:</code></td></tr></tbody></table></div>
-		
-		<p>
-			Describing your media assets (or, in the case of embeddable players,
-			the pages hosting them) allows applications to properly surface the
-			correct media for a user. You can do this even if your media assets
-			are hosted entirely separately from your data and other web pages.
-		</p>
-		<ul>
-			<li>
-					Because you are describing directly-retrievable resources,
-					the subject URIs are the actual URLs of your assets.
-				</li>
-			<li>
-					Use members of the <a href="http://dublincore.org/documents/2012/06/14/dcmi-terms/">DCMI Type Vocabulary</a>
-					as the classes of your assets:
-					<code class="literal">dcmit:MovingImage</code>,
-					<code class="literal">dcmit:Sound</code>, and so on.
-				</li>
-			<li>
-					For each asset, include a <code class="literal">dct:format</code>
-					triple referring to the entry in the
-					<a href="http://mediatypes.appspot.com">media types vocabulary</a>
-					matching the MIME type of the resource. For example, an
-					MP4 audio file has a MIME type of <code class="literal">audio/mp4</code>,
-					and so the <code class="literal">dct:format</code> would be
-					<code class="uri">http://purl.org/NET/mediatypes/audio/mp4</code>.
-				</li>
-			<li>
-					Add triples to the RDF describing the <a href="#creative">creative work</a>
-					that this asset is a representation of: <code class="literal">mrss:player</code> (for embedded player pages),
-					<code class="literal">foaf:page</code> (for stand-alone playback pages) or
-					<code class="literal">mrss:content</code> (for directly-accessible media).
-				</li>
-			<li>
-					Add <code class="literal">foaf:primaryTopic</code> triples to the data
-					describing your assets, referring to the most specific
-					<a href="#creative">creative work</a> entity
-					that the asset represents.
-				</li>
-			<li>
-					Use a <a href="#rights">rights statement predicate</a>
-					to link to an RDF policy document describing
-					<a href="#conditional-access">who is able to
-					access the media asset</a> if it is not generally-available,
-					or use the well-known URI of a <a href="#licenses">well-known
-					license</a> if the asset is available according to those terms.
-				</li>
-		</ul>
-		<aside class="tip">
-			<p>
-				Unlike with RDF data itself, the Research &amp; Education Space
-				crawler will not discard information about
-				<em>assets</em> which lack licensing information.
-				However, achieving the best user experience depends upon
-				the appropriate data being available—particularly if a piece
-				of media is only conditionally-accessible (if the data does
-				not express as much properly, then end-users will be presented
-				with a login form which they cannot use). See the
-				<cite><a href="#conditional-access">Conditionally-accessible resources</a></cite> section for further
-				details.
-			</p>
-		</aside>
-
-		<section id="av-example" class="section"><h1>Example</h1>
-			
-			<p>
-				For example, you might describe an episode of a television programme,
-				using the <a href="http://www.bbc.co.uk/ontologies/po">programmes
-				ontology</a>, with the following:—
-			</p>
-			<pre class="code turtle"><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
-@prefix dcmit: &lt;http://purl.org/dc/dcmitype/&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix formats: &lt;http://www.w3.org/ns/formats/&gt; .
-@prefix po: &lt;http://purl.org/ontology/po/&gt; .
-
-&lt;/programmes/b04bndbd#programme&gt;
-	a po:Episode ;
-	dct:title "Trampolining"@en-gb ;
-	po:version &lt;/programmes/b04bndb9#programme&gt; ;
-	mrss:player &lt;http://player.example.com/b513ef5a60fe47d5a45826e2c592fb3f&gt; .
-	
-&lt;/programmes/b04bndb9#programme&gt;
-	a po:Version ;
-	rdfs:label "An episode of "Nina and the Neurons: Get Sporty - Trampolining"@en-gb ;
-	po:aspect_ratio "16:9" ;
-	po:sound_format "Stereo" ;
-	po:duration 900 .
-
-&lt;http://player.example.com/b513ef5a60fe47d5a45826e2c592fb3f&gt;
-	a dcmit:MovingImage ;
-	dct:format &lt;http://purl.org/NET/mediatypes/text/html&gt; ;
-	dct:title "Nina and the Neurons: Get Sporty - CBeebies - 2015-05-27"@en-gb ;
-	foaf:primaryTopic &lt;/programmes/b04bndb9#programme&gt; ;
-	dct:license &lt;http://player.example.com/terms#id&gt; .
-</code></pre>
-			<p>
-				This data describes an episode of <a href="http://www.bbc.co.uk/cbeebies/shows/nina-and-the-neurons">Nina
-				the Neurons</a>, a specific version of that episode, and an embeddable
-				web player for that version which is subject to access controls.
-			</p>
-			<p>
-				Note that in practice this data might be split over several RDF resources.
-				However, if the specified media asset URL does not perform content
-				negotiation and result in an RDF description of itself, you should
-				include the data about the asset in the same resource that you describe
-				the creative work that it is a representative of.
-			</p>
-		</section>
-	</section>
-	
-	<section id="collections" class="section"><h1>Collections and data-sets</h1>
-		
-		
-		<p>
-			In this context, we use the term <i class="firstterm">collection</i>
-			to refer to any arbitrary group of entities indexed by the Research
-			&amp; Education Space. Publishers can explicitly group subjects
-			that they describe together into collections, and applications
-			can scope their queries to only those items which appear within
-			a specific collection.
-		</p>
-
-		<aside class="info">
-			<p>
-				Collections are assigned a <a href="#class-index">class</a>
-				of <code class="literal">dcmitype:Collection</code> when they are
-				indexed.
-			</p>
-		</aside>
-		
-		<aside class="tip">
-			<p>
-				The dataset containing all of the collections which have
-				been indexed by the Research &amp; Education Space
-				platform can be accessed using the <a href="http://acropolis.org.uk/collections"><code class="literal">/collections</code></a>
-				endpoint.
-			</p>
-		</aside>
-		
-		<p>
-			Vocabularies used in this section:
-		</p>
-	
-		<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td><td><code class="uri">http://xmlns.com/foaf/0.1/</code></td><td><code class="literal">foaf:</code></td></tr><tr><td><a href="http://vocab.deri.ie/void">VoID</a></td><td><code class="uri">http://rdfs.org/ns/void#</code></td><td><code class="literal">void:</code></td></tr></tbody></table></div>
-		
-		<section id="autodiscovery" class="section"><h1>Data-set auto-discovery</h1>
-			
-		</section>
-	</section>
-	
-</section>
-	<section id="things" class="chapter"><h1>Physical things</h1>
-	
-	<aside class="tip">
-		<p>
-			Physical things are assigned a class of <a href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</a> when they are indexed.
-		</p>
-	</aside>
-</section>
-	<section id="people" class="chapter"><h1>People, projects and organisations</h1>
-	
-</section>
-	<section id="places" class="chapter"><h1>Places (and other geographical features)</h1>
-	
-	<aside class="tip">
-		<p>
-			Places are assigned a class of <a href="http://www.w3.org/2003/01/geo/">geo:SpatialThing</a> when they are indexed.
-		</p>
-	</aside>
-	
-</section>
-	<section id="events" class="chapter"><h1>Events and time-spans</h1>
-	
-	<aside class="tip">
-		<p>
-			Events are assigned a class of <a href="http://motools.sourceforge.net/event/event.html#term_Event">event:Event</a> when they are indexed.
-		</p>
-	</aside>
-	
-</section>
-	<section id="concepts" class="chapter"><h1>Concepts and taxonomies</h1>
-	
-	
-	<p>
-		Vocabularies used in this section:
-	</p>
-	
-	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2008/WD-skos-reference-20080829/skos.html">SKOS</a></td><td><code class="uri">http://www.w3.org/2008/05/skos#</code></td><td><code class="literal">skos:</code></td></tr></tbody></table></div>
-	
-</section>
-	<section id="creative" class="chapter"><h1>Creative works</h1>
-	
-	<aside class="tip">
-		<p>
-			Creative works are assigned a class of <a href="http://vocab.org/frbr/core.html#Work">frbr:Work</a> when they are indexed.
-		</p>
-	</aside>
-	
-	<p>
-		Vocabularies used in this section:
-	</p>
-
-	<div class="table"><table><thead><tr><th scope="col">Vocabulary</th><th scope="col">Namespace URI</th><th scope="col">Prefix</th></tr></thead><tbody><tr><td><a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF syntax</a></td><td><code class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td><td><code class="literal">rdf:</code></td></tr><tr><td><a href="http://bibliontology.com">Bibliographic Ontology</a></td><td><code class="uri">http://purl.org/ontology/bibo/</code></td><td><code class="literal">bibo:</code></td></tr><tr><td><a href="http://dublincore.org/documents/dcmi-terms/">DCMI terms</a></td><td><code class="uri">http://purl.org/dc/terms/</code></td><td><code class="literal">dct:</code></td></tr><tr><td><a href="http://vocab.org/frbr/core.html">FRBR Core</a></td><td><code class="uri">http://purl.org/vocab/frbr/core#</code></td><td><code class="literal">frbr:</code></td></tr><tr><td><a href="http://www.bbc.co.uk/ontologies/po">Programmes Ontology</a></td><td><code class="uri">http://purl.org/ontology/po/</code></td><td><code class="literal">po:</code></td></tr></tbody></table></div>
-	
-	<p>
-		“Creative works” is the broad term used to describe books, magazines,
-		photographs, paintings, music, TV shows, and so on. In the Research
-		&amp; Education Space, a creative work is a distinct entity with its
-		own description separate to any <a href="#assets">digital
-		assets</a> which are <em>manifestations</em> of
-		creative works. It’s not uncommon for there to be multiple
-		digital manifestations hosted by different organisations of the same
-		creative work.
-	</p>
-	
-	<ul>
-		<li>
-				Use the <a href="http://www.bbc.co.uk/ontologies/po">Programmes
-				Ontology</a> to describe television, radio, and online-only
-				programmes, clips and series.
-			</li>
-		<li>
-				Use the <a href="http://bibliontology.com">Bibliographic
-				Ontology</a> to describe books and periodicals.
-			</li>
-		<li>
-			<p>
-				Use <code class="literal">foaf:topic</code> and <code class="literal">foaf:primaryTopic</code>
-				as appropriate to relate creative works to the subjects of
-				those works. Where possible, use URIs for terms that are
-				also used by other people, such as <a href="https://www.wikidata.org/">WikiData</a>
-				and <a href="http://dbpedia.org">DBpedia</a>.
-			</p>
-			<p>
-				If you have your own subject hierarchy which is also published
-				as Linked Open Data, you can establish topic references into
-				that hierarchy, and then express the <a href="#sameas">equivalence</a>
-				between your terms and those defined by others.
-			</p>
-		</li>
-		<li>
-				Try to express as much detail about your creative works as you
-				feasibly can. In particular, if your works are organised into
-				series, or might have different editions or versions, it's
-				helpful to express this information as it enables more
-				comprehensive user journeys.
-			</li>
-		<li>
-				Follow the patterns described in <cite><a href="#assets">Describing
-				digital assets</a></cite> to relate specific manifestations
-				of works to the information about the works themselves. This
-				allows interfaces to offer links or embedded playback facilities
-				for media.
-			</li>
-	</ul>
 </section>
 </section>
 	

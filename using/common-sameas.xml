@@ -13,90 +13,44 @@
 -->
 <section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sameas">
   <title>Expressing equivalence with other identifiers</title>
-  
+
   <para>
 	Linked Open Data in general, and the Research &amp; Education Space
 	in particular, is at its most useful when the data describing things
 	links to other data describing the same thing.
   </para>
-  
+
   <para>
 	In RDF, this is achieved using the <literal>owl:sameAs</literal>
 	predicate. This predicate implies a direct equivalence
 	relationship—in effect, it creates a synonym.
   </para>
-  	  
+
   <para>
-	You can use <literal>owl:sameAs</literal> whether or not the
-	alternative identifiers use <literal>http:</literal> or
-	<literal>https:</literal>, although the practical usefulness of URIs
-	which can’t resolved as Linked Open Data can be quite limited.
-  </para>
-  
-  <para>
-	For example, one might wish to specify that our book has an ISBN
+	For example, a dataset might specify that a book has an ISBN
 	using the <literal>urn:isbn:</literal> URN scheme
 	<citation><link xlink:href="http://tools.ietf.org/html/rfc3187">RFC3187</link></citation>:
   </para>
-  
+
   <programlisting language="turtle"><![CDATA[</books/9781899066100#id> owl:sameAs <urn:isbn:9781899066100> .]]></programlisting>
-  
+
   <para>
-	We can also indicate that the book described by our data refers to
+	The data may also indicate that the book described refers to
 	the same book at the British Library:
   </para>
-  
+
   <programlisting language="turtle"><![CDATA[</books/9781899066100#id> owl:sameAs ]]>&lt;<link xlink:href="http://bnb.data.bl.uk/id/resource/011012558">http://bnb.data.bl.uk/id/resource/011012558</link>&gt; .</programlisting>
-  
+
   <para>
 	The outcome of this is that if an application queries the index
 	for data about the entity identified as <uri>urn:isbn:9781899066100</uri>,
-	any data describing the entity using <emphasis>your</emphasis>
-	identifier, or the British Library’s, will also be aggregated by
-	the index and returned.
+	any data describing the entity using <emphasis>either</emphasis>
+	identifier will be returned.
   </para>
-  
-  <section xml:id="sameas-collections">
-	<title>Tips for collection-holders</title>
-	
-	<para>
-	  Asserting the equivalence between your own authoratitive
-	  identifiers and <emphasis>well-known</emphasis> identifiers
-	  for the same entity is an easy way to ensure that the Research
-	  &amp; Education Space properly connects your information with
-	  other people’s.
-	</para>
-	
-	<note>
-	  <para>
-		Take care when using <literal>owl:sameAs</literal> to ensure
-		that the subject and the object really are directly equivalent.
-		In particular, make sure that you don’t accidentally state that
-		somebody’s description of something (be it an HTML page or some
-		other serialisation) is the same as the thing being described.
-	  </para>
-	</note>
-	
-	<para>
-	  While you could look for equivalent identifiers managed by other
-	  collections and make <literal>owl:sameAs</literal> assertions
-	  about any you can find, this is likely to be wasted effort.
-	  Instead, if everyone expresses the equivalence with the common
-	  well-known identifier, the index will aggregate all of the
-	  data from all of the collections which state equivalence with
-	  that single identifier.
-	</para>
-	
-	<para>
-	  Note that this doesn’t only apply to identifier schemes which
-	  are formal standards: it works just as well with Wikidata URIs
-	  as it does with ISBNs or GTINs.
-	</para>
-  </section>
-  
+
   <section xml:id="sameas-developers">
 	<title>Tips for application developers</title>
-	
+
 	<para>
 	  When an application retrieves data from the index about an
 	  entity, the Research &amp; Education Space includes information
@@ -108,7 +62,7 @@
 	  automatically assigned by the Research &amp; Education Space
 	  platform.
 	</para>
-	
+
 	<note>
 	  If you retrieve quads, rather than triples, from the index,
 	  these assertions are placed in a graph whose URI begins with
@@ -117,5 +71,5 @@
 	  be distinguished from statements made in the source data.
 	</note>
   </section>
-  
+
 </section>

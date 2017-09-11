@@ -23,11 +23,4 @@
 	</note>
 	<xi:include href="platform-intro.xml" />
 	<xi:include href="common.xml" />
-	<xi:include href="assets.xml" />
-	<xi:include href="things.xml" />
-	<xi:include href="people.xml" />
-	<xi:include href="places.xml" />
-	<xi:include href="events.xml" />
-	<xi:include href="concepts.xml" />
-	<xi:include href="creative.xml" />
 </part>

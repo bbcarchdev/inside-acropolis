@@ -13,7 +13,7 @@
 -->
 <index version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class-index">
 	<title>Class index</title>
-	
+
 	<para>
 		The following RDF classes are applied to entries in the RES index by the
 		aggregator, based upon the class they are evaluated as belonging
@@ -23,77 +23,65 @@
 	<tip>
 		<para>The currently-deployed rule-base used by the platform for processing classes can always be found in <link xlink:href="https://github.com/bbcarchdev/spindle/blob/live/twine/rulebase.ttl">Spindle’s Git repository</link>.</para>
 	</tip>
-	
+
 	<segmentedlist>
 		<segtitle>Class</segtitle>
 		<segtitle>Description</segtitle>
-		<segtitle>Section</segtitle>
-		
+
 		<seglistitem>
 			<seg><literal><link xlink:href="http://xmlns.com/foaf/spec/#term_Agent">foaf:Agent</link></literal></seg>
 			<seg>Agents (i.e., things operating on behalf of people or groups).</seg>
-			<seg><citetitle><link xlink:href="#people">Describing people, projects and organisations</link></citetitle></seg>
 		</seglistitem>
-			
+
 		<seglistitem>
 			<seg><literal><link xlink:href="http://purl.org/dc/dcmitype/Collection">dcmitype:Collection</link></literal></seg>
 			<seg>Collections</seg>
-			<seg><citetitle><link xlink:href="#collections">Collections and data-sets</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><literal><link xlink:href="http://www.w3.org/TR/skos-reference/#concepts">skos:Concept</link></literal></seg>
 			<seg>Concepts</seg>
-			<seg><citetitle><link xlink:href="#concepts">Describing concepts and taxonomies</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><literal><link xlink:href="http://vocab.org/frbr/core.html#Work">frbr:Work</link></literal></seg>
 			<seg>Creative works</seg>
-			<seg><citetitle><link xlink:href="#creative">Describing creative works</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><literal><link xlink:href="http://rdfs.org/ns/void#Dataset">void:Dataset</link></literal></seg>
 			<seg>Datasets</seg>
-			<seg><citetitle><link xlink:href="#collections">Collections and data-sets</link></citetitle></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg><literal><link xlink:href="http://xmlns.com/foaf/0.1/Document">foaf:Document</link></literal></seg>
 			<seg>Digital assets</seg>
-			<seg><citetitle><link xlink:href="#assets">Describing digital assets</link></citetitle></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg><literal><link xlink:href="http://motools.sourceforge.net/event/event.html#term_Event">event:Event</link></literal></seg>
 			<seg>Events (time-spans)</seg>
-			<seg><citetitle><link xlink:href="#events">Describing events</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><literal><link xlink:href="http://xmlns.com/foaf/spec/#term_Organization">foaf:Organization</link></literal></seg>
 			<seg>Organizations</seg>
-			<seg><citetitle><link xlink:href="#people">Describing people, projects and organisations</link></citetitle></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg><literal><link xlink:href="http://xmlns.com/foaf/spec/#term_Person">foaf:Person</link></literal></seg>
 			<seg>People</seg>
-			<seg><citetitle><link xlink:href="#people">Describing people, projects and organisations</link></citetitle></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg><literal><link xlink:href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</link></literal></seg>
 			<seg>Physical things</seg>
-			<seg><citetitle><link xlink:href="#things">Describing physical things</link></citetitle></seg>
 		</seglistitem>
 
 		<seglistitem>
 			<seg><literal><link xlink:href="http://www.w3.org/2003/01/geo/">geo:SpatialThing</link></literal></seg>
 			<seg>Places (locations)</seg>
-			<seg><citetitle><link xlink:href="#places">Describing places</link></citetitle></seg>
 		</seglistitem>
-				
+
 	</segmentedlist>
 </index>

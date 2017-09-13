@@ -28,7 +28,7 @@
 		role is to crawl the web, retrieving
 		<link xlink:href="#licenses">permissively-licensed</link>
 		<link xlink:href="#lod">Linked Open Data</link>, and passing it to the
-		aggregator for processing. 
+		aggregator for processing.
 	</para>
 	<para>
 		<link xlink:href="https://github.com/bbcarchdev/spindle/">Spindle</link>,
@@ -36,11 +36,12 @@
 		engine—<link xlink:href="https://github.com/bbcarchdev/twine/">Twine</link>—examines
 		the data, looking for places where the same digital, physical
 		or conceptual entity is described by Linked Open Data in more than one
-		place, particularly where the data <link xlink:href="#sameas">explicitly states the equivalence</link>,
+		place, particularly where the data
+    <link xlink:href="#api-equivalence">explicitly states the equivalence</link>,
 		and aggregates and stores that information in an index.
 	</para>
 	<para>
-		This <link xlink:href="#structure"><firstterm>subject-oriented</firstterm> index</link> is the very heart of
+		This <firstterm>subject-oriented</firstterm> index is the very heart of
 		the Resarch &amp; Education Space: by re-arranging published data so
 		that it's organised around the entities described by it, instead of by
 		publisher or data-set, applications are able to rapidly locate all of
@@ -67,9 +68,9 @@
 	<para>
 		We will not be directly developing end-user applications as part of
 		the Research &amp; Education Space itself, although sample code and
-		demonstrations have been published (<link xlink:href="http://res-project.tumblr.com/post/145608555223/inside-acropolis-how-to-unlock-the-archives">inside-acropolis-how-to-unlock-the-archives</link>, 
+		demonstrations have been published (<link xlink:href="http://res-project.tumblr.com/post/145608555223/inside-acropolis-how-to-unlock-the-archives">inside-acropolis-how-to-unlock-the-archives</link>,
 		<link xlink:href="http://res-project.tumblr.com/post/146940470153/interacting-with-res-in-php">
-		interacting-with-res-in-php</link> and 
+		interacting-with-res-in-php</link> and
 		<link xlink:href="http://res-project.tumblr.com/post/154464075083/what-does-res-do-with-your-data">
 		what-does-res-do-with-your-data</link>) to assist software developers in
 		doing so. There is also a “powered by RES” logo.
@@ -86,7 +87,7 @@
 		has been released under terms which permit re-use in both commercial
 		<emphasis>and</emphasis> non-commercial settings, so that all kinds of
 		applications can be developed using the platform.Go to our Blog (
-		<link xlink:href="http://res-project.tumblr.com/post/143892270473/open-data-the-digital-equivalent-of-letting">open-data-the-digital-equivalent-of-letting</link> and 
+		<link xlink:href="http://res-project.tumblr.com/post/143892270473/open-data-the-digital-equivalent-of-letting">open-data-the-digital-equivalent-of-letting</link> and
 		<link xlink:href="http://res-project.tumblr.com/post/144859969193/the-pros-and-cons-of-open-licensing-vs">
 		the-pros-and-cons-of-open-licensing</link>) to find out more on issue of licensing.
 	</para>

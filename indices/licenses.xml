@@ -19,13 +19,13 @@
 		not explicitly licensed using one of the well-known licenses listed
 		below. Note that the URI listed here is the URI which must be used as
 		the object in the licensing statement, as described in
-		<citetitle><link xlink:href="#rights-rdf">Incorporating rights information into RDF data</link></citetitle>.
+		<citetitle><link xlink:href="#rights">Understanding rights and licensing</link></citetitle>.
 	</para>
-		
+
 	<segmentedlist>
 		<segtitle>Licence</segtitle>
 		<segtitle>URI</segtitle>
-		
+
 		<seglistitem>
 			<seg>Creative Commons Public Domain (CC0)</seg>
 			<seg><uri><link xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</link></uri></seg>
@@ -35,12 +35,12 @@
 			<seg>Library of Congress Public Domain</seg>
 			<seg><uri><link xlink:href="http://id.loc.gov/about/">http://id.loc.gov/about/</link></uri></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Creative Commons Attribution 4.0 International (CC BY 4.0)</seg>
 			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</link></uri></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Open Government Licence</seg>
 			<seg>
@@ -55,34 +55,34 @@
 				<uri><link xlink:href="http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf">http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf</link></uri>.
 			</seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Digital Public Space Licence, version 1.0</seg>
 			<seg><uri><link xlink:href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</link></uri></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Creative Commons 1.0 Generic (CC BY 1.0)</seg>
 			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</link></uri></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Creative Commons 2.5 Generic (CC BY 2.5)</seg>
 			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</link></uri></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Creative Commons 3.0 Unported (CC BY 3.0)</seg>
 			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></uri></seg>
 		</seglistitem>
-		
+
 		<seglistitem>
 			<seg>Creative Commons 3.0 US (CC BY 3.0 US)</seg>
 			<seg><uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</link></uri></seg>
 		</seglistitem>
-		
+
 	</segmentedlist>
-	
+
 	<note>
 		<para>
 			We aim to support all well-known licenses which conform to the
@@ -91,5 +91,5 @@
 			if you think we’ve missed the URI of a license which should be on this list.
 		</para>
 	</note>
-	
+
 </index>

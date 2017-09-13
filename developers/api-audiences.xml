@@ -60,7 +60,7 @@
   </para>
   <note>
 	<para>
-	  The dataset itself may be <link xlink:href="#paginated">paginated</link>,
+	  The dataset itself may be <link xlink:href="#pagination">paginated</link>,
 	  so applications should take care not to only present the audience
 	  groups which appear on the first page of results in selection
 	  interfaces.

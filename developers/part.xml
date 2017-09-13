@@ -54,6 +54,17 @@
 		</para>
 	  </listitem>
 	</varlistentry>
+  <varlistentry>
+	  <term><cite><citetitle><link xlink:href="#rights">Understanding rights and licensing</link></citetitle></cite></term>
+	  <listitem>
+		<para>
+		  Explains the importance of respecting rights which publishers apply
+      to their data, and the distinction between rights to use
+      <emphasis>data documents</emphasis> vs. rights to use <emphasis>digital
+      assets</emphasis>.
+		</para>
+	  </listitem>
+	</varlistentry>
 	<varlistentry>
 	  <term><cite><citetitle><link xlink:href="#retrieving-lod">Retrieving and processing Linked Open Data</link></citetitle></cite></term>
 	  <listitem>

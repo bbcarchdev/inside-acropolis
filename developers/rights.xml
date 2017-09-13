@@ -17,7 +17,7 @@
 	<para>
 		The Research &amp; Education Space aggregates data which can be
 		re-used by a wide range of applications, and much of that data
-		describes digital media (such as videos and photographs) which
+		describes digital assets (such as videos and photographs) which
 		are accessible only to certain groups of people.
 	</para>
 
@@ -39,12 +39,13 @@
 	</para>
 
   <para>
-    However, the data in the index will not necessarily contain rights
-    statements about media (e.g. digital images, videos and audio), even if
-    it contains rights statements about <emphasis>documents which describe</emphasis>
-    that media. Consequently, applications which reuse media, either through
-    embedding or linking, should not bypass any access controls on that media,
-    to ensure that related access rights are not violated.
+    However, data in the index will not necessarily contain rights
+    statements about <emphasis>digital media</emphasis> (e.g. images, videos
+    and audio), even if it contains rights statements for <emphasis>data
+    documents which describe</emphasis> that media. Consequently, applications
+    which re-use digital media discovered through RES, either through embedding
+    or linking, should not bypass any access controls on that media. This
+    ensures that the access rights for the media are not violated.
   </para>
 
 	<tip>

@@ -41,7 +41,7 @@
 		Building on the Research &amp; Education Space, applications can make use of this index, along with the source data itself, to make those collections accessible and meaningful.
 	</p>
 	<p>
-		This book describes how a collection-holder can publish their data in a form which can be collected and indexed by the platform and used by applications, and how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion.
+		This book describes how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion. It also dives into the architecture of Acropolis to provide additional detail about how the index is generated.
 	</p>
 	<p class="screen-only">
 		This book is also available in <a href="inside-acropolis.pdf">PDF format</a>.
@@ -664,6 +664,14 @@ _:allison
 	  <dd>
 		  Describes the different kinds of API operations which are available
 		  and how to make use of them.
+		</dd>
+	
+	  <dt><cite><a href="#rights">Understanding rights and licensing</a></cite></dt>
+	  <dd>
+		  Explains the importance of respecting rights which publishers apply
+      to their data, and the distinction between rights to use
+      <em>data documents</em> vs. rights to use <em>digital
+      assets</em>.
 		</dd>
 	
 	  <dt><cite><a href="#retrieving-lod">Retrieving and processing Linked Open Data</a></cite></dt>
@@ -1608,7 +1616,7 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 	<p>
 		The Research &amp; Education Space aggregates data which can be
 		re-used by a wide range of applications, and much of that data
-		describes digital media (such as videos and photographs) which
+		describes digital assets (such as videos and photographs) which
 		are accessible only to certain groups of people.
 	</p>
 
@@ -1630,12 +1638,13 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 	</p>
 
   <p>
-    However, the data in the index will not necessarily contain rights
-    statements about media (e.g. digital images, videos and audio), even if
-    it contains rights statements about <em>documents which describe</em>
-    that media. Consequently, applications which reuse media, either through
-    embedding or linking, should not bypass any access controls on that media,
-    to ensure that related access rights are not violated.
+    However, data in the index will not necessarily contain rights
+    statements about <em>digital media</em> (e.g. images, videos
+    and audio), even if it contains rights statements for <em>data
+    documents which describe</em> that media. Consequently, applications
+    which re-use digital media discovered through RES, either through embedding
+    or linking, should not bypass any access controls on that media. This
+    ensures that the access rights for the media are not violated.
   </p>
 
 	<aside class="tip">
@@ -2836,7 +2845,7 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 		not explicitly licensed using one of the well-known licenses listed
 		below. Note that the URI listed here is the URI which must be used as
 		the object in the licensing statement, as described in
-		<cite><a href="#rights">Incorporating rights information into RDF data</a></cite>.
+		<cite><a href="#rights">Understanding rights and licensing</a></cite>.
 	</p>
 
 	<div class="table"><table><thead><tr><th scope="col">Licence</th><th scope="col">URI</th></tr></thead><tbody><tr><td>Creative Commons Public Domain (CC0)</td><td><code class="uri"><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></code></td></tr><tr><td>Library of Congress Public Domain</td><td><code class="uri"><a href="http://id.loc.gov/about/">http://id.loc.gov/about/</a></code></td></tr><tr><td>Creative Commons Attribution 4.0 International (CC BY 4.0)</td><td><code class="uri"><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></code></td></tr><tr><td>Open Government Licence</td><td>

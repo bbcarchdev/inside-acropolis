@@ -27,7 +27,7 @@
 		Building on the Research &amp; Education Space, applications can make use of this index, along with the source data itself, to make those collections accessible and meaningful.
 	</para>
 	<para>
-		This book describes how a collection-holder can publish their data in a form which can be collected and indexed by the platform and used by applications, and how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion.
+		This book describes how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion. It also dives into the architecture of Acropolis to provide additional detail about how the index is generated.
 	</para>
 	<para role="screen-only">
 		This book is also available in <link xlink:href="inside-acropolis.pdf">PDF format</link>.

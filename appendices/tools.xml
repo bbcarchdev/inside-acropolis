@@ -12,14 +12,14 @@
 
 -->
 <appendix version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="tools">
-	<title>Appendix I: Tools and resources</title>
-	
+	<title>Tools and resources</title>
+
 	<section xml:id="guides">
 		<title>Guides</title>
 		<itemizedlist>
 			<listitem>
 				<para><citetitle><link xlink:href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140225/">RDF 1.1 primer</link></citetitle></para>
-			</listitem>		
+			</listitem>
 			<listitem>
 				<para><citetitle><link xlink:href="http://patterns.dataincubator.org/book/">Linked Data Patterns</link></citetitle></para>
 			</listitem>
@@ -40,7 +40,7 @@
 		<itemizedlist>
 			<listitem>
 				<para><citetitle><link xlink:href="http://res-project.tumblr.com/post/145608555223/inside-acropolis-how-to-unlock-the-archives/">Inside Acropolis: How To Unlock The Archives</link></citetitle></para>
-			</listitem>		
+			</listitem>
 			<listitem>
 				<para><citetitle><link xlink:href="http://res-project.tumblr.com/post/146940470153/interacting-with-res-in-php">Interacting with RES in PHP</link></citetitle></para>
 			</listitem>
@@ -91,7 +91,7 @@
 			</listitem>
 		</itemizedlist>
 	</section>
-	
+
 	<section xml:id="tech-standards">
 		<title>Technical standards</title>
 		<itemizedlist>

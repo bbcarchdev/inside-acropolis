@@ -42,7 +42,6 @@
 
 	<!-- Appendices -->
 	<xi:include href="appendices/tools.xml" />
-	<xi:include href="appendices/containers-codecs.xml" />
 
 	<!-- Indices -->
 	<xi:include href="indices/licenses.xml" />

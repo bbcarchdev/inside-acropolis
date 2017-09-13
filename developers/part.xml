@@ -88,26 +88,7 @@
 	<xi:include href="api.xml" />
 	<xi:include href="api-operations.xml" />
 
-  <!-- ???TODO -->
   <xi:include href="rights.xml" />
-  <xi:include href="equivalence.xml" />
-
-  <section xml:id="finding-media">
-    <title>???TODO Finding usable media</title>
-
-    <para>
-      ???mostly reuse stuff from rights.xml about audience and licence?
-    </para>
-
-    <para>
-      ???what's the audience?
-    </para>
-
-    <para>
-      ???what's the licence?
-    </para>
-  </section>
-  <!-- END ???TODO -->
 
 	<xi:include href="retrieving-lod.xml" />
 	<xi:include href="best-practices.xml" />

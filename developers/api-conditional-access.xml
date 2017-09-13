@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2016 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="conditional-access">
+	<title>Find conditionally-accessible resources</title>
+
+	<para>
+		Many kinds of resource are not available to the general
+		public but may be accessed by the key audience of the Research
+		&amp; Education Space: students and teachers affiliated with
+		a recognised educational institution in the UK. This may be
+		because specific exceptions in law allow access when it would
+		not otherwise be possible, or because the rights-holder has
+		elected to make the assets available only to those in
+		formal education.
+	</para>
+
+	<para>
+		In order to support this, and ensure that users of RES
+		applications are able to use to the greatest range of
+		material that they legitimately have access to, metadata
+		describing those assets must describe means by which
+		they can be accessed.
+	</para>
+
+	<tip>
+		<para>
+			A given asset may be available from multiple sources,
+			each with its own specific constraints applied to who
+			may access it. For example, a recording of a radio
+			programme might be held on behalf of educational users by
+			two separate online services, both requiring that the
+			affiliated institution be a licensee of the relevant
+			<link xlink:href="http://www.era.org.uk">ERA licensing scheme</link>,
+			and both operating their own institutional-level
+			subscription schemes. To be most useful, the index
+			must aggregate the metadata describing
+			<emphasis>both</emphasis> means of access, and the
+			metadata must convey sufficient information so as
+			to allow applications to decide which, if any, should be
+			presented to the end-user.
+		</para>
+	</tip>
+
+	<para>
+	  Conditional access is described by the following data:
+	</para>
+
+	<itemizedlist>
+	  <listitem>
+		  <para>
+		    A URI representing a the group of people who may access the
+		    resource, known by the Research &amp; Education Space
+		    as an <firstterm>audience URI</firstterm>.
+		  </para>
+	  </listitem>
+
+	  <listitem>
+		  <para>
+		    A rights statement, which uses the
+		    <link xlink:href="http://www.w3.org/ns/odrl/2/">ODRL vocabulary</link>
+		    to grant <emphasis>conditional</emphasis> permission to
+		    access the resources the statement is associated with.
+		  </para>
+	  </listitem>
+
+	  <listitem>
+		  <para>
+		    A rights predicates associating an actual resource with the rights statement.
+        See <link xlink:href="#predicate-index">the predicate index</link> for
+        more details.
+		  </para>
+	  </listitem>
+	</itemizedlist>
+
+	<para>
+	  When this data is processed, the Research &amp; Education Space
+	  indexes the fact that the resource is conditionally-accessible,
+	  along with the URI assigned to the group of people who may access it.
+	</para>
+
+	<tip>
+	  <para>
+		Where multiple publishers participate in a scheme using
+		a common authentication mechanism to grant access to the
+		same set of users, they may have agreed to use the same
+		audience URI to identify those users.
+	  </para>
+	</tip>
+
+	<para>
+	  Applications can then use this URI when performing queries in
+	  order to include restricted resources in the results.
+	</para>
+
+	<section xml:id="conditional-access-example">
+	  <title>Example</title>
+
+	  <para>
+		  The following example describes two <link xlink:href="#creative">episodes of television programmes</link>,
+		  and their associated media players which are
+		  only accessible to authorised users of the
+		  <link xlink:href="http://shakespeare.ch.bbc.co.uk">BBC Shakespeare Archive Resource</link>.
+	  </para>
+
+	  <programlisting language="turtle"><![CDATA[<http://shakespeare.acropolis.org.uk/programmes/PCDD329F#id> a po:Episode ;
+rdfs:label "Arall Fyd"@cy-gb ;
+mrss:player <http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player> .
+
+<http://shakespeare.acropolis.org.uk/programmes/LRPI646P#id> a po:Episode ;
+rdfs:label "Five to Eleven - Cyril Luckham"@en-gb ;
+mrss:player <http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player> .
+
+<http://shakespeare.acropolis.org.uk/programmes/PCDD329F/player>
+dct:format <http://purl.org/NET/mediatypes/text/html> ;
+dct:license <http://shakespeare.acropolis.org.uk/terms#id> ;
+a dcmitype:MovingImage .
+
+<http://shakespeare.acropolis.org.uk/programmes/LRPI646P/player>
+dct:format <http://purl.org/NET/mediatypes/text/html> ;
+dct:license <http://shakespeare.acropolis.org.uk/terms#id> ;
+a dcmitype:MovingImage .
+
+<http://shakespeare.acropolis.org.uk/terms#id>
+a odrl:Policy ;
+rdfs:label "Accessible only by authorised users in formal education in the UK"@en-gb ;
+odrl:permission <http://shakespeare.acropolis.org.uk/terms#play> .
+
+<http://shakespeare.acropolis.org.uk/terms#play>
+a odrl:Permission ;
+odrl:action odrl:play ;
+odrl:assignee <http://shakespeare.acropolis.org.uk/#members> .
+
+<http://shakespeare.acropolis.org.uk/#members>
+a odrl:Group ;
+rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
+
+]]></programlisting>
+
+    <para>
+	    In the example above, the two <literal>po:Episode</literal>
+	    entities state that they have an embeddable media player
+	    using the <literal>mrss:player</literal> predicate. The data
+	    describing the two player URIs indicates that specific
+	    licensing terms apply to them, identified by the URI
+	    <uri>http://shakespeare.acropolis.org.uk/terms#id</uri>, which
+	    is an <link xlink:href="http://www.w3.org/ns/odrl/2/ODRL21#term-Policy">ODRL Policy</link>.
+    </para>
+
+    <para>
+	    The policy statement includes a permission (identified as
+	    <uri>http://shakespeare.acropolis.org.uk/terms#play</uri>,
+	    although the Research &amp; Education Space does not require
+	    an explicit URI to be assigned to each individual permission),
+	    which states that the action <literal><link xlink:href="http://www.w3.org/ns/odrl/2/ODRL21#term-play">odrl:play</link></literal>
+	    may be performed by members of the group
+	    <uri>http://shakespeare.acropolis.org.uk/#members</uri>.
+    </para>
+
+    <para>
+	    When this data is processed by the Research &amp; Education
+	    Space, the platform indexes the fact that these players are
+	    associated with their respective creative works, and that
+	    they are accessible only be members of the audience group
+	    which has the URI
+	    <uri>http://shakespeare.acropolis.org.uk/#members</uri>.
+    </para>
+
+    <para>
+	    By default, the Research &amp; Education Space API will not
+	    include conditionally-accessible resources in results of
+	    queries. This means that when querying for concepts which
+	    have associated media, the default behaviour is to return
+	    those concepts whose associated media appears to be available
+	    to all.
+    </para>
+
+    <para>
+	    In order to include conditionally-accessible resources in
+	    the results, an application must explicitly include the
+	    <literal>for</literal> parameter in
+      <link xlink:href="#operations">its queries</link>,
+	    which specifies the URI of an audience group to include. In this case,
+      a query for the word <literal>eleven</literal>, including
+      resources only accessible to users of the Shakespeare Archive Resource,
+      would look like this:
+    </para>
+
+    <para>
+      <uri>
+        <link xlink:href="http://acropolis.org.uk/?q=eleven&amp;for=http://shakespeare.acropolis.org.uk/%23members">
+          http://acropolis.org.uk/?q=eleven&amp;for=http://shakespeare.acropolis.org.uk/%23members
+        </link>
+      </uri>
+    </para>
+
+    <para>
+      There are two points to note here:
+    </para>
+
+    <orderedlist>
+      <listitem>
+        <para>
+          This query will return resources available to everyone
+          <emphasis role="strong">PLUS</emphasis> resources with media resources
+          which are only available to users of the Shakespeare Archive Resource.
+          Note that the restricted resources won't necessarily appear at the top
+          of the returned results.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          If the audience URI contains <literal>#</literal> characters, these
+          should be URL-encoded before sending the query. This is to prevent
+          that character being treated as a
+          <link xlink:href="https://www.w3.org/DesignIssues/Fragment.html">fragment
+          identifier</link>, rather than as part of the audience URI.
+        </para>
+      </listitem>
+    </orderedlist>
+
+    <para>
+      Applications should provide a mechanism for the user
+      or administrator to specify which audience groups users
+      are part of. Note that this doesn't grant or deny access
+      to the resources themselves—that's the responsibility of
+      the publisher of those resources—but is instead a mechanism
+      for applications to hide from view those resources which are
+      not accessible to the end-user.
+    </para>
+
+    <para>
+	    Information about the audience groups known to the
+	    platform can be retrieved from the
+	    <link xlink:href="#audience-groups"><literal>/audiences</literal></link>
+	    dataset. By periodically retrieving this dataset, applications
+	    can populate a list of audience groups for users or
+	    administrators to choose from.
+    </para>
+  </section>
+</section>

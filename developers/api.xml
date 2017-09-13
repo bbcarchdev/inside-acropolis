@@ -22,28 +22,6 @@
 		can begin using the API immediately by <link xlink:href="#retrieving-lod">consuming it
 		as Linked Open Data</link>.
 	</tip>
-		
-<!--	<para>
-		The index itself is a <literal>void:Dataset</literal>. The data
-		describing the index includes a number of sets of properties:
-	</para>
-	
-	<note>
-		It is likely that the capabilties of the index will evolve over time.
-		While every effort will be made not to <emphasis>remove</emphasis>
-		functionality or fundamentally alter the way that it is exposed,
-		applications should where possible base the capabilities offered upon
-		those advertised by the data describing the index (see the
-		<link xlink:href="#capabilities">following section</link>).
-	</note>
-	<para>
-		Depending upon your application design, it may be desirable to offer
-		the same browse and query capabilities to any dataset that the user
-		navigates to (provided the dataset description provides enough information
-		to support those capabilities), rather than hard-coding behaviour specific to the
-		index. For example, text-based queries can be offered when your application
-		encounters the <literal>osd:searchTemplate</literal> property.
-	</para> -->
 
 	<section xml:id="api-basics">
 		<title>The basics</title>
@@ -58,11 +36,11 @@
 		<para>
 		  This operation is known as <emphasis>de-referencing</emphasis> a URI,
 		  which translates as “given a Linked Data URI for something, retrieve
-		  data that describes that thing”. 
+		  data that describes that thing”.
 		</para>
 		<para>
 		  For example, de-referencing the URI for the <emphasis>root</emphasis>
-		  of the API retrieves data about the API itself—in particular 
+		  of the API retrieves data about the API itself—in particular
 		  information about the collections and supported queries provided by
 		  it (see
 		  <cite><citetitle><link xlink:href="#query-capabilities">Determine browse and query capabilities</link></citetitle></cite>,
@@ -108,10 +86,11 @@ Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0
 		  HTTP protocol specification itself. When your application
 		  processes the response, it should begin with the triples whose
 		  subject is the exact URI (including the fragment) of the entity
-		  it was attempting to retrieve the data describing. See
+		  it was attempting to retrieve. See
 		  <cite><citetitle><link xlink:href="#retrieving-lod">Retrieving
 		  and processing Linked Open Data</link></citetitle></cite> for
-		  a detailed description of the protocol, and <cite><citetitle><link xlink:href="developer-best-practices">Best practices</link></citetitle></cite>
+		  a detailed description of the protocol, and
+      <cite><citetitle><link xlink:href="developer-best-practices">Best practices</link></citetitle></cite>
 		  for tips and guidance in avoiding common issues that can arise.
 		</para>
 	</section> <!-- api-basics -->
@@ -134,7 +113,7 @@ Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0
 > Host: acropolis.org.uk
 > User-Agent: curl/7.49.1
 > Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0.5
-> 
+>
 < HTTP/1.1 200 OK
 < Server: Apache/2.2.22 (Debian)
 < Content-Location: /index.ttl
@@ -148,7 +127,7 @@ Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0
 < Via: 1.1 varnish
 < Connection: keep-alive
 < X-Cache: MISS from vm-gw-0.ch.internal
-< 
+<
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -169,91 +148,5 @@ Accept: text/turtle;q=1.0, application/n-triples;q=0.95, application/rdf+xml;q=0
     rdfs:seeAlso <http://acropolis.org.uk/audiences> .
 ]]></screen>
 	</section> <!-- testing-requests -->
-
-<!--		
-	<section xml:id="structure">
-		<title>Structure of the index and API</title>
-		
-		<para>
-			Data indexed by the Research &amp; Education Space is served as
-			Linked Open Data. This means that if an application dereferences
-			(fetches) an HTTP URI, the response will be data about the entity
-			which is known by that URI.
-		</para>
-		<para>
-		  The API aims to be RESTful, and so responses will be as
-		  self-describing as possible (see XXX for more details on the
-		  different capabilities available), but the API has the following
-		  URL structure:
-		</para>
-		<segmentedlist>
-		  <segtitle>URL</segtitle>
-		  <segtitle>Purpose</segtitle>
-		  
-		  <seglistitem>
-			<seg><literal>http://acropolis.org.uk/</literal></seg>
-			<seg>Data about the collections and capabilities of the API</seg>
-		  </seglistitem>
-		  <seglistitem>
-			<seg><literal>http://acropolis.org.uk/ITEM-UUID</literal></seg>
-			<seg>Data about an individual item</seg>
-		  </seglistitem>
-		  <seglistitem>
-			<seg><literal>http://acropolis.org.uk/COLLECTION</literal></seg>
-			<seg>Data about the contents of a named collection or partition</seg>
-		  </seglistitem>
-		  <seglistitem>
-			<seg><literal>http://acropolis.org.uk/?uri=ITEM-URI</literal></seg>
-			<seg>Locate an item by supplying a known URI for it</seg>
-		  </seglistitem>
-		  <seglistitem>
-			<seg><literal>http://acropolis.org.uk/[COLLECTION]?QUERY-TERMS</literal></seg>
-			<seg>Perform a query, optionally scoped to a particular collection</seg>
-		  </seglistitem>
-		</segmentedlist>
-
-
-		<para>
-			The URI for the root of the index is <uri>http://acropolis.org.uk/</uri>.
-			Therefore, if you perform a <literal>GET</literal> request for
-			that URI, using HTTP Content Negotiation to specify the formats
-			you want to receive data in, the result is some machine-readable data
-			about the index itself, including information about
-			how to perform different kinds of query, the different browseable
-			partitions, and some selected sample entities.
-		</para>
-		
-		<para>
-			By following links in that data (or by performing queries, using the
-			<literal>osd:template</literal> OpenSearch query URL template
-			described later in this book), you can then retrieve information
-			about partitions within the index, the results of queries, and
-			the individual entities which have been indexed by the platform.
-		</para>
-		
-		<para>
-			The basis of the index is a series of <firstterm>composite</firstterm>
-			entities which are constructed using the data discovered by the
-			crawler. Each of the composite entities has an <literal>owl:sameAs</literal>
-			relationship with the various source entities used to construct it,
-			a portion of whose data is cached in the index and returned to
-			applications.
-		</para>
-
-		<para>
-			An index of the predicates which are used to generate the composite
-			entities and cached alongside them can be found at <link xlink:href="#predicate-index">the
-			end of the book</link>.
-		</para>
-		
-		<para>
-			The following chapters describe how different kinds of entity are
-			expected to be described in source data and how they are respresented
-			by the index. For data publishers, these are the classes and predicates
-			that you should use if possible in your data. For application
-			developers, the information will allow you to tailor your application’s
-			behaviour to different kinds of entity.
-		</para>
-	</section> --> <!-- structure -->
 
 </chapter>

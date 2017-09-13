@@ -13,11 +13,6 @@
 -->
 <chapter version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="operations">
 	<title>Common API operations</title>
-<!--	<para>
-		Below is a list of some of the most common kinds of operation an application
-		might wish to perform using the Research &amp; Education Space
-		API.
-	</para> -->
 
 	<xi:include href="api-kind.xml" />
 	<xi:include href="api-query.xml" />
@@ -25,99 +20,8 @@
 	<xi:include href="api-lookup.xml" />
 	<xi:include href="api-search.xml" />
 	<xi:include href="api-iterate.xml" />
+  <xi:include href="api-equivalence.xml" />
 	<xi:include href="api-audiences.xml" />
-	
-<!--	<segmentedlist>
-		<segtitle>Operation</segtitle>
-		<segtitle>Implementation</segtitle>
-		
-		<seglistitem>
-			<seg>Locate class partitions</seg>
-			<seg>Iterate the <literal>void:classPartition</literal> properties of the index</seg> 
-		</seglistitem>
-		
-		<seglistitem>
-			<seg>Find the index entry for a particular entity</seg>
-			<seg>Append the encoded entity URI to the value of the <literal>void:uriLookupEndpoint</literal> property</seg>
-		</seglistitem>
-		
-		<seglistitem>
-			<seg>Perform a text query</seg>
-			<seg>Populate the template specified in the <literal>osd:template</literal> property (if present), or alternatively the template specified in the <tag class="element">Url</tag> element corresponding to the desired data format in the OpenSearch Description document linked via the <literal>void:openSearchDescription</literal> property</seg>
-		</seglistitem>
-		
-		<seglistitem>
-			<seg></seg>
-			<seg>Once the data for an entity has been retrieved, find the <literal>owl:sameAs</literal> triples which have the entity URI as either the subject or the object</seg>
-		</seglistitem>
-		
-		<seglistitem>
-			<seg>List the items in the dataset or a partition</seg>
-			<seg>Retrieve the data either from the URL in the <literal>void:rootResource</literal> property, from one of the <literal>void:classPartition</literal> properties, or a query, then locate all of the <literal>rdfs:seeAlso</literal> properties which have that URL as a subject.</seg>
-		</seglistitem>
-		
-		<seglistitem>
-			<seg>Paginate through a dataset or query results</seg>
-			<seg>Follow the <literal>xhtml:prev</literal> and <literal>xhtml:next</literal> properties where available</seg>
-		</seglistitem>
-	</segmentedlist>
-
-	<section xml:id="capabilities">
-		<title>Discovering capabilities</title>
-	
-		<para>
-			As the index is presented as Linked Open Data, discovering information
-			about it uses the same process used for obtaining descriptive metadata
-			for anything else: de-reference the entity URI (which in the case of
-			the index is the API root—currently <uri>http://acropolis.org.uk/</uri>),
-			and examine the triples whose subject is that URI.
-		</para>
-	
-		<segmentedlist>
-			<segtitle>Capability</segtitle>
-			<segtitle>Expressed using…</segtitle>
-		
-			<seglistitem>
-				<seg>Class partitions (e.g., “all people”, “all places”)</seg>
-				<seg><literal>void:classPartition</literal></seg>
-			</seglistitem>
-		
-			<seglistitem>
-				<seg>Browse endpoint for everything in the index</seg>
-				<seg><literal>void:rootResource</literal></seg>
-			</seglistitem>
-		
-			<seglistitem>
-				<seg>Locate an entry from an external URI</seg>
-				<seg><literal>void:uriLookupEndpoint</literal></seg>
-			</seglistitem>
-	
-			<seglistitem>
-				<seg>Free-form search (complete description document)</seg>
-				<seg><literal>void:openSearchDescription</literal></seg>
-			</seglistitem>
-		
-			<seglistitem>
-				<seg>Free-form search URL template</seg>
-				<seg><literal>osd:template</literal></seg>
-			</seglistitem>
-		
-			<seglistitem>
-				<seg>Links to entities contained within the index</seg>
-				<seg><literal>rdfs:seeAlso</literal></seg>
-			</seglistitem>
-		
-			<seglistitem>
-				<seg>References to original source data about an entity in the index</seg>
-				<seg><literal>owl:sameAs</literal></seg>
-			</seglistitem>
-		
-			<seglistitem>
-				<seg>Links to first, last, previous and next pages of results</seg>
-				<seg><literal>xhtml:first</literal>, <literal>xhtml:last</literal>, <literal>xhtml:prev</literal>, <literal>xhtml:next</literal></seg>
-			</seglistitem>
-	
-		</segmentedlist>
-	</section> -->
+  <xi:include href="api-conditional-access.xml" />
 
 </chapter>

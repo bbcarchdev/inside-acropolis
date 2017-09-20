@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta charset="utf-8" />
+			<!--[if lt IE 9]><script>document.createElement('header');document.createElement('nav');document.createElement('section');document.createElement('article');document.createElement('aside');document.createElement('footer');</script><![endif]-->
+		<title>Inside Acropolis</title><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/style.css"/><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/print.css" media="print"/><link rel="stylesheet" type="text/css" href="//cloud.typography.com/6699852/732262/css/fonts.css"/><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,500,300italic,500italic|Inconsolata|Arapey"/><link rel="stylesheet" type="text/css" href="/local.css"/><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"/><!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/ie78.css" /><![endif]-->
+	</head>
+<body class="book"><header><nav class="global"><div class="inner"><ul>
+		<li class="logo"><a href="https://bbcarchdev.github.io/res/"><abbr title="Research &amp; Education Space">RES</abbr></a></li>
+		<li><a href="https://bbcarchdev.github.io/res/education">Education</a></li>
+		<li><a href="https://bbcarchdev.github.io/res/collections">Collections</a></li>
+		<li><a href="https://bbcarchdev.github.io/res/products">Products</a></li>
+		<li><a href="https://bbcarchdev.github.io/res/faq">FAQ</a></li>
+	</ul></div></nav>
+		<div class="masthead"></div>
+		<h1>Inside Acropolis</h1><h2>Volume 2: Publishing data for the Research &amp; Education Space</h2><p class="edition">September 2017 Edition</p><p class="editor">Edited by Elliot Smith, <a href="http://www.bbc.co.uk/archive/">BBC Archive Development</a>.</p></header><section id="legal" class="legalnotice">
+  <p>
+    Copyright © 2017 BBC.
+  </p>
+  <p>
+    The text of this book is licensed under the terms of the <cite><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence, v2.0</a></cite>.
+  </p>
+  <p>
+    Accompanying code and samples are licensed under the terms of the <cite><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></cite>.
+  </p>
+</section><section class="preface">
+  <p>
+    <a href="../index.html">Return to top level <cite>Inside Acropolis</cite> contents page</a>
+  </p>
+</section><nav class="toc"><h1>Table of contents</h1><ol><li class="frontmatter">Preface</li><li><a href="#intro">RES-friendly RDF</a><ol><li><a href="#museums-web-page">The museum's web page</a></li></ol></li><li><a href="#what-res-wants">What does RES want?</a><ol><li><a href="#web-page-extraction">Extracting things from the web page</a></li></ol></li><li><a href="#names-for-things">Choosing URIs for things</a><ol><li><a href="#naming-the-museum-things">URIs for the museum's things</a></li><li><a href="#using-existing-uris">Using existing URIs with content negotiation</a></li></ol></li><li><a href="#res-modelling-overview">RDF modelling for RES</a><ol><li><a href="#notable-types">Use notable types</a><ol><li><a href="#modelling-the-helmet">Adding types to the museum's resources</a></li><li><a href="#dcmitypes">The importance of DCMI Type resources</a></li></ol></li><li><a href="#labels-etc">Add basic descriptive data</a><ol><li><a href="#museum-basic-descriptive">Adding basic descriptive data to the museum's resources</a></li></ol></li><li><a href="#link-describe-assets">Link and describe digital assets</a><ol><li><a href="#link-works-to-assets">Link creative works to digital assets</a></li><li><a href="#describe-assets">Describe digital assets</a></li><li><a href="#linking-and-describing-museum-media">Linking and describing the museum's media</a></li><li><a href="#multiple-files">A note on multiple files</a></li></ol></li><li><a href="#link-documents-formats">Link documents to their formats</a><ol><li><a href="#linking-museum-formats">Linking formats to the museum's documents</a></li></ol></li><li><a href="#reconciliation">Link resources to other datasets</a><ol><li><a href="#how-to-link-to-other-datasets">How to link to other datasets</a><ol><li><a href="#similarity">Similarity</a></li><li><a href="#aboutness">Aboutness</a></li><li><a href="#relatedness">Relatedness</a></li></ol></li><li><a href="#reconciliation-museum">Linking the museum's resources to other datasets</a><ol><li><a href="#reconciliation-reuse-existing-resources">Re-using existing resources</a></li></ol></li></ol></li><li><a href="#licensing">Add licensing statements</a><ol><li><a href="#licensing-statements">Structure of licensing statements</a><ol><li><a href="#licensing-predicates">Licensing predicates</a></li><li><a href="#licence-uris">Licence URIs</a></li></ol></li><li><a href="#museum-licensing">Adding licences to the museum's data</a></li></ol></li></ol></li><li><a href="#bringing-it-together">Bringing it all together</a></li><li class="backmatter"><a href="#appendix-prefixes">RDF prefixes</a></li></ol></nav><article>
+  
+
+  
+
+  
+
+  
+
+  <section id="intro" class="part"><h1>RES-friendly RDF</h1>
+
+  
+
+  <p>
+    This volume of <cite>Inside Acropolis</cite> is about preparing data for indexing by <a href="https://res.space/">RES</a>. As well as providing a general reference, it works through a detailed example of converting some of a single web page to RDF. (Conversion of an existing web site to RDF is a common use case among organisations just starting to publish RDF.)
+  </p>
+
+  <p>
+    The example page is on the website of an imaginary castle museum, <em>The Museum of The Castle of Otranto</em>. Like many museum websites, it contains images, articles and videos about about the museum and its collections. Museum staff want this data to be indexed by RES so that it can be used by teachers, students and academics. As a starting point, they want to create some RDF from the page <a href="http://castleofotranto.org.uk/items/the-helmet">http://castleofotranto.org.uk/items/the-helmet</a>, about a golden helmet in the museum's collection.
+  </p>
+
+  <p>
+    The rest of this volume focuses on converting this web page (and similar content) to RDF, making it <em>RES-friendly</em> along the way. This means using data structures which RES can index effectively, to make data more visible and accessible to RES users. The guidance given is more widely applicable to Linked Open Data (LOD), too: making your data RES-friendly helps it adhere to <a href="https://www.w3.org/TR/ld-bp/">best practices for publishing LOD</a>.
+  </p>
+
+  <aside class="info">
+    <p>
+      This is a reference guide to converting existing content into a <em>minimal</em> RDF dataset which can be effectively indexed by RES. It doesn't explain how to do an exhaustive conversion of all of an organisation's data, or even all of one web page: it just covers the minimum work required to offer useful data to RES. This bypasses important topics like how an organisation should decide on a license for its data, manage it, host it etc.; but these issues can be discussed with the <a href="mailto:RESFeedback@bbc.co.uk">RES team</a> if you need help.
+    </p>
+  </aside>
+
+  <section id="museums-web-page" class="section"><h1>The museum's web page</h1>
+    
+
+    <p>
+      <a href="http://castleofotranto.org.uk/items/the-helmet">The example museum web page</a> has this content:
+    </p>
+
+    <ul>
+      <li>
+          <strong class="strong">Identifier:</strong> t0001 (this identifier is from the museum catalogue)
+        </li>
+      <li>
+          <strong class="strong">Label:</strong> The Golden Helmet
+        </li>
+      <li>
+          <strong class="strong">Physical description:</strong> Large gold helmet
+        </li>
+      <li>
+          <strong class="strong">Dimensions:</strong> 3m diameter
+        </li>
+      <li>
+          <strong class="strong">Materials:</strong> 18 carat gold
+        </li>
+      <li>
+          <strong class="strong">Origin:</strong> Created in the 17th century by an unknown Spanish armourer.
+        </li>
+      <li>
+          <strong class="strong">History:</strong> The helmet spontaneously fell from its mount on a wall in the main hall in 1529; Conrad, son of Lord Manfred Otranto, was due to wed Isabella that day, but was instead crushed to death by the falling helmet. The helmet was then lost for many years, until, in 1749, it was rediscovered by archaeologist Fuchsia Otranto in the ruins of the old chapel.
+        </li>
+      <li>
+          <strong class="strong">Display location:</strong> On permanent display in the Arms and Armour Wing.
+        </li>
+      <li>
+          <strong class="strong">A digital photograph of the helmet</strong>, taken by Vlad Dracula in 2016.
+        </li>
+    </ul>
+
+    <p>
+      By the end of this volume, the data on this page will have been converted to machine-readable RDF. All of the RDF examples are presented in <a href="https://www.w3.org/TR/turtle/">Turtle</a> format. For the sake of brevity, the RDF namespaces and corresponding prefixes used in the examples are summarised <a href="#appendix-prefixes">in an appendix</a> and not included in the examples.
+    </p>
+
+    <aside class="tip">
+      <p>If publishing data for ingestion by RES, your RDF should be in either RDF/XML or Turtle format (or both). These are the formats currently supported by RES.</p>
+    </aside>
+  </section>
+
+</section>
+  <section id="what-res-wants" class="part"><h1>What does RES want?</h1>
+
+  
+
+  <p>
+    RES is primarily a high-level index of the data it has <em>ingested</em>. It is only interested in a few key types of resource, properties and relationships. If you want to publish data which RES can index effectively, it helps to understand how the index divides the world into four broad categories of resource:
+  </p>
+
+  <ol>
+    <li>
+        <strong class="strong">Real-world things</strong> (physical and abstract; people, physical objects, places, events etc.)
+      </li>
+
+    <li>
+      <p>
+        <strong class="strong">Creative works</strong> (novels, paintings, songs, photographs etc.)
+      </p>
+      <p>
+        Note that creative works are a subclass of real-world things. Unlike real-world things, they are typically <em>about</em> (depict, describe, have as a subject) other real world things. By contrast, a building or a person isn't normally <em>about</em> anything else.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <strong class="strong">Documents about things</strong>
+      </p>
+      <p>
+        Examples in the real world are entries in a library catalogue, or the text on a card next to a museum exhibit. This includes documents about <em>real-world things</em>. (Note that for a web page about some <em>thing</em>, the <em>text</em> of that page is the document, in isolation from its representation as HTML.) RES will only index data in documents which are <a href="#licensing">openly-licensed</a>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <strong class="strong">Digital assets</strong> (digital images, text files, videos, audio files)
+      </p>
+      <p>
+        These are digital representations of things. RES is mostly interested in files which represent creative works: for example, a digital image file representing a photograph; a PDF file representing a novel; or an audio file representing a sound recording.
+      </p>
+    </li>
+  </ol>
+
+  <p>
+    To produce minimal RES-friendly data, you need to organise your resources into these categories and define the relationships between them. The following diagram summarises the structure RES is looking for:
+  </p>
+
+  <figure class="full">
+		
+		<img src="./RES_resources.svg"/>
+	<figcaption>RES resources and relationships</figcaption></figure>
+
+  <p>
+    The resources with a grey background are instances of the four categories given above. The format and licence resources are special cases which will be explained as they become relevant.
+  </p>
+
+  <p>
+    The next section shows how to fit data from the example web page to these resource categories.
+  </p>
+
+  <section id="web-page-extraction" class="section"><h1>Extracting things from the web page</h1>
+    
+
+    <p>
+      Using the four categories above, the museum identifies a minimal set of resources which are useful to RES:
+    </p>
+
+    <ol>
+      <li>
+        <p><strong class="strong">The golden helmet</strong></p>
+        <p>This is a <em>real-world thing</em>, the actual physical helmet in the museum's collection.</p>
+      </li>
+
+      <li>
+        <p><strong class="strong">The photograph taken by Vlad Dracula</strong></p>
+        <p>The photograph is a <em>creative work</em> with the helmet as its <em>subject</em>.</p>
+      </li>
+
+      <li>
+        <p><strong class="strong">A JPEG file of the photograph</strong></p>
+        <p>This is a <em>digital asset</em> which <em>represents</em> the photograph.</p>
+      </li>
+
+      <li>
+        <p><strong class="strong">One or more documents which contain the data</strong></p>
+        <p>
+          These are RDF <em>documents</em> which <em>describe</em> the helmet, the photograph, and the JPEG file. They also describe themselves: e.g. their licence, author, modification date. The museum has decided to publish its documents under an <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government licence</a>, which is acceptable to RES. See the full list in <a href="#licensing">the section about licensing</a>.
+        </p>
+      </li>
+    </ol>
+
+    <p>
+      Having decided which resources to model, the next step is to choose URIs for each of them, covered in the next section.
+    </p>
+
+  </section>
+
+</section>
+  <section id="names-for-things" class="section"><h1>Choosing URIs for things</h1>
+
+  
+
+  <p>
+    In Linked Data, <a href="https://www.w3.org/TR/ld-bp/#HTTP-URIS">HTTP URIs are used as the names for things</a>. This can seem counter-intuitive at first: a string like <code class="literal">http://dbpedia.org/resource/Hothouse_(novel)</code> may immediately make you think "That's the address of a web page". Linked Data requires that you <a href="https://norman.walsh.name/2006/07/25/namesAndAddresses">instead consider URIs as <em>names for resources</em></a>, where a resource can be literally <em>any thing</em>. In the same way that <cite>Hothouse</cite> is the English name of this novel, <a href="http://dbpedia.org/resource/Hothouse_(novel)">http://dbpedia.org/resource/Hothouse_(novel)</a> is an identifier for the abstract creative work which is <em>the novel itself</em>. Any translations of this novel are translations of <code class="uri">http://dbpedia.org/resource/Hothouse_(novel)</code>; different editions of the novel are editions of <code class="uri">http://dbpedia.org/resource/Hothouse_(novel)</code>; and so on. This means that, any time this URI is used, it refers to <em>only this creative work</em>: not a version, translation, edition, format or other variation of it, or any other thing which shares the name "Hothouse".
+  </p>
+
+  <section id="naming-the-museum-things" class="section"><h1>URIs for the museum's things</h1>
+    
+
+    <p>
+      In the case of the museum example, each thing to be modelled needs a unique URI which can be hosted on the museum's web site. The museum staff decide to put their RDF resources on a <code class="literal">/data/</code> sub-path of the main site, at <code class="uri">http://castleofotranto.org.uk/data/</code>. They use a further URI path segment to divide the site by type of data: any physical items in the museum are under <code class="literal">/data/items/</code>. (If you have built <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful web services</a>, this strategy should be familiar.)
+    </p>
+
+    <p>
+      The next part of the URI is derived from the museum database's identifier for the helmet, <code class="literal">t0001</code>. If your dataset includes permanent, immutable identifiers (e.g. if you use a database to power your website), they make good candidates for unique keys within your URIs. If you don't have immutable identifiers already, create them if at all possible. Ideally, they shouldn't be based on  categories (as items may get re-categorised) or proper names (as languages, names, authorities etc. change over time, too).
+    </p>
+
+    <p>
+      Finally, because the resource they're creating stands in for an object in the real (rather than digital) world, they append <code class="literal">#id</code> onto the end of it. The final URI for the resource representing the helmet is:
+    </p>
+
+    <p>
+      <code class="literal">http://castleofotranto.org.uk/data/items/t0001#id</code>
+    </p>
+
+    <p>
+      Why <code class="literal">#id</code>? This is down to the types of resource that can be identified using URIs, and how those resources are accessed on the web. Recall that the museum is creating resources for things which exist outside the web (also known as <em>non-information resources</em>). The "essence" of these things can't be delivered over the web: if I put the URI <code class="literal">http://castleofotranto.org.uk/data/items/t0001#id</code> into my web browser, I wouldn't expect the <em>actual</em> helmet to be returned to me; at best, I would expect a representation of the helmet (e.g. some HTML or RDF). HTML, RDF and similar digital resources <em>can</em> be delivered over the web, making them <em>information resources</em>.
+    </p>
+
+    <p>
+      The <code class="literal">#id</code> is a way to deal with this: because the fragment part of a URI is ignored by the server, requesting the non-information resource <code class="uri">http://castleofotranto.org.uk/data/items/t0001#id</code> would actually return the information resource at <code class="uri">http://castleofotranto.org.uk/data/items/t0001</code> (no <code class="literal">#id</code>); in this case, this resolves to an RDF representation of the helmet.
+    </p>
+
+    <p>
+      This is a Linked Data convention: when the URI of a <em>non-information</em> resource is requested, a server should deliver the <em>information</em> resource which describes it. This is known as <em>dereferencing the URI</em> (see <cite><a href="https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14.html#sec-information-resources">Dereferencing HTTP URIs</a></cite> and <cite><a href="https://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</a></cite>).
+    </p>
+
+    <aside class="tip">
+      <p>
+        Information and non-information resources map to <a href="#what-res-wants">RES's four categories</a> as follows:
+      </p>
+
+      <ul>
+        <li><em>Real-world things</em> and <em>creative works</em> are non-information resources.</li>
+        <li><em>Documents</em> and <em>digital assets</em> are information resources.</li>
+      </ul>
+    </aside>
+
+    <p>
+      So far, the museum has decided on the URIs (names) for two of the things in its data:
+    </p>
+
+    <ol>
+      <li>
+          <code class="uri">http://castleofotranto.org.uk/data/items/t0001#id</code> - the physical helmet (a real-world thing).
+        </li>
+
+      <li>
+          <code class="uri">http://castleofotranto.org.uk/data/items/t0001</code> - the description of the helmet (a document).
+        </li>
+    </ol>
+
+    <p>
+      Following the principles above, and adding a further sub-path for <code class="literal">/photos/</code>, the museum decides on these URIs for its <a href="#web-page-extraction">other resources</a>:
+    </p>
+
+    <ol>
+      <li>
+          <code class="uri">http://castleofotranto.org.uk/data/photos/p0001#id</code> - the photograph of the helmet (a creative work).
+        </li>
+      <li>
+          <code class="uri">http://castleofotranto.org.uk/data/photos/p0001</code> - the description of the photograph of the helmet (a document).
+        </li>
+      <li>
+          <code class="uri">http://castleofotranto.org.uk/images/the-helmet-photo.jpg</code> - the digital file representing the photograph (a digital asset); note that the existing URI for the image embedded in the web page is used.
+        </li>
+
+    </ol>
+
+    <p>
+      Determining URIs for things you're publishing data about is an important step: by creating a URI for a thing, you have essentially turned it into a <em>resource</em> which can be published as Linked Open Data. These resources will be the subjects of RDF statements in your data, as shown in later sections.
+    </p>
+
+  </section>
+
+  <section id="using-existing-uris" class="section"><h1>Using existing URIs with content negotiation</h1>
+    
+
+    <p>
+      The museum's resource URIs are hosted on a sub-path of the website, <code class="literal">/data/</code>, rather than sharing the same URIs as the existing web pages. Readers familiar with Linked Data will doubtless be familiar with <a href="https://www.w3.org/TR/cooluris/#conneg">content negotiation</a>, where the same URI can return different representations, according to the preferences of the client. So why doesn't the museum reuse existing website URIs in tandem with content negotiation to serve HTML or RDF? In practice, this would work as follows:
+    </p>
+
+    <pre class="code"><code>client requests http://castleofotranto.org.uk/items/the-helmet and wants HTML
+  --&gt; respond with <strong class="strong">HTML</strong> about the helmet
+
+client requests http://castleofotranto.org.uk/items/the-helmet and wants RDF
+   --&gt; respond with <strong class="strong">RDF</strong> about the helmet
+</code></pre>
+
+    <aside class="info">
+      <p>
+        Details about how to implement this aren't covered here, but see <cite><a href="https://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</a></cite> for an overview.
+      </p>
+    </aside>
+
+    <p>
+      There are several reasons why an organisation (like the museum) might not deliver multiple representations from a single URI, such as:
+    </p>
+
+    <ol>
+      <li>
+          Their <strong class="strong">hosting infrastructure</strong> may make it difficult to deliver different resources from a single URI. This can sometimes be due to the website implementation, particularly if based on an old content management system with opaque URLs. In such cases, it may not be feasible to map from the URL of each web page to its corresponding RDF URI.
+        </li>
+
+      <li>
+          It's <strong class="strong">often simpler (and sometimes safer)</strong> to publish a data site in parallel with an existing website without touching existing infrastructure. Publishing on a sub-path (or even a separate sub-domain) can allow an organisation to safely experiment without risking existing assets. It may also allow a wider choice of implementation technology (e.g. using a cloud provider as opposed to working through an in-house web team).
+        </li>
+    </ol>
+
+    <p>
+      Where it is feasible to use the same URIs for HTML and RDF representations (maintaining the <a href="https://www.w3.org/2001/tag/doc/alternatives-discovery-20061101.html">One Web</a> principle), organisations should strive to do it. However, doing so can be very technical, involved, and even costly. Using a sub-path or sub-domain is a quick way to get started without having to deal with these issues immediately.
+    </p>
+
+    <aside class="info">
+      <p>
+        Even in cases where an organisation has a separate URI space for its data, HTML and RDF can still be associated using <a href="http://patterns.dataincubator.org/book/autodiscovery.html"><code class="literal">&lt;link&gt;</code> elements in the HTML</a>. This enables a client accessing web pages to find equivalent/related RDF resources if desired.
+      </p>
+    </aside>
+  </section>
+
+</section>
+  <section id="res-modelling-overview" class="part"><h1>RDF modelling for RES</h1>
+
+  
+
+  <p>
+    This section covers how to create RDF resources for RES by following these guidelines:
+  </p>
+
+  <ul>
+    <li><a href="#notable-types">Use notable types</a></li>
+    <li><a href="#labels-etc">Add basic descriptive data</a></li>
+    <li><a href="#link-describe-assets">Link and describe digital assets</a></li>
+    <li><a href="#link-documents-formats">Link documents to their formats</a></li>
+    <li><a href="#reconciliation">Link resources to other datasets</a></li>
+    <li><a href="#licensing">Add licensing statements</a></li>
+  </ul>
+
+  <section id="notable-types" class="part"><h1>Use notable types</h1>
+
+  
+
+  <p>
+    RES takes <code class="literal">rdf:type</code> statements about resources and maps them to one of a small number of generic classes. These classes are used to group similar resources together in <em>partitions</em> to assist discovery. The full list of partitions can be browsed at <a href="http://acropolis.org.uk/">http://acropolis.org.uk/</a>.
+  </p>
+
+  <p id="res-partitions">
+    Inclusion of a resource in a RES partition depends on it having a specific type, or a type which can be mapped to that specific type. The list below shows each partition and the type(s) a resource should have to be put into it:
+  </p>
+
+  <div class="table"><table><thead><tr><th scope="col">Partition</th><th scope="col">RDF types</th></tr></thead><tbody><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/agents">Agents</a></strong> (non-person entities with agency)
+      </td><td>
+        <code class="uri"><a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/audiences">Audiences</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://www.w3.org/ns/odrl/2/Group">odrl:Group</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/collections">Collections</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://purl.org/dc/dcmitype/Collection">dcmitype:Collection</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/concepts">Concepts</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/works">Creative works</a></strong> (e.g. novels, plays, articles, paintings, photographs)
+      </td><td>
+        <code class="uri"><a href="http://purl.org/vocab/frbr/core#Work">frbr:Work</a></code> (generally), <code class="uri"><a href="http://schema.org/Photograph">schema:Photograph</a></code> for photographs, <code class="uri"><a href="http://schema.org/AudioObject">schema:AudioObject</a></code> for sounds
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/assets">Digital assets</a></strong> (including documents)
+      </td><td>
+        <code class="uri"><a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a></code> for documents, <a href="#dcmitypes">DCMI Types</a> for other types of asset
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/events">Events</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://purl.org/NET/c4dm/event.owl#Event">event:Event</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/groups">Groups</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://xmlns.com/foaf/0.1/Group">foaf:Group</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/people">People</a></strong> (i.e. real people who are living or dead, and fictional characters)
+      </td><td>
+        <code class="uri"><a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></code>
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/things">Physical things</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</a></code> (generally), <code class="uri"><a href="http://www.cidoc-crm.org/cidoc-crm/E22_Man-Made_Object">crm:E22_Man-Made_Object</a></code> for human-made things
+      </td></tr><tr><td>
+        <strong class="strong"><a href="http://acropolis.org.uk/places">Places</a></strong>
+      </td><td>
+        <code class="uri"><a href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">geo:SpatialThing</a></code>
+      </td></tr></tbody></table></div>
+
+  <aside class="tip">
+    <p>
+      It's not essential for a resource to end up in a partition, but if it does, it will be more visible to a user browsing RES's index.
+    </p>
+  </aside>
+
+  <section id="modelling-the-helmet" class="section"><h1>Adding types to the museum's resources</h1>
+    
+
+    <p>
+      Returning to the example of items in the museum, the helmet is a <em>physical thing</em>. To be included in the physical things partition, a resource must either have the type <code class="literal">crm:E18_Physical_Thing</code> or a type which maps onto it. (RES's mappings between types are in <a href="https://github.com/bbcarchdev/spindle/blob/develop/twine/rulebase.ttl">Acropolis' rulebase configuration</a>.)
+    </p>
+
+    <p>
+      One type which is mapped to <code class="literal">crm:E18_Physical_Thing</code> is <code class="literal">crm:E22_Man-Made_Object</code>, so the museum applies that to the helmet resource. This is a term from the <a href="http://www.cidoc-crm.org/">CIDOC-CRM</a> vocabulary, which was designed for cultural heritage data, making it ideally suited to describing things in a museum.
+    </p>
+
+    <p>
+      The museum's other resources are assigned types to slot them into RES's partitions, yielding the following RDF:
+    </p>
+
+    <pre class="code"><code><em># the helmet - will go in "Physical things"</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  a crm:E22_Man-Made_Object .
+
+<em># the document about the helmet - will go in "Digital assets"</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  a foaf:Document .
+
+<em># the photograph - will go in "Creative works";
+# note that schema:Photograph is used as this maps to frbr:Work</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  a schema:Photograph .
+
+<em># the document about the photograph - will go in "Digital assets"</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  a foaf:Document .
+
+<em># the digital file representing the photograph - will go in "Digital assets";
+# see <a href="#dcmitypes">the section below</a> about RES's special treatment of DCMI Type resources</em>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  a dcmitype:StillImage .
+</code></pre>
+  </section>
+
+  <section id="dcmitypes" class="section"><h1>The importance of DCMI Type resources</h1>
+    
+
+    <p>
+      The museum's digital asset was assigned the type <code class="literal">dcmitype:StillImage</code> in the preceding RDF. The main purpose of this, rather than slotting the resource into one of RES's partitions, is to make it discoverable via a <a href="https://bbcarchdev.github.io/inside-acropolis/#search">related media search</a>. This type of search enables a user to find things which have related media files (a common use case for applications powered by RES). Only resources which have a type from the <a href="http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=dcmitype">DCMI Type vocabulary</a> will be returned for this type of search.
+    </p>
+
+    <p>
+      Here's an outline of the logic behind related media searches:
+    </p>
+
+    <pre class="code"><code>If resource A is associated with resource B (via any predicate)
+and resource B has the type dcmitype:T
+then a search for resources with related media of type dcmitype:T will return A
+</code></pre>
+
+    <p>
+      As a concrete example, consider this Acropolis API query with a <code class="literal">media</code> query string variable:
+    </p>
+
+    <p>
+      <a href="http://acropolis.org.uk/?q=dench&amp;media=http://purl.org/dc/dcmitype/StillImage">http://acropolis.org.uk/?q=dench&amp;<strong class="strong">media=http://purl.org/dc/dcmitype/StillImage</strong></a>
+    </p>
+
+    <p>
+      This returns all resources with a property value matching the string "Dench", where those resources are related to other resources which have the type <code class="literal">http://purl.org/dc/dcmitype/StillImage</code>.
+    </p>
+
+    <p>
+      When modelling your data, you should add DCMI Types to your digital assets to facilitate related media searches, using this table for guidance:
+    </p>
+
+    <div class="table"><table><thead><tr><th scope="col">Type of file</th><th scope="col">Example content type</th><th scope="col">DCMI Type to use</th></tr></thead><tbody><tr><td>Image</td><td>image/jpeg, image/gif, image/png</td><td><code class="uri"><a href="http://purl.org/dc/dcmitype/StillImage">dcmitype:StillImage</a></code></td></tr><tr><td>Video</td><td>video/mp4, video/ogg</td><td><code class="uri"><a href="http://purl.org/dc/dcmitype/MovingImage">dcmitype:MovingImage</a></code></td></tr><tr><td>Audio</td><td>audio/ogg, audio/x-wav, audio/mpeg</td><td><code class="uri"><a href="http://purl.org/dc/dcmitype/Sound">dcmitype:Sound</a></code></td></tr><tr><td>Text</td><td>text/plain, text/html, text/turtle, application/pdf</td><td><code class="uri"><a href="http://purl.org/dc/dcmitype/Text">dcmitype:Text</a></code></td></tr></tbody></table></div>
+
+  </section>
+</section>
+  <section id="labels-etc" class="part"><h1>Add basic descriptive data</h1>
+
+  
+
+  <p>
+    The next step is to add some basic descriptive data to your resources, such as labels and descriptions. Without these, your resources will still be in the index, but a search on the Acropolis API won't find them.
+  </p>
+
+  <p>
+    At this point, it's also useful to add any basic metadata you have to the RDF, such as the creator of a creative work, the date when something was created, any museum identifiers, ISBNs or similar etc.
+  </p>
+
+  <p>
+    To add these basic descriptive statements, use the <a href="https://www.w3.org/TR/rdf-schema/">RDFS (prefix: <code class="literal">rdfs</code>)</a>, <a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core (DC) Terms (prefix: <code class="literal">dcterms</code>)</a> and <a href="http://xmlns.com/foaf/spec/">FOAF (prefix: <code class="literal">foaf</code>)</a> vocabularies. The table below shows some of the ways you can convert existing data to RDF statements:
+  </p>
+
+  <div class="table"><table><thead><tr><th scope="col">Type of data</th><th scope="col">Example RDF statement</th></tr></thead><tbody><tr><td>
+        Resource R has a title (e.g. a proper name)
+      </td><td>
+        <code class="literal">R dcterms:title "Mr. Ghost Goes To Town"@en-gb</code>
+      </td></tr><tr><td>
+        Resource R doesn't have a proper name but has a label
+      </td><td>
+        <code class="literal">R rdfs:label "The desiccated hand of a thief"@en-gb</code>
+      </td></tr><tr><td>
+        Resource R has a long description
+      </td><td>
+        <p><code class="literal">R dcterms:description "A melting watch draped over a tree"@en-gb</code></p>
+        <p><code class="literal">R rdfs:comment "On loan from Babel"@en-gb</code></p>
+      </td></tr><tr><td>
+        Resource R has a summary/synopsis
+      </td><td>
+        <code class="literal">R dcterms:abstract "This documentary is about waiting"@en-gb</code>
+      </td></tr><tr><td>
+        Resource R has an identifier specific to its dataset (e.g. a unique catalogue number in a museum collection)
+      </td><td>
+        <code class="literal">R dcterms:identifier "x9838-aaaa"</code>
+      </td></tr><tr><td>
+        Resource R has a creator (e.g. author, artist, developer, designer) C (where C can be a literal string or another resource)
+      </td><td>
+        <code class="literal">R dcterms:creator C</code>
+      </td></tr><tr><td>
+        Resource R depicts or is about resource S
+      </td><td>
+        <code class="literal">R dcterms:subject S</code>
+      </td></tr><tr><td>
+        Resource R has a related web page W (e.g. a page about resource R, or about a topic closely-related to it)
+      </td><td>
+        <code class="literal">R foaf:page W</code>
+      </td></tr></tbody></table></div>
+
+  <p>
+    <code class="literal">rdfs:label</code>, <code class="literal">dcterms:title</code>, <code class="literal">rdfs:comment</code> and <code class="literal">dcterms:description</code> are particularly useful, as Acropolis uses these for its human-readable description of a resource, as well as for free-text searches. For example, <a href="http://acropolis.org.uk/a46461f707f24f3b9f73d42cdbea099b#id">this resource for Twelfth Night</a> gets its title "Twelfth Night" from <code class="literal">rdfs:label</code> and its longer description from <code class="literal">rdfs:comment</code>.
+  </p>
+
+  <p>
+    The DC Terms, RDFS and FOAF vocabularies are very general, widely-used, and well understood. If possible, terms from these vocabularies should be your first choice for specifying the basic properties of your resources. However, where there are no suitable terms in these vocabularies, terms from other vocabularies can be used instead. This is where data modelling becomes a craft rather than a science: choosing relevant vocabularies and applying them correctly is a skill in itself, and can be daunting.
+  </p>
+
+  <p>
+    One way to approach the task is to use a very generic but broad vocabulary, such as <a href="http://schema.org/">schema.org</a>. This provides a wide range of different terms for describing common types of resource, and covers a considerable range of modelling tasks.
+  </p>
+
+  <p>
+    However, schema.org can be too generic for more specialised modelling. If you find that you need a more expressive vocabulary, <a href="https://bbcarchdev.github.io/inside-acropolis/#vocab-index">this list of commonly-used vocabularies</a> provides some alternatives.
+  </p>
+
+  <p>
+    One final option is to create your own vocabulary, building on top of existing ones. This option is too complex to cover in this book, but the <a href="mailto:RESFeedback@bbc.co.uk">the RES team</a> are happy to help if you want to go down this route.
+  </p>
+
+  <section id="museum-basic-descriptive" class="section"><h1>Adding basic descriptive data to the museum's resources</h1>
+    
+
+    <p>
+      Considering the museum's resources again, the following RDF can be extracted from the text on the web page:
+    </p>
+
+    <pre class="code"><code><em># the helmet; note the foaf:page link to the
+# original web page which was the foundation for the RDF</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  dcterms:identifier "t0001" ;
+  dcterms:title "The Golden Helmet"@en-gb ;
+  dcterms:description "Large gold helmet. The helmet spontaneously fell from
+    its mount on a wall in the main hall in 1529; Conrad, son of Lord Manfred
+    Otranto, was due to wed Isabella that day, but was instead crushed to death
+    by the falling helmet. The helmet was then lost for many years, until,
+    in 1749, it was rediscovered by archaeologist Fuchsia Otranto in the ruins
+    of the old chapel."@en-gb ;
+  foaf:page &lt;http://castleofotranto.org.uk/items/the-helmet&gt; .
+
+<em># the document about the helmet; note that dcterms:subject is
+# used to associate the document with the helmet</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  rdfs:label "Data about The Golden Helmet"@en-gb ;
+  dcterms:subject &lt;http://castleofotranto.org.uk/data/items/t0001#id&gt; .
+
+<em># the photograph; dcterms:subject associates the photograph with the helmet</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  rdfs:label "Photograph of The Golden Helmet"@en-gb ;
+  dcterms:subject &lt;http://castleofotranto.org.uk/data/items/t0001#id&gt; ;
+  dcterms:creator "Vlad Dracula" .
+
+<em># the document about the photograph</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  rdfs:label "Data about Photograph of The Golden Helmet"@en-gb .
+
+<em># digital file representing the photograph</em>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  rdfs:label "Photograph of The Golden Helmet in JPEG format"@en-gb .
+</code></pre>
+
+  </section>
+
+</section>
+  <section id="link-describe-assets" class="part"><h1>Link and describe digital assets</h1>
+
+  
+
+  <p>
+    We've already seen how creative works are modelled using resources which stand in for the <em>abstract</em> creative work in the real world. This resource is distinct from any realisations of the work in physical or electronic versions. For example, the abstract novel <em><a href="http://dbpedia.org/page/Hothouse_(novel)">Hothouse</a></em> is a different thing from a printed copy of that novel, which is different again from an ebook copy of it.
+  </p>
+
+  <p>
+    In the context of publishing RDF, electronic files representing a creative work are information resources which can be requested over the web. These files are especially important to RES, as applications powered by RES often expose openly-licensed media to users in education. Consequently, the RES index has special mechanisms for detecting electronic media files and indexing them; these in turn rely on <a href="#link-works-to-assets">specific links between creative works and digital assets</a>.
+  </p>
+
+  <p>
+    In addition, <a href="#describe-assets">extra statements about the characteristics of the digital asset</a>, such as its size and format, can help those wanting to use it.
+  </p>
+
+  <section id="link-works-to-assets" class="section"><h1>Link creative works to digital assets</h1>
+    
+
+    <p>
+      RES looks for three broad classes of electronic media, finding them via particular RDF predicates in the data:
+    </p>
+
+    <div class="table"><table><thead><tr><th scope="col">Type of media</th><th scope="col">Description</th><th scope="col">RDF predicate</th><th scope="col">Example</th></tr></thead><tbody><tr><td>
+          <strong class="strong">Direct content</strong>
+        </td><td>
+          Files which can be embedded directly in applications, e.g. with a <code class="literal">&lt;video&gt;</code>, <code class="literal">&lt;object&gt;</code> or <code class="literal">&lt;img&gt;</code> element in a web app. Files may be JPEG images, WAV audio, MP4 videos etc. Direct content should require no authentication.
+        </td><td>
+          <code class="uri"><a href="http://www.rssboard.org/media-rss#media-content">mrss:content</a></code>
+        </td><td>
+          <a href="http://remarc-assets.pilots.bbcconnectedstudio.co.uk/images/1980_TV&amp;Radio_CrackerjackA.jpg">Crackerjack image</a>
+        </td></tr><tr><td>
+          <strong class="strong">Embeddable player</strong>
+        </td><td>
+          An HTML page (typically) which embeds some media, and which may provide controls for playing it and/or some metadata about it. This page can be embedded in other applications (e.g. using an <code class="literal">&lt;iframe&gt;</code> in a web app). An embeddable player may prompt for authentication.
+        </td><td>
+          <code class="uri"><a href="http://www.rssboard.org/media-rss#media-player">mrss:player</a></code>
+        </td><td>
+          <a href="http://bbcimages.acropolis.org.uk/5459714/player">Shakespeare's Globe</a>
+        </td></tr><tr><td>
+          <strong class="strong">Standalone player</strong>
+        </td><td>
+          Similar to an embeddable player (displays media plus controls and metadata). Unlike an embeddable player, a standalone player should not be embedded directly into other applications. Instead, a user accessing the standalone player should see the player page open in their browser (outside the app). A standalone player may prompt for authentication.
+        </td><td>
+          <code class="uri"><a href="http://xmlns.com/foaf/spec/#term_page">foaf:page</a></code>
+        </td><td>
+          <a href="http://www.bbc.co.uk/iplayer/episode/p03064m1/the-computer-programme-1-its-happening-now">iPlayer page</a>
+        </td></tr></tbody></table></div>
+
+    <aside class="tip">
+      <p>
+        The term <em>player</em> applies to static media (like images) as well as dynamic media (audio and video), beyond its usual connotations.
+      </p>
+    </aside>
+
+    <p>
+      Note that Acropolis doesn't require any authentication and relies on the server hosting the media to enforce this. However, even in cases where media require no authentication, their copyright must be respected. Again, it is up to the data publisher to assign copyright to their media to allow reuse (see <a href="#licensing">the section on licensing</a>).
+    </p>
+  </section>
+
+  <section id="describe-assets" class="section"><h1>Describe digital assets</h1>
+    
+
+    <p>
+      If a developer wants to incorporate a digital asset into an application, knowing its content type and dimensions can help them decide how best to incorporate it. For example:
+    </p>
+
+    <ul>
+      <li>
+          A document viewer is about to load an ebook. The RDF states that there are two versions available, a MOBI file and an EPUB file. As the viewer can only load EPUB files, it chooses this one.
+        </li>
+
+      <li>
+          An Android app is about to load an image file. The layout has a maximum width of 800px for images, and the RDF states that there are two versions of the image, one 800px wide and the other 3200px wide. The app saves some bandwidth by downloading the smaller image.
+        </li>
+    </ul>
+
+    <aside class="tip">
+      <p>
+        Note that format and size data is especially useful where there are multiple files relating to a creative work: it helps an application decide which file best suits its needs. See <a href="#multiple-files">the section about creative works with multiple versions</a> for more details.
+      </p>
+    </aside>
+
+    <p>
+      As a minimum, it's recommended that the RDF for a digital asset describes its size (file size, image dimensions) and format. The following vocabularies can be used to do this:
+    </p>
+
+    <ul>
+      <li>
+          <a href="https://www.w3.org/2003/12/exif/">The EXIF vocabulary</a> can be used for image or video dimensions.
+        </li>
+      <li>
+          <a href="http://purl.org/dc/terms/">DC Terms</a> can be used to specify an asset's format.
+        </li>
+      <li>
+          <a href="https://www.w3.org/TR/mediaont-10/">The Ontology for Media Resources</a> can be used for video and audio file duration. (It also has a range of other useful terms for more detailed media file modelling.) Alternatively, <a href="http://schema.org">schema.org</a> has several terms for describing media objects.
+        </li>
+    </ul>
+
+    <p>
+       The table below shows some examples of predicates you can use:
+    </p>
+
+    <div class="table"><table><thead><tr><th scope="col">Property</th><th scope="col">Predicate to use</th><th scope="col">Example</th></tr></thead><tbody><tr><td>
+          <strong class="strong">Date created</strong> (in <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO 8601 combined date and time format</a>)
+        </td><td>
+          <code class="uri"><a href="http://schema.org/dateCreated">schema:dateCreated</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; schema:dateCreated "2007-04-05T14:30+01:00"</code>
+        </td></tr><tr><td>
+          <strong class="strong">Date modified</strong> (in <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO 8601 combined date and time format</a>)
+        </td><td>
+          <code class="uri"><a href="http://schema.org/dateModified">schema:dateModified</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; schema:dateModified "2017-05-09T15:20+01:00"</code>
+        </td></tr><tr><td>
+          <strong class="strong">Dimensions - height</strong> (in pixels)
+        </td><td>
+          <code class="uri"><a href="http://www.w3.org/2003/12/exif/ns#height">exif:height</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; exif:height 800</code>
+        </td></tr><tr><td>
+          <strong class="strong">Dimensions - width</strong> (in pixels)
+        </td><td>
+          <code class="uri"><a href="http://www.w3.org/2003/12/exif/ns#width">exif:width</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; exif:width 600</code>
+        </td></tr><tr><td>
+          <strong class="strong">Duration</strong> (in seconds)
+        </td><td>
+          <code class="uri"><a href="http://www.w3.org/ns/ma-ont#duration">ma:duration</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; ma:duration 3600.0</code>
+        </td></tr><tr><td>
+          <strong class="strong">Duration</strong> (in <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 duration format</a>)
+        </td><td>
+          <code class="uri"><a href="http://schema.org/duration">schema:duration</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; schema:duration "PT0M29S"</code>
+        </td></tr><tr><td>
+          <strong class="strong">Format</strong>; see (1) below
+        </td><td>
+          <code class="uri"><a href="http://purl.org/dc/terms/format">dcterms:format</a></code>
+        </td><td>
+          <code class="literal">&lt;resource&gt; dcterms:format &lt;http://purl.org/NET/mediatypes/audio/wav&gt;</code>
+        </td></tr></tbody></table></div>
+
+    <p>
+      (1) The <code class="literal">dcterms:format</code> statement uses a value from the media types vocabulary. To determine this value, append the <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">content type</a> of the digital asset to <code class="uri">http://purl.org/NET/mediatypes/</code> and use that as the object in the statement. Some examples:
+    </p>
+
+    <ul>
+      <li>
+          AVI: <code class="uri">http://purl.org/NET/mediatypes/video/avi</code>
+        </li>
+      <li>
+        <p>
+          HTML: <code class="uri">http://purl.org/NET/mediatypes/text/html</code>
+        </p>
+        <p>
+          Note that the content type for a web player will typically be set to this, rather than to the content type of the media in the player.
+        </p>
+      </li>
+      <li>
+          JPEG: <code class="uri">http://purl.org/NET/mediatypes/image/jpeg</code>
+        </li>
+      <li>
+          WAV: <code class="uri">http://purl.org/NET/mediatypes/audio/wav</code>
+        </li>
+    </ul>
+
+  </section>
+
+  <section id="linking-and-describing-museum-media" class="section"><h1>Linking and describing the museum's media</h1>
+    
+
+    <p>
+      The museum web page has spawned a single creative work, the photograph of the helmet, with a single image file that represents it, <code class="literal">http://castleofotranto.org.uk/images/the-helmet-photo.jpg</code>. As this is a JPEG file which can be directly embedded in an application, the appropriate predicate to link them is <code class="literal">mrss:content</code>. The museum also includes some metadata about the dimensions and format of the image file, derived via a script which reads them from the file.
+    </p>
+
+    <p>
+      The resulting RDF is:
+    </p>
+
+    <pre class="code"><code><em># the photograph (creative work)</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  mrss:content &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt; .
+
+<em># the file representing the photograph (digital asset)</em>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  exif:height 979 ;
+  exif:width 1024 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/jpeg&gt; .
+</code></pre>
+
+  </section>
+
+  <section id="multiple-files" class="section"><h1>A note on multiple files</h1>
+    
+
+    <p>
+      In cases where a publisher has multiple files representing a creative work, it's simple to include additional resources for them. For example, if the museum published a quarter-size digital image of the helmet photograph, it could add a resource like this:
+    </p>
+
+  <pre class="code"><code><em># the photograph; note the additional mrss:content</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  mrss:content <strong class="strong">&lt;http://castleofotranto.org.uk/images/the-helmet-photo-quarter.jpg&gt;</strong>,
+    &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt; .
+
+<em># the smaller file</em>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo-quarter.jpg&gt;
+  exif:height 245 ;
+  exif:width 256 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/jpeg&gt; .
+</code></pre>
+
+    <p>
+      The same approach could be used to add resources for digital assets in different formats, e.g. for a PNG version:
+    </p>
+
+  <pre class="code"><code><em># the photograph; note the additional mrss:content</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  mrss:content &lt;http://castleofotranto.org.uk/images/the-helmet-photo-quarter.jpg&gt;,
+    &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;,
+    <strong class="strong">&lt;http://castleofotranto.org.uk/images/the-helmet-photo.png&gt;</strong> .
+
+<em># digital file in PNG format</em>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.png&gt;
+  exif:height 1024 ;
+  exif:width 979 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/png&gt; .
+</code></pre>
+
+    <aside class="tip">
+      <p>
+        This demonstrates the benefit of adding a separate <code class="literal">schema:Photograph</code> resource: it can hold all of the statements which apply to all of the formats and sizes (e.g. the photographer, the date of the photograph, its location, its title), so that they don't have to be duplicated on the digital asset resources.
+      </p>
+    </aside>
+  </section>
+
+</section>
+  <section id="link-documents-formats" class="part"><h1>Link documents to their formats</h1>
+
+  
+
+  <p>
+    The descriptions of the things in a publisher's domain are generically called <em>documents</em> (see <cite><a href="#what-res-wants">What does RES want?</a></cite>). Like photographs, novels, songs and other creative works, a document may be available in multiple formats. For example, a description of an item may be available as a web page, a printed leaflet, or an RDF file. In all three cases, providing the data is broadly similar, these representations with different content types are treated as <a href="https://www.w3.org/DesignIssues/Generic.html"><em>formats</em> of the document</a>.
+  </p>
+
+  <p>
+    Each format for a document should be assigned its own resource (with its own URI); the resource should have a type of <code class="literal">dcmitype:Text</code> and a <code class="literal">dcterms:format</code> value, set as for any other <a href="#dcmitypes">digital asset</a>. Format resources are then linked to the document via the predicate <code class="literal">dcterms:hasFormat</code>.
+  </p>
+
+  <p>
+    In addition, if a resource is an RDF format of a document, it should be assigned a type whose value is a URI from the <a href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</a> vocabulary. Some examples for common formats:
+  </p>
+
+  <div class="table"><table><thead><tr><th scope="col">RDF format</th><th scope="col">URI</th></tr></thead><tbody><tr><td>Turtle</td><td><code class="uri"><a href="http://www.w3.org/ns/formats/Turtle">formats:Turtle</a></code></td></tr><tr><td>RDF/XML</td><td><code class="uri"><a href="http://www.w3.org/ns/formats/RDF_XML">formats:RDF_XML</a></code></td></tr><tr><td>N3</td><td><code class="uri"><a href="http://www.w3.org/ns/formats/N3">formats:N3</a></code></td></tr><tr><td>N-Triples</td><td><code class="uri"><a href="http://www.w3.org/ns/formats/N-Triples">formats:N-Triples</a></code></td></tr></tbody></table></div>
+
+  <aside class="info">
+    <p>
+      Documents about the primary entities in a domain are themselves creative works. However, a document is mostly just a means for a user to navigate to the primary entities. This makes it counter-intuitive to treat documents (which roughly correspond to catalogue entries or similar metadata) the same way as primary entities (like the items in a museum, paintings in a gallery, or novels in a library). For this reason, a publisher <em>shouldn't</em> <a href="#link-works-to-assets">use media links</a> (<code class="literal">mrss:content</code>, <code class="literal">mrss:player</code>) to link documents to their digital formats and should instead use <code class="literal">dcterms:hasFormat</code>.
+    </p>
+  </aside>
+
+  <section id="linking-museum-formats" class="section"><h1>Linking formats to the museum's documents</h1>
+    
+
+    <p>
+      Recall that the museum has two documents relating to the web page it's converting: the document about the photograph, and the document about the helmet. As the museum intends to publish both RDF/XML and Turtle versions of the data, each of these documents has two formats. The museum therefore adds four resources, two for each document, to represent their formats, and links them to the documents:
+    </p>
+
+    <pre class="code"><code><em># document about the helmet</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  dcterms:hasFormat &lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;,
+    &lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt; .
+
+<em># format for the document about the helmet - Turtle</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; .
+
+<em># format for the document about the helmet - RDF/XML</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt;
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/application/rdf+xml&gt; .
+
+<em># document about the photograph</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  dcterms:hasFormat &lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;,
+    &lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt; .
+
+<em># format for the document about the photograph - Turtle</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; .
+
+<em># format for the document about the photograph - RDF/XML</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt;
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/application/rdf+xml&gt; .
+</code></pre>
+
+    <p>
+      The URI for the format of a document is the document's URI plus a suffix: <code class="literal">.ttl</code> for Turtle, <code class="literal">.rdf</code> for RDF/XML, <code class="literal">.n3</code> for N3, <code class="literal">.nt</code> for N-Triples etc.
+    </p>
+  </section>
+
+</section>
+  <section id="reconciliation" class="part"><h1>Link resources to other datasets</h1>
+
+  
+
+  <p id="reconciliation-aggregation">
+    The RES index combines resources from different datasets into <em>proxy</em> resources, so that users can access all of the data relating to a topic from one place. For example, a proxy about Shakespeare's <cite>Twelfth Night</cite> may contain data aggregated from <a href="http://dbpedia.org">DBPedia</a>, the <a href="http://genome.ch.bbc.co.uk/">BBC Genome pages</a>, and <a href="http://shakespeare.ch.bbc.co.uk/">the BBC Shakespeare archive</a>. (For more details about how proxies are constructed, see <a href="http://res-project.tumblr.com/post/154464075083/what-does-res-do-with-your-data">this blog post</a>.)
+  </p>
+
+  <p id="ease-of-linking">
+    To help aggregate <em>your</em> data with existing proxies, link your resources to other well-known datasets where possible. This may be more or less difficult, depending on the type of data you're publishing:
+  </p>
+
+  <ul>
+    <li>
+        If your data is about things which are <strong class="strong">globally recognisable or culturally significant</strong>, like ancient civilisations or popular Victorian authors, it's simple enough to find well-known datasets to link them to. Well-known datasets like <a href="http://dbpedia.org/">DBPedia</a> and <a href="https://www.wikidata.org/">Wikidata</a> contain useful resources you can link to in this case.
+      </li>
+
+    <li>
+      <p>
+        If your data is <strong class="strong">highly specialised or very specific to your organisation</strong>, it may be harder to find datasets with comparable data. Extreme examples might be data about obscure topics, like UK science fiction wargaming fanzines published in the 1980s; or data about niche products, like furniture for veterinary practices. Even in these cases, you should still be able to link (albeit in a vague way) to topics from well-known datasets (e.g. <a href="http://dbpedia.org/resource/Wargaming">wargaming</a>, <a href="http://dbpedia.org/resource/Furniture">furniture</a>); or be able to link to specialised datasets you are aware of.
+      </p>
+
+      <p>
+        It may even be that your organisation is the authority on a particular area of knowledge. In this case, <em>your</em> dataset may be the authoritative one in this field: other people may need to link to you, rather than you linking to them.
+      </p>
+    </li>
+  </ul>
+
+  <section id="how-to-link-to-other-datasets" class="section"><h1>How to link to other datasets</h1>
+    
+
+    <p>
+      Creating a link between your resources and resources in other datasets involves publishing statements of the form:
+    </p>
+
+    <pre class="code"><code>&lt;your resource URI&gt; &lt;links to&gt; &lt;other resource URI&gt;</code></pre>
+
+    <p>
+      Deciding how to populate this statement can be determined as follows:
+    </p>
+
+    <ol>
+      <li>
+          <code class="literal">&lt;your resource URI&gt;</code>: This is a source resource in your dataset which could relate to a target resource in another dataset. Good candidates are resources which belong to one or more of the <a href="#res-partitions">partitions RES uses</a> (places, people, events, physical things, creative works etc.).
+        </li>
+
+      <li>
+          <code class="literal">&lt;other resource URI&gt;</code>: This is the target resource you are linking to. See <a href="#ease-of-linking">the notes above</a> for help with finding resources to link to.
+        </li>
+
+      <li>
+
+        <p>
+          <code class="literal">&lt;links to&gt;</code>: This specifies a link between the source and the target, which falls into one of these broad groups:
+        </p>
+
+        <ol>
+          <li>
+              <strong class="strong">Similarity</strong>: Predicates such as <code class="literal">owl:sameAs</code> and <code class="literal">skos:exactMatch</code> make statements about the identity of resources: whether they are the same, nearly the same, distinct from each other etc. Statements of similarity are particularly useful for aggregating resources.
+            </li>
+
+          <li>
+              <strong class="strong">Aboutness</strong>: Predicates such as <code class="literal">dcterms:subject</code> and <code class="literal">foaf:topic</code> specify that one resource is <em>about</em> the other in some way.
+            </li>
+
+          <li>
+            <strong class="strong">Relatedness</strong>: Many predicates can be used to capture relationships which aren't to do with similarity or aboutness. These vary in vagueness from the fairly definite <code class="literal">dcterms:creator</code> to the more vague <code class="literal">dcterms:isPartOf</code> to the pretty vague <code class="literal">rdfs:seeAlso</code>.
+          </li>
+        </ol>
+
+      </li>
+
+    </ol>
+
+    <aside class="tip">
+      <p>
+        The BBC is trialling a new application, Mango, which automatically creates links between chunks of text and resources in well-known datasets like DBPedia. This may help you create the types of link outlined above, enriching your data by integrating it with the wider world of Linked Data. Depending on demand, it may be free to use for organisations working with RES. Email <a href="mailto:RESFeedback@bbc.co.uk">the RES team</a> if you are interested in finding out more.
+      </p>
+    </aside>
+
+    <p>
+      These groups of relationship are described in more detail in the following sections.
+    </p>
+
+    <section id="similarity" class="section"><h1>Similarity</h1>
+      
+
+      <p>
+        Various predicates can be used to express similarity between resources, but the following are by far the most commonly-used:
+      </p>
+
+      <ul>
+        <li>
+            <code class="literal"><a href="https://www.w3.org/TR/owl-ref/#sameAs-def">owl:sameAs</a></code>: This term expresses a strong relationship between two resources. If <code class="literal">A owl:sameAs B</code>, <code class="literal">A</code> and <code class="literal">B</code> are identical to each other: both resources <em>are</em> the same entity. This is very useful and generic, but should be used carefully: the types of the two resources should be similar, at least to the extent that they are not logically inconsistent. For example, if resource <code class="literal">A</code> is a <code class="literal">frbr:Work</code> it probably cannot be <code class="literal">owl:sameAs</code> resource <code class="literal">B</code> which is a <code class="literal">foaf:Person</code>.
+          </li>
+
+        <li>
+            <code class="literal"><a href="https://www.w3.org/TR/skos-reference/#exactMatch">skos:exactMatch</a></code> (source and target are the same), <code class="literal"><a href="https://www.w3.org/TR/skos-reference/#exactMatch">skos:closeMatch</a></code> (source and target are nearly the same): These terms link two <a href="https://www.w3.org/TR/skos-reference/">Simple Knowledge Organisation System</a> (SKOS) concepts (i.e. resources with the type <code class="literal"><a href="https://www.w3.org/TR/skos-reference/#Concept">skos:Concept</a></code>). This makes the terms less generic, but is especially useful when working with datasets based on SKOS.
+          </li>
+      </ul>
+
+    </section>
+
+    <section id="aboutness" class="section"><h1>Aboutness</h1>
+      
+
+      <p>
+        A variety of predicates can be used to express an <em>about</em> relationship between resources, but the following are commonly used:
+      </p>
+
+      <ul>
+        <li>
+            <code class="literal"><a href="http://purl.org/dc/terms/subject">dcterms:subject</a></code>; see <a href="#labels-etc">these examples</a>.
+          </li>
+
+        <li>
+            <code class="literal"><a href="http://xmlns.com/foaf/0.1/topic">foaf:topic</a></code> (or its inverse, <code class="literal">foaf:page</code>); note that FOAF predicates are defined as relating documents to things they are about, so <code class="literal">dcterms:subject</code> is preferable in most contexts.
+          </li>
+
+        <li>
+            <code class="literal"><a href="http://xmlns.com/foaf/0.1/primaryTopic">foaf:primaryTopic</a></code> for the main topic of a resource (c.f. <code class="literal">foaf:topic</code>).
+          </li>
+      </ul>
+    </section>
+
+    <section id="relatedness" class="section"><h1>Relatedness</h1>
+      
+
+      <p>
+        Numerous other predicates can be used to express relationships between resources in your dataset and others, including the predicates we've seen earlier in this book (e.g. <code class="literal"><a href="http://purl.org/dc/terms/creator">dcterms:creator</a></code>).
+      </p>
+
+      <p>
+        <code class="literal"><a href="https://www.w3.org/TR/rdf-schema/#ch_seealso">rdfs:seeAlso</a></code> is a particularly useful (though slightly indiscriminate) term in this context. It expresses a general "you might also be interested in" relationship between two resources. It makes no statement about whether two resources are equivalent or whether one is directly about the other. However, if resources <code class="literal">A</code> and <code class="literal">B</code> are both related by <code class="literal">rdfs:seeAlso</code> to resource <code class="literal">C</code>, it's likely that <code class="literal">A</code> and <code class="literal">B</code> are also relevant to each other in some way.
+      </p>
+    </section>
+  </section>
+
+  <section id="reconciliation-museum" class="section"><h1>Linking the museum's resources to other datasets</h1>
+    
+
+    <p>
+      Looking at their resources, the museum identifies a couple of opportunities for linking:
+    </p>
+
+    <ul>
+
+      <li>
+          The helmet appears in the novel <cite>The Castle of Otranto</cite>, which has a DBPedia resource at <code class="uri"><a href="http://dbpedia.org/resource/The_Castle_of_Otranto">http://dbpedia.org/resource/The_Castle_of_Otranto</a></code>. The appropriate relationship is <code class="literal">rdfs:seeAlso</code>, as the DBPedia resource is pertinent to the helmet but isn't the same thing as the helmet.
+        </li>
+
+      <li>
+          The person who took the photograph, <em>Vlad Dracula</em>, is the same person as <code class="uri"><a href="http://dbpedia.org/resource/Vlad_Dracula">http://dbpedia.org/resource/Vlad_Dracula</a></code> (the photograph was literally taken by Dracula). In this case, the museum can link directly to the DBPedia resource, replacing the previous <code class="literal">"Vlad Dracula"</code> value.
+        </li>
+    </ul>
+
+    <p>
+      The museum adds these statements to their RDF:
+    </p>
+
+        <pre class="code"><code>&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  rdfs:seeAlso &lt;http://dbpedia.org/resource/The_Castle_of_Otranto&gt; .
+
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  dcterms:creator &lt;http://dbpedia.org/resource/Vlad_Dracula&gt; .
+</code></pre>
+
+    <p>
+      These additions make the museum's data more discoverable, as they link it to resources in well-known datasets. For example, once these statements are indexed by RES, anyone searching for <code class="uri">http://dbpedia.org/resource/Vlad_Dracula</code> will be able to follow links from that URI to the museum's photograph of the helmet.
+    </p>
+
+    <section id="reconciliation-reuse-existing-resources" class="section"><h1>Re-using existing resources</h1>
+      
+
+      <p>
+        What if the helmet already had a DBPedia resource, e.g. <code class="uri">http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto</code>? (It doesn't, but it could.) Why does the museum need to publish any data at all about the helmet? Couldn't it just replace all the references in its RDF to <code class="uri">http://castleofotranto.org.uk/data/items/t0001#id</code> with references to the DBPedia URI instead? i.e.
+      </p>
+
+      <pre class="code"><code>&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  a schema:Photograph ;
+  dcterms:subject &lt;http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto&gt; .
+</code></pre>
+
+      <p>
+        There is nothing to stop the museum doing this: <a href="https://www.w3.org/TR/2002/WD-rdf-concepts-20020829/#xtocid48014">anyone can say anything about anything</a> in Linked Data. Reusing this resource would also reduce the amount of data the museum has to publish: the golden helmet resource, <code class="uri">http://castleofotranto.org.uk/data/items/t0001#id</code>, could disappear from the museum's dataset.
+      </p>
+
+      <p>
+        What would be lost by doing this, though? Imagine the museum has some additional data about the helmet which isn't published anywhere else: perhaps ownership data, e.g. "Was once owned by Victor Frankenstein". This is valuable, and the museum should publish it. So where should the museum make this statement? It has several choices:
+      </p>
+
+      <ol>
+        <li>
+          <p>
+            Publish its own resource for the helmet (with the ownership data) and link it to the DBPedia resource:
+          </p>
+
+          <pre class="code"><code>&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  crm:P51_has_former_or_current_owner &lt;http://dbpedia.org/resource/Victor_Frankenstein&gt; ;
+  owl:sameAs &lt;http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto&gt; .
+</code></pre>
+
+          <p>
+            (Note the use of another <a href="http://www.cidoc-crm.org/">CIDOC-CRM</a> predicate, <code class="literal">crm:P51_has_former_or_current_owner</code>, to specify ownership of the helmet.)
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Publish the ownership data in the form of additional statements about the DBPedia resource:
+          </p>
+
+          <pre class="code"><code>&lt;http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto&gt;
+  crm:P51_has_former_or_current_owner &lt;http://dbpedia.org/resource/Victor_Frankenstein&gt; .
+</code></pre>
+
+          <p>
+            The disadvantage of this approach is that someone accessing the DBPedia resource won't get the ownership statements added by the museum. This is because those statements won't be part of the RDF document returned by <code class="uri">http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto</code>, as they will be published on the museum's site and not by DBPedia. The museum will also have to decide where to publish these statements; for example, it could include them with the RDF about the photograph of the golden helmet.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Add the ownership data to DBPedia and don't publish any statements about the helmet at all. Because DBPedia is extracted from Wikipedia, the museum could modify Wikipedia's entry for <em>The Golden Helmet of Otranto</em> to (eventually) change the data in DBPedia. The drawback to this approach is that DBPedia may ignore the new ownership data or treat it incorrectly, which may mean that the data doesn't make appear correctly in DBPedia.
+          </p>
+
+          <aside class="tip">
+            <p>
+              Where your additional data fits snugly into <a href="https://en.wikipedia.org/wiki/Help:Infobox">Wikipedia's infobox format</a> (which DBPedia uses for RDF extraction), it is definitely worth considering adding data directly to Wikipedia, rather than publishing it yourself. DBPedia has rigorous processes for extracting data from infoboxes in particular, and should do a decent job of creating useful RDF from any data you add there.
+            </p>
+          </aside>
+        </li>
+      </ol>
+
+      <p>
+        In summary, even if your resources exist in other datasets, you may have additional data which isn't published anywhere else. In this case, it makes sense to create your own resources (with their own URIs). Your unique data can be attached to those resources; then you can create links to corresponding resource(s) in other dataset(s), using <a href="#similarity">similarity predicates</a>. <a href="#reconciliation-aggregation">Once your resources are aggregated by RES</a>, your unique data will then augment resources from other datasets which don't have it.
+      </p>
+    </section>
+
+  </section>
+
+</section>
+  <section id="licensing" class="part"><h1>Add licensing statements</h1>
+
+  
+
+  <p>
+    The RES crawler is responsible for harvesting data from a publisher's Linked Data site. The data it harvests is then ingested, transformed and re-published as an openly-licensed index. For this to work, the data must be licensed in a way which enables re-purposing; and statements about the licensing must be accessible to the RES crawler <em>in the data itself</em>.
+  </p>
+
+  <p>
+    Returning to RES's <a href="#what-res-wants">four main categories of resource</a>, the following types of licensing statement can be applied:
+  </p>
+
+  <ol>
+    <li>
+        <strong class="strong">Documents</strong> <em>must</em> have licensing statements. Without these, RES won't be able to index them.
+      </li>
+
+    <li>
+        <strong class="strong">Real-world things</strong> typically don't need licensing: it's impossible to copyright a person or building, for example, so there's no need to license their reuse. (Though a person's name or building design could be copyrighted.)
+      </li>
+
+    <li>
+        <strong class="strong">Creative works</strong> usually have licensing; for example, the copyright on a novel or photograph defines who can reproduce it. However, RES doesn't need to know about this to crawl the data.
+      </li>
+
+    <li>
+        <strong class="strong">Digital assets</strong> often have licensing; for example, copyright on a digital file allows reuse in specific contexts. (Usually, the copyright of a digital file matches the creative work or other resource which it represents.) Again, RES doesn't need to know about this to crawl the data.
+      </li>
+  </ol>
+
+  <p>
+    The crawler only <em>needs</em> licensing statements on the data documents. Licensing on other resources may be included in the index after crawling, but isn't necessary for the data to be crawled.
+  </p>
+
+  <aside class="info">
+    <p>
+      If your digital assets can't be openly published or reused (e.g. they should only be used in educational contexts or in the UK), you will need to protect them yourself. The standard approach to doing this is to <a href="#link-works-to-assets">implement authentication or similar constraints in a player</a>, then embed the digital asset inside that.
+    </p>
+  </aside>
+
+  <section id="licensing-statements" class="section"><h1>Structure of licensing statements</h1>
+    
+
+    <p>
+      A licensing statement for a resource has this general form:
+    </p>
+
+    <pre class="code"><code>&lt;resource URI&gt; &lt;licensing predicate&gt; &lt;licence URI&gt;</code></pre>
+
+    <p>
+      The <code class="literal">resource URI</code> is the URI of the resource for which you are specifying the licence; this will usually be a document, but could be a creative work or digital asset. The <code class="literal">licensing predicate</code> and <code class="literal">licence URI</code> are explained in the next two sections.
+    </p>
+
+    <section id="licensing-predicates" class="section"><h1>Licensing predicates</h1>
+      
+
+	    <p>
+		    The RES crawler understands the following licensing predicates:
+	    </p>
+
+	    <div class="table"><table><thead><tr><th scope="col">Predicate</th></tr></thead><tbody><tr><td><code class="literal"><a href="http://purl.org/dc/terms/license">dcterms:license</a></code></td></tr><tr><td><code class="literal"><a href="http://purl.org/dc/terms/rights">dcterms:rights</a></code></td></tr><tr><td><code class="literal"><a href="http://purl.org/dc/terms/accessRights">dcterms:accessRights</a></code></td></tr><tr><td><code class="literal"><a href="http://creativecommons.org/ns#license">cc:license</a></code></td></tr><tr><td><code class="literal"><a href="http://www.w3.org/1999/xhtml/vocab#license">xhtml:license</a></code></td></tr><tr><td><code class="literal"><a href="http://www.w3.org/1999/xhtml/vocab#copyright">xhtml:copyright</a></code></td></tr></tbody></table></div>
+
+      <p>
+        One of these predicates should be used to link your resources to valid licence URIs. For example:
+      </p>
+
+      <pre class="code"><code>&lt;resource URI&gt; <em>dcterms:license</em> &lt;licence URI&gt;</code></pre>
+    </section>
+
+    <section id="licence-uris" class="section"><h1>Licence URIs</h1>
+      
+
+      <p>
+        The licence URI should refer to a well-known open licence from the list below.
+      </p>
+
+      <dl>
+          <dt>
+            Creative Commons 1.0 Generic (CC BY 1.0)
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</a></code>
+            </dd>
+        
+          <dt>
+            Creative Commons 2.5 Generic (CC BY 2.5)
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</a></code>
+            </dd>
+        
+          <dt>
+            Creative Commons 3.0 Unported (CC BY 3.0)
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</a></code>
+            </dd>
+        
+          <dt>
+            Creative Commons 3.0 US (CC BY 3.0 US)
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</a></code>
+            </dd>
+        
+          <dt>
+            Creative Commons Attribution 4.0 International (CC BY 4.0)
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></code>
+            </dd>
+        
+          <dt>
+            Creative Commons Public Domain (CC0)
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></code>
+            </dd>
+        
+          <dt>
+            Digital Public Space Licence, version 1.0
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</a></code>
+            </dd>
+        
+          <dt>
+            Library of Congress Public Domain
+          </dt>
+          <dd>
+              <code class="uri"><a href="http://id.loc.gov/about/">http://id.loc.gov/about/</a></code>
+            </dd>
+        
+          <dt>
+            Open Government Licence
+          </dt>
+          <dd>
+            <p>
+				      <code class="uri"><a href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html">http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html</a></code>
+            </p>
+            <p>
+				      <code class="uri"><a href="http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf">http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf</a></code>
+            </p>
+          </dd>
+        </dl>
+
+      <aside class="tip">
+        <p>
+          If you wish to use another licence, it should adhere to the principles of the <a href="http://opendefinition.org">Open Definition</a>. You will also need to <a href="mailto:RESFeedback@bbc.co.uk">let the RES team know</a> about the licence so the RES crawler can be configured to recognise it.
+        </p>
+      </aside>
+
+    </section>
+  </section>
+
+  <section id="museum-licensing" class="section"><h1>Adding licences to the museum's data</h1>
+    
+
+    <p>
+      The museum needs to license its documents and their formats. It chooses the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence Version 3 (OGL v3)</a>.
+    </p>
+
+    <p>
+      The museum's photograph and its JPEG representation are licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons CC BY 3.0</a> licence.
+    </p>
+
+    <p>
+       As the museum is already using the DC Terms vocabulary, it decides to use <code class="literal">dcterms:license</code> to associate the licences with their resources, which is one of the licensing predicates the RES crawler can recognise.
+    </p>
+
+    <p>
+      Their licensing statements look like this:
+    </p>
+
+    <pre class="code"><code><em># document about the helmet</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<em># format for the document about the helmet - Turtle</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<em># format for the document about the helmet - RDF/XML</em>
+&lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<em># document about the photograph</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<em># format for the document about the photograph - Turtle</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<em># format for the document about the photograph - RDF/XML</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<em># the photograph</em>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  dcterms:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; .
+
+<em># digital asset representing the photograph</em>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  dcterms:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; .
+</code></pre>
+
+  </section>
+
+</section>
+</section>
+  <section id="bringing-it-together" class="part"><h1>Bringing it all together</h1>
+
+  
+
+  <p>
+    By following the steps described above, an organisation can produce a <em>minimal</em> set of data suitable for indexing by RES. This isn't the whole story, though: once you have a dataset, you still need to manage, host and develop it over time. These aspects of Linked Data are covered in detail elsewhere, so have been bypassed to keep this book as short and focused on RES as possible. However, if your organisation needs any assistance with these topics, please contact <a href="mailto:RESFeedback@bbc.co.uk">the RES team</a>.
+  </p>
+
+  <p>
+    As a final example, here is the complete, valid RDF for the museum's resources, developed in the course of this book:
+  </p>
+
+  <pre class="code"><code>@prefix crm: &lt;http://www.cidoc-crm.org/cidoc-crm/&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dcmitype: &lt;http://purl.org/dc/dcmitype/&gt; .
+@prefix exif: &lt;http://www.w3.org/2003/12/exif/ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix formats: &lt;http://www.w3.org/ns/formats/&gt; .
+@prefix mrss: &lt;http://search.yahoo.com/mrss/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+
+# the helmet (real-world thing)
+&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  a crm:E22_Man-Made_Object ;
+  dcterms:identifier "t0001" ;
+  dcterms:title "The Golden Helmet"@en-gb ;
+  dcterms:description "Large gold helmet. The helmet spontaneously fell from
+    its mount on a wall in the main hall in 1529; Conrad, son of Lord Manfred
+    Otranto, was due to wed Isabella that day, but was instead crushed to death
+    by the falling helmet. The helmet was then lost for many years, until,
+    in 1749, it was rediscovered by archaeologist Fuchsia Otranto in the ruins
+    of the old chapel."@en-gb ;
+  rdfs:seeAlso &lt;http://dbpedia.org/resource/The_Castle_of_Otranto&gt; ;
+  foaf:page &lt;http://castleofotranto.org.uk/items/the-helmet&gt; .
+
+# the photograph (creative work)
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  a schema:Photograph ;
+  rdfs:label "Photograph of The Golden Helmet"@en-gb ;
+  dcterms:subject &lt;http://castleofotranto.org.uk/data/items/t0001#id&gt; ;
+  dcterms:creator &lt;http://dbpedia.org/resource/Vlad_Dracula&gt; ;
+  mrss:content &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt; ;
+  dcterms:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; .
+
+# file representing the photograph as a JPEG (digital asset)
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  a dcmitype:StillImage ;
+  rdfs:label "Photograph of The Golden Helmet in JPEG format"@en-gb ;
+  exif:height 979 ;
+  exif:width 1024 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/jpeg&gt; ;
+  dcterms:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; .
+
+# document about the helmet
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  a foaf:Document ;
+  rdfs:label "Data about The Golden Helmet"@en-gb ;
+  dcterms:subject &lt;http://castleofotranto.org.uk/data/items/t0001#id&gt; ;
+  dcterms:hasFormat &lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;,
+    &lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt; ;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+# format of the document about the helmet as Turtle
+&lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; ;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+# format of the document about the helmet as RDF/XML
+&lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt;
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/application/rdf+xml&gt; ;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+# document about the photograph
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  a foaf:Document ;
+  rdfs:label "Data about Photograph of The Golden Helmet"@en-gb ;
+  dcterms:hasFormat &lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;,
+    &lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt; ;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+# format of the document about the photograph as Turtle
+&lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; ;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+# format of the document about the photograph as RDF/XML
+&lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt;
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/application/rdf+xml&gt; ;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+</code></pre>
+
+</section>
+  
+
+</article><section id="appendix-prefixes" class="appendix"><h1>RDF prefixes</h1>
+	
+
+  <p>
+    The following RDF prefixes are used throughout this book:
+  </p>
+
+  <pre class="code"><code>@prefix crm: &lt;http://www.cidoc-crm.org/cidoc-crm/&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dcmitype: &lt;http://purl.org/dc/dcmitype/&gt; .
+@prefix event: &lt;http://purl.org/NET/c4dm/event.owl#&gt; .
+@prefix exif: &lt;http://www.w3.org/2003/12/exif/ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix formats: &lt;http://www.w3.org/ns/formats/&gt; .
+@prefix frbr: &lt;http://purl.org/vocab/frbr/core#&gt; .
+@prefix geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt; .
+@prefix ma: &lt;http://www.w3.org/ns/ma-ont#&gt; .
+@prefix mrss: &lt;http://search.yahoo.com/mrss/&gt; .
+@prefix odrl: &lt;http://www.w3.org/ns/odrl/2/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#&gt; .
+</code></pre>
+</section></body>
+</html>

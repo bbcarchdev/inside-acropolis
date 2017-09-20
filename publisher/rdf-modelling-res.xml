@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+  https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="res-modelling-overview">
+
+  <title>RDF modelling for RES</title>
+
+  <para>
+    This section covers how to create RDF resources for RES by following these guidelines:
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para><link xlink:href="#notable-types">Use notable types</link></para>
+    </listitem>
+    <listitem>
+      <para><link xlink:href="#labels-etc">Add basic descriptive data</link></para>
+    </listitem>
+    <listitem>
+      <para><link xlink:href="#link-describe-assets">Link and describe digital assets</link></para>
+    </listitem>
+    <listitem>
+      <para><link xlink:href="#link-documents-formats">Link documents to their formats</link></para>
+    </listitem>
+    <listitem>
+      <para><link xlink:href="#reconciliation">Link resources to other datasets</link></para>
+    </listitem>
+    <listitem>
+      <para><link xlink:href="#licensing">Add licensing statements</link></para>
+    </listitem>
+  </itemizedlist>
+
+  <xi:include href="notable-types.xml" />
+  <xi:include href="labels-etc.xml" />
+  <xi:include href="link-describe-assets.xml" />
+  <xi:include href="link-documents-formats.xml" />
+  <xi:include href="reconciliation.xml" />
+  <xi:include href="licensing.xml" />
+</part>

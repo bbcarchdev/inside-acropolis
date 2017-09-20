@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="licensing">
+
+  <title>Add licensing statements</title>
+
+  <para>
+    The RES crawler is responsible for harvesting data from a publisher's Linked Data site. The data it harvests is then ingested, transformed and re-published as an openly-licensed index. For this to work, the data must be licensed in a way which enables re-purposing; and statements about the licensing must be accessible to the RES crawler <emphasis>in the data itself</emphasis>.
+  </para>
+
+  <para>
+    Returning to RES's <link xlink:href="#what-res-wants">four main categories of resource</link>, the following types of licensing statement can be applied:
+  </para>
+
+  <orderedlist>
+    <listitem>
+      <para>
+        <emphasis role="strong">Documents</emphasis> <emphasis>must</emphasis> have licensing statements. Without these, RES won't be able to index them.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        <emphasis role="strong">Real-world things</emphasis> typically don't need licensing: it's impossible to copyright a person or building, for example, so there's no need to license their reuse. (Though a person's name or building design could be copyrighted.)
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        <emphasis role="strong">Creative works</emphasis> usually have licensing; for example, the copyright on a novel or photograph defines who can reproduce it. However, RES doesn't need to know about this to crawl the data.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        <emphasis role="strong">Digital assets</emphasis> often have licensing; for example, copyright on a digital file allows reuse in specific contexts. (Usually, the copyright of a digital file matches the creative work or other resource which it represents.) Again, RES doesn't need to know about this to crawl the data.
+      </para>
+    </listitem>
+  </orderedlist>
+
+  <para>
+    The crawler only <emphasis>needs</emphasis> licensing statements on the data documents. Licensing on other resources may be included in the index after crawling, but isn't necessary for the data to be crawled.
+  </para>
+
+  <note>
+    <para>
+      If your digital assets can't be openly published or reused (e.g. they should only be used in educational contexts or in the UK), you will need to protect them yourself. The standard approach to doing this is to <link xlink:href="#link-works-to-assets">implement authentication or similar constraints in a player</link>, then embed the digital asset inside that.
+    </para>
+  </note>
+
+  <section xml:id="licensing-statements">
+    <title>Structure of licensing statements</title>
+
+    <para>
+      A licensing statement for a resource has this general form:
+    </para>
+
+    <programlisting>&lt;resource URI&gt; &lt;licensing predicate&gt; &lt;licence URI&gt;</programlisting>
+
+    <para>
+      The <literal>resource URI</literal> is the URI of the resource for which you are specifying the licence; this will usually be a document, but could be a creative work or digital asset. The <literal>licensing predicate</literal> and <literal>licence URI</literal> are explained in the next two sections.
+    </para>
+
+    <section xml:id="licensing-predicates">
+      <title>Licensing predicates</title>
+
+	    <para>
+		    The RES crawler understands the following licensing predicates:
+	    </para>
+
+	    <segmentedlist>
+		    <segtitle>Predicate</segtitle>
+
+		    <seglistitem>
+			    <seg><literal><link xlink:href="http://purl.org/dc/terms/license">dcterms:license</link></literal></seg>
+		    </seglistitem>
+
+		    <seglistitem>
+			    <seg><literal><link xlink:href="http://purl.org/dc/terms/rights">dcterms:rights</link></literal></seg>
+		    </seglistitem>
+
+		    <seglistitem>
+			    <seg><literal><link xlink:href="http://purl.org/dc/terms/accessRights">dcterms:accessRights</link></literal></seg>
+		    </seglistitem>
+
+		    <seglistitem>
+			    <seg><literal><link xlink:href="http://creativecommons.org/ns#license">cc:license</link></literal></seg>
+		    </seglistitem>
+
+		    <seglistitem>
+			    <seg><literal><link xlink:href="http://www.w3.org/1999/xhtml/vocab#license">xhtml:license</link></literal></seg>
+		    </seglistitem>
+
+		    <seglistitem>
+			    <seg><literal><link xlink:href="http://www.w3.org/1999/xhtml/vocab#copyright">xhtml:copyright</link></literal></seg>
+		    </seglistitem>
+	    </segmentedlist>
+
+      <para>
+        One of these predicates should be used to link your resources to valid licence URIs. For example:
+      </para>
+
+      <programlisting>&lt;resource URI&gt; <emphasis>dcterms:license</emphasis> &lt;licence URI&gt;</programlisting>
+    </section>
+
+    <section xml:id="licence-uris">
+      <title>Licence URIs</title>
+
+      <para>
+        The licence URI should refer to a well-known open licence from the list below.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            Creative Commons 1.0 Generic (CC BY 1.0)
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://creativecommons.org/licenses/by/1.0/">http://creativecommons.org/licenses/by/1.0/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Creative Commons 2.5 Generic (CC BY 2.5)
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Creative Commons 3.0 Unported (CC BY 3.0)
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/">http://creativecommons.org/licenses/by/3.0/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Creative Commons 3.0 US (CC BY 3.0 US)
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://creativecommons.org/licenses/by/3.0/us/">http://creativecommons.org/licenses/by/3.0/us/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Creative Commons Attribution 4.0 International (CC BY 4.0)
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Creative Commons Public Domain (CC0)
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Digital Public Space Licence, version 1.0
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://bbcarchdev.github.io/licences/dps/1.0#id">http://bbcarchdev.github.io/licences/dps/1.0#id</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Library of Congress Public Domain
+          </term>
+          <listitem>
+            <para>
+              <uri><link xlink:href="http://id.loc.gov/about/">http://id.loc.gov/about/</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>
+            Open Government Licence
+          </term>
+          <listitem>
+            <para>
+				      <uri><link xlink:href="http://reference.data.gov.uk/id/open-government-licence">http://reference.data.gov.uk/id/open-government-licence</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/">http://www.nationalarchives.gov.uk/doc/open-government-licence/version/1/</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html">http://www.ordnancesurvey.co.uk/business-and-government/licensing/using-creating-data-with-os-products/os-opendata.html</link></uri>
+            </para>
+            <para>
+				      <uri><link xlink:href="http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf">http://www.ordnancesurvey.co.uk/oswebsite/opendata/licence/docs/licence.pdf</link></uri>
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+
+      <tip>
+        <para>
+          If you wish to use another licence, it should adhere to the principles of the <link xlink:href="http://opendefinition.org">Open Definition</link>. You will also need to <link xlink:href="mailto:RESFeedback@bbc.co.uk">let the RES team know</link> about the licence so the RES crawler can be configured to recognise it.
+        </para>
+      </tip>
+
+    </section>
+  </section>
+
+  <section xml:id="museum-licensing">
+    <title>Adding licences to the museum's data</title>
+
+    <para>
+      The museum needs to license its documents and their formats. It chooses the <link xlink:href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence Version 3 (OGL v3)</link>.
+    </para>
+
+    <para>
+      The museum's photograph and its JPEG representation are licensed under the <link xlink:href="http://creativecommons.org/licenses/by/3.0/">Creative Commons CC BY 3.0</link> licence.
+    </para>
+
+    <para>
+       As the museum is already using the DC Terms vocabulary, it decides to use <literal>dcterms:license</literal> to associate the licences with their resources, which is one of the licensing predicates the RES crawler can recognise.
+    </para>
+
+    <para>
+      Their licensing statements look like this:
+    </para>
+
+    <programlisting><emphasis># document about the helmet</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<emphasis># format for the document about the helmet - Turtle</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<emphasis># format for the document about the helmet - RDF/XML</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<emphasis># document about the photograph</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<emphasis># format for the document about the photograph - Turtle</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<emphasis># format for the document about the photograph - RDF/XML</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt;
+  dcterms:license &lt;https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/&gt; .
+
+<emphasis># the photograph</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  dcterms:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; .
+
+<emphasis># digital asset representing the photograph</emphasis>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  dcterms:license &lt;http://creativecommons.org/licenses/by/3.0/&gt; .
+</programlisting>
+
+  </section>
+
+</part>

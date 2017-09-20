@@ -1,6 +1,6 @@
-## Author: Elliot Smith <elliot.smith@bbc.co.uk>
+## Author: Mo McRoberts <mo.mcroberts@bbc.co.uk>
 ##
-## Copyright (c) 2017 BBC
+## Copyright (c) 2014 BBC
 ##
 ## Licensed under the terms of the Open Government Licence, version 2.0.
 ## You may obtain a copy of the license at:
@@ -19,23 +19,14 @@ HTML = index.html
 
 ## XSL transform
 
-DBXSLT = docbook-html5/docbook-html5.xsl
-NAV = docbook-html5/res-nav.xml
-LINKS = res-links.xml
+DBXSLT = ../docbook-html5/docbook-html5.xsl
+NAV = ../docbook-html5/res-nav.xml
+LINKS = ../res-links.xml
 XML2HTML = $(XSLTPROC) --nonet --xinclude --param "html.linksfile" "'file://`pwd`/$(LINKS)'" --param "html.navfile" "'file://`pwd`/$(NAV)'" --param "html.ie78css" "'//bbcarchdev.github.io/painting-by-numbers/ie78.css'" --output $@ $(DBXSLT)
-
-TOPTARGETS := all clean cleanpdf
-
-SUBDIRS = architecture publisher
-
-$(TOPTARGETS): $(SUBDIRS)
-
-$(SUBDIRS):
-	$(MAKE) -C $@ $(MAKECMDGOALS)
 
 ## Phony targets
 
-all: $(HTML) $(SUBDIRS)
+all: $(HTML)
 
 clean:
 	rm $(HTML)
@@ -44,8 +35,3 @@ clean:
 
 $(HTML): $(XML) $(XSLT) $(LINKS) $(NAV)
 	$(XML2HTML) $<
-
-	# remove table of contents manually (to save having to edit the XSLT)
-	sed -i -e 's|<h1>Table of contents</h1>||' $(HTML)
-
-.PHONY: $(TOPTARGETS) $(SUBDIRS)

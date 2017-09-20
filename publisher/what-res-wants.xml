@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+  https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="what-res-wants">
+
+  <title>What does RES want?</title>
+
+  <para>
+    RES is primarily a high-level index of the data it has <emphasis>ingested</emphasis>. It is only interested in a few key types of resource, properties and relationships. If you want to publish data which RES can index effectively, it helps to understand how the index divides the world into four broad categories of resource:
+  </para>
+
+  <orderedlist numeration="arabic" spacing="compact">
+    <listitem>
+      <para>
+        <emphasis role="strong">Real-world things</emphasis> (physical and abstract; people, physical objects, places, events etc.)
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        <emphasis role="strong">Creative works</emphasis> (novels, paintings, songs, photographs etc.)
+      </para>
+      <para>
+        Note that creative works are a subclass of real-world things. Unlike real-world things, they are typically <emphasis>about</emphasis> (depict, describe, have as a subject) other real world things. By contrast, a building or a person isn't normally <emphasis>about</emphasis> anything else.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        <emphasis role="strong">Documents about things</emphasis>
+      </para>
+      <para>
+        Examples in the real world are entries in a library catalogue, or the text on a card next to a museum exhibit. This includes documents about <emphasis>real-world things</emphasis>. (Note that for a web page about some <emphasis>thing</emphasis>, the <emphasis>text</emphasis> of that page is the document, in isolation from its representation as HTML.) RES will only index data in documents which are <link xlink:href="#licensing">openly-licensed</link>.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        <emphasis role="strong">Digital assets</emphasis> (digital images, text files, videos, audio files)
+      </para>
+      <para>
+        These are digital representations of things. RES is mostly interested in files which represent creative works: for example, a digital image file representing a photograph; a PDF file representing a novel; or an audio file representing a sound recording.
+      </para>
+    </listitem>
+  </orderedlist>
+
+  <para>
+    To produce minimal RES-friendly data, you need to organise your resources into these categories and define the relationships between them. The following diagram summarises the structure RES is looking for:
+  </para>
+
+  <figure pgwide="1">
+		<title>RES resources and relationships</title>
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="./RES_resources.svg" />
+			</imageobject>
+		</mediaobject>
+	</figure>
+
+  <para>
+    The resources with a grey background are instances of the four categories given above. The format and licence resources are special cases which will be explained as they become relevant.
+  </para>
+
+  <para>
+    The next section shows how to fit data from the example web page to these resource categories.
+  </para>
+
+  <section xml:id="web-page-extraction">
+    <title>Extracting things from the web page</title>
+
+    <para>
+      Using the four categories above, the museum identifies a minimal set of resources which are useful to RES:
+    </para>
+
+    <orderedlist>
+      <listitem>
+        <para><emphasis role="strong">The golden helmet</emphasis></para>
+        <para>This is a <emphasis>real-world thing</emphasis>, the actual physical helmet in the museum's collection.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">The photograph taken by Vlad Dracula</emphasis></para>
+        <para>The photograph is a <emphasis>creative work</emphasis> with the helmet as its <emphasis>subject</emphasis>.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">A JPEG file of the photograph</emphasis></para>
+        <para>This is a <emphasis>digital asset</emphasis> which <emphasis>represents</emphasis> the photograph.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="strong">One or more documents which contain the data</emphasis></para>
+        <para>
+          These are RDF <emphasis>documents</emphasis> which <emphasis>describe</emphasis> the helmet, the photograph, and the JPEG file. They also describe themselves: e.g. their licence, author, modification date. The museum has decided to publish its documents under an <link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government licence</link>, which is acceptable to RES. See the full list in <link xlink:href="#licensing">the section about licensing</link>.
+        </para>
+      </listitem>
+    </orderedlist>
+
+    <para>
+      Having decided which resources to model, the next step is to choose URIs for each of them, covered in the next section.
+    </para>
+
+  </section>
+
+</part>

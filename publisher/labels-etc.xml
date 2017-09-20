@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="labels-etc">
+
+  <title>Add basic descriptive data</title>
+
+  <para>
+    The next step is to add some basic descriptive data to your resources, such as labels and descriptions. Without these, your resources will still be in the index, but a search on the Acropolis API won't find them.
+  </para>
+
+  <para>
+    At this point, it's also useful to add any basic metadata you have to the RDF, such as the creator of a creative work, the date when something was created, any museum identifiers, ISBNs or similar etc.
+  </para>
+
+  <para>
+    To add these basic descriptive statements, use the <link xlink:href="https://www.w3.org/TR/rdf-schema/">RDFS (prefix: <literal>rdfs</literal>)</link>, <link xlink:href="http://dublincore.org/documents/dcmi-terms/">Dublin Core (DC) Terms (prefix: <literal>dcterms</literal>)</link> and <link xlink:href="http://xmlns.com/foaf/spec/">FOAF (prefix: <literal>foaf</literal>)</link> vocabularies. The table below shows some of the ways you can convert existing data to RDF statements:
+  </para>
+
+  <segmentedlist>
+    <segtitle>Type of data</segtitle>
+    <segtitle>Example RDF statement</segtitle>
+
+    <seglistitem>
+      <seg>
+        Resource R has a title (e.g. a proper name)
+      </seg>
+      <seg>
+        <literal>R dcterms:title "Mr. Ghost Goes To Town"@en-gb</literal>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R doesn't have a proper name but has a label
+      </seg>
+      <seg>
+        <literal>R rdfs:label "The desiccated hand of a thief"@en-gb</literal>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R has a long description
+      </seg>
+      <seg>
+        <para><literal>R dcterms:description "A melting watch draped over a tree"@en-gb</literal></para>
+        <para><literal>R rdfs:comment "On loan from Babel"@en-gb</literal></para>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R has a summary/synopsis
+      </seg>
+      <seg>
+        <literal>R dcterms:abstract "This documentary is about waiting"@en-gb</literal>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R has an identifier specific to its dataset (e.g. a unique catalogue number in a museum collection)
+      </seg>
+      <seg>
+        <literal>R dcterms:identifier "x9838-aaaa"</literal>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R has a creator (e.g. author, artist, developer, designer) C (where C can be a literal string or another resource)
+      </seg>
+      <seg>
+        <literal>R dcterms:creator C</literal>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R depicts or is about resource S
+      </seg>
+      <seg>
+        <literal>R dcterms:subject S</literal>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        Resource R has a related web page W (e.g. a page about resource R, or about a topic closely-related to it)
+      </seg>
+      <seg>
+        <literal>R foaf:page W</literal>
+      </seg>
+    </seglistitem>
+  </segmentedlist>
+
+  <para>
+    <literal>rdfs:label</literal>, <literal>dcterms:title</literal>, <literal>rdfs:comment</literal> and <literal>dcterms:description</literal> are particularly useful, as Acropolis uses these for its human-readable description of a resource, as well as for free-text searches. For example, <link xlink:href="http://acropolis.org.uk/a46461f707f24f3b9f73d42cdbea099b#id">this resource for Twelfth Night</link> gets its title &quot;Twelfth Night&quot; from <literal>rdfs:label</literal> and its longer description from <literal>rdfs:comment</literal>.
+  </para>
+
+  <para>
+    The DC Terms, RDFS and FOAF vocabularies are very general, widely-used, and well understood. If possible, terms from these vocabularies should be your first choice for specifying the basic properties of your resources. However, where there are no suitable terms in these vocabularies, terms from other vocabularies can be used instead. This is where data modelling becomes a craft rather than a science: choosing relevant vocabularies and applying them correctly is a skill in itself, and can be daunting.
+  </para>
+
+  <para>
+    One way to approach the task is to use a very generic but broad vocabulary, such as <link xlink:href="http://schema.org/">schema.org</link>. This provides a wide range of different terms for describing common types of resource, and covers a considerable range of modelling tasks.
+  </para>
+
+  <para>
+    However, schema.org can be too generic for more specialised modelling. If you find that you need a more expressive vocabulary, <link xlink:href="https://bbcarchdev.github.io/inside-acropolis/#vocab-index">this list of commonly-used vocabularies</link> provides some alternatives.
+  </para>
+
+  <para>
+    One final option is to create your own vocabulary, building on top of existing ones. This option is too complex to cover in this book, but the <link xlink:href="mailto:RESFeedback@bbc.co.uk">the RES team</link> are happy to help if you want to go down this route.
+  </para>
+
+  <section xml:id="museum-basic-descriptive">
+    <title>Adding basic descriptive data to the museum's resources</title>
+
+    <para>
+      Considering the museum's resources again, the following RDF can be extracted from the text on the web page:
+    </para>
+
+    <programlisting><emphasis># the helmet; note the foaf:page link to the
+# original web page which was the foundation for the RDF</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  dcterms:identifier "t0001" ;
+  dcterms:title "The Golden Helmet"@en-gb ;
+  dcterms:description "Large gold helmet. The helmet spontaneously fell from
+    its mount on a wall in the main hall in 1529; Conrad, son of Lord Manfred
+    Otranto, was due to wed Isabella that day, but was instead crushed to death
+    by the falling helmet. The helmet was then lost for many years, until,
+    in 1749, it was rediscovered by archaeologist Fuchsia Otranto in the ruins
+    of the old chapel."@en-gb ;
+  foaf:page &lt;http://castleofotranto.org.uk/items/the-helmet&gt; .
+
+<emphasis># the document about the helmet; note that dcterms:subject is
+# used to associate the document with the helmet</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  rdfs:label "Data about The Golden Helmet"@en-gb ;
+  dcterms:subject &lt;http://castleofotranto.org.uk/data/items/t0001#id&gt; .
+
+<emphasis># the photograph; dcterms:subject associates the photograph with the helmet</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  rdfs:label "Photograph of The Golden Helmet"@en-gb ;
+  dcterms:subject &lt;http://castleofotranto.org.uk/data/items/t0001#id&gt; ;
+  dcterms:creator "Vlad Dracula" .
+
+<emphasis># the document about the photograph</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  rdfs:label "Data about Photograph of The Golden Helmet"@en-gb .
+
+<emphasis># digital file representing the photograph</emphasis>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  rdfs:label "Photograph of The Golden Helmet in JPEG format"@en-gb .
+</programlisting>
+
+  </section>
+
+</part>

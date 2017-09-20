@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="reconciliation">
+
+  <title>Link resources to other datasets</title>
+
+  <para xml:id="reconciliation-aggregation">
+    The RES index combines resources from different datasets into <emphasis>proxy</emphasis> resources, so that users can access all of the data relating to a topic from one place. For example, a proxy about Shakespeare's <citetitle>Twelfth Night</citetitle> may contain data aggregated from <link xlink:href="http://dbpedia.org">DBPedia</link>, the <link xlink:href="http://genome.ch.bbc.co.uk/">BBC Genome pages</link>, and <link xlink:href="http://shakespeare.ch.bbc.co.uk/">the BBC Shakespeare archive</link>. (For more details about how proxies are constructed, see <link xlink:href="http://res-project.tumblr.com/post/154464075083/what-does-res-do-with-your-data">this blog post</link>.)
+  </para>
+
+  <para xml:id="ease-of-linking">
+    To help aggregate <emphasis>your</emphasis> data with existing proxies, link your resources to other well-known datasets where possible. This may be more or less difficult, depending on the type of data you're publishing:
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+        If your data is about things which are <emphasis role="strong">globally recognisable or culturally significant</emphasis>, like ancient civilisations or popular Victorian authors, it's simple enough to find well-known datasets to link them to. Well-known datasets like <link xlink:href="http://dbpedia.org/">DBPedia</link> and <link xlink:href="https://www.wikidata.org/">Wikidata</link> contain useful resources you can link to in this case.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+        If your data is <emphasis role="strong">highly specialised or very specific to your organisation</emphasis>, it may be harder to find datasets with comparable data. Extreme examples might be data about obscure topics, like UK science fiction wargaming fanzines published in the 1980s; or data about niche products, like furniture for veterinary practices. Even in these cases, you should still be able to link (albeit in a vague way) to topics from well-known datasets (e.g. <link xlink:href="http://dbpedia.org/resource/Wargaming">wargaming</link>, <link xlink:href="http://dbpedia.org/resource/Furniture">furniture</link>); or be able to link to specialised datasets you are aware of.
+      </para>
+
+      <para>
+        It may even be that your organisation is the authority on a particular area of knowledge. In this case, <emphasis>your</emphasis> dataset may be the authoritative one in this field: other people may need to link to you, rather than you linking to them.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <section xml:id="how-to-link-to-other-datasets">
+    <title>How to link to other datasets</title>
+
+    <para>
+      Creating a link between your resources and resources in other datasets involves publishing statements of the form:
+    </para>
+
+    <programlisting>&lt;your resource URI&gt; &lt;links to&gt; &lt;other resource URI&gt;</programlisting>
+
+    <para>
+      Deciding how to populate this statement can be determined as follows:
+    </para>
+
+    <orderedlist>
+      <listitem>
+        <para>
+          <literal>&lt;your resource URI&gt;</literal>: This is a source resource in your dataset which could relate to a target resource in another dataset. Good candidates are resources which belong to one or more of the <link xlink:href="#res-partitions">partitions RES uses</link> (places, people, events, physical things, creative works etc.).
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <literal>&lt;other resource URI&gt;</literal>: This is the target resource you are linking to. See <link xlink:href="#ease-of-linking">the notes above</link> for help with finding resources to link to.
+        </para>
+      </listitem>
+
+      <listitem>
+
+        <para>
+          <literal>&lt;links to&gt;</literal>: This specifies a link between the source and the target, which falls into one of these broad groups:
+        </para>
+
+        <orderedlist>
+          <listitem>
+            <para>
+              <emphasis role="strong">Similarity</emphasis>: Predicates such as <literal>owl:sameAs</literal> and <literal>skos:exactMatch</literal> make statements about the identity of resources: whether they are the same, nearly the same, distinct from each other etc. Statements of similarity are particularly useful for aggregating resources.
+            </para>
+          </listitem>
+
+          <listitem>
+            <para>
+              <emphasis role="strong">Aboutness</emphasis>: Predicates such as <literal>dcterms:subject</literal> and <literal>foaf:topic</literal> specify that one resource is <emphasis>about</emphasis> the other in some way.
+            </para>
+          </listitem>
+
+          <listitem>
+            <emphasis role="strong">Relatedness</emphasis>: Many predicates can be used to capture relationships which aren't to do with similarity or aboutness. These vary in vagueness from the fairly definite <literal>dcterms:creator</literal> to the more vague <literal>dcterms:isPartOf</literal> to the pretty vague <literal>rdfs:seeAlso</literal>.
+          </listitem>
+        </orderedlist>
+
+      </listitem>
+
+    </orderedlist>
+
+    <tip>
+      <para>
+        The BBC is trialling a new application, Mango, which automatically creates links between chunks of text and resources in well-known datasets like DBPedia. This may help you create the types of link outlined above, enriching your data by integrating it with the wider world of Linked Data. Depending on demand, it may be free to use for organisations working with RES. Email <link xlink:href="mailto:RESFeedback@bbc.co.uk">the RES team</link> if you are interested in finding out more.
+      </para>
+    </tip>
+
+    <para>
+      These groups of relationship are described in more detail in the following sections.
+    </para>
+
+    <section xml:id="similarity">
+      <title>Similarity</title>
+
+      <para>
+        Various predicates can be used to express similarity between resources, but the following are by far the most commonly-used:
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            <literal><link xlink:href="https://www.w3.org/TR/owl-ref/#sameAs-def">owl:sameAs</link></literal>: This term expresses a strong relationship between two resources. If <literal>A owl:sameAs B</literal>, <literal>A</literal> and <literal>B</literal> are identical to each other: both resources <emphasis>are</emphasis> the same entity. This is very useful and generic, but should be used carefully: the types of the two resources should be similar, at least to the extent that they are not logically inconsistent. For example, if resource <literal>A</literal> is a <literal>frbr:Work</literal> it probably cannot be <literal>owl:sameAs</literal> resource <literal>B</literal> which is a <literal>foaf:Person</literal>.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <literal><link xlink:href="https://www.w3.org/TR/skos-reference/#exactMatch">skos:exactMatch</link></literal> (source and target are the same), <literal><link xlink:href="https://www.w3.org/TR/skos-reference/#exactMatch">skos:closeMatch</link></literal> (source and target are nearly the same): These terms link two <link xlink:href="https://www.w3.org/TR/skos-reference/">Simple Knowledge Organisation System</link> (SKOS) concepts (i.e. resources with the type <literal><link xlink:href="https://www.w3.org/TR/skos-reference/#Concept">skos:Concept</link></literal>). This makes the terms less generic, but is especially useful when working with datasets based on SKOS.
+          </para>
+        </listitem>
+      </itemizedlist>
+
+    </section>
+
+    <section xml:id="aboutness">
+      <title>Aboutness</title>
+
+      <para>
+        A variety of predicates can be used to express an <emphasis>about</emphasis> relationship between resources, but the following are commonly used:
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            <literal><link xlink:href="http://purl.org/dc/terms/subject">dcterms:subject</link></literal>; see <link xlink:href="#labels-etc">these examples</link>.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <literal><link xlink:href="http://xmlns.com/foaf/0.1/topic">foaf:topic</link></literal> (or its inverse, <literal>foaf:page</literal>); note that FOAF predicates are defined as relating documents to things they are about, so <literal>dcterms:subject</literal> is preferable in most contexts.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            <literal><link xlink:href="http://xmlns.com/foaf/0.1/primaryTopic">foaf:primaryTopic</link></literal> for the main topic of a resource (c.f. <literal>foaf:topic</literal>).
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section xml:id="relatedness">
+      <title>Relatedness</title>
+
+      <para>
+        Numerous other predicates can be used to express relationships between resources in your dataset and others, including the predicates we've seen earlier in this book (e.g. <literal><link xlink:href="http://purl.org/dc/terms/creator">dcterms:creator</link></literal>).
+      </para>
+
+      <para>
+        <literal><link xlink:href="https://www.w3.org/TR/rdf-schema/#ch_seealso">rdfs:seeAlso</link></literal> is a particularly useful (though slightly indiscriminate) term in this context. It expresses a general &quot;you might also be interested in&quot; relationship between two resources. It makes no statement about whether two resources are equivalent or whether one is directly about the other. However, if resources <literal>A</literal> and <literal>B</literal> are both related by <literal>rdfs:seeAlso</literal> to resource <literal>C</literal>, it's likely that <literal>A</literal> and <literal>B</literal> are also relevant to each other in some way.
+      </para>
+    </section>
+  </section>
+
+  <section xml:id="reconciliation-museum">
+    <title>Linking the museum's resources to other datasets</title>
+
+    <para>
+      Looking at their resources, the museum identifies a couple of opportunities for linking:
+    </para>
+
+    <itemizedlist>
+
+      <listitem>
+        <para>
+          The helmet appears in the novel <citetitle>The Castle of Otranto</citetitle>, which has a DBPedia resource at <uri><link xlink:href="http://dbpedia.org/resource/The_Castle_of_Otranto">http://dbpedia.org/resource/The_Castle_of_Otranto</link></uri>. The appropriate relationship is <literal>rdfs:seeAlso</literal>, as the DBPedia resource is pertinent to the helmet but isn't the same thing as the helmet.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          The person who took the photograph, <emphasis>Vlad Dracula</emphasis>, is the same person as <uri><link xlink:href="http://dbpedia.org/resource/Vlad_Dracula">http://dbpedia.org/resource/Vlad_Dracula</link></uri> (the photograph was literally taken by Dracula). In this case, the museum can link directly to the DBPedia resource, replacing the previous <literal>"Vlad Dracula"</literal> value.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      The museum adds these statements to their RDF:
+    </para>
+
+        <programlisting>&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  rdfs:seeAlso &lt;http://dbpedia.org/resource/The_Castle_of_Otranto&gt; .
+
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  dcterms:creator &lt;http://dbpedia.org/resource/Vlad_Dracula&gt; .
+</programlisting>
+
+    <para>
+      These additions make the museum's data more discoverable, as they link it to resources in well-known datasets. For example, once these statements are indexed by RES, anyone searching for <uri>http://dbpedia.org/resource/Vlad_Dracula</uri> will be able to follow links from that URI to the museum's photograph of the helmet.
+    </para>
+
+    <section xml:id="reconciliation-reuse-existing-resources">
+      <title>Re-using existing resources</title>
+
+      <para>
+        What if the helmet already had a DBPedia resource, e.g. <uri>http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto</uri>? (It doesn't, but it could.) Why does the museum need to publish any data at all about the helmet? Couldn't it just replace all the references in its RDF to <uri>http://castleofotranto.org.uk/data/items/t0001#id</uri> with references to the DBPedia URI instead? i.e.
+      </para>
+
+      <programlisting>&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  a schema:Photograph ;
+  dcterms:subject &lt;http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto&gt; .
+</programlisting>
+
+      <para>
+        There is nothing to stop the museum doing this: <link xlink:href="https://www.w3.org/TR/2002/WD-rdf-concepts-20020829/#xtocid48014">anyone can say anything about anything</link> in Linked Data. Reusing this resource would also reduce the amount of data the museum has to publish: the golden helmet resource, <uri>http://castleofotranto.org.uk/data/items/t0001#id</uri>, could disappear from the museum's dataset.
+      </para>
+
+      <para>
+        What would be lost by doing this, though? Imagine the museum has some additional data about the helmet which isn't published anywhere else: perhaps ownership data, e.g. "Was once owned by Victor Frankenstein". This is valuable, and the museum should publish it. So where should the museum make this statement? It has several choices:
+      </para>
+
+      <orderedlist>
+        <listitem>
+          <para>
+            Publish its own resource for the helmet (with the ownership data) and link it to the DBPedia resource:
+          </para>
+
+          <programlisting>&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  crm:P51_has_former_or_current_owner &lt;http://dbpedia.org/resource/Victor_Frankenstein&gt; ;
+  owl:sameAs &lt;http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto&gt; .
+</programlisting>
+
+          <para>
+            (Note the use of another <link xlink:href="http://www.cidoc-crm.org/">CIDOC-CRM</link> predicate, <literal>crm:P51_has_former_or_current_owner</literal>, to specify ownership of the helmet.)
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Publish the ownership data in the form of additional statements about the DBPedia resource:
+          </para>
+
+          <programlisting>&lt;http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto&gt;
+  crm:P51_has_former_or_current_owner &lt;http://dbpedia.org/resource/Victor_Frankenstein&gt; .
+</programlisting>
+
+          <para>
+            The disadvantage of this approach is that someone accessing the DBPedia resource won't get the ownership statements added by the museum. This is because those statements won't be part of the RDF document returned by <uri>http://dbpedia.org/resource/The_Golden_Helmet_Of_Otranto</uri>, as they will be published on the museum's site and not by DBPedia. The museum will also have to decide where to publish these statements; for example, it could include them with the RDF about the photograph of the golden helmet.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Add the ownership data to DBPedia and don't publish any statements about the helmet at all. Because DBPedia is extracted from Wikipedia, the museum could modify Wikipedia's entry for <emphasis>The Golden Helmet of Otranto</emphasis> to (eventually) change the data in DBPedia. The drawback to this approach is that DBPedia may ignore the new ownership data or treat it incorrectly, which may mean that the data doesn't make appear correctly in DBPedia.
+          </para>
+
+          <tip>
+            <para>
+              Where your additional data fits snugly into <link xlink:href="https://en.wikipedia.org/wiki/Help:Infobox">Wikipedia's infobox format</link> (which DBPedia uses for RDF extraction), it is definitely worth considering adding data directly to Wikipedia, rather than publishing it yourself. DBPedia has rigorous processes for extracting data from infoboxes in particular, and should do a decent job of creating useful RDF from any data you add there.
+            </para>
+          </tip>
+        </listitem>
+      </orderedlist>
+
+      <para>
+        In summary, even if your resources exist in other datasets, you may have additional data which isn't published anywhere else. In this case, it makes sense to create your own resources (with their own URIs). Your unique data can be attached to those resources; then you can create links to corresponding resource(s) in other dataset(s), using <link xlink:href="#similarity">similarity predicates</link>. <link xlink:href="#reconciliation-aggregation">Once your resources are aggregated by RES</link>, your unique data will then augment resources from other datasets which don't have it.
+      </para>
+    </section>
+
+  </section>
+
+</part>

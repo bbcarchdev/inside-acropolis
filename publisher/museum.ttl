@@ -1,0 +1,82 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix exif: <http://www.w3.org/2003/12/exif/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+@prefix mrss: <http://search.yahoo.com/mrss/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+
+# the helmet (real-world thing)
+<http://castleofotranto.org.uk/data/items/t0001#id>
+  a crm:E22_Man-Made_Object ;
+  dcterms:identifier "t0001" ;
+  dcterms:title "The Golden Helmet"@en-gb ;
+  dcterms:description "Large gold helmet. The helmet spontaneously fell from
+    its mount on a wall in the main hall in 1529; Conrad, son of Lord Manfred
+    Otranto, was due to wed Isabella that day, but was instead crushed to death
+    by the falling helmet. The helmet was then lost for many years, until,
+    in 1749, it was rediscovered by archaeologist Fuchsia Otranto in the ruins
+    of the old chapel."@en-gb ;
+  rdfs:seeAlso <http://dbpedia.org/resource/The_Castle_of_Otranto> ;
+  foaf:page <http://castleofotranto.org.uk/items/the-helmet> .
+
+# the photograph (creative work)
+<http://castleofotranto.org.uk/data/photos/p0001#id>
+  a schema:Photograph ;
+  rdfs:label "Photograph of The Golden Helmet"@en-gb ;
+  dcterms:subject <http://castleofotranto.org.uk/data/items/t0001#id> ;
+  dcterms:creator <http://dbpedia.org/resource/Vlad_Dracula> ;
+  mrss:content <http://castleofotranto.org.uk/images/the-helmet-photo.jpg> ;
+  dcterms:license <http://creativecommons.org/licenses/by/3.0/> .
+
+# file representing the photograph as a JPEG (digital asset)
+<http://castleofotranto.org.uk/images/the-helmet-photo.jpg>
+  a dcmitype:StillImage ;
+  rdfs:label "Photograph of The Golden Helmet in JPEG format"@en-gb ;
+  exif:height 979 ;
+  exif:width 1024 ;
+  dcterms:format <http://purl.org/NET/mediatypes/image/jpeg> ;
+  dcterms:license <http://creativecommons.org/licenses/by/3.0/> .
+
+# document about the helmet
+<http://castleofotranto.org.uk/data/items/t0001>
+  a foaf:Document ;
+  rdfs:label "Data about The Golden Helmet"@en-gb ;
+  dcterms:subject <http://castleofotranto.org.uk/data/items/t0001#id> ;
+  dcterms:hasFormat <http://castleofotranto.org.uk/data/items/t0001.ttl>,
+    <http://castleofotranto.org.uk/data/items/t0001.rdf> ;
+  dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+
+# format of the document about the helmet as Turtle
+<http://castleofotranto.org.uk/data/items/t0001.ttl>
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format <http://purl.org/NET/mediatypes/text/turtle> ;
+  dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+
+# format of the document about the helmet as RDF/XML
+<http://castleofotranto.org.uk/data/items/t0001.rdf>
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format <http://purl.org/NET/mediatypes/application/rdf+xml> ;
+  dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+
+# document about the photograph
+<http://castleofotranto.org.uk/data/photos/p0001>
+  a foaf:Document ;
+  rdfs:label "Data about Photograph of The Golden Helmet"@en-gb ;
+  dcterms:hasFormat <http://castleofotranto.org.uk/data/photos/p0001.ttl>,
+    <http://castleofotranto.org.uk/data/photos/p0001.rdf> ;
+  dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+
+# format of the document about the photograph as Turtle
+<http://castleofotranto.org.uk/data/photos/p0001.ttl>
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format <http://purl.org/NET/mediatypes/text/turtle> ;
+  dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+
+# format of the document about the photograph as RDF/XML
+<http://castleofotranto.org.uk/data/photos/p0001.rdf>
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format <http://purl.org/NET/mediatypes/application/rdf+xml> ;
+  dcterms:license <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="link-describe-assets">
+
+  <title>Link and describe digital assets</title>
+
+  <para>
+    We've already seen how creative works are modelled using resources which stand in for the <emphasis>abstract</emphasis> creative work in the real world. This resource is distinct from any realisations of the work in physical or electronic versions. For example, the abstract novel <emphasis><link xlink:href="http://dbpedia.org/page/Hothouse_(novel)">Hothouse</link></emphasis> is a different thing from a printed copy of that novel, which is different again from an ebook copy of it.
+  </para>
+
+  <para>
+    In the context of publishing RDF, electronic files representing a creative work are information resources which can be requested over the web. These files are especially important to RES, as applications powered by RES often expose openly-licensed media to users in education. Consequently, the RES index has special mechanisms for detecting electronic media files and indexing them; these in turn rely on <link xlink:href="#link-works-to-assets">specific links between creative works and digital assets</link>.
+  </para>
+
+  <para>
+    In addition, <link xlink:href="#describe-assets">extra statements about the characteristics of the digital asset</link>, such as its size and format, can help those wanting to use it.
+  </para>
+
+  <section xml:id="link-works-to-assets">
+    <title>Link creative works to digital assets</title>
+
+    <para>
+      RES looks for three broad classes of electronic media, finding them via particular RDF predicates in the data:
+    </para>
+
+    <segmentedlist>
+      <segtitle>Type of media</segtitle>
+      <segtitle>Description</segtitle>
+      <segtitle>RDF predicate</segtitle>
+      <segtitle>Example</segtitle>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Direct content</emphasis>
+        </seg>
+        <seg>
+          Files which can be embedded directly in applications, e.g. with a <literal>&lt;video&gt;</literal>, <literal>&lt;object&gt;</literal> or <literal>&lt;img&gt;</literal> element in a web app. Files may be JPEG images, WAV audio, MP4 videos etc. Direct content should require no authentication.
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://www.rssboard.org/media-rss#media-content">mrss:content</link></uri>
+        </seg>
+        <seg>
+          <link xlink:href="http://remarc-assets.pilots.bbcconnectedstudio.co.uk/images/1980_TV&amp;Radio_CrackerjackA.jpg">Crackerjack image</link>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Embeddable player</emphasis>
+        </seg>
+        <seg>
+          An HTML page (typically) which embeds some media, and which may provide controls for playing it and/or some metadata about it. This page can be embedded in other applications (e.g. using an <literal>&lt;iframe&gt;</literal> in a web app). An embeddable player may prompt for authentication.
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://www.rssboard.org/media-rss#media-player">mrss:player</link></uri>
+        </seg>
+        <seg>
+          <link xlink:href="http://bbcimages.acropolis.org.uk/5459714/player">Shakespeare's Globe</link>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Standalone player</emphasis>
+        </seg>
+        <seg>
+          Similar to an embeddable player (displays media plus controls and metadata). Unlike an embeddable player, a standalone player should not be embedded directly into other applications. Instead, a user accessing the standalone player should see the player page open in their browser (outside the app). A standalone player may prompt for authentication.
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://xmlns.com/foaf/spec/#term_page">foaf:page</link></uri>
+        </seg>
+        <seg>
+          <link xlink:href="http://www.bbc.co.uk/iplayer/episode/p03064m1/the-computer-programme-1-its-happening-now">iPlayer page</link>
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <tip>
+      <para>
+        The term <emphasis>player</emphasis> applies to static media (like images) as well as dynamic media (audio and video), beyond its usual connotations.
+      </para>
+    </tip>
+
+    <para>
+      Note that Acropolis doesn't require any authentication and relies on the server hosting the media to enforce this. However, even in cases where media require no authentication, their copyright must be respected. Again, it is up to the data publisher to assign copyright to their media to allow reuse (see <link xlink:href="#licensing">the section on licensing</link>).
+    </para>
+  </section>
+
+  <section xml:id="describe-assets">
+    <title>Describe digital assets</title>
+
+    <para>
+      If a developer wants to incorporate a digital asset into an application, knowing its content type and dimensions can help them decide how best to incorporate it. For example:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          A document viewer is about to load an ebook. The RDF states that there are two versions available, a MOBI file and an EPUB file. As the viewer can only load EPUB files, it chooses this one.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          An Android app is about to load an image file. The layout has a maximum width of 800px for images, and the RDF states that there are two versions of the image, one 800px wide and the other 3200px wide. The app saves some bandwidth by downloading the smaller image.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <tip>
+      <para>
+        Note that format and size data is especially useful where there are multiple files relating to a creative work: it helps an application decide which file best suits its needs. See <link xlink:href="#multiple-files">the section about creative works with multiple versions</link> for more details.
+      </para>
+    </tip>
+
+    <para>
+      As a minimum, it's recommended that the RDF for a digital asset describes its size (file size, image dimensions) and format. The following vocabularies can be used to do this:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <link xlink:href="https://www.w3.org/2003/12/exif/">The EXIF vocabulary</link> can be used for image or video dimensions.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="http://purl.org/dc/terms/">DC Terms</link> can be used to specify an asset's format.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="https://www.w3.org/TR/mediaont-10/">The Ontology for Media Resources</link> can be used for video and audio file duration. (It also has a range of other useful terms for more detailed media file modelling.) Alternatively, <link xlink:href="http://schema.org">schema.org</link> has several terms for describing media objects.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+       The table below shows some examples of predicates you can use:
+    </para>
+
+    <segmentedlist>
+      <segtitle>Property</segtitle>
+      <segtitle>Predicate to use</segtitle>
+      <segtitle>Example</segtitle>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Date created</emphasis> (in <link xlink:href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO 8601 combined date and time format</link>)
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://schema.org/dateCreated">schema:dateCreated</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; schema:dateCreated "2007-04-05T14:30+01:00"</literal>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Date modified</emphasis> (in <link xlink:href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO 8601 combined date and time format</link>)
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://schema.org/dateModified">schema:dateModified</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; schema:dateModified "2017-05-09T15:20+01:00"</literal>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Dimensions - height</emphasis> (in pixels)
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://www.w3.org/2003/12/exif/ns#height">exif:height</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; exif:height 800</literal>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Dimensions - width</emphasis> (in pixels)
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://www.w3.org/2003/12/exif/ns#width">exif:width</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; exif:width 600</literal>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Duration</emphasis> (in seconds)
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://www.w3.org/ns/ma-ont#duration">ma:duration</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; ma:duration 3600.0</literal>
+        </seg>
+      </seglistitem>
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Duration</emphasis> (in <link xlink:href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 duration format</link>)
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://schema.org/duration">schema:duration</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; schema:duration "PT0M29S"</literal>
+        </seg>
+      </seglistitem>
+
+
+      <seglistitem>
+        <seg>
+          <emphasis role="strong">Format</emphasis>; see (1) below
+        </seg>
+        <seg>
+          <uri><link xlink:href="http://purl.org/dc/terms/format">dcterms:format</link></uri>
+        </seg>
+        <seg>
+          <literal>&lt;resource&gt; dcterms:format &lt;http://purl.org/NET/mediatypes/audio/wav&gt;</literal>
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <para>
+      (1) The <literal>dcterms:format</literal> statement uses a value from the media types vocabulary. To determine this value, append the <link xlink:href="http://www.iana.org/assignments/media-types/media-types.xhtml">content type</link> of the digital asset to <uri>http://purl.org/NET/mediatypes/</uri> and use that as the object in the statement. Some examples:
+    </para>
+
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          AVI: <uri>http://purl.org/NET/mediatypes/video/avi</uri>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          HTML: <uri>http://purl.org/NET/mediatypes/text/html</uri>
+        </para>
+        <para>
+          Note that the content type for a web player will typically be set to this, rather than to the content type of the media in the player.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          JPEG: <uri>http://purl.org/NET/mediatypes/image/jpeg</uri>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          WAV: <uri>http://purl.org/NET/mediatypes/audio/wav</uri>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </section>
+
+  <section xml:id="linking-and-describing-museum-media">
+    <title>Linking and describing the museum's media</title>
+
+    <para>
+      The museum web page has spawned a single creative work, the photograph of the helmet, with a single image file that represents it, <literal>http://castleofotranto.org.uk/images/the-helmet-photo.jpg</literal>. As this is a JPEG file which can be directly embedded in an application, the appropriate predicate to link them is <literal>mrss:content</literal>. The museum also includes some metadata about the dimensions and format of the image file, derived via a script which reads them from the file.
+    </para>
+
+    <para>
+      The resulting RDF is:
+    </para>
+
+    <programlisting><emphasis># the photograph (creative work)</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  mrss:content &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt; .
+
+<emphasis># the file representing the photograph (digital asset)</emphasis>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  exif:height 979 ;
+  exif:width 1024 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/jpeg&gt; .
+</programlisting>
+
+  </section>
+
+  <section xml:id="multiple-files">
+    <title>A note on multiple files</title>
+
+    <para>
+      In cases where a publisher has multiple files representing a creative work, it's simple to include additional resources for them. For example, if the museum published a quarter-size digital image of the helmet photograph, it could add a resource like this:
+    </para>
+
+  <programlisting><emphasis># the photograph; note the additional mrss:content</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  mrss:content <emphasis role="strong">&lt;http://castleofotranto.org.uk/images/the-helmet-photo-quarter.jpg&gt;</emphasis>,
+    &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt; .
+
+<emphasis># the smaller file</emphasis>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo-quarter.jpg&gt;
+  exif:height 245 ;
+  exif:width 256 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/jpeg&gt; .
+</programlisting>
+
+    <para>
+      The same approach could be used to add resources for digital assets in different formats, e.g. for a PNG version:
+    </para>
+
+  <programlisting><emphasis># the photograph; note the additional mrss:content</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  mrss:content &lt;http://castleofotranto.org.uk/images/the-helmet-photo-quarter.jpg&gt;,
+    &lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;,
+    <emphasis role="strong">&lt;http://castleofotranto.org.uk/images/the-helmet-photo.png&gt;</emphasis> .
+
+<emphasis># digital file in PNG format</emphasis>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.png&gt;
+  exif:height 1024 ;
+  exif:width 979 ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/image/png&gt; .
+</programlisting>
+
+    <tip>
+      <para>
+        This demonstrates the benefit of adding a separate <literal>schema:Photograph</literal> resource: it can hold all of the statements which apply to all of the formats and sizes (e.g. the photographer, the date of the photograph, its location, its title), so that they don't have to be duplicated on the digital asset resources.
+      </para>
+    </tip>
+  </section>
+
+</part>

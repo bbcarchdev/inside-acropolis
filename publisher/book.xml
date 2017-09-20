@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+  https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<book version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Inside Acropolis</title>
+
+  <subtitle>Volume 2: Publishing data for the Research &amp; Education Space</subtitle>
+
+  <info>
+    <editor>
+      <personname>
+        <firstname>Elliot</firstname>
+        <surname>Smith</surname>
+        <affiliation>
+          <org>
+            <orgname>BBC Archive Development</orgname>
+            <uri type="website">http://www.bbc.co.uk/archive/</uri>
+          </org>
+        </affiliation>
+      </personname>
+    </editor>
+    <edition>September 2017 Edition</edition>
+    <xi:include href="legal.xml" />
+  </info>
+
+  <xi:include href="../link-back.xml" />
+
+  <xi:include href="intro.xml" />
+  <xi:include href="what-res-wants.xml" />
+  <xi:include href="names-for-things.xml" />
+  <xi:include href="rdf-modelling-res.xml" />
+  <xi:include href="bringing-it-together.xml" />
+  <xi:include href="appendix-prefixes.xml" />
+
+</book>

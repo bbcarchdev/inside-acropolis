@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+  Licensed under the terms of the Open Government Licence, version 2.0.
+  You may obtain a copy of the license at:
+
+  https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="notable-types">
+
+  <title>Use notable types</title>
+
+  <para>
+    RES takes <literal>rdf:type</literal> statements about resources and maps them to one of a small number of generic classes. These classes are used to group similar resources together in <emphasis>partitions</emphasis> to assist discovery. The full list of partitions can be browsed at <link xlink:href="http://acropolis.org.uk/">http://acropolis.org.uk/</link>.
+  </para>
+
+  <para xml:id="res-partitions">
+    Inclusion of a resource in a RES partition depends on it having a specific type, or a type which can be mapped to that specific type. The list below shows each partition and the type(s) a resource should have to be put into it:
+  </para>
+
+  <segmentedlist>
+    <segtitle>Partition</segtitle>
+    <segtitle>RDF types</segtitle>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/agents">Agents</link></emphasis> (non-person entities with agency)
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/audiences">Audiences</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://www.w3.org/ns/odrl/2/Group">odrl:Group</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/collections">Collections</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://purl.org/dc/dcmitype/Collection">dcmitype:Collection</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/concepts">Concepts</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/works">Creative works</link></emphasis> (e.g. novels, plays, articles, paintings, photographs)
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://purl.org/vocab/frbr/core#Work">frbr:Work</link></uri> (generally), <uri><link xlink:href="http://schema.org/Photograph">schema:Photograph</link></uri> for photographs, <uri><link xlink:href="http://schema.org/AudioObject">schema:AudioObject</link></uri> for sounds
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/assets">Digital assets</link></emphasis> (including documents)
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://xmlns.com/foaf/0.1/Document">foaf:Document</link></uri> for documents, <link xlink:href="#dcmitypes">DCMI Types</link> for other types of asset
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/events">Events</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://purl.org/NET/c4dm/event.owl#Event">event:Event</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/groups">Groups</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://xmlns.com/foaf/0.1/Group">foaf:Group</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/people">People</link></emphasis> (i.e. real people who are living or dead, and fictional characters)
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://xmlns.com/foaf/0.1/Person">foaf:Person</link></uri>
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/things">Physical things</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing">crm:E18_Physical_Thing</link></uri> (generally), <uri><link xlink:href="http://www.cidoc-crm.org/cidoc-crm/E22_Man-Made_Object">crm:E22_Man-Made_Object</link></uri> for human-made things
+      </seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>
+        <emphasis role="strong"><link xlink:href="http://acropolis.org.uk/places">Places</link></emphasis>
+      </seg>
+      <seg>
+        <uri><link xlink:href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">geo:SpatialThing</link></uri>
+      </seg>
+    </seglistitem>
+  </segmentedlist>
+
+  <tip>
+    <para>
+      It's not essential for a resource to end up in a partition, but if it does, it will be more visible to a user browsing RES's index.
+    </para>
+  </tip>
+
+  <section xml:id="modelling-the-helmet">
+    <title>Adding types to the museum's resources</title>
+
+    <para>
+      Returning to the example of items in the museum, the helmet is a <emphasis>physical thing</emphasis>. To be included in the physical things partition, a resource must either have the type <literal>crm:E18_Physical_Thing</literal> or a type which maps onto it. (RES's mappings between types are in <link xlink:href="https://github.com/bbcarchdev/spindle/blob/develop/twine/rulebase.ttl">Acropolis' rulebase configuration</link>.)
+    </para>
+
+    <para>
+      One type which is mapped to <literal>crm:E18_Physical_Thing</literal> is <literal>crm:E22_Man-Made_Object</literal>, so the museum applies that to the helmet resource. This is a term from the <link xlink:href="http://www.cidoc-crm.org/">CIDOC-CRM</link> vocabulary, which was designed for cultural heritage data, making it ideally suited to describing things in a museum.
+    </para>
+
+    <para>
+      The museum's other resources are assigned types to slot them into RES's partitions, yielding the following RDF:
+    </para>
+
+    <programlisting><emphasis># the helmet - will go in "Physical things"</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001#id&gt;
+  a crm:E22_Man-Made_Object .
+
+<emphasis># the document about the helmet - will go in "Digital assets"</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  a foaf:Document .
+
+<emphasis># the photograph - will go in "Creative works";
+# note that schema:Photograph is used as this maps to frbr:Work</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001#id&gt;
+  a schema:Photograph .
+
+<emphasis># the document about the photograph - will go in "Digital assets"</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  a foaf:Document .
+
+<emphasis># the digital file representing the photograph - will go in "Digital assets";
+# see <link xlink:href="#dcmitypes">the section below</link> about RES's special treatment of DCMI Type resources</emphasis>
+&lt;http://castleofotranto.org.uk/images/the-helmet-photo.jpg&gt;
+  a dcmitype:StillImage .
+</programlisting>
+  </section>
+
+  <section xml:id="dcmitypes">
+    <title>The importance of DCMI Type resources</title>
+
+    <para>
+      The museum's digital asset was assigned the type <literal>dcmitype:StillImage</literal> in the preceding RDF. The main purpose of this, rather than slotting the resource into one of RES's partitions, is to make it discoverable via a <link xlink:href="https://bbcarchdev.github.io/inside-acropolis/#search">related media search</link>. This type of search enables a user to find things which have related media files (a common use case for applications powered by RES). Only resources which have a type from the <link xlink:href="http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=dcmitype">DCMI Type vocabulary</link> will be returned for this type of search.
+    </para>
+
+    <para>
+      Here's an outline of the logic behind related media searches:
+    </para>
+
+    <programlisting><![CDATA[If resource A is associated with resource B (via any predicate)
+and resource B has the type dcmitype:T
+then a search for resources with related media of type dcmitype:T will return A
+]]></programlisting>
+
+    <para>
+      As a concrete example, consider this Acropolis API query with a <literal>media</literal> query string variable:
+    </para>
+
+    <para>
+      <link xlink:href="http://acropolis.org.uk/?q=dench&amp;media=http://purl.org/dc/dcmitype/StillImage">http://acropolis.org.uk/?q=dench&amp;<emphasis role="strong">media=http://purl.org/dc/dcmitype/StillImage</emphasis></link>
+    </para>
+
+    <para>
+      This returns all resources with a property value matching the string "Dench", where those resources are related to other resources which have the type <literal>http://purl.org/dc/dcmitype/StillImage</literal>.
+    </para>
+
+    <para>
+      When modelling your data, you should add DCMI Types to your digital assets to facilitate related media searches, using this table for guidance:
+    </para>
+
+    <segmentedlist>
+      <segtitle>Type of file</segtitle>
+	    <segtitle>Example content type</segtitle>
+	    <segtitle>DCMI Type to use</segtitle>
+
+	    <seglistitem>
+        <seg>Image</seg>
+		    <seg>image/jpeg, image/gif, image/png</seg>
+		    <seg><uri><link xlink:href="http://purl.org/dc/dcmitype/StillImage">dcmitype:StillImage</link></uri></seg>
+	    </seglistitem>
+
+      <seglistitem>
+        <seg>Video</seg>
+		    <seg>video/mp4, video/ogg</seg>
+		    <seg><uri><link xlink:href="http://purl.org/dc/dcmitype/MovingImage">dcmitype:MovingImage</link></uri></seg>
+	    </seglistitem>
+
+      <seglistitem>
+        <seg>Audio</seg>
+		    <seg>audio/ogg, audio/x-wav, audio/mpeg</seg>
+		    <seg><uri><link xlink:href="http://purl.org/dc/dcmitype/Sound">dcmitype:Sound</link></uri></seg>
+	    </seglistitem>
+
+      <seglistitem>
+        <seg>Text</seg>
+		    <seg>text/plain, text/html, text/turtle, application/pdf</seg>
+		    <seg><uri><link xlink:href="http://purl.org/dc/dcmitype/Text">dcmitype:Text</link></uri></seg>
+	    </seglistitem>
+    </segmentedlist>
+
+  </section>
+</part>

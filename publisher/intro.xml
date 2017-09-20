@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="intro">
+
+  <title>RES-friendly RDF</title>
+
+  <para>
+    This volume of <citetitle>Inside Acropolis</citetitle> is about preparing data for indexing by <link xlink:href="https://res.space/">RES</link>. As well as providing a general reference, it works through a detailed example of converting some of a single web page to RDF. (Conversion of an existing web site to RDF is a common use case among organisations just starting to publish RDF.)
+  </para>
+
+  <para>
+    The example page is on the website of an imaginary castle museum, <emphasis>The Museum of The Castle of Otranto</emphasis>. Like many museum websites, it contains images, articles and videos about about the museum and its collections. Museum staff want this data to be indexed by RES so that it can be used by teachers, students and academics. As a starting point, they want to create some RDF from the page <link xlink:href="http://castleofotranto.org.uk/items/the-helmet">http://castleofotranto.org.uk/items/the-helmet</link>, about a golden helmet in the museum's collection.
+  </para>
+
+  <para>
+    The rest of this volume focuses on converting this web page (and similar content) to RDF, making it <emphasis>RES-friendly</emphasis> along the way. This means using data structures which RES can index effectively, to make data more visible and accessible to RES users. The guidance given is more widely applicable to Linked Open Data (LOD), too: making your data RES-friendly helps it adhere to <link xlink:href="https://www.w3.org/TR/ld-bp/">best practices for publishing LOD</link>.
+  </para>
+
+  <note>
+    <para>
+      This is a reference guide to converting existing content into a <emphasis>minimal</emphasis> RDF dataset which can be effectively indexed by RES. It doesn't explain how to do an exhaustive conversion of all of an organisation's data, or even all of one web page: it just covers the minimum work required to offer useful data to RES. This bypasses important topics like how an organisation should decide on a license for its data, manage it, host it etc.; but these issues can be discussed with the <link xlink:href="mailto:RESFeedback@bbc.co.uk">RES team</link> if you need help.
+    </para>
+  </note>
+
+  <section xml:id="museums-web-page">
+    <title>The museum's web page</title>
+
+    <para>
+      <link xlink:href="http://castleofotranto.org.uk/items/the-helmet">The example museum web page</link> has this content:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis role="strong">Identifier:</emphasis> t0001 (this identifier is from the museum catalogue)
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">Label:</emphasis> The Golden Helmet
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">Physical description:</emphasis> Large gold helmet
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">Dimensions:</emphasis> 3m diameter
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">Materials:</emphasis> 18 carat gold
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">Origin:</emphasis> Created in the 17th century by an unknown Spanish armourer.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">History:</emphasis> The helmet spontaneously fell from its mount on a wall in the main hall in 1529; Conrad, son of Lord Manfred Otranto, was due to wed Isabella that day, but was instead crushed to death by the falling helmet. The helmet was then lost for many years, until, in 1749, it was rediscovered by archaeologist Fuchsia Otranto in the ruins of the old chapel.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">Display location:</emphasis> On permanent display in the Arms and Armour Wing.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">A digital photograph of the helmet</emphasis>, taken by Vlad Dracula in 2016.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      By the end of this volume, the data on this page will have been converted to machine-readable RDF. All of the RDF examples are presented in <link xlink:href="https://www.w3.org/TR/turtle/">Turtle</link> format. For the sake of brevity, the RDF namespaces and corresponding prefixes used in the examples are summarised <link xlink:href="#appendix-prefixes">in an appendix</link> and not included in the examples.
+    </para>
+
+    <tip>
+      <para>If publishing data for ingestion by RES, your RDF should be in either RDF/XML or Turtle format (or both). These are the formats currently supported by RES.</para>
+    </tip>
+  </section>
+
+</part>

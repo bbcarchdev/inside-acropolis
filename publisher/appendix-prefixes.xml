@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<appendix version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="appendix-prefixes">
+	<title>RDF prefixes</title>
+
+  <para>
+    The following RDF prefixes are used throughout this book:
+  </para>
+
+  <programlisting><xi:include href="prefixes.ttl" parse="text" /></programlisting>
+</appendix>

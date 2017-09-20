@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="link-documents-formats">
+
+  <title>Link documents to their formats</title>
+
+  <para>
+    The descriptions of the things in a publisher's domain are generically called <emphasis>documents</emphasis> (see <citetitle><link xlink:href="#what-res-wants">What does RES want?</link></citetitle>). Like photographs, novels, songs and other creative works, a document may be available in multiple formats. For example, a description of an item may be available as a web page, a printed leaflet, or an RDF file. In all three cases, providing the data is broadly similar, these representations with different content types are treated as <link xlink:href="https://www.w3.org/DesignIssues/Generic.html"><emphasis>formats</emphasis> of the document</link>.
+  </para>
+
+  <para>
+    Each format for a document should be assigned its own resource (with its own URI); the resource should have a type of <literal>dcmitype:Text</literal> and a <literal>dcterms:format</literal> value, set as for any other <link xlink:href="#dcmitypes">digital asset</link>. Format resources are then linked to the document via the predicate <literal>dcterms:hasFormat</literal>.
+  </para>
+
+  <para>
+    In addition, if a resource is an RDF format of a document, it should be assigned a type whose value is a URI from the <link xlink:href="http://www.w3.org/ns/formats/">Unique URIs for File Formats</link> vocabulary. Some examples for common formats:
+  </para>
+
+  <segmentedlist>
+    <segtitle>RDF format</segtitle>
+    <segtitle>URI</segtitle>
+
+    <seglistitem>
+      <seg>Turtle</seg>
+      <seg><uri><link xlink:href="http://www.w3.org/ns/formats/Turtle">formats:Turtle</link></uri></seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>RDF/XML</seg>
+      <seg><uri><link xlink:href="http://www.w3.org/ns/formats/RDF_XML">formats:RDF_XML</link></uri></seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>N3</seg>
+      <seg><uri><link xlink:href="http://www.w3.org/ns/formats/N3">formats:N3</link></uri></seg>
+    </seglistitem>
+
+    <seglistitem>
+      <seg>N-Triples</seg>
+      <seg><uri><link xlink:href="http://www.w3.org/ns/formats/N-Triples">formats:N-Triples</link></uri></seg>
+    </seglistitem>
+  </segmentedlist>
+
+  <note>
+    <para>
+      Documents about the primary entities in a domain are themselves creative works. However, a document is mostly just a means for a user to navigate to the primary entities. This makes it counter-intuitive to treat documents (which roughly correspond to catalogue entries or similar metadata) the same way as primary entities (like the items in a museum, paintings in a gallery, or novels in a library). For this reason, a publisher <emphasis>shouldn't</emphasis> <link xlink:href="#link-works-to-assets">use media links</link> (<literal>mrss:content</literal>, <literal>mrss:player</literal>) to link documents to their digital formats and should instead use <literal>dcterms:hasFormat</literal>.
+    </para>
+  </note>
+
+  <section xml:id="linking-museum-formats">
+    <title>Linking formats to the museum's documents</title>
+
+    <para>
+      Recall that the museum has two documents relating to the web page it's converting: the document about the photograph, and the document about the helmet. As the museum intends to publish both RDF/XML and Turtle versions of the data, each of these documents has two formats. The museum therefore adds four resources, two for each document, to represent their formats, and links them to the documents:
+    </para>
+
+    <programlisting><emphasis># document about the helmet</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001&gt;
+  dcterms:hasFormat &lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;,
+    &lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt; .
+
+<emphasis># format for the document about the helmet - Turtle</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001.ttl&gt;
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; .
+
+<emphasis># format for the document about the helmet - RDF/XML</emphasis>
+&lt;http://castleofotranto.org.uk/data/items/t0001.rdf&gt;
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/application/rdf+xml&gt; .
+
+<emphasis># document about the photograph</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001&gt;
+  dcterms:hasFormat &lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;,
+    &lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt; .
+
+<emphasis># format for the document about the photograph - Turtle</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.ttl&gt;
+  a dcmitype:Text, formats:Turtle ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/text/turtle&gt; .
+
+<emphasis># format for the document about the photograph - RDF/XML</emphasis>
+&lt;http://castleofotranto.org.uk/data/photos/p0001.rdf&gt;
+  a dcmitype:Text, formats:RDF_XML ;
+  dcterms:format &lt;http://purl.org/NET/mediatypes/application/rdf+xml&gt; .
+</programlisting>
+
+    <para>
+      The URI for the format of a document is the document's URI plus a suffix: <literal>.ttl</literal> for Turtle, <literal>.rdf</literal> for RDF/XML, <literal>.n3</literal> for N3, <literal>.nt</literal> for N-Triples etc.
+    </para>
+  </section>
+
+</part>

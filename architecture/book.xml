@@ -11,9 +11,9 @@
 	https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
 
 -->
-<book version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude">
+<book version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<title>Inside Acropolis</title>
-	<subtitle>Developing with the Research &amp; Education Space</subtitle>
+	<subtitle>Volume 1: Developing with the Research &amp; Education Space</subtitle>
 	<info>
 		<editor>
 			<personname>
@@ -27,9 +27,19 @@
 				</affiliation>
 			</personname>
 		</editor>
-		<edition>October 2016 Edition</edition>
+		<edition>September 2017 Edition</edition>
 		<xi:include href="legal.xml" />
 	</info>
+
+  <xi:include href="../link-back.xml" />
+
+  <section xml:id="introduction">
+    <title>Introduction</title>
+
+    <para>
+      This volume of <citetitle>Inside Acropolis</citetitle> explains how an application developer can make use of the index and interpret the data in order to present it to end-users in a useful fashion. It also covers the architecture of Acropolis, with additional detail about how the index is generated.
+    </para>
+  </section>
 
 	<!-- Main book sections -->
 	<!-- 1. An introduction the ... platform -->

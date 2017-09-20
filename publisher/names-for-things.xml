@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<section version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="names-for-things">
+
+  <title>Choosing URIs for things</title>
+
+  <para>
+    In Linked Data, <link xlink:href="https://www.w3.org/TR/ld-bp/#HTTP-URIS">HTTP URIs are used as the names for things</link>. This can seem counter-intuitive at first: a string like <literal>http://dbpedia.org/resource/Hothouse_(novel)</literal> may immediately make you think "That's the address of a web page". Linked Data requires that you <link xlink:href="https://norman.walsh.name/2006/07/25/namesAndAddresses">instead consider URIs as <emphasis>names for resources</emphasis></link>, where a resource can be literally <emphasis>any thing</emphasis>. In the same way that <citetitle>Hothouse</citetitle> is the English name of this novel, <link xlink:href="http://dbpedia.org/resource/Hothouse_(novel)">http://dbpedia.org/resource/Hothouse_(novel)</link> is an identifier for the abstract creative work which is <emphasis>the novel itself</emphasis>. Any translations of this novel are translations of <uri>http://dbpedia.org/resource/Hothouse_(novel)</uri>; different editions of the novel are editions of <uri>http://dbpedia.org/resource/Hothouse_(novel)</uri>; and so on. This means that, any time this URI is used, it refers to <emphasis>only this creative work</emphasis>: not a version, translation, edition, format or other variation of it, or any other thing which shares the name "Hothouse".
+  </para>
+
+  <section xml:id="naming-the-museum-things">
+    <title>URIs for the museum's things</title>
+
+    <para>
+      In the case of the museum example, each thing to be modelled needs a unique URI which can be hosted on the museum's web site. The museum staff decide to put their RDF resources on a <literal>/data/</literal> sub-path of the main site, at <uri>http://castleofotranto.org.uk/data/</uri>. They use a further URI path segment to divide the site by type of data: any physical items in the museum are under <literal>/data/items/</literal>. (If you have built <link xlink:href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful web services</link>, this strategy should be familiar.)
+    </para>
+
+    <para>
+      The next part of the URI is derived from the museum database's identifier for the helmet, <literal>t0001</literal>. If your dataset includes permanent, immutable identifiers (e.g. if you use a database to power your website), they make good candidates for unique keys within your URIs. If you don't have immutable identifiers already, create them if at all possible. Ideally, they shouldn't be based on  categories (as items may get re-categorised) or proper names (as languages, names, authorities etc. change over time, too).
+    </para>
+
+    <para>
+      Finally, because the resource they're creating stands in for an object in the real (rather than digital) world, they append <literal>#id</literal> onto the end of it. The final URI for the resource representing the helmet is:
+    </para>
+
+    <para>
+      <literal>http://castleofotranto.org.uk/data/items/t0001#id</literal>
+    </para>
+
+    <para>
+      Why <literal>#id</literal>? This is down to the types of resource that can be identified using URIs, and how those resources are accessed on the web. Recall that the museum is creating resources for things which exist outside the web (also known as <emphasis>non-information resources</emphasis>). The &quot;essence&quot; of these things can't be delivered over the web: if I put the URI <literal>http://castleofotranto.org.uk/data/items/t0001#id</literal> into my web browser, I wouldn't expect the <emphasis>actual</emphasis> helmet to be returned to me; at best, I would expect a representation of the helmet (e.g. some HTML or RDF). HTML, RDF and similar digital resources <emphasis>can</emphasis> be delivered over the web, making them <emphasis>information resources</emphasis>.
+    </para>
+
+    <para>
+      The <literal>#id</literal> is a way to deal with this: because the fragment part of a URI is ignored by the server, requesting the non-information resource <uri>http://castleofotranto.org.uk/data/items/t0001#id</uri> would actually return the information resource at <uri>http://castleofotranto.org.uk/data/items/t0001</uri> (no <literal>#id</literal>); in this case, this resolves to an RDF representation of the helmet.
+    </para>
+
+    <para>
+      This is a Linked Data convention: when the URI of a <emphasis>non-information</emphasis> resource is requested, a server should deliver the <emphasis>information</emphasis> resource which describes it. This is known as <emphasis>dereferencing the URI</emphasis> (see <citetitle><link xlink:href="https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14.html#sec-information-resources">Dereferencing HTTP URIs</link></citetitle> and <citetitle><link xlink:href="https://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</link></citetitle>).
+    </para>
+
+    <tip>
+      <para>
+        Information and non-information resources map to <link xlink:href="#what-res-wants">RES's four categories</link> as follows:
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>Real-world things</emphasis> and <emphasis>creative works</emphasis> are non-information resources.</para>
+        </listitem>
+        <listitem>
+          <para><emphasis>Documents</emphasis> and <emphasis>digital assets</emphasis> are information resources.</para>
+        </listitem>
+      </itemizedlist>
+    </tip>
+
+    <para>
+      So far, the museum has decided on the URIs (names) for two of the things in its data:
+    </para>
+
+    <orderedlist numeration="arabic" spacing="compact">
+      <listitem>
+        <para>
+          <uri>http://castleofotranto.org.uk/data/items/t0001#id</uri> - the physical helmet (a real-world thing).
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <uri>http://castleofotranto.org.uk/data/items/t0001</uri> - the description of the helmet (a document).
+        </para>
+      </listitem>
+    </orderedlist>
+
+    <para>
+      Following the principles above, and adding a further sub-path for <literal>/photos/</literal>, the museum decides on these URIs for its <link xlink:href="#web-page-extraction">other resources</link>:
+    </para>
+
+    <orderedlist numeration="arabic" spacing="compact">
+      <listitem>
+        <para>
+          <uri>http://castleofotranto.org.uk/data/photos/p0001#id</uri> - the photograph of the helmet (a creative work).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <uri>http://castleofotranto.org.uk/data/photos/p0001</uri> - the description of the photograph of the helmet (a document).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <uri>http://castleofotranto.org.uk/images/the-helmet-photo.jpg</uri> - the digital file representing the photograph (a digital asset); note that the existing URI for the image embedded in the web page is used.
+        </para>
+      </listitem>
+
+    </orderedlist>
+
+    <para>
+      Determining URIs for things you're publishing data about is an important step: by creating a URI for a thing, you have essentially turned it into a <emphasis>resource</emphasis> which can be published as Linked Open Data. These resources will be the subjects of RDF statements in your data, as shown in later sections.
+    </para>
+
+  </section>
+
+  <section xml:id="using-existing-uris">
+    <title>Using existing URIs with content negotiation</title>
+
+    <para>
+      The museum's resource URIs are hosted on a sub-path of the website, <literal>/data/</literal>, rather than sharing the same URIs as the existing web pages. Readers familiar with Linked Data will doubtless be familiar with <link xlink:href="https://www.w3.org/TR/cooluris/#conneg">content negotiation</link>, where the same URI can return different representations, according to the preferences of the client. So why doesn't the museum reuse existing website URIs in tandem with content negotiation to serve HTML or RDF? In practice, this would work as follows:
+    </para>
+
+    <programlisting>client requests http://castleofotranto.org.uk/items/the-helmet and wants HTML
+  --&gt; respond with <emphasis role="strong">HTML</emphasis> about the helmet
+
+client requests http://castleofotranto.org.uk/items/the-helmet and wants RDF
+   --&gt; respond with <emphasis role="strong">RDF</emphasis> about the helmet
+</programlisting>
+
+    <note>
+      <para>
+        Details about how to implement this aren't covered here, but see <citetitle><link xlink:href="https://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</link></citetitle> for an overview.
+      </para>
+    </note>
+
+    <para>
+      There are several reasons why an organisation (like the museum) might not deliver multiple representations from a single URI, such as:
+    </para>
+
+    <orderedlist>
+      <listitem>
+        <para>
+          Their <emphasis role="strong">hosting infrastructure</emphasis> may make it difficult to deliver different resources from a single URI. This can sometimes be due to the website implementation, particularly if based on an old content management system with opaque URLs. In such cases, it may not be feasible to map from the URL of each web page to its corresponding RDF URI.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          It's <emphasis role="strong">often simpler (and sometimes safer)</emphasis> to publish a data site in parallel with an existing website without touching existing infrastructure. Publishing on a sub-path (or even a separate sub-domain) can allow an organisation to safely experiment without risking existing assets. It may also allow a wider choice of implementation technology (e.g. using a cloud provider as opposed to working through an in-house web team).
+        </para>
+      </listitem>
+    </orderedlist>
+
+    <para>
+      Where it is feasible to use the same URIs for HTML and RDF representations (maintaining the <link xlink:href="https://www.w3.org/2001/tag/doc/alternatives-discovery-20061101.html">One Web</link> principle), organisations should strive to do it. However, doing so can be very technical, involved, and even costly. Using a sub-path or sub-domain is a quick way to get started without having to deal with these issues immediately.
+    </para>
+
+    <note>
+      <para>
+        Even in cases where an organisation has a separate URI space for its data, HTML and RDF can still be associated using <link xlink:href="http://patterns.dataincubator.org/book/autodiscovery.html"><literal>&lt;link&gt;</literal> elements in the HTML</link>. This enables a client accessing web pages to find equivalent/related RDF resources if desired.
+      </para>
+    </note>
+  </section>
+
+</section>

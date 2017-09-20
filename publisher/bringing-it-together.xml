@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <elliot.smith@bbc.co.uk>
+
+ Copyright (c) 2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+ https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="bringing-it-together">
+
+  <title>Bringing it all together</title>
+
+  <para>
+    By following the steps described above, an organisation can produce a <emphasis>minimal</emphasis> set of data suitable for indexing by RES. This isn't the whole story, though: once you have a dataset, you still need to manage, host and develop it over time. These aspects of Linked Data are covered in detail elsewhere, so have been bypassed to keep this book as short and focused on RES as possible. However, if your organisation needs any assistance with these topics, please contact <link xlink:href="mailto:RESFeedback@bbc.co.uk">the RES team</link>.
+  </para>
+
+  <para>
+    As a final example, here is the complete, valid RDF for the museum's resources, developed in the course of this book:
+  </para>
+
+  <programlisting><xi:include href="museum.ttl" parse="text" /></programlisting>
+
+</part>

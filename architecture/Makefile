@@ -23,7 +23,7 @@ PDF = inside-acropolis.pdf
 
 DBXSLT = ../docbook-html5/docbook-html5.xsl
 NAV = ../docbook-html5/res-nav.xml
-LINKS = ../docbook-html5/res-links.xml
+LINKS = ../res-links.xml
 XML2HTML = $(XSLTPROC) --nonet --xinclude --param "html.linksfile" "'file://`pwd`/$(LINKS)'" --param "html.navfile" "'file://`pwd`/$(NAV)'" --param "html.ie78css" "'//bbcarchdev.github.io/painting-by-numbers/ie78.css'" --output $@ $(DBXSLT)
 
 ## Phony targets

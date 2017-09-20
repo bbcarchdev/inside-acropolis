@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Elliot Smith <mo.mcroberts@bbc.co.uk>
+
+ Copyright (c) 2014-2017 BBC
+
+ Licensed under the terms of the Open Government Licence, version 2.0.
+ You may obtain a copy of the license at:
+
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/
+-->
+<book version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>Inside Acropolis</title>
+	<subtitle>A guide to the Research &amp; Education Space for contributors and developers</subtitle>
+	<info>
+		<editor>
+			<personname>
+				<firstname>Mo</firstname>
+				<surname>McRoberts</surname>
+				<affiliation>
+					<org>
+						<orgname>BBC Archive Development</orgname>
+						<uri type="website">http://www.bbc.co.uk/archive/</uri>
+					</org>
+				</affiliation>
+			</personname>
+		</editor>
+		<edition>September 2017 Edition</edition>
+		<xi:include href="legal.xml" />
+	</info>
+
+  <section xml:id="introduction">
+	  <title>Introduction</title>
+
+	  <para>
+		  The Research &amp; Education Space is a platform that has been built and delivered by the <link xlink:href="http://www.bbc.co.uk/">BBC</link>. Its aim is to bring as much as possible of the UK’s publicly-held archives, and more besides, to learners and teachers across the UK.
+	  </para>
+	  <para>
+		  Powering the Research &amp; Education Space is <firstterm>Acropolis</firstterm>, a technical stack which collects, indexes and organises rich structured data about those archive collections published as <firstterm>Linked Open Data</firstterm> (LOD) on the Web. The collected data is organised around the people, places, events, concepts and things related to the items in the archive collections—and, if the archive assets themselves are available in digital form, that data includes the information on how to access them, all in a consistent machine-readable form.
+	  </para>
+	  <para>
+		  Building on the Research &amp; Education Space, applications can make use of this index, along with the source data itself, to make those collections accessible and meaningful.
+	  </para>
+  </section>
+
+  <section>
+    <title>Contents</title>
+
+	  <para>
+		  <citetitle>Inside Acropolis</citetitle> consists of two volumes, each of which is focused on different aspects of the Research &amp; Education Space. The volumes are:
+	  </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <link xlink:href="./architecture/index.html">Volume 1: Developing with the Research &amp; Education Space</link>
+        </para>
+        <para>
+          This volume explains how an application developer can make use of the index and interpret the source data in order to present it to end-users in a useful fashion. It also covers the architecture of Acropolis, with additional detail about how the index is generated.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <link xlink:href="???">???Volume 2: Data Publishers' Guide</link>
+        </para>
+        <para>
+          This volume explains how to publish Linked Open Data which can be indexed effectively by the platform.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <!-- fake table of contents so stylesheets don't add one -->
+    <toc></toc>
+
+    <note>
+		  <para>
+			  <citetitle>Inside Acropolis</citetitle> is an evolving document, licensed under the terms of the <citetitle><link xlink:href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence, v2.0</link></citetitle>, and to which we are welcoming contributions. You can <link xlink:href="https://github.com/bbcarchdev/inside-acropolis">fork the repository on GitHub</link>, or <link xlink:href="mailto:RESFeedback@bbc.co.uk">e-mail the editor directly</link> if you would like to contribute or have suggestions for changes.</para>
+	  </note>
+  </section>
+
+</book>

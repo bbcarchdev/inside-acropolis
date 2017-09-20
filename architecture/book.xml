@@ -13,7 +13,7 @@
 -->
 <book version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<title>Inside Acropolis</title>
-	<subtitle>A guide to the Research &amp; Education Space for contributors and developers</subtitle>
+	<subtitle>Developing with the Research &amp; Education Space</subtitle>
 	<info>
 		<editor>
 			<personname>
@@ -30,7 +30,6 @@
 		<edition>October 2016 Edition</edition>
 		<xi:include href="legal.xml" />
 	</info>
-	<xi:include href="preface.xml" />
 
 	<!-- Main book sections -->
 	<!-- 1. An introduction the ... platform -->

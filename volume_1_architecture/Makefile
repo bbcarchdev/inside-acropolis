@@ -9,6 +9,7 @@
 
 XSLTPROC ?= xsltproc
 WKPDF ?= wkpdf
+DIST = ../dist/architecture
 
 ## Book elements
 
@@ -16,14 +17,14 @@ XML = book.xml
 
 ## Output files
 
-HTML = index.html
-PDF = inside-acropolis.pdf
+HTML = $(DIST)/index.html
+PDF = $(DIST)/inside-acropolis.pdf
 
 ## XSL transform
 
-DBXSLT = docbook-html5/docbook-html5.xsl
-NAV = docbook-html5/res-nav.xml
-LINKS = docbook-html5/res-links.xml
+DBXSLT = ../docbook-html5/docbook-html5.xsl
+NAV = ../docbook-html5/res-nav.xml
+LINKS = ../docbook-html5/res-links.xml
 XML2HTML = $(XSLTPROC) --nonet --xinclude --param "html.linksfile" "'file://`pwd`/$(LINKS)'" --param "html.navfile" "'file://`pwd`/$(NAV)'" --param "html.ie78css" "'//bbcarchdev.github.io/painting-by-numbers/ie78.css'" --output $@ $(DBXSLT)
 
 ## Phony targets
@@ -31,14 +32,10 @@ XML2HTML = $(XSLTPROC) --nonet --xinclude --param "html.linksfile" "'file://`pwd
 all: $(HTML)
 
 pdf:
-	rm -f $(PDF)
-	$(MAKE) -f buildrules.make $(PDF)
+	$(MAKE) $(PDF)
 
 clean:
-	rm -f $(HTML)
-
-pdfclean: clean
-	rm -f $(PDF)
+	rm -Rf $(DIST)
 
 ## Real targets
 

@@ -17,5 +17,5 @@
 */
 body>header .masthead {
 	display: block;
-	background: #6c71c4 url('masthead.png') 50% 50% no-repeat;
+	background: #6c71c4 url('/masthead.png') 50% 50% no-repeat;
 }

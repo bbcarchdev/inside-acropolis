@@ -5,7 +5,7 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 			<meta charset="utf-8" />
 			<!--[if lt IE 9]><script>document.createElement('header');document.createElement('nav');document.createElement('section');document.createElement('article');document.createElement('aside');document.createElement('footer');</script><![endif]-->
-		<title>Inside Acropolis</title><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/style.css"/><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/print.css" media="print"/><link rel="stylesheet" type="text/css" href="//cloud.typography.com/6699852/732262/css/fonts.css"/><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,500,300italic,500italic|Inconsolata|Arapey"/><link rel="stylesheet" type="text/css" href="local.css"/><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"/><!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/ie78.css" /><![endif]-->
+		<title>Inside Acropolis</title><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/style.css"/><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/print.css" media="print"/><link rel="stylesheet" type="text/css" href="//cloud.typography.com/6699852/732262/css/fonts.css"/><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,500,300italic,500italic|Inconsolata|Arapey"/><link rel="stylesheet" type="text/css" href="/local.css"/><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"/><!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="//bbcarchdev.github.io/painting-by-numbers/ie78.css" /><![endif]-->
 	</head>
 <body class="book"><header><nav class="global"><div class="inner"><ul>
 		<li class="logo"><a href="https://bbcarchdev.github.io/res/"><abbr title="Research &amp; Education Space">RES</abbr></a></li>
@@ -117,7 +117,7 @@
 		doing so. There is also a “powered by RES” logo.
 	</p>
 		<figure class="full">
-		<img src="powered-by-res-icon-green-text.jpeg"/>
+		<img src="./powered-by-res-icon-green-text.jpeg"/>
 	</figure>
 	<p>
 		The Research &amp; Education Space only indexes and publishes data which
@@ -2092,18 +2092,18 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 	
 	<section id="architecture" class="part"><h1>Under the hood: the architecture of Acropolis</h1>
 	
-	
+
 	<p>
 		The Acroplolis stack consists of several distinct, relatively simple services.
 		Within the Research &amp; Education Space, they are used together,
 		but each can be deployed independently to suit different applications.
 	</p>
-	
+
 	<figure class="full">
 		
-		<img src="acropolis-architecture.svg"/>
+		<img src="./acropolis-architecture.svg"/>
 	<figcaption>High-level architecture of the Acropolis stack</figcaption></figure>
-	
+
 	<section id="quilt" class="section"><h1>Quilt</h1>
 		
 
@@ -2186,7 +2186,7 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 			templating language.
 		</p>
 	</section>
-	
+
 	<section id="twine" class="section"><h1>Twine</h1>
 		
 		<p>
@@ -2257,8 +2257,8 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 			is responsible for processing RDF crawled by Anansi in order to
 			generate <a href="#api">the index</a>.
 		</p>
-	</section>	
-	
+	</section>
+
 	<section id="anansi" class="section"><h1>Anansi</h1>
 		
 		<p>
@@ -2295,7 +2295,7 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 			which do not meet the <a href="#licenses">licensing criteria</a>.
 		</p>
 	</section>
-	
+
 	<section id="spindle" class="section"><h1>Spindle</h1>
 		
 
@@ -2533,7 +2533,7 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 				a single authenticated <code class="literal">GET</code> request to the bucket.
 			</p>
 		</section>
-		
+
 		<section id="spindle-quilt" class="section"><h1>Spindle module for Quilt</h1>
 			
 			<p>
@@ -2577,7 +2577,7 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 				<li>
 						a “root resource” request, which generates data about
 						the different class partitions and the available query
-						capabilities; 
+						capabilities;
 					</li>
 				<li>
 						an item request, which retrieves data about the item
@@ -2603,9 +2603,9 @@ rdfs:label "Authorised users of the BBC Shakespeare Archive Resource"@en-gb .
 				scalability).
 			</p>
 		</section>
-		
+
 	</section>
-	
+
 </section>
 
 	

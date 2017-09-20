@@ -78,7 +78,7 @@
 		<figure pgwide="1">
 		<mediaobject>
 			<imageobject>
-				<imagedata fileref="powered-by-res-icon-green-text.jpeg" />
+				<imagedata fileref="./powered-by-res-icon-green-text.jpeg" />
 			</imageobject>
 		</mediaobject>
 	</figure>

@@ -13,22 +13,22 @@
 -->
 <part version="5.0" xml:lang="en-gb" xmlns="http://docbook.org/ns" xmlns:xinclude="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="architecture">
 	<title>Under the hood: the architecture of Acropolis</title>
-	
+
 	<para>
 		The Acroplolis stack consists of several distinct, relatively simple services.
 		Within the Research &amp; Education Space, they are used together,
 		but each can be deployed independently to suit different applications.
 	</para>
-	
+
 	<figure pgwide="1">
 		<title>High-level architecture of the Acropolis stack</title>
 		<mediaobject>
 			<imageobject>
-				<imagedata fileref="acropolis-architecture.svg" />
+				<imagedata fileref="./acropolis-architecture.svg" />
 			</imageobject>
 		</mediaobject>
 	</figure>
-	
+
 	<section xml:id="quilt">
 		<title>Quilt</title>
 
@@ -119,7 +119,7 @@
 			templating language.
 		</para>
 	</section>
-	
+
 	<section xml:id="twine">
 		<title>Twine</title>
 		<para>
@@ -190,8 +190,8 @@
 			is responsible for processing RDF crawled by Anansi in order to
 			generate <link xlink:href="#api">the index</link>.
 		</para>
-	</section>	
-	
+	</section>
+
 	<section xml:id="anansi">
 		<title>Anansi</title>
 		<para>
@@ -228,7 +228,7 @@
 			which do not meet the <link xlink:href="#licenses">licensing criteria</link>.
 		</para>
 	</section>
-	
+
 	<section xml:id="spindle">
 		<title>Spindle</title>
 
@@ -498,7 +498,7 @@
 				a single authenticated <literal>GET</literal> request to the bucket.
 			</para>
 		</section>
-		
+
 		<section xml:id="spindle-quilt">
 			<title>Spindle module for Quilt</title>
 			<para>
@@ -551,7 +551,7 @@
 					<para>
 						a “root resource” request, which generates data about
 						the different class partitions and the available query
-						capabilities; 
+						capabilities;
 					</para>
 				</listitem>
 				<listitem>
@@ -584,7 +584,7 @@
 				scalability).
 			</para>
 		</section>
-		
+
 	</section>
-	
+
 </part>

@@ -9,7 +9,6 @@
 
 XSLTPROC ?= xsltproc
 WKPDF ?= wkpdf
-DIST = ../dist/architecture
 
 ## Book elements
 
@@ -17,8 +16,8 @@ XML = book.xml
 
 ## Output files
 
-HTML = $(DIST)/index.html
-PDF = $(DIST)/inside-acropolis.pdf
+HTML = index.html
+PDF = inside-acropolis.pdf
 
 ## XSL transform
 
@@ -35,7 +34,10 @@ pdf:
 	$(MAKE) $(PDF)
 
 clean:
-	rm -Rf $(DIST)
+	rm $(HTML)
+
+cleanpdf:
+	rm $(PDF)
 
 ## Real targets
 
